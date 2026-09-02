@@ -1,0 +1,1047 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="吗啡注射器" identifier="dfmorphineinjection" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="提供标准止痛效果" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <SuitableTreatment type="damage" suitability="75" />
+    <SuitableTreatment identifier="opiateoverdose" suitability="-50" />
+    <SuitableTreatment identifier="opiateaddiction" suitability="-20" />
+    <SuitableTreatment identifier="oxygenlow" suitability="-30" />
+    <!--<Price baseprice="100" minavailable="2">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30">
+      <RequiredSkill identifier="medical" level="35" />
+      <RequiredItem identifier="stabilozine" />
+      <RequiredItem identifier="opium" amount="2" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="opium" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%\content\png\吗啡注射器.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\吗啡注射器.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget" duration="5">
+        <ReduceAffliction type="damage" amount="15" />
+        <ReduceAffliction type="burn" amount="1" />
+        <Affliction identifier="oxygenlow" amount="5" />
+        <Affliction identifier="opiateoverdose" amount="5" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget" duration="25">
+        <Affliction identifier="opiateaddiction" amount="1" />
+        <ReduceAffliction identifier="opiatewithdrawal" amount="4" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="UseTarget">
+        <Conditional entitytype="eq Character" />
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfanalgesic2" amount="100" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Propital" identifier="dfrecoveinjection1" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="提供轻度止痛与恢复效果" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <SuitableTreatment type="damage" suitability="75" />
+    <SuitableTreatment identifier="opiateoverdose" suitability="-50" />
+    <SuitableTreatment identifier="opiateaddiction" suitability="-20" />
+    <SuitableTreatment identifier="oxygenlow" suitability="-30" />
+    <!--<Price baseprice="250" minavailable="2">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30" amount="2">
+      <RequiredSkill identifier="medical" level="75" />
+      <RequiredItem identifier="stabilozine" />
+      <RequiredItem identifier="dfmorphineinjection" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="opium" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%\content\png\Propital.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\Propital.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget" duration="1">
+        <ReduceAffliction type="damage" amount="15" />
+        <ReduceAffliction type="burn" amount="1" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfanalgesic1" amount="100" />
+        <Affliction identifier="dfrecover1" amount="100" />
+        <Affliction identifier="dftunnelvision" amount="100" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="eTG-change再生兴奋剂注射器" identifier="dfreborninjection1" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="提供标准的恢复速度强化以及轻度兴奋效果" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <SuitableTreatment type="damage" suitability="75" />
+    <SuitableTreatment identifier="opiateoverdose" suitability="-50" />
+    <SuitableTreatment identifier="opiateaddiction" suitability="-20" />
+    <SuitableTreatment identifier="oxygenlow" suitability="-30" />
+    <!--<Price baseprice="500" minavailable="2">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30">
+      <RequiredSkill identifier="medical" level="75" />
+      <RequiredItem identifier="elastin" />
+      <RequiredItem identifier="dfrecoveinjection1" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="opium" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%\content\png\eTG-change再生兴奋剂注射器.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\eTG-change再生兴奋剂注射器.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfreborn1" amount="100" />
+        <Affliction identifier="dfrecover2" amount="100" />
+        <Affliction identifier="dftunnelvision" amount="200" probability="0.05" dividebylimbcount="false" />
+        <Affliction identifier="dfrigidjoints" amount="200" probability="0.05" dividebylimbcount="false" />
+        <Affliction identifier="dfhypersensitivity" amount="200" probability="0.05" dividebylimbcount="false" />
+        <Affliction identifier="dfxenobiology" amount="200" probability="0.05" dividebylimbcount="false" />
+        <Affliction identifier="dfoutsideinfluence" amount="200" probability="0.05" dividebylimbcount="false" />
+        <Affliction identifier="dfglassjaw" amount="200" probability="0.05" dividebylimbcount="false" />
+        <Affliction identifier="dfdecrepify" amount="200" probability="0.05" dividebylimbcount="false" />
+        <Affliction identifier="dfmusculardystrophy" amount="200" probability="0.05" dividebylimbcount="false" />
+        <Affliction identifier="dfinflamedlung" amount="200" probability="0.05" dividebylimbcount="false" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Zagustin止血剂" identifier="dfantidama1" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="失血是难以处理的问题，画皮们在无菌实验室里发现了更多的药物配方。现在画皮圣徒会也可以生产这种快速止血的药物，不过在潜艇里生产化学制品依旧相当麻烦，只有熟练的医生才能制作这种药物。" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <!--<Price baseprice="100" minavailable="2">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30" amount="2">
+      <RequiredSkill identifier="medical" level="30" />
+      <RequiredItem identifier="elastin" />
+      <RequiredItem identifier="opium" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="opium" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%\content\png\Zagustin止血剂.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\Zagustin止血剂.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfstopbleeding" amount="100" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="肾上腺素注射器" identifier="dfadrenalinejection" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="可以治愈失血的兴奋剂" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <SuitableTreatment type="damage" suitability="75" />
+    <SuitableTreatment identifier="opiateoverdose" suitability="-50" />
+    <SuitableTreatment identifier="opiateaddiction" suitability="-20" />
+    <SuitableTreatment identifier="oxygenlow" suitability="-30" />
+    <!--<Price baseprice="100" minavailable="2">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30" amount="2">
+      <RequiredSkill identifier="medical" level="45" />
+      <RequiredItem identifier="stabilozine" />
+      <RequiredItem identifier="adrenaline" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="adrenaline" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%\content\png\肾上腺素注射器.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\肾上腺素注射器.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfreborn1" amount="100" />
+        <Affliction identifier="dfmeleeatk2" amount="25" />
+        <Affliction identifier="dfspeed2" amount="25" />
+        <Affliction identifier="dftunnelvision" amount="10" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget" duration="5">
+        <ReduceAffliction identifier="bloodloss" amount="10" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="L1(去甲肾上腺素)" identifier="dfadrenalinejectionL1" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="具有止血效果的兴奋剂" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <SuitableTreatment type="damage" suitability="75" />
+    <SuitableTreatment identifier="opiateoverdose" suitability="-50" />
+    <SuitableTreatment identifier="opiateaddiction" suitability="-20" />
+    <SuitableTreatment identifier="oxygenlow" suitability="-30" />
+    <!--<Price baseprice="100" minavailable="2">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30" amount="2">
+      <RequiredSkill identifier="medical" level="45" />
+      <RequiredItem identifier="stabilozine" />
+      <RequiredItem identifier="adrenaline" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="adrenaline" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%\content\png\L1(去甲肾上腺素).png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\L1(去甲肾上腺素).png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfreborn1" amount="100" />
+        <Affliction identifier="dfmeleeatk2" amount="25" />
+        <Affliction identifier="dfspeed2" amount="25" />
+        <Affliction identifier="dftunnelvision" amount="10" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget" duration="5">
+        <ReduceAffliction identifier="bleeding" amount="10" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="xTG-12解毒剂" identifier="dfantipoison1" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="有效解决大部分毒素" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <!--<Price baseprice="100" minavailable="2" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30" amount="2">
+      <RequiredSkill identifier="medical" level="75" />
+      <RequiredItem identifier="stabilozine" />
+      <RequiredItem identifier="df2A2" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="antibiotics" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%\content\png\xTG-12解毒剂.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\xTG-12解毒剂.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfpoisonref" amount="100" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="AHF1-M 兴奋剂注射器" identifier="dfdefence2" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="提供略微强化肉体以及平均的恢复能力" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <!--<Price baseprice="100" minavailable="2" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30">
+      <RequiredSkill identifier="medical" level="55" />
+      <RequiredItem identifier="dfadrenalinejectionL1" />
+      <RequiredItem identifier="dfmorphineinjection" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="dfmorphineinjection" />
+      <Item identifier="dfadrenalinejectionL1" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%\content\png\AHF1-M 兴奋剂注射器.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\AHF1-M 兴奋剂注射器.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfdefence1" amount="100" />
+        <Affliction identifier="dfspeed1" amount="100" />
+        <Affliction identifier="dfrecover1" amount="100" />
+        <Affliction identifier="dftunnelvision" amount="100" probability="0.1" dividebylimbcount="false" />
+        <Affliction identifier="dfhypersensitivity" amount="100" probability="0.1" dividebylimbcount="false" />
+        <Affliction identifier="dfxenobiology" amount="100" probability="0.1" dividebylimbcount="false" />
+        <Affliction identifier="dfdecrepify" amount="1200" probability="0.1" dividebylimbcount="false" />
+        <Affliction identifier="dfinflamedlung" amount="100" probability="0.1" dividebylimbcount="false" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="P22（22 号化合物）兴奋剂注射器" identifier="dfp22tkf" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="综合战斗兴奋剂，提供标准止痛耐力和恢复，略微提升力量" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <!--<Price baseprice="100" minavailable="2" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30">
+      <RequiredSkill identifier="medical" level="75" />
+      <RequiredItem identifier="dfdefence2" />
+      <RequiredItem identifier="df2A2" />
+      <RequiredItem identifier="dfrecoveinjection1" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="dfrecoveinjection1" />
+      <Item identifier="dfdefence2" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%\content\png\P22（22 号化合物）兴奋剂注射器.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\P22（22 号化合物）兴奋剂注射器.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfdefence2" amount="100" />
+        <Affliction identifier="dfrecover2" amount="100" />
+        <Affliction identifier="dfanalgesic2" amount="100" />
+        <Affliction identifier="dfmeleeatk1" amount="100" />
+        <Affliction identifier="dfspeed1" amount="100" />
+        <Affliction identifier="dftunnelvision" amount="100" probability="0.1" dividebylimbcount="false" />
+        <Affliction identifier="dfrigidjoints" amount="100" probability="0.1" dividebylimbcount="false" />
+        <Affliction identifier="dfmusculardystrophy" amount="100" probability="0.1" dividebylimbcount="false" />
+        <Affliction identifier="dfinflamedlung" amount="100" probability="0.1" dividebylimbcount="false" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Meldonin 注射器" identifier="dfmeld" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="力量强化和极高的耐力提升" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <!--<Price baseprice="100" minavailable="2" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30">
+      <RequiredSkill identifier="medical" level="75" />
+      <RequiredItem identifier="dfdefence2" />
+      <RequiredItem identifier="dfadrenalinejectionL1" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="dfdefence2" />df2A2
+      <Item identifier="dfadrenalinejectionL1" /><Item identifier="df2A2" /></Deconstruct>
+    <InventoryIcon texture="%ModDir%\content\png\Meldonin 注射器.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\Meldonin 注射器.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfmeleeatk2" amount="100" />
+        <Affliction identifier="dfdefence3" amount="100" />
+        <Affliction identifier="dfspeed1" amount="100" />
+        <Affliction identifier="dftunnelvision" amount="100" probability="0.01" dividebylimbcount="false" />
+        <Affliction identifier="dfrigidjoints" amount="100" probability="0.01" dividebylimbcount="false" />
+        <Affliction identifier="dfhypersensitivity" amount="100" probability="0.01" dividebylimbcount="false" />
+        <Affliction identifier="dfxenobiology" amount="100" probability="0.01" dividebylimbcount="false" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="3-(b TG) 兴奋剂注射器" identifier="df3btftkf" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="感知的提升可以扭转战局" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <!--<Price baseprice="100" minavailable="2" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30">
+      <RequiredSkill identifier="medical" level="45" />
+      <RequiredItem identifier="meth" />
+      <RequiredItem identifier="tonicliquid" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="tonicliquid" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%\content\png\3-(b TG) 兴奋剂注射器.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\3-(b TG) 兴奋剂注射器.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfseeall" amount="100" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="M.U.L.E. 兴奋剂" identifier="dfMULE" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="肉体强化" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <!--<Price baseprice="100" minavailable="2" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30">
+      <RequiredSkill identifier="medical" level="75" />
+      <RequiredItem identifier="dfmorphineinjection" />
+      <RequiredItem identifier="dfadrenalinejection" />
+      <RequiredItem identifier="dfadrenalinejectionL1" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="dfmorphineinjection" />
+      <Item identifier="dfadrenalinejection" />
+      <Item identifier="dfadrenalinejectionL1" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%\content\png\M.U.L.E. 兴奋剂.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\M.U.L.E. 兴奋剂.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfmeleeatk3" amount="100" />
+        <Affliction identifier="dfdefence4" amount="100" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Obdolbos 鸡尾酒兴奋剂注射器" identifier="dfobdo1" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <!--<Price baseprice="1000" minavailable="2">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <InventoryIcon texture="%ModDir%\content\png\Obdolbos 鸡尾酒兴奋剂注射器.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\Obdolbos 鸡尾酒兴奋剂注射器.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfmeleeatk2" amount="100" />
+        <Affliction identifier="dfstopbleeding" amount="100" />
+        <Affliction identifier="dfanalgesic2" amount="100" />
+        <Affliction identifier="dfpoisonref" amount="100" />
+        <Affliction identifier="dfdefence2" amount="100" />
+        <Affliction identifier="dfspeed1" amount="100" />
+        <Affliction identifier="bloodloss" strength="100000000" probability="0.25" dividebylimbcount="false" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Obdolbos 2 鸡尾酒兴奋剂注射器" identifier="dfobdo2" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <!--<Price baseprice="1000" minavailable="2">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <InventoryIcon texture="%ModDir%\content\png\Obdolbos 2 鸡尾酒兴奋剂注射器.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\Obdolbos 2 鸡尾酒兴奋剂注射器.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfmeleeatk3" amount="100" probability="0.25" dividebylimbcount="false" />
+        <Affliction identifier="dfstopbleeding" amount="100" probability="0.25" dividebylimbcount="false" />
+        <Affliction identifier="dfanalgesic3" amount="100" probability="0.25" dividebylimbcount="false" />
+        <Affliction identifier="dfpoisonref" amount="100" probability="0.25" dividebylimbcount="false" />
+        <Affliction identifier="dfdefence4" amount="100" probability="0.25" dividebylimbcount="false" />
+        <Affliction identifier="dfspeed2" amount="1200" probability="0.25" dividebylimbcount="false" />
+        <Affliction identifier="dfseeall" amount="1200" probability="0.25" dividebylimbcount="false" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="PNB（16 号化合物）兴奋剂注射器" identifier="dfpnbtkf" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="极高提升抗性与恢复" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <SuitableTreatment type="damage" suitability="75" />
+    <SuitableTreatment identifier="opiateoverdose" suitability="-50" />
+    <SuitableTreatment identifier="opiateaddiction" suitability="-20" />
+    <SuitableTreatment identifier="oxygenlow" suitability="-30" />
+    <!--<Price baseprice="100" minavailable="2" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30">
+      <RequiredSkill identifier="medical" level="75" />
+      <RequiredItem identifier="dfmorphineinjection" amount="2"/>
+      <RequiredItem identifier="dfreborninjection1" amount="2"/>
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="dfreborninjection1" />
+      <Item identifier="dfmorphineinjection" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%\content\png\PNB（16 号化合物）兴奋剂注射器.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\PNB（16 号化合物）兴奋剂注射器.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfdefence3" amount="100" />
+        <Affliction identifier="dfrecover3" amount="100" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="曲马多注射器" identifier="dfqmdijt" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="全属性标准强化" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <SuitableTreatment type="damage" suitability="75" />
+    <SuitableTreatment identifier="opiateoverdose" suitability="-50" />
+    <SuitableTreatment identifier="opiateaddiction" suitability="-20" />
+    <SuitableTreatment identifier="oxygenlow" suitability="-30" />
+    <!--<Price baseprice="100" minavailable="2" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30" amount="2">
+      <RequiredSkill identifier="medical" level="75" />
+      <RequiredItem identifier="dfmorphineinjection" amount="2"/>
+      <RequiredItem identifier="dfrecoveinjection1" amount="2"/>
+      <RequiredItem identifier="meth" amount="2"/>
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="dfrecoveinjection1" />
+      <Item identifier="dfrecoveinjection1" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%\content\png\曲马多注射器.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\曲马多注射器.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfdefence2" amount="100" />
+        <Affliction identifier="dfanalgesic2" amount="100" />
+        <Affliction identifier="dfmeleeatk2" amount="100" />
+        <Affliction identifier="dfseeall" amount="100" />
+        <Affliction identifier="dfreborn2" amount="100" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="人造血（蓝血）注射器" identifier="dfblueblood" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="极高提升抗性与恢复" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <SuitableTreatment type="damage" suitability="75" />
+    <SuitableTreatment identifier="opiateoverdose" suitability="-50" />
+    <SuitableTreatment identifier="opiateaddiction" suitability="-20" />
+    <SuitableTreatment identifier="oxygenlow" suitability="-30" />
+    <!--<Price baseprice="100" minavailable="2" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30">
+      <RequiredSkill identifier="medical" level="100" />
+      <RequiredItem identifier="dfreborninjection1" amount="2"/>
+      <RequiredItem identifier="dfantipoison1" amount="2"/>
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="dfreborninjection1" />
+      <Item identifier="dfantipoison1" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%\content\png\人造血（蓝血）注射器.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\人造血（蓝血）注射器.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfrecover3" amount="100" />
+        <Affliction identifier="dfanalgesic3" amount="100" />
+        <Affliction identifier="dfmeleeatk2" amount="100" />
+        <Affliction identifier="dfreborn2" amount="100" />
+        <Affliction identifier="dfpoisonref" amount="100" />
+        <Affliction identifier="dfinflamedlung" amount="100" probability="0.25" dividebylimbcount="false" />
+        <Affliction identifier="dfdecrepify" amount="100" probability="0.25" dividebylimbcount="false" />
+        <Affliction identifier="dfglassjaw" amount="100" probability="0.25" dividebylimbcount="false" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="2A2-(b-TG)兴奋剂注射器" identifier="df2A2" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="小幅度的全范围提升，可以生产高级药物" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <SuitableTreatment type="damage" suitability="75" />
+    <SuitableTreatment identifier="opiateoverdose" suitability="-50" />
+    <SuitableTreatment identifier="opiateaddiction" suitability="-20" />
+    <SuitableTreatment identifier="oxygenlow" suitability="-30" />
+    <!--<Price baseprice="100" minavailable="2">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30" amount="2">
+      <RequiredSkill identifier="medical" level="50" />
+      <RequiredItem identifier="dfmorphineinjection" />
+      <RequiredItem identifier="tonicliquid" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="opium" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%\content\png\2A2-(b-TG)兴奋剂注射器.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\2A2-(b-TG)兴奋剂注射器.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfrecover1" amount="100" />
+        <Affliction identifier="dfanalgesic1" amount="100" />
+        <Affliction identifier="dfmeleeatk1" amount="100" />
+        <Affliction identifier="dfreborn1" amount="100" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="SJ1-TGLabs战斗兴奋剂注射器" identifier="dfsj1" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="实验室临床试验药物，现阶段揭示其对肉体性能的强化" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <SuitableTreatment type="damage" suitability="75" />
+    <SuitableTreatment identifier="opiateoverdose" suitability="-50" />
+    <SuitableTreatment identifier="opiateaddiction" suitability="-20" />
+    <SuitableTreatment identifier="oxygenlow" suitability="-30" />
+    <!--<Price baseprice="1000" minavailable="2" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30">
+      <RequiredSkill identifier="medical" level="100" />
+      <RequiredItem identifier="df2A2" />
+      <RequiredItem identifier="dfqmdijt" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="opium" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%\content\png\SJ1-TGLabs战斗兴奋剂注射器.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\SJ1-TGLabs战斗兴奋剂注射器.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfrecover3" amount="100" />
+        <Affliction identifier="dfanalgesic1" amount="100" />
+        <Affliction identifier="dfdefence2" amount="100" />
+        <Affliction identifier="dfreborn2" amount="100" />
+        <Affliction identifier="dfpressref" amount="1200" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="SJ6-TGLabs战斗兴奋剂注射器" identifier="dfsj6" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="实验室尖端产品，现阶段揭示其给予使用者几乎刀枪不入的性能" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.08" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <SuitableTreatment type="damage" suitability="75" />
+    <SuitableTreatment identifier="opiateoverdose" suitability="-50" />
+    <SuitableTreatment identifier="opiateaddiction" suitability="-20" />
+    <SuitableTreatment identifier="oxygenlow" suitability="-30" />
+    <!--<Price baseprice="2500" minavailable="2" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" />
+    </Price>-->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30">
+      <RequiredSkill identifier="medical" level="75" />
+      <RequiredItem identifier="df2A2" amount="4" />
+      <RequiredItem identifier="dfblueblood"  amount="2"/>
+      <RequiredItem identifier="dfpnbtkf" amount="4"/>
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="opium" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%\content\png\SJ6-TGLabs战斗兴奋剂注射器.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\SJ6-TGLabs战斗兴奋剂注射器.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfrecover3" amount="100" />
+        <Affliction identifier="dfanalgesic3" amount="100" />
+        <Affliction identifier="dfdefence4" amount="100" />
+        <Affliction identifier="dfreborn2" amount="100" />
+        <Affliction identifier="dfpressref" amount="1200" />
+        <Affliction identifier="dftunnelvision" amount="500" probability="0.01" dividebylimbcount="false" />
+        <Affliction identifier="dfrigidjoints" amount="500" probability="0.01" dividebylimbcount="false" />
+        <Affliction identifier="dfhypersensitivity" amount="500" probability="0.01" dividebylimbcount="false" />
+        <Affliction identifier="dfxenobiology" amount="500" probability="0.01" dividebylimbcount="false" />
+        <Affliction identifier="dfoutsideinfluence" amount="500" probability="0.01" dividebylimbcount="false" />
+        <Affliction identifier="dfglassjaw" amount="500" probability="0.01" dividebylimbcount="false" />
+        <Affliction identifier="dfdecrepify" amount="500" probability="0.01" dividebylimbcount="false" />
+        <Affliction identifier="dfmusculardystrophy" amount="500" probability="0.01" dividebylimbcount="false" />
+        <Affliction identifier="dfinflamedlung" amount="500" probability="0.01" dividebylimbcount="false" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="SJ9-TGLabs战斗兴奋剂注射器" identifier="dfsj9" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="实验室尖端产品，适用于潜入任务（或导致严重排异反应！）" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="abandonedmedcab" minamount="1" maxamount="1" spawnprobability="0.01" />
+    <PreferredContainer primary="medcab" secondary="medcontainer" />
+    <SuitableTreatment type="damage" suitability="75" />
+    <InventoryIcon texture="%ModDir%\content\png\SJ9-TGLabs战斗兴奋剂注射器.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\SJ9-TGLabs战斗兴奋剂注射器.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <!--<Price baseprice="1000" minavailable="2" sold="false"></Price>-->
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfnonsee" amount="100" />
+        <Affliction identifier="dftunnelvision" amount="1000" probability="0.25" dividebylimbcount="false" />
+        <Affliction identifier="dfrigidjoints" amount="1000" probability="0.25" dividebylimbcount="false" />
+        <Affliction identifier="dfhypersensitivity" amount="1000" probability="0.25" dividebylimbcount="false" />
+        <Affliction identifier="dfxenobiology" amount="1000" probability="0.25" dividebylimbcount="false" />
+        <Affliction identifier="dfoutsideinfluence" amount="1000" probability="0.25" dividebylimbcount="false" />
+        <Affliction identifier="dfglassjaw" amount="1000" probability="0.25" dividebylimbcount="false" />
+        <Affliction identifier="dfdecrepify" amount="1000" probability="0.25" dividebylimbcount="false" />
+        <Affliction identifier="dfmusculardystrophy" amount="1000" probability="0.25" dividebylimbcount="false" />
+        <Affliction identifier="dfinflamedlung" amount="1000" probability="0.25" dividebylimbcount="false" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="SJ12-TGLabs战斗兴奋剂注射器" identifier="dfsj12" category="injection" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" Tags="smallitem,injection,medical" description="实验室尖端产品，你从哪偷来的这个？" useinhealthinterface="true" scale="0.06" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.01" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" minamount="1" maxamount="1" spawnprobability="0.01" />
+    <SuitableTreatment type="damage" suitability="75" />
+    <!--<Price baseprice="1000" minavailable="2" sold="false"></Price>-->
+    <InventoryIcon texture="%ModDir%\content\png\SJ12-TGLabs战斗兴奋剂注射器.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\SJ12-TGLabs战斗兴奋剂注射器.png" sourcerect="0,0,512,512" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <Holdable handle1="0,0" slots="Any">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+        <Sound file="%ModDir%\content\ogg\Inject.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnUse" target="UseTarget">
+        <Affliction identifier="dfmeleeatk3" amount="1000" />
+        <Affliction identifier="dfstopbleeding" amount="1000" />
+        <Affliction identifier="dfanalgesic3" amount="1000" />
+        <Affliction identifier="dfpoisonref" amount="1000" />
+        <Affliction identifier="dfdefence4" amount="1000" />
+        <Affliction identifier="dfspeed2" amount="1000" />
+        <Affliction identifier="dfseeall" amount="1000" />
+        <Affliction identifier="dfpressref" amount="1000" />
+        <Affliction identifier="dfrecover3" amount="1000" />
+        <Affliction identifier="dftunnelvision" amount="100" probability="0.1" dividebylimbcount="false" />
+        <Affliction identifier="dfrigidjoints" amount="100" probability="0.1" dividebylimbcount="false" />
+        <Affliction identifier="dfhypersensitivity" amount="100" probability="0.1" dividebylimbcount="false" />
+        <Affliction identifier="dfxenobiology" amount="100" probability="0.1" dividebylimbcount="false" />
+        <Affliction identifier="dfoutsideinfluence" amount="100" probability="0.1" dividebylimbcount="false" />
+        <Affliction identifier="dfglassjaw" amount="1200" probability="0.1" dividebylimbcount="false" />
+        <Affliction identifier="dfdecrepify" amount="1200" probability="0.1" dividebylimbcount="false" />
+        <Affliction identifier="dfmusculardystrophy" amount="100" probability="0.1" dividebylimbcount="false" />
+        <Affliction identifier="dfinflamedlung" amount="100" probability="0.1" dividebylimbcount="false" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="注射器包" identifier="injectioncarrier" category="Misc" Tags="smallitem" scale="0.06">
+    <PreferredContainer primary="wreckstoragecab,abandonedstoragecab,piratestoragecab,wreckcrewcab" amount="1" spawnprobability="0.1" />
+    <Sprite texture="%ModDir%\content\png\注射器包.png" sourcerect="0,0,512,512" depth="0.6" />
+    <Body width="45" height="60" density="12" />
+    <Deconstruct time="15">
+      <RequiredItem identifier="organicfiber" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand,Any" msg="ItemMsgPickUpSelect" holdangle="40" handle1="0,10" />
+    <ItemContainer capacity="9" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="injection" />
+    </ItemContainer>
+  </Item>s
+</Items>

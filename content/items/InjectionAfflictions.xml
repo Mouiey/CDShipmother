@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<override>
+<Afflictions>
+  <Affliction identifier="dfpsychoclown" type="psychoclown" isbuff="true" hideiconafterdelay="true" limbspecific="false" maxstrength="100" showiconthreshold="1000" treatmentthreshold="1000" showicontoothersthreshold="1000" showinhealthscannerthreshold="1000" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="100" strengthchange="0">
+      <StatusEffect target="Character">
+        <TriggerAnimation Type="Walk" filename="JollyWalk" priority="7" ExpectedSpecies="Human" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction name="凝血" identifier="dfstopbleeding" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.5">
+      <StatusEffect target="Character">
+        <ReduceAffliction identifier="bleeding" amount="100" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="疼痛抗性 I" identifier="dfanalgesic1" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.5">
+      <StatusEffect target="Character">
+        <ReduceAffliction type="damage" strength="0.15" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="疼痛抗性 II" identifier="dfanalgesic2" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.5">
+      <StatusEffect target="Character">
+        <ReduceAffliction type="damage" strength="0.35" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="疼痛抗性 III" identifier="dfanalgesic3" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.5">
+      <StatusEffect target="Character">
+        <ReduceAffliction type="damage" strength="0.65" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="创口愈合 I" identifier="dfrecover1" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.5" interval="0.1">
+      <StatusEffect target="Character">
+        <ReduceAffliction type="damage" amount="0.5" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="创口愈合 II" identifier="dfrecover2" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.5" interval="0.1">
+      <StatusEffect target="Character">
+        <ReduceAffliction type="damage" amount="1" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="创口愈合 III" identifier="dfrecover3" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.5" interval="0.1">
+      <StatusEffect target="Character">
+        <ReduceAffliction type="damage" amount="2" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="复苏 I" identifier="dfreborn1" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-10" interval="1">
+      <StatusEffect target="Character">
+        <ReduceAffliction type="damage" amount="10" />
+        <ReduceAffliction type="burn" amount="10" />
+        <ReduceAffliction identifier="bloodloss" amount="10" />
+        <ReduceAffliction type="bleeding" amount="10" />
+        <ReduceAffliction identifier="oxygenlow" amount="10" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="复苏 II" identifier="dfreborn2" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-10" interval="1">
+      <StatusEffect target="Character">
+        <ReduceAffliction type="damage" amount="50" />
+        <ReduceAffliction type="burn" amount="50" />
+        <ReduceAffliction identifier="bloodloss" amount="50" />
+        <ReduceAffliction type="bleeding" amount="50" />
+        <ReduceAffliction identifier="oxygenlow" amount="50" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="抵抗" identifier="dfpoisonref" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.5" interval="0.1">
+      <StatusEffect target="Character">
+        <ReduceAffliction type="poison" amount="100" />
+        <ReduceAffliction type="DFKEITCURSE" amount="100" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="耐力 I" identifier="dfdefence1" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.5" interval="0.1">
+      <StatValue stattype="MaximumHealthMultiplier" value="0.2" />
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="耐力 II" identifier="dfdefence2" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.5" interval="0.1">
+      <StatValue stattype="MaximumHealthMultiplier" value="0.4" />
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="耐力 III" identifier="dfdefence3" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.5" interval="0.1">
+      <StatValue stattype="MaximumHealthMultiplier" value="0.6" />
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="耐力 IIII" identifier="dfdefence4" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.5" interval="0.1">
+      <StatValue stattype="MaximumHealthMultiplier" value="0.8" />
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="力量 I" identifier="dfmeleeatk1" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.5" interval="0.1">
+      <StatValue stattype="MeleeAttackMultiplier" value="0.8" />
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="力量 II" identifier="dfmeleeatk2" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.5" interval="0.1">
+      <StatValue stattype="MeleeAttackMultiplier" value="3" />
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="力量 III" identifier="dfmeleeatk3" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.5" interval="0.1">
+      <StatValue stattype="MeleeAttackMultiplier" value="5" />
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="迅速 I" identifier="dfspeed1" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.5" interval="0.1">
+      <StatValue stattype="MovementSpeed" value="0.25" />
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="迅速 II" identifier="dfspeed2" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.5" interval="0.1">
+      <StatValue stattype="MovementSpeed" value="0.5" />
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="全视" identifier="dfseeall" type="visionbuff" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.25" ThermalOverlayRange="1500" ThermalOverlayColor="134,182,253,150"></Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="抗压" identifier="dfpressref" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="1" strengthchange="-0.5" interval="0.1">
+      <AbilityFlag flagtype="ImmuneToPressure" />
+      <StatusEffect target="Character" usehulloxygen="false" setvalue="true">
+        <ReduceAffliction identifier="oxygenlow" strength="0.5" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="幽灵" identifier="dfnonsee" description="" type="injection" isbuff="true" limbspecific="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-2" interval="0.1">
+      <AbilityFlag flagtype="IgnoredByEnemyAI" />
+    </Effect>
+    <icon texture="%ModDir%/content/png/MainIconsAtlas.png" sourcerect="640,896,128,128" color="255,255,255,255" origin="0,0" />
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!--好毒，兄弟。好毒-->
+  <Affliction name="未知毒素" identifier="DFKEITCURSE" description="不知道什么时候染上的疑难杂症毒素，这家伙恐怕倒大霉了" type="DFKEITCURSE" causeofdeathdescription="Unlucky" selfcauseofdeathdescription="Unlucky" limbspecific="false" indicatorlimb="Torso" showiconthreshold="200" showinhealthscannerthreshold="50" treatmentthreshold="0" karmachangeonapplied="0" maxstrength="100" affectmachines="false" healcostmultiplier="0" basehealcost="50000" MedicalSkillGain="4.0">
+    <Effect minstrength="0" maxstrength="10" strengthchange="0.25" minscreendistort="0.0" maxscreendistort="0.4" minscreenblur="0.0" maxscreenblur="0.4" minfacetint="0,100,180,0" maxfacetint="0,100,180,20">
+      <StatusEffect target="Character" multiplyafflictionsbymaxvitality="true">
+        <Affliction identifier="oxygenlow" amount="11" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="10" maxstrength="30" strengthchange="0.25" minscreendistort="0.4" maxscreendistort="0.0" minscreenblur="0.4" maxscreenblur="0.0" minfacetint="0,100,180,20" maxfacetint="0,100,180,40" minbodytint="0,100,180,0" maxbodytint="0,100,180,20" minspeedmultiplier="1.0" maxspeedmultiplier="0.9">
+      <StatusEffect target="Character" multiplyafflictionsbymaxvitality="true">
+        <Affliction identifier="oxygenlow" amount="11" />
+      </StatusEffect>
+      <StatusEffect target="Character" interval="1" disabledeltatime="true">
+        <ReduceAffliction identifier="huskinfection" amount="4" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="30" maxstrength="50" strengthchange="0.25" minscreendistort="0.0" maxscreendistort="0.8" minscreenblur="0.0" maxscreenblur="0.8" minfacetint="0,100,180,40" maxfacetint="0,100,180,60" minbodytint="0,100,180,0" maxbodytint="0,100,180,40" minspeedmultiplier="0.9" maxspeedmultiplier="0.7">
+      <StatusEffect target="Character" multiplyafflictionsbymaxvitality="true">
+        <Affliction identifier="oxygenlow" amount="2" />
+      </StatusEffect>
+      <StatusEffect target="Character" interval="1" disabledeltatime="true">
+        <ReduceAffliction identifier="huskinfection" amount="8" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="50" maxstrength="75" strengthchange="0.4" minscreendistort="0.8" maxscreendistort="1.0" minscreenblur="0.8" maxscreenblur="1.0" minfacetint="0,100,180,60" maxfacetint="0,100,180,100" minbodytint="0,100,180,40" maxbodytint="0,100,180,80" minspeedmultiplier="0.7" maxspeedmultiplier="0.7" tag="poisoned">
+      <StatusEffect target="Character" multiplyafflictionsbymaxvitality="true">
+        <Affliction identifier="oxygenlow" amount="10" />
+      </StatusEffect>
+      <StatusEffect target="Character">
+        <Affliction identifier="organdamage" amount="3" />
+      </StatusEffect>
+      <StatusEffect target="Character" interval="1" disabledeltatime="true">
+        <ReduceAffliction identifier="huskinfection" amount="20" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="75" maxstrength="99" strengthchange="0.25" minscreendistort="1.0" maxscreendistort="1.0" minscreenblur="1.0" maxscreenblur="1.0" minfacetint="0,100,180,100" maxfacetint="0,100,180,100" minbodytint="0,100,180,80" maxbodytint="0,100,180,80" minspeedmultiplier="0.7" maxspeedmultiplier="0.7" tag="poisoned">
+      <StatusEffect target="Character" multiplyafflictionsbymaxvitality="true">
+        <Affliction identifier="oxygenlow" amount="10" />
+      </StatusEffect>
+      <StatusEffect target="Character">
+        <Affliction identifier="organdamage" amount="3" />
+      </StatusEffect>
+      <StatusEffect target="Character" interval="1" disabledeltatime="true">
+        <ReduceAffliction identifier="huskinfection" amount="50" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="99" maxstrength="100" strengthchange="0.25" minscreendistort="1.0" maxscreendistort="1.0" minscreenblur="1.0" maxscreenblur="1.0" minfacetint="0,100,180,100" maxfacetint="0,100,180,100" minbodytint="0,100,180,80" maxbodytint="0,100,180,80" minspeedmultiplier="0.7" maxspeedmultiplier="0.7" tag="poisoned">
+      <StatusEffect target="Character" multiplyafflictionsbymaxvitality="true">
+        <Affliction identifier="oxygenlow" amount="10" />
+      </StatusEffect>
+      <StatusEffect target="Character">
+        <Affliction identifier="organdamage" amount="3" />
+      </StatusEffect>
+      <StatusEffect target="Character" interval="1" disabledeltatime="true" multiplyafflictionsbymaxvitality="true" ConditionalComparison="And">
+        <Conditional IsHuman="false" />
+        <Conditional healthpercentage="gt 50" />
+        <Affliction identifier="cyanidepoisoning" amount="-9999" probability="0.075" />
+      </StatusEffect>
+      <StatusEffect target="Character" interval="1" disabledeltatime="true">
+        <ReduceAffliction identifier="huskinfection" amount="100" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="640,640,128,128" color="106,106,106,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="治疗" identifier="dfheal2" description="需要私人空间" type="strengthbuff" isbuff="false" limbspecific="false" maxstrength="1">
+    <Effect minstrength="0" maxstrength="1" strengthchange="-0.95">
+      <StatusEffect target="Character">
+        <ReduceAffliction type="damage" amount="2" />
+        <ReduceAffliction type="burn" amount="2" />
+        <ReduceAffliction identifier="bleeding" amount="2" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+
+  <Affliction
+    name="Tunnel Vision"
+    identifier="dftunnelvision"
+    type="geneticmaterialdebuff"
+    limbspecific="false"
+    indicatorlimb="Head"
+    hideiconafterdelay="true"
+    showiconthreshold="0"
+    treatmentthreshold="100"
+    maxstrength="1000"
+    iconcolors="94,54,95;163,73,164;200,191,231">
+    <Effect strengthchange="-0.1" interval="0.1"
+      minstrength="0"
+      maxstrength="1000"
+      minradialdistort="0.2"
+      maxradialdistort="0.3"
+      graincolor="0,0,0,255"
+      mingrainstrength="8.0"
+      maxgrainstrength="10.0">
+    </Effect>
+    <icon texture="Content/UI/TalentsIcons3.png" sheetindex="5,0" sheetelementsize="128,128" color="163,73,764,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Rigid Joints"
+    identifier="dfrigidjoints"
+    type="geneticmaterialdebuff"
+    limbspecific="false"
+    indicatorlimb="RightLeg"
+    hideiconafterdelay="true"
+    showiconthreshold="0"
+    treatmentthreshold="100"
+    maxstrength="1000"
+    iconcolors="94,54,95;163,73,164;200,191,231">
+    <Effect strengthchange="-0.1" interval="0.1"
+      minstrength="0"
+      maxstrength="1000"
+      minspeedmultiplier="0.6"
+      maxspeedmultiplier="0.3"/>
+    <icon texture="Content/UI/TalentsIcons3.png" sheetindex="5,0" sheetelementsize="128,128" color="163,73,764,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Hypersensitivity"
+    identifier="dfhypersensitivity"
+    type="geneticmaterialdebuff"
+    limbspecific="false"
+    maxstrength="1000"
+    treatmentthreshold="100"
+    hideiconafterdelay="true"
+    iconcolors="94,54,95;163,73,164;200,191,231">
+    <Effect strengthchange="-0.1" interval="0.1"
+    minstrength="0" 
+    maxstrength="1000"
+      resistancefor="damage"
+      minresistance="-0.2"
+      maxresistance="-0.5"/>
+    <icon texture="Content/UI/TalentsIcons3.png" sheetindex="5,0" sheetelementsize="128,128" color="163,73,764,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Xenobiology"
+    identifier="dfxenobiology"
+    type="geneticmaterialdebuff"
+    limbspecific="false"
+    maxstrength="1000"
+    treatmentthreshold="1000"
+    hideiconafterdelay="true"
+    iconcolors="94,54,95;163,73,164;200,191,231">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-0.1" interval="0.1">
+      <StatValue stattype="MedicalItemEffectivenessMultiplier" minvalue="-0.2" maxvalue="-0.25" />
+    </Effect>
+    <icon texture="Content/UI/TalentsIcons3.png" sheetindex="5,0" sheetelementsize="128,128" color="163,73,764,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Outside Influence"
+    identifier="dfoutsideinfluence"
+    type="geneticmaterialdebuff"
+    limbspecific="false"
+    indicatorlimb="Head"
+    hideiconafterdelay="true"
+    showiconthreshold="0"
+    treatmentthreshold="100"
+    showinhealthscannerthreshold="1000"
+    maxstrength="1000"
+    iconcolors="94,54,95;163,73,164;200,191,231">
+    <Effect minstrength="0" maxstrength="250" strengthchange="-0.1" interval="0.1">
+      <StatusEffect target="Character" interval="1" disabledeltatime="true">
+        <Affliction identifier="psychosis" amount="0.1" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="250" maxstrength="500" strengthchange="-0.1" interval="0.1">
+      <StatusEffect target="Character" interval="1" disabledeltatime="true">
+        <Affliction identifier="psychosis" amount="0.5" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="500" maxstrength="750" strengthchange="-0.1" interval="0.1">
+      <StatusEffect target="Character" interval="1" disabledeltatime="true">
+        <Affliction identifier="psychosis" amount="1" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="750" maxstrength="1000" strengthchange="-0.1" interval="0.1">
+      <StatusEffect target="Character" interval="1" disabledeltatime="true">
+        <Affliction identifier="psychosis" amount="5" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/TalentsIcons3.png" sheetindex="5,0" sheetelementsize="128,128" color="163,73,764,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Glass Jaw"
+    identifier="dfglassjaw"
+    type="geneticmaterialdebuff"
+    limbspecific="false"
+    hideiconafterdelay="true"
+    maxstrength="1000"
+    treatmentthreshold="100"
+    iconcolors="94,54,95;163,73,164;200,191,231">
+    <Effect minstrength="0" maxstrength="1000" strengthchange="-0.1" interval="0.1"
+      resistancefor="stun,incrementalstun,progressivestun"
+      minresistance="-0.6"
+      maxresistance="-0.9"/>
+    <icon texture="Content/UI/TalentsIcons3.png" sheetindex="5,0" sheetelementsize="128,128" color="163,73,764,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Decrepify"
+    identifier="dfdecrepify"
+    type="geneticmaterialdebuff"
+    limbspecific="false"
+    hideiconafterdelay="true"
+    maxstrength="1000"
+    treatmentthreshold="100"
+    iconcolors="94,54,95;163,73,164;200,191,231">
+    <Effect minstrength="0" maxstrength="1000" strengthchange="-0.1" interval="0.1">
+      <StatValue stattype="MaximumHealthMultiplier" minvalue="-0.1" maxvalue="-0.15" />
+    </Effect>
+    <icon texture="Content/UI/TalentsIcons3.png" sheetindex="5,0" sheetelementsize="128,128" color="163,73,764,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Muscular Dystrophy"
+    identifier="dfmusculardystrophy"
+    type="geneticmaterialdebuff"
+    limbspecific="false"
+    hideiconafterdelay="true"
+    maxstrength="1000"
+    treatmentthreshold="100"
+    iconcolors="94,54,95;163,73,164;200,191,231">
+    <Effect minstrength="0" maxstrength="1000" strengthchange="-0.1" interval="0.1">
+      <StatValue stattype="MeleeAttackMultiplier" minvalue="-0.3" maxvalue="-0.4" />
+    </Effect>
+    <icon texture="Content/UI/TalentsIcons3.png" sheetindex="5,0" sheetelementsize="128,128" color="10,193,114,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Inflamed Lung"
+    identifier="dfinflamedlung"
+    type="geneticmaterialdebuff"
+    limbspecific="false"
+    hideiconafterdelay="true"
+    maxstrength="1000"
+    treatmentthreshold="100"
+    iconcolors="94,54,95;163,73,164;200,191,231">
+    <Effect minstrength="0" maxstrength="1000" strengthchange="-0.1" interval="0.1"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="60">
+      <StatusEffect target="Character" type="OnActive" conditionalcomparison="And" interval="0.1" disabledeltatime="true">
+        <Conditional oxygenlow="gt 10" />
+        <Conditional inflamedlung="gt 1.1" />
+        <ReduceAffliction identifier="inflamedlung" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnActive" interval="0.1" disabledeltatime="true">
+        <Conditional NeedsOxygen="false" />
+        <ReduceAffliction identifier="inflamedlung" amount="1" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/TalentsIcons3.png" sheetindex="5,0" sheetelementsize="128,128" color="10,193,114,255" origin="0,0"/>
+  </Affliction>
+</Afflictions>
+</override>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+<Charactervariant inherit="predatorsForce" displayname="D级人员"  speciesname="cdhuman_class_D" Group="scp">
+  <health vitality="200" />
+  <!--sound file="%ModDir%/Characters/war/降临派/受伤1.ogg" state="Damage" range="1000" volume="4" gender="None" />
+  <sound file="%ModDir%/Characters/war/降临派/受伤2.ogg" state="Damage" range="1000" volume="4" gender="None" />
+  <sound file="%ModDir%/Characters/war/降临派/受伤3.ogg" state="Damage" range="1000" volume="4" gender="None" />
+  <sound file="%ModDir%/Characters/war/降临派/死亡1.ogg" state="Die" range="1000" volume="4" gender="None" />
+  <sound file="%ModDir%/Characters/war/降临派/死亡2.ogg" state="Die" range="1000" volume="4" gender="None" />
+  <sound file="%ModDir%/Characters/war/降临派/死亡3.ogg" state="Die" range="1000" volume="4" gender="None" /-->
+  <inventory arrowslot="9" slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" commonness="0.7" accessiblewhenalive="False">
+    <Item identifier="cdmedicalkits" />
+    <Item identifier="antidama2" amount="1" />
+    <Item identifier="cdMG4M" slot="RightHand+LeftHand" />
+    <Item identifier="idcard" slot="Card" />
+    <Item identifier="scpClassD" slot="InnerClothes" />
+  </inventory>
+  <inventory arrowslot="9" slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" commonness="0.7" accessiblewhenalive="False">
+    <Item identifier="cdmedicalkits" />
+    <Item identifier="coalitioncommendation" />
+    <Item identifier="Scp_war_xm250" slot="RightHand+LeftHand" />
+    <Item identifier="idcard" slot="Card" />
+    <Item identifier="scpClassD" slot="InnerClothes" />
+  </inventory>
+  <inventory arrowslot="9" slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" commonness="0.7" accessiblewhenalive="False">
+    <Item identifier="cdmedicalkits" />
+    <Item identifier="coalitionmedal" />
+    <Item identifier="cdM30M" slot="RightHand+LeftHand" />
+    <Item identifier="idcard" slot="Card" />
+    <Item identifier="scpClassD" slot="InnerClothes" />
+  </inventory>
+  <inventory arrowslot="9" slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" commonness="0.7" accessiblewhenalive="False">
+    <Item identifier="cdmedicalkits" />
+    <Item identifier="coalitionmedal" />
+    <Item identifier="scp_vk" slot="RightHand+LeftHand" />
+    <Item identifier="idcard" slot="Card" />
+    <Item identifier="scpClassD" slot="InnerClothes" />
+  </inventory>
+  <inventory arrowslot="9" slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" commonness="0.3" accessiblewhenalive="False">
+    <Item identifier="cdmedicalkits" />
+    <Item identifier="coalitionmedal" />
+    <Item identifier="Scp_war_xm250_2" slot="RightHand+LeftHand" />
+    <Item identifier="idcard" slot="Card" />
+    <Item identifier="scpsitedefense" slot="OuterClothes" />
+  </inventory>
+  <StatusEffect type="OnDeath" target="This"  delay="120">
+    <RemoveCharacter />
+  </StatusEffect>
+</Charactervariant>
+</Override>

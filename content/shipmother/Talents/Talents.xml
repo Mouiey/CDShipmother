@@ -1,0 +1,2398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <!--全局调整天赋-->
+  <Talent identifier="cdchangealltalent">
+    <AbilityGroupEffect abilityeffecttype="OnRoundEnd">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+              <Affliction identifier="cdchangeallaff" amount="5.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+    <!--传染-->
+    <AbilityGroupEffect abilityeffecttype="OnRoundEnd">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffectsToAllies allowself="false">
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" disabledeltatime="true">
+              <GiveTalentInfo giverandom="false" talentidentifiers="cdchangealltalent" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffectsToAllies>
+      </Abilities>
+    </AbilityGroupEffect>
+    <!--传染
+    <AbilityGroupInterval interval="600">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffectsToAllies allowself="false">
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" disabledeltatime="true">
+              <GiveTalentInfo giverandom="false" talentidentifiers="cdchangealltalent" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffectsToAllies>
+      </Abilities>
+    </AbilityGroupInterval>
+    -->
+  </Talent>
+  <!--银行清理-->
+  <Talent identifier="cdclearbanktalent">
+    <!-- <Description tag="talentdescription.cdclearbanktalant">
+      <Replace tag="[selfxpgain]" value="275" color="gui.green"/>
+    </Description>
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="1,1" sheetelementsize="128,128"/> -->
+    <AbilityGroupEffect abilityeffecttype="OnAnyMissionCompleted">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+              <Affliction identifier="cdclearbankaff" amount="5.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!--极光天赋-->
+  <Talent identifier="cdcdshipsnipertalent">
+    <Description tag="talentdescription.cdcdshipsnipertalent1" />
+    <Description tag="talentdescription.cdcdshipsnipertalent2" />
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="4,7" sheetelementsize="128,128" />
+    <!--杀人刷新冷却-->
+    <AbilityGroupEffect abilityeffecttype="OnKillCharacter">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" disabledeltatime="true" delay="0.09">
+              <!---->
+              <ReduceAffliction identifier="cdcdshipsnipertalentCD" strength="100" MultiplyByMaxVitality="true"/>
+              <!--
+              <Affliction identifier="cdcdshipsnipertalentreset" strength="100" MultiplyByMaxVitality="true"/>
+              -->
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+    <!--爆头获得弹药-->
+    <AbilityGroupEffect abilityeffecttype="OnAttackResult">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This">
+              <ReduceAffliction identifier="cdchameliolincoating" strength="100" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!--蹲下隐身-->
+  <Talent identifier="cdchameliolincoating">
+    <Description tag="talentdescription.cdchameliolincoating" >
+      <Replace tag="[seconds1]" value="5" color="gui.orange" />
+      <Replace tag="[seconds2]" value="30" color="gui.orange" />
+      <Replace tag="[seconds3]" value="15" color="gui.orange" />
+      <Replace tag="[amount]" value="100" color="gui.green"/>
+    </Description>
+    <Icon texture="%ModDir%/content/png/TalentsIcons2.png" sheetindex="0,6" sheetelementsize="128,128" />
+    <!--拥有天赋就持续拥有管控aff-->
+    <AbilityGroupInterval interval="0.9">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" disabledeltatime="true">
+              <Affliction identifier="cdchameliolincoatingflag" amount="1.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+    <!--下蹲五秒并且cd转好就给隐身aff-->
+    <AbilityGroupInterval effectdelay="5">
+      <Conditions>
+        <AbilityConditionCrouched />
+        <AbilityConditionHasAffliction afflictionidentifier="cdchameliolincoatingcd" minimumpercentage="1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" disabledeltatime="true">
+              <Affliction identifier="cdchameliolincoating" strength="100.0" MultiplyByMaxVitality="true"/>
+              <ReduceAffliction identifier="cdchameliolincoatingcd" strength="100.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupEffect abilityeffecttype="OnAttackResult">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This">
+              <ReduceAffliction identifier="cdchameliolincoating" strength="100" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!-- 舰娘标识 -->
+  <Talent identifier="cdisshipmother">
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="6,4" sheetelementsize="128,128" />
+    <AddedRecipe itemidentifier="cdrtx50" />
+    <AddedRecipe itemidentifier="cdrtx50ammo" />
+    <AddedRecipe itemidentifier="cdshipsniper" />
+    <AddedRecipe itemidentifier="cdshipsnipermag" />
+    <AddedRecipe itemidentifier="cdshipsnipermag2" />
+    <AddedRecipe itemidentifier="cdwhitesight" />
+    <AddedRecipe itemidentifier="cdwhitemuzzle" />
+    <AddedRecipe itemidentifier="cdwhitegrip" />
+    <AddedRecipe itemidentifier="cdwhitegun" />
+    <AddedRecipe itemidentifier="cdwhitegunmag2" />
+    <AbilityGroupInterval interval="0.9">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" disabledeltatime="true">
+              <Affliction identifier="cdifshipmotheraff" amount="1.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+    <!--眩晕标志-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionRagdolled />
+        <AbilityConditionHasAffliction afflictionidentifier="cdragdolledaff" invert="true"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" disabledeltatime="true" setvalue="true" multiplyafflictionsbymaxvitality="true" >
+              <Affliction identifier="cdragdolledaff" amount="10.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionRagdolled  invert="true"/>
+        <AbilityConditionHasAffliction afflictionidentifier="cdragdolledaff"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" disabledeltatime="false" setvalue="false" multiplyafflictionsbymaxvitality="true" >
+              <Affliction identifier="cdragdolledaff" amount="-4.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!-- 影子天赋 -->
+  <Talent identifier="cdshadowtalent">
+    <!-- 击杀生物强化母体 -->
+    <AbilityGroupEffect abilityeffecttype="OnKillCharacter">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="NearbyCharacters" range="200000"  disabledeltatime="true">
+              <Affliction identifier="cdshadowdeheartbuff" strength="5" MultiplyByMaxVitality="true"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!--获得护盾-->
+  <Talent identifier="cdgethudun">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="1,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.cdgethudun" >
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="OnRoundEnd">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdgethudunbj" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityPutItem itemidentifier="cdprotectvestEX" amount="1" />
+        <CharacterAbilityPutItem itemidentifier="cdshipsniper" amount="1" />
+        <CharacterAbilityGivePermanentStat statidentifier="cdgethudunbj" value="1" setvalue="true" />
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!-- 头铁 -->
+  <Talent identifier="cdredblunttraumatalent">
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="6,4" sheetelementsize="128,128" />
+    <Description tag="talentdescription.cdredblunttraumatalent">
+      <Replace tag="[type]" value="afflictionname.blunttrauma" color="gui.orange"/>
+      <Replace tag="[amount]" value="90" color="gui.green"/>
+    </Description>
+    <AbilityGroupInterval>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="blunttrauma" multiplier="0.1" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--狙击手-->
+  <Talent identifier="cdsniper">
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="2,4" sheetelementsize="128,128"/>
+    <Description tag="talentdescription.cdsniper">
+      <Replace tag="[amount]" value="50" color="gui.green"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="OnAttack">
+      <Conditions>
+        <AbilityConditionAttackData tags="sniperammo"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData addeddamagemultiplier="0.5" />
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!--护盾天赋-->
+  <Talent identifier="cdprotect">
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="4,6" sheetelementsize="128,128" />
+    <Description tag="talentdescription.cdprotect">
+      <Replace tag="[name]" value="entityname.cdprotectvest" color="gui.green"/>
+      <Replace tag="[seconds]" value="10" color="gui.green"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="OnAttacked">
+      <Conditions>
+        <AbilityConditionHasAffliction afflictionidentifier="cdprotectaff"/>
+        <AbilityConditionAttackData ignorenonharmfulattacks="false" ignoreOwnAttacks="false" weapontype="Ranged"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData addeddamagemultiplier="-0.9999" />
+        <CharacterAbilityApplyStatusEffectsToAttacker>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" targetlimb="Torso" delay="0" disabledeltatime="true">
+              <ParticleEmitter particle="cdprotect" distancemin="30" distancemax="30" anglemin="-90" anglemax="-90" particlespersecond="1" particleamount="1" velocitymin="0" velocitymax="0" scalemin="0.25" scalemax="0.25"/>
+              <sound file="Content/Items/Weapons/WEAPONS_electricalDischarge1.ogg" range="500" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffectsToAttacker>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" disabledeltatime="true">
+              <ReduceAffliction identifier="cdprotectaff" strength="1"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+    <!--减cd-->
+    <AbilityGroupEffect abilityeffecttype="OnAttacked">
+      <Conditions>
+        <AbilityConditionAttackData ignorenonharmfulattacks="false" ignoreOwnAttacks="false" weapontype="Ranged"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" disabledeltatime="true">
+              <ReduceAffliction identifier="cdprotectcd" strength="10"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!-- 受命于天 -->
+  <Talent identifier="cdsealtalent">
+    <Description tag="talentdescription.cdsealtalent">
+      <Replace tag="[name]" value="传国玉玺" color="gui.orange" />
+    </Description>
+    <Description tag="talentdescription.cdsealtalent1">
+      <Replace tag="[mk]" value="50" color="gui.green" />
+    </Description>
+    <Description tag="talentdescription.cdsealtalent2">
+      <Replace tag="[experience]" value="100" color="gui.green" />
+    </Description>
+    <Description tag="talentdescription.cdsealtalent3">
+      <Replace tag="[fixspeed]" value="100" color="gui.green" />
+      <Replace tag="[repairspeed]" value="100" color="gui.green" />
+      <Replace tag="[skillamount]" value="10" color="gui.green" />
+      <Replace tag="[skillspeedboost]" value="50" color="gui.green" />
+    </Description>
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="0,2" sheetelementsize="128,128" />
+    <AbilityGroupEffect abilityeffecttype="OnCrewKillCharacter">
+      <Conditions>
+        <AbilityConditionCharacter targettypes="Monster" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdsealtalentaff" minimumpercentage="1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+              <TriggerEvent identifier="cd50mkin" />
+              <GiveExperience amount="100" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+        <!--
+        <CharacterAbilityGiveExperience amount="100" />-->
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="4">
+      <Conditions>
+        <AbilityConditionHasAffliction afflictionidentifier="cdsealtalentaff" minimumpercentage="1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffectsToLastOrderedCharacter>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" disabledeltatime="true" multiplyafflictionsbymaxvitality="true">
+              <Affliction identifier="cdsealtalentothersaff" amount="5.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffectsToLastOrderedCharacter>
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!-- 显现 -->
+  <Talent identifier="cdappear">
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="3,4" sheetelementsize="128,128" />
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionNearbyCharacterCount distance="500" targettypes="Enemy" count="1" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+              <Affliction identifier="cdysres" amount="10"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionCharacterUnconcious />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+              <Affliction identifier="cdysres" amount="10"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--注意安全-->
+  <Talent identifier="cdnonthreatdown">
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="5,7" sheetelementsize="128,128" />
+    <Description tag="talentdescription.cdnonthreatdown" />
+    <AbilityGroupEffect abilityeffecttype="OnAttacked">
+      <Conditions>
+        <AbilityConditionCharacterUnconcious />
+        <AbilityConditionAttackData ignorenonharmfulattacks="true" ignoreOwnAttacks="true" weapontype="Ranged" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData addeddamagemultiplier="-1" />
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!-- 特种部队：添加5％概率触发双倍 -->
+  <Talent identifier="cdspecops">
+    <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="5,0" sheetelementsize="128,128" />
+    <Description tag="talentdescription.cdspecopsnew">
+      <Replace tag="[probability1]" value="5" color="gui.green" />
+      <Replace tag="[probability2]" value="100" color="gui.green" />
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="OnAttack">
+      <Conditions>
+        <AbilityConditionAttackData weapontype="Turret" invert="true" />
+        <AbilityConditionCharacter targettype="Enemy">
+          <Conditional WasFullHealth="true" />
+        </AbilityConditionCharacter>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData addeddamagemultiplier="1" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnAttack">
+      <Conditions>
+        <AbilityConditionServerRandom randomchance="0.05" />
+        <AbilityConditionAttackData weapontype="Turret" invert="true" />
+        <AbilityConditionCharacter targettype="Enemy">
+          <Conditional WasFullHealth="false" />
+        </AbilityConditionCharacter>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData addeddamagemultiplier="1" />
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!--捞弹药-->
+  <Talent identifier="cdmagbusiness">
+    <Icon texture="%ModDir%/content/png/TalentsIcons1.png" sheetindex="6,3" sheetelementsize="128,128"/>
+    <Description tag="talentdescription.cdmagbusiness">
+      <Replace tag="[item]" value="『极昼』5.56穿甲弹匣" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="OnLootCharacter">
+      <Conditions>
+        <AbilityConditionCharacter targettype="Enemy">
+          <Conditional maxhealth="gt 30"/>
+        </AbilityConditionCharacter>
+        <AbilityConditionCharacterNotLooted identifier="cdmagbusiness"/>
+        <AbilityConditionServerRandom randomchance="0.5" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="UseTarget" spawnitemrandomly="true" >
+              <SpawnItem identifiers="cdwhitegunmag"  count="2" spawnposition="ThisInventory" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnLootCharacter">
+      <Conditions>
+        <AbilityConditionCharacter targettype="Enemy" />
+        <AbilityConditionCharacterNotLooted identifier="cdmagbusiness"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityMarkAsLooted identifier="cdmagbusiness"/>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!-- 钢铁意志(aff抗性型) -->
+  <Talent identifier="cddeathonlyondamage">
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="6,4" sheetelementsize="128,128" />
+    <Description tag="talentdescription.cddeathonlyondamage">
+      <Replace tag="[type]" value="afflictionname.gunshotwound,afflictionname.internaldamage,afflictionname.blunttrauma,afflictionname.lacerations,afflictionname.bitewounds,afflictionname.organdamage,afflictionname.explosiondamage,afflictionname.burn,afflictionname.bleeding,afflictionname.cdicedebuff" color="gui.orange"/>
+    </Description>
+    <AbilityGroupInterval>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="gunshotwound" multiplier="100" />
+        <CharacterAbilityModifyResistance resistanceid="internaldamage" multiplier="100" />
+        <CharacterAbilityModifyResistance resistanceid="blunttrauma" multiplier="100" />
+        <CharacterAbilityModifyResistance resistanceid="lacerations" multiplier="100" />
+        <CharacterAbilityModifyResistance resistanceid="bitewounds" multiplier="100" />
+        <CharacterAbilityModifyResistance resistanceid="organdamage" multiplier="100" />
+        <CharacterAbilityModifyResistance resistanceid="explosiondamage" multiplier="100" />
+        <CharacterAbilityModifyResistance resistanceid="burn" multiplier="100" />
+        <CharacterAbilityModifyResistance resistanceid="bleeding" multiplier="100" />
+        <CharacterAbilityModifyResistance resistanceid="stun" multiplier="100" />
+        <CharacterAbilityModifyResistance resistanceid="cdicedebuff" multiplier="100" />
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityGiveStat stattype="MaximumHealthMultiplier" value="158.4" />
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!-- 钢铁意志(伤害减免型) -->
+  <Talent identifier="cddeathonlyondamage3">
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="6,4" sheetelementsize="128,128" />
+    <Description tag="talentdescription.cddeathonlyondamage">
+      <Replace tag="[type]" value="afflictionname.gunshotwound,afflictionname.internaldamage,afflictionname.blunttrauma,afflictionname.lacerations,afflictionname.bitewounds,afflictionname.organdamage,afflictionname.explosiondamage,afflictionname.burn,afflictionname.bloodloss,afflictionname.infection,afflictionname.cdicedebuff" color="gui.orange"/>
+    </Description>
+    <AbilityGroupInterval>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="gunshotwound" multiplier="10" />
+        <CharacterAbilityModifyResistance resistanceid="internaldamage" multiplier="10" />
+        <CharacterAbilityModifyResistance resistanceid="blunttrauma" multiplier="10" />
+        <CharacterAbilityModifyResistance resistanceid="lacerations" multiplier="10" />
+        <CharacterAbilityModifyResistance resistanceid="bitewounds" multiplier="10" />
+        <CharacterAbilityModifyResistance resistanceid="organdamage" multiplier="10" />
+        <CharacterAbilityModifyResistance resistanceid="explosiondamag" multiplier="10" />
+        <CharacterAbilityModifyResistance resistanceid="burn" multiplier="10" />
+        <CharacterAbilityModifyResistance resistanceid="bleeding" multiplier="10" />
+        <CharacterAbilityModifyResistance resistanceid="infection" multiplier="10" />
+        <CharacterAbilityModifyResistance resistanceid="stun" multiplier="10" />
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupEffect abilityeffecttype="OnAttacked">
+      <Abilities>
+        <CharacterAbilityModifyAttackData addeddamagemultiplier="-0.9" />
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!-- 钢铁意志（限定伤害类型） -->
+  <Talent identifier="cddeathonlyondamage2">
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="6,4" sheetelementsize="128,128" />
+    <Description tag="talentdescription.cddeathonlyondamage2">
+      <Replace tag="[type]" value="afflictionname.gunshotwound,afflictionname.internaldamage,afflictionname.blunttrauma,afflictionname.lacerations,afflictionname.bitewounds,afflictionname.organdamage,afflictionname.explosiondamage,afflictionname.burn,afflictionname.bloodloss,afflictionname.infection" color="gui.orange"/>
+    </Description>
+    <AbilityGroupInterval interval="0.9">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+              <Affliction identifier="cddeathonlyondamageaff" amount="1"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!-- 无限破釜沉舟 -->
+  <Talent identifier="cdmanyimplacable">
+    <Description tag="talentdescription.cdmanycannotfallunconsciousforsecondsnew">
+      <Replace tag="[powerincrease]" value="25" color="gui.green" />
+      <Replace tag="[seconds]" value="10" color="gui.green" />
+    </Description>
+    <Description tag="talentdescription.cdmanycannotfallmaxtriggeruntildeath">
+      <Replace tag="[count]" value="10000" color="gui.green" />
+      <Replace tag="[seconds]" value="10" color="gui.green" />
+    </Description>
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="2,3" sheetelementsize="128,128" />
+    <!--
+    <AbilityGroupInterval maxtriggercount="10000" interval="10">
+      <Conditions>
+        <AbilityConditionAboveVitality invert="true" vitalitypercentage="0" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+              <Affliction identifier="cdmanyimplacable" amount="2.0" />
+              <Affliction identifier="cdmanystillkicking" amount="1.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+    -->
+    <AbilityGroupInterval interval="1">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+              <Affliction identifier="cdpfczguarded" amount="1.0"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupInterval maxtriggercount="10000">
+      <Conditions>
+        <AbilityConditionAboveVitality invert="true" vitalitypercentage="0" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdpfczguarded" minimumpercentage="1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+              <Affliction identifier="cdmanyimplacable" amount="10.0" />
+              <Affliction identifier="cdmanystillkicking" amount="1.0" />
+              <ReduceAffliction identifier="cdpfczguarded" strength="10.0"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--超级闪电巫师-->
+  <Talent identifier="cdlightningwizard">
+    <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="4,0" sheetelementsize="128,128"/>
+    <Description tag="talentdescription.cdlightningwizard">
+      <Replace tag="[seconds]" value="1" color="gui.green"/>
+      <Replace tag="[powerreduction]" value="80" color="gui.green"/>
+      <Replace tag="[stunseconds]" value="4" color="gui.green"/>
+    </Description>
+    <AbilityGroupInterval interval="1">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+              <Affliction identifier="cdguarded" amount="1.0"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupEffect abilityeffecttype="OnAttacked">
+      <Conditions>
+        <AbilityConditionHasAffliction afflictionidentifier="cdguarded" minimumpercentage="1.0"/>
+        <AbilityConditionAttackData ignorenonharmfulattacks="true" ignoreOwnAttacks="true" weapontype="NoWeapon,Melee"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData addeddamagemultiplier="-0.8" />
+        <CharacterAbilityApplyStatusEffectsToAttacker>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" targetlimb="Torso" delay="0.1" disabledeltatime="true">
+              <Affliction identifier="stun" amount="4.0"/>
+              <Affliction identifier="electricshock" strength="60"/>
+              <ParticleEmitter particle="ElectricShock" distancemin="0" distancemax="50" particleamount="5" anglemin="0" anglemax="360" scalemin="0.1" scalemax="0.2" />
+              <sound file="Content/Items/Weapons/WEAPONS_electricalDischarge1.ogg" range="500" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffectsToAttacker>
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnAttackedResult">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This">
+              <ReduceAffliction identifier="cdguarded" strength="10.0"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!--超级闪电巫师(振刀变种)-->
+  <Talent identifier="cdlightningwizard2">
+    <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="4,0" sheetelementsize="128,128"/>
+    <Description tag="talentdescription.cdlightningwizard">
+      <Replace tag="[seconds]" value="1" color="gui.green"/>
+      <Replace tag="[powerreduction]" value="80" color="gui.green"/>
+      <Replace tag="[stunseconds]" value="4" color="gui.green"/>
+    </Description>
+    <AbilityGroupInterval interval="1">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+              <Affliction identifier="cdguarded" amount="1.0"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupEffect abilityeffecttype="OnAttacked">
+      <Conditions>
+        <AbilityConditionHasAffliction afflictionidentifier="cdguarded" minimumpercentage="1.0"/>
+        <AbilityConditionAttackData ignorenonharmfulattacks="true" ignoreOwnAttacks="true" weapontype="NoWeapon,Melee"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData addeddamagemultiplier="-0.8" />
+        <CharacterAbilityApplyStatusEffectsToAttacker>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" targetlimb="Torso" delay="0.1" disabledeltatime="true">
+              <Affliction identifier="stun" amount="4.0"/>
+              <Sound file="%ModDir%/content/ogg/振刀1.ogg" selectionmode="random" range="500" />
+              <Sound file="%ModDir%/content/ogg/振刀2.ogg" range="500" />
+              <Sound file="%ModDir%/content/ogg/振刀3.ogg" range="500" />
+              <Sound file="%ModDir%/content/ogg/振刀4.ogg" range="500" />
+              <Sound file="%ModDir%/content/ogg/振刀5.ogg" range="500" />
+              <Sound file="%ModDir%/content/ogg/振刀6.ogg" range="500" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffectsToAttacker>
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnAttackedResult">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This">
+              <ReduceAffliction identifier="cdguarded" strength="10.0"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!--化学抑制-->
+  <Talent identifier="cdchemicaltalent">
+    <Description tag="talentdescription.cdchemicaltalent">
+    </Description>
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="3,5" sheetelementsize="128,128"/>
+    <AbilityGroupEffect abilityeffecttype="OnAttack">
+      <Conditions>
+        <AbilityConditionAttackData weapontype="Melee,Ranged" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData>
+          <Afflictions>
+            <Affliction identifier="cdfirebreak" strength="1" />
+          </Afflictions>
+        </CharacterAbilityModifyAttackData>
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnAddDamageAffliction">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects applytoself="false">
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" disabledeltatime="true">
+              <Affliction identifier="cdchemicalbreak" strength="30.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!-- 焚火者 -->
+  <Talent identifier="cdfirenearby">
+    <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="7,2" sheetelementsize="128,128"/>
+    <Description tag="talentdescription.cdfirenearby">
+      <Replace tag="[burnprobability]" value="10" color="gui.green" />
+      <Replace tag="[distance]" value="10" color="gui.green" />
+      <Replace tag="[distance2]" value="10" color="gui.green" />
+      <Replace tag="[resistant]" value="900" color="gui.green" />
+      <Replace tag="[damagetype]" value="物理伤害" color="gui.green" />
+    </Description>
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionNearbyCharacterCount distance="1000" targettypes="Enemy,Alive" count="1" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="damage" multiplier="10" />
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupEffect abilityeffecttype="OnUseRangedWeapon">
+      <Conditions>
+        <AbilityConditionServerRandom randomchance="0.1" />
+      </Conditions>
+      <Abilities>
+        <!-- TODO loud sound? -->
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="NearbyCharacters" range="1000" multiplyafflictionsbymaxvitality="false">
+              <Affliction identifier="cdgivefire" strength="0.1"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!--火焰狂热（烧伤+150%）-->
+  <Talent identifier="cdpyromaniac">
+    <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="7,2" sheetelementsize="128,128"/>
+    <Description tag="talentdescription.cdpyromaniac">
+      <Replace tag="[burnincrease]" value="100" color="gui.green"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="OnAddDamageAffliction">
+      <Abilities>
+        <CharacterAbilityModifyAffliction afflictionidentifiers="burn" addedmultiplier="1.0" />
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!--额外火药(爆炸范围+50伤害+100)-->
+  <Talent identifier="cdextrapowder">
+    <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="3,3" sheetelementsize="128,128"/>
+    <Description tag="talentdescription.cdextrapowder">
+      <Replace tag="[rangeamount]" value="50" color="gui.green"/>
+      <Replace tag="[damageamount]" value="100" color="gui.green"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityGiveStat stattype="ExplosionRadiusMultiplier" value="0.5"/>
+        <CharacterAbilityGiveStat stattype="ExplosionDamageMultiplier" value="1"/>
+        <CharacterAbilityModifyAffliction afflictionidentifiers="explosiondamage" addedmultiplier="1" />
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!-- 降散布-->
+  <Talent identifier="cddownss">
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="7,1" sheetelementsize="128,128"/>
+    <Description tag="talentdescription.cddownss">
+      <Replace tag="[amount]" value="1000" color="gui.green"/>
+      <Replace tag="[stattype]" value="散布" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RangedSpreadReduction" value="10.0"/>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!--粉碎附伤天赋-->
+  <Talent identifier="cdarmorbreaktalent">
+    <Description tag="talentdescription.cdarmorbreaktalent">
+      <Replace tag="[affliction_1]" value="粉碎" color="gui.red" />
+      <Replace tag="[strength_1_percentage]" value="20" color="gui.red" />
+    </Description>
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="3,4" sheetelementsize="128,128"/>
+    <AbilityGroupEffect abilityeffecttype="OnAttack">
+      <Conditions>
+        <AbilityConditionAttackData weapontype="Melee,Ranged" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData>
+          <Afflictions>
+            <Affliction identifier="armorbreak" strength="20.0" />
+          </Afflictions>
+        </CharacterAbilityModifyAttackData>
+        <CharacterAbilityApplyStatusEffects applytoself="false">
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character">
+              <Affliction identifier="stun" amount="0.1" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!--假根3天赋-->
+  <Talent identifier="cdungalinfectionsplusA3talent">
+    <Description tag="talentdescription.cdungalinfectionsplusA3talent">
+      <Replace tag="[affliction_1]" value="内脏溶解" color="gui.red" />
+      <Replace tag="[strength_1_percentage]" value="(100+Limb*10)" color="gui.red" />
+    </Description>
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="2,2" sheetelementsize="128,128"/>
+    <AbilityGroupEffect abilityeffecttype="OnAttack">
+      <Conditions>
+        <AbilityConditionAttackData weapontype="Melee,Ranged" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData>
+          <Afflictions>
+            <Affliction identifier="insideacidburn" strength="5.0" />
+          </Afflictions>
+        </CharacterAbilityModifyAttackData>
+        <CharacterAbilityApplyStatusEffects applytoself="false">
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character">
+              <Affliction identifier="stun" amount="0.1" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!--降低流血烧伤感染-->
+  <Talent identifier="cdstoneskin1">
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="5,6" sheetelementsize="128,128"/>
+    <Description tag="talentdescription.cdstoneskin1">
+      <Replace tag="[type]" value="afflictionname.burn,afflictionname.bleeding,afflictionname.infection" color="gui.orange"/>
+      <Replace tag="[amount]" value="20" color="gui.green"/>
+    </Description>
+    <AbilityGroupInterval interval="0.9">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" disabledeltatime="true" multiplyafflictionsbymaxvitality="true" setvalue="true">
+              <Affliction identifier="cdstoneskinaff1" amount="1.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <Talent identifier="cdstoneskin2">
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="5,6" sheetelementsize="128,128"/>
+    <Description tag="talentdescription.cdstoneskin1">
+      <Replace tag="[type]" value="afflictionname.burn,afflictionname.bleeding,afflictionname.infection" color="gui.orange"/>
+      <Replace tag="[amount]" value="20" color="gui.green"/>
+    </Description>
+    <AbilityGroupInterval interval="0.9">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" disabledeltatime="true" multiplyafflictionsbymaxvitality="true" setvalue="true">
+              <Affliction identifier="cdstoneskinaff2" amount="1.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <Talent identifier="cdstoneskin3">
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="5,6" sheetelementsize="128,128"/>
+    <Description tag="talentdescription.cdstoneskin1">
+      <Replace tag="[type]" value="afflictionname.burn,afflictionname.bleeding,afflictionname.infection" color="gui.orange"/>
+      <Replace tag="[amount]" value="20" color="gui.green"/>
+    </Description>
+    <AbilityGroupInterval interval="0.9">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" disabledeltatime="true" multiplyafflictionsbymaxvitality="true" setvalue="true">
+              <Affliction identifier="cdstoneskinaff3" amount="1.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--润滑机械-->
+  <Talent identifier="cdoiledmachinery">
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="4,5" sheetelementsize="128,128"/>
+    <Description tag="talentdescription.cdoiledmachinery">
+      <Replace tag="[amount]" value="200" color="gui.green"/>
+    </Description>
+    <Description tag="talentdescription.doesnotstack" />
+    <AbilityGroupInterval interval="60">
+      <Abilities>
+        <CharacterAbilityGiveItemStatToTags tags="fabricator" stattype="FabricationSpeed" value="3" />
+        <CharacterAbilityGiveItemStatToTags tags="deconstructor" stattype="DeconstructorSpeed" value="3" />
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityGiveItemStatToTags tags="fabricator" stattype="FabricationSpeed" value="3" />
+        <CharacterAbilityGiveItemStatToTags tags="deconstructor" stattype="DeconstructorSpeed" value="3" />
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!--闪电巫师-->
+  <Talent identifier="cdlightningwizard1">
+    <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="4,0" sheetelementsize="128,128"/>
+    <Description tag="talentdescription.cdlightningwizard">
+      <Replace tag="[seconds]" value="10" color="gui.green"/>
+      <Replace tag="[powerreduction]" value="80" color="gui.green"/>
+      <Replace tag="[stunseconds]" value="4" color="gui.green"/>
+    </Description>
+    <AbilityGroupInterval interval="1">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+              <Affliction identifier="guarded" amount="1.0"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupEffect abilityeffecttype="OnAttacked">
+      <Conditions>
+        <AbilityConditionHasAffliction afflictionidentifier="guarded" minimumpercentage="1.0"/>
+        <AbilityConditionAttackData ignorenonharmfulattacks="true" ignoreOwnAttacks="true" weapontype="NoWeapon,Melee"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData addeddamagemultiplier="-0.8" />
+        <CharacterAbilityApplyStatusEffectsToAttacker>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" targetlimb="Torso" delay="0.1" disabledeltatime="true">
+              <Affliction identifier="stun" amount="4.0"/>
+              <Affliction identifier="electricshock" strength="60"/>
+              <ParticleEmitter particle="ElectricShock" distancemin="0" distancemax="50" particleamount="5" anglemin="0" anglemax="360" scalemin="0.1" scalemax="0.2" />
+              <sound file="Content/Items/Weapons/WEAPONS_electricalDischarge1.ogg" range="500" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffectsToAttacker>
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnAttackedResult">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This">
+              <ReduceAffliction identifier="guarded" strength="10.0"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+    <AddedRecipe itemidentifier="arcemitter" />
+  </Talent>
+  <!--三光政策，提升概率-->
+  <Talent identifier="cdscavenger">
+    <Description tag="talentdescription.cdscavenger">
+      <Replace tag="[probability]" value="100" color="gui.green"/>
+    </Description>
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="2,2" sheetelementsize="128,128"/>
+    <AbilityGroupEffect abilityeffecttype="OnOpenItemContainer">
+      <Conditions>
+        <AbilityConditionItemInSubmarine submarinetype="Player" invert="true"/>
+        <AbilityConditionItem tags="container"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityRegenerateLoot randomchance="1" randomChancePerItem="0.3" />
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!--新三光，只可能捞到好东西-->
+  <Talent identifier="cdscavenger2">
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="2,2" sheetelementsize="128,128"/>
+    <Description tag="talentdescription.cdscavenger2">
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="OnOpenItemContainer">
+      <Conditions>
+        <AbilityConditionItemInSubmarine submarinetype="Player" invert="true"/>
+        <AbilityConditionItem tags="container"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilitySpawnItemsToContainer randomchance="0.002" oncepercontainer="true">
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="UseTarget" ><!--树叶-->
+              <SpawnItem identifiers="gnawedleaf" spawnposition="ThisInventory" spawnifcantbecontained="false" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilitySpawnItemsToContainer>
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnOpenItemContainer">
+      <Conditions>
+        <AbilityConditionItemInSubmarine submarinetype="Player" invert="true"/>
+        <AbilityConditionItem tags="container"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilitySpawnItemsToContainer randomchance="0.002" oncepercontainer="true">
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="UseTarget" ><!--生死-->
+              <SpawnItem identifiers="twistoffate" spawnposition="ThisInventory" spawnifcantbecontained="false" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilitySpawnItemsToContainer>
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnOpenItemContainer">
+      <Conditions>
+        <AbilityConditionItemInSubmarine submarinetype="Player" invert="true"/>
+        <AbilityConditionItem tags="container"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilitySpawnItemsToContainer randomchance="0.01" oncepercontainer="true">
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="UseTarget" ><!--护卫-->
+              <SpawnItem identifiers="cdpredatorshw" spawnposition="ThisInventory" spawnifcantbecontained="false" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilitySpawnItemsToContainer>
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnOpenItemContainer">
+      <Conditions>
+        <AbilityConditionItemInSubmarine submarinetype="Player" invert="true"/>
+        <AbilityConditionItem tags="container"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilitySpawnItemsToContainer randomchance="0.02" oncepercontainer="true">
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="UseTarget" ><!--一万-->
+              <SpawnItem identifiers="cd10000MK" spawnposition="ThisInventory" spawnifcantbecontained="false" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilitySpawnItemsToContainer>
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnOpenItemContainer">
+      <Conditions>
+        <AbilityConditionItemInSubmarine submarinetype="Player" invert="true"/>
+        <AbilityConditionItem tags="container"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilitySpawnItemsToContainer randomchance="0.002" oncepercontainer="true">
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="UseTarget" ><!--十万-->
+              <SpawnItem identifiers="cd100000MK" spawnposition="ThisInventory" spawnifcantbecontained="false" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilitySpawnItemsToContainer>
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnOpenItemContainer">
+      <Conditions>
+        <AbilityConditionItemInSubmarine submarinetype="Player" invert="true"/>
+        <AbilityConditionItem tags="container"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilitySpawnItemsToContainer randomchance="0.1" oncepercontainer="true">
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="UseTarget" ><!--医疗包-->
+              <SpawnItem identifiers="cdmedicalkits" spawnposition="ThisInventory" spawnifcantbecontained="false" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilitySpawnItemsToContainer>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!--消防搬运-->
+  <Talent identifier="cdfiremanscarry">
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="6,5" sheetelementsize="128,128"/>
+    <Description tag="talentdescription.cdfiremanscarry"/>
+    <AbilityGroupEffect abilityeffecttype="None" >
+      <Abilities>
+        <CharacterAbilityGiveFlag flagtype="MoveNormallyWhileDragging" />
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!-- 不惧威胁：和等待名单效果合并 -->
+  <Talent identifier="cdnonthreatening1">
+    <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="6,4" sheetelementsize="128,128" />
+    <Description tag="talentdescription.thewaitinglist">
+      <Replace tag="[amount]" value="75" color="gui.green" />
+    </Description>
+    <Description tag="talentdescription.feigndeath">
+      <Replace tag="[seconds]" value="2" color="gui.green" />
+    </Description>
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionAboveVitality invert="true" vitalitypercentage="0" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="oxygenlow" multiplier="0.25" />
+        <CharacterAbilityModifyResistance resistanceid="bleeding" multiplier="0.25" />
+        <CharacterAbilityModifyResistance resistanceid="bloodloss" multiplier="0.25" />
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupInterval effectdelay="2">
+      <Conditions>
+        <AbilityConditionRagdolled />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyFlag flagtype="IgnoredByEnemyAI" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!-- 奇迹创造者：仅对舰娘生效，自身不再对"奇迹进行中"免疫 -->
+  <Talent identifier="cdtalmiracleworker">
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="7,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.cdmiracleworkernew">
+      <Replace tag="[num]" value="10" color="gui.green" />
+    </Description>
+    <AbilityGroupInterval interval="0.9">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffectsToAllies maxdistance="1000" allowself="false" jobs="cdnormalShipmother">
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" disabledeltatime="true">
+              <Affliction identifier="miracleworker" amount="1.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffectsToAllies>
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!-- 破釜沉舟 -->
+  <Talent identifier="cdimplacable">
+    <Description tag="talentdescription.cdcannotfallunconsciousforsecondsnew">
+      <Replace tag="[powerincrease]" value="25" color="gui.green" />
+      <Replace tag="[seconds]" value="15" color="gui.green" />
+    </Description>
+    <Description tag="talentdescription.maxtriggeruntildeath" />
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="2,3" sheetelementsize="128,128" />
+    <AbilityGroupInterval maxtriggercount="1">
+      <Conditions>
+        <AbilityConditionAboveVitality invert="true" vitalitypercentage="0" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+              <Affliction identifier="cdimplacable" amount="15.0" />
+              <Affliction identifier="stillkicking" amount="1.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--坚如磐石-->
+  <Talent identifier="cdstonewall">
+    <Description tag="talentdescription.cdstonewallnew">
+      <Replace tag="[resistance]" value="15" color="gui.green" />
+      <Replace tag="[seconds]" value="4" color="gui.green" />
+    </Description>
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="0,3" sheetelementsize="128,128" />
+    <AbilityGroupInterval interval="0.9">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" disabledeltatime="true" multiplyafflictionsbymaxvitality="true" setvalue="true">
+              <Conditional cdstonewall="lte 1.0" targetself="true" />
+              <Affliction identifier="cdstonewall" amount="1.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupEffect abilityeffecttype="OnAttackedResult">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" multiplyafflictionsbymaxvitality="true" setvalue="true">
+              <Affliction identifier="cdstonewall" amount="5.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!-- 书呆子-->
+  <Talent identifier="cdegghead">
+    <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="1,1" sheetelementsize="128,128"/>
+    <Description tag="talentdescription.additionalstattype">
+      <Replace tag="[amount]" value="200" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.skillgainspeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SkillGainSpeed" value="2.0"/>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!-- 免疫水压-->
+  <Talent identifier="cdunpressure">
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="3,3" sheetelementsize="128,128"/>
+    <Description tag="talentdescription.cdunpressure">
+    </Description>
+    <AbilityGroupInterval>
+      <Abilities>
+        <CharacterAbilityModifyFlag flagtype="ImmuneToPressure" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!-- 免疫缺氧-->
+  <Talent identifier="cdunoxygen">
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="1,7" sheetelementsize="128,128"/>
+    <Description tag="talentdescription.cdunoxygen">
+    </Description>
+    <AbilityGroupInterval>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility"  target="Character" usehulloxygen="false" needsair="false"  setvalue="true">
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityGiveResistance resistanceid="oxygenlow" multiplier="0" />
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!-- 无机体质 -->
+  <Talent identifier="cdnoinfection">
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="4,6" sheetelementsize="128,128" />
+    <Description tag="talentdescription.cdnoinfection01" />
+    <AbilityGroupInterval interval="0.9">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" disabledeltatime="true">
+              <Affliction identifier="cdnoinfectionbuff" amount="1.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!-- 单人奇迹 -->
+  <Talent identifier="cdneverdie">
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="7,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.cdneverdie01" />
+    <AbilityGroupInterval interval="0.9">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" disabledeltatime="true">
+              <Affliction identifier="cdmiracleworker011" amount="1.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!-- 类人生命 -->
+  <Talent identifier="cdnonthreatening">
+    <Icon texture="%ModDir%/content/png/T1_2_bot.png" sheetindex="0,0" sheetelementsize="128,128" />
+    <Description tag="talentdescription.cdnonthreatening" />
+    <AbilityGroupInterval interval="0.5">
+      <Abilities>
+        <CharacterAbilityModifyFlag flagtype="IgnoredByEnemyAI" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <Talents>
+    <!-- 超级基因融合 -->
+    <Talent identifier="cdGeneDatabase">
+      <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="1,4" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdaliengenetics1">
+        <Replace tag="[probability]" value="90%" color="gui.green" />
+      </Description>
+      <Description tag="talentdescription.cdaliengenetics2">
+        <Replace tag="[amount]" value="+75" color="gui.green" />
+      </Description>
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Abilities>
+          <CharacterAbilityGiveStat stattype="GeneticMaterialTaintedProbabilityReductionOnCombine" value="0.9" />
+          <CharacterAbilityGiveStat stattype="GeneticMaterialRefineBonus" value="75" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>  
+    <!-- 医生-基因收割者：有额外10％概率获得2基因 -->
+    <Talent identifier="cdgeneharvester">
+      <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="3,6" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdgeneharvesternew">
+        <Replace tag="[probability1]" value="25" color="gui.green" />
+        <Replace tag="[probability2]" value="10" color="gui.green" />
+      </Description>
+      <AbilityGroupEffect abilityeffecttype="OnRoundEnd">
+        <Abilities>
+          <CharacterAbilityResetPermanentStat statidentifier="geneharvester_*" value="1" setvalue="true" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnLootCharacter">
+        <Conditions>
+          <AbilityConditionCharacter targettype="Monster">
+            <Conditional maxhealth="gt 25" />
+            <Conditional ismachine="false" />
+            <Conditional ispet="false" />
+          </AbilityConditionCharacter>
+          <AbilityConditionCharacterNotLooted identifier="geneharvester" />
+          <AbilityConditionServerRandom randomchance="0.25" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityApplyStatusEffects>
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="UseTarget" spawnitemrandomly="true">
+                <SpawnItem identifiers="geneticmaterial_unresearched" spawnposition="ThisInventory" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffects>
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnLootCharacter">
+        <Conditions>
+          <AbilityConditionCharacter targettype="Monster">
+            <Conditional maxhealth="gt 25" />
+            <Conditional ismachine="false" />
+            <Conditional ispet="false" />
+          </AbilityConditionCharacter>
+          <AbilityConditionCharacterNotLooted identifier="geneharvester" />
+          <AbilityConditionServerRandom randomchance="0.10" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityApplyStatusEffects>
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="UseTarget" spawnitemrandomly="true">
+                <SpawnItem identifiers="geneticmaterial_unresearched" spawnposition="ThisInventory" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffects>
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnLootCharacter">
+        <Conditions>
+          <AbilityConditionCharacter targettype="Monster" />
+          <AbilityConditionCharacterNotLooted identifier="geneharvester" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityMarkAsLooted identifier="geneharvester" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 基因天才：改为100％，添加组合基因时+5医疗技能 -->
+    <Talent identifier="cdgeneticgenious">
+      <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="5,6" sheetelementsize="128,128" />
+      <Description tag="talentdescription.geneticmaterialtaintedprobabilityreductiononcombine">
+        <Replace tag="[amount]" value="100" color="gui.green" />
+      </Description>
+      <Description tag="talentdescription.cdadvancedsplicingnew">
+        <Replace tag="[skillbonus]" value="5" color="gui.green" />
+      </Description>
+      <Description tag="talentdescription.maxskillfromtalent">
+        <Replace tag="[skillamount]" value="100" color="gui.green" />
+      </Description>
+      <Description tag="talentdescription.bonuslostondeath" />
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Abilities>
+          <CharacterAbilityGiveStat stattype="GeneticMaterialTaintedProbabilityReductionOnCombine" value="1.0" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnCrewGeneticMaterialCombinedOrRefined">
+        <Abilities>
+          <CharacterAbilityGivePermanentStat statidentifier="advancedsplicing" stattype="MedicalSkillBonus" value="5" maxvalue="100" removeondeath="true" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 奥林匹克 -->
+    <Talent name="奥林匹克" identifier="cdolympian" >
+      <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="2,4" sheetelementsize="128,128" />
+      <Description tag="talentdescription.gainskillspastmax" />
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Abilities>
+          <CharacterAbilityGiveFlag flagtype="GainSkillPastMaximum" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 全配方解锁 -->
+    <Talent identifier="cdrecipeall">
+      <Icon texture="%ModDir%/content/png/TalentsIcons1.png" sheetindex="3,3" sheetelementsize="128,128" />
+      <Description tag="talentdescription.unlockrecipe">
+        <Replace tag="[itemname]" value="entityname.revolver,entityname.revolverround,entityname.handcannon, entityname.handcannonround,entityname.cigar,entityname.rum
+        ,entityname.flamer,entityname.arcemitter,entityname.fpgacircuit, entityname.circuitbox,entityname.cargoscooter,entityname.depletedfuel,entityname.coilgunammoboxdepletedfuel,entityname.wrenchhardened,entityname.screwdriverhardened,entityname.crowbarhardened,entityname.divingknifehardened,entityname.smgmagazinedepletedfuel,entityname.revolverrounddepletedfuel,entityname.nucleargun,entityname.handheldelectricalmonitor,entityname.pucs,entityname.reactorpda,entityname.fulguriumfuelrodvolatile
+        ,entityname.exosuit,entityname.heavywrench,entityname.defensebotspawner, entityname.defensebotammobox,entityname.scrapcannon,entityname.ironhelmet,entityname.makeshiftarmor,entityname.repairpack,entityname.fixfoamgrenade,entityname.handheldstatusmonitor,entityname.portablepump,entityname.safetyharness
+        ,entityname.endocrinebooster,entityname.advancedsyringegun,entityname.autoinjectorheadset, entityname.combatstimulantsyringe,entityname.chemgrenade,entityname.40mmchemgrenade,entityname.pressurestabilizer,entityname.advancedgenesplicer,entityname.europabrew,entityname.sulphuricacidsyringe
+        ,entityname.assaultrifle,entityname.assaultriflemagazine,entityname.rifle,entityname.riflebullet,entityname.autoshotgun,entityname.stungundartfulgurium,entityname.riotshield,entityname.thermalgoggles,entityname.boardingaxe,entityname.slipsuit,entityname.harpooncoilrifle,entityname.bandolier,entityname.shotgunslugexplosive,entityname.shotgun,entityname.smg,entityname.hmg,entityname.hmgmagazine,entityname.smgmagazine,entityname.shotgunshell
+        ,entityname.makeshiftshelf,entityname.handhelditemfinder,entityname.petraptoregg,entityname.backpack,entityname.ceremonialsword,entityname.clowncrate,entityname.clowndivingmask,entityname.clownexosuit
+        " color="gui.orange" />
+      </Description>
+      <AddedRecipe itemidentifier="cdXH" />
+      <AddedRecipe itemidentifier="cdBLM" />
+      <AddedRecipe itemidentifier="cdnebula" />
+      <AddedRecipe itemidentifier="shipkiller" />
+      <AddedRecipe itemidentifier="cdgoodspideregg" />
+      <AddedRecipe itemidentifier="revolver" />
+      <AddedRecipe itemidentifier="revolverround" />
+      <AddedRecipe itemidentifier="handcannon" />
+      <AddedRecipe itemidentifier="handcannonround" />
+      <AddedRecipe itemidentifier="cigar" />
+      <AddedRecipe itemidentifier="rum" />
+      <AddedRecipe itemidentifier="flamer" />
+      <AddedRecipe itemidentifier="arcemitter" />
+      <AddedRecipe itemidentifier="fpgacircuit" />
+      <AddedRecipe itemidentifier="circuitbox" />
+      <AddedRecipe itemidentifier="cargoscooter" />
+      <AddedRecipe itemidentifier="depletedfuel" />
+      <AddedRecipe itemidentifier="coilgunammoboxdepletedfuel" />
+      <AddedRecipe itemidentifier="wrenchhardened" />
+      <AddedRecipe itemidentifier="screwdriverhardened" />
+      <AddedRecipe itemidentifier="crowbarhardened" />
+      <AddedRecipe itemidentifier="divingknifehardened" />
+      <AddedRecipe itemidentifier="smgmagazinedepletedfuel" />
+      <AddedRecipe itemidentifier="revolverrounddepletedfuel" />
+      <AddedRecipe itemidentifier="nucleargun" />
+      <AddedRecipe itemidentifier="handheldelectricalmonitor" />
+      <AddedRecipe itemidentifier="pucs" />
+      <AddedRecipe itemidentifier="reactorpda" />
+      <AddedRecipe itemidentifier="fulguriumfuelrodvolatile" />
+      <AddedRecipe itemidentifier="exosuit" />
+      <AddedRecipe itemidentifier="heavywrench" />
+      <AddedRecipe itemidentifier="defensebotspawner" />
+      <AddedRecipe itemidentifier="defensebotammobox" />
+      <AddedRecipe itemidentifier="scrapcannon" />
+      <AddedRecipe itemidentifier="ironhelmet" />
+      <AddedRecipe itemidentifier="makeshiftarmor" />
+      <AddedRecipe itemidentifier="repairpack" />
+      <AddedRecipe itemidentifier="fixfoamgrenade" />
+      <AddedRecipe itemidentifier="handheldstatusmonitor" />
+      <AddedRecipe itemidentifier="portablepump" />
+      <AddedRecipe itemidentifier="safetyharness" />
+      <AddedRecipe itemidentifier="endocrinebooster" />
+      <AddedRecipe itemidentifier="advancedsyringegun" />
+      <AddedRecipe itemidentifier="autoinjectorheadset" />
+      <AddedRecipe itemidentifier="combatstimulantsyringe" />
+      <AddedRecipe itemidentifier="chemgrenade" />
+      <AddedRecipe itemidentifier="40mmchemgrenade" />
+      <AddedRecipe itemidentifier="pressurestabilizer" />
+      <AddedRecipe itemidentifier="advancedgenesplicer" />
+      <AddedRecipe itemidentifier="europabrew" />
+      <AddedRecipe itemidentifier="sulphuricacidsyringe" />
+      <AddedRecipe itemidentifier="assaultrifle" />
+      <AddedRecipe itemidentifier="assaultriflemagazine" />
+      <AddedRecipe itemidentifier="rifle" />
+      <AddedRecipe itemidentifier="riflebullet" />
+      <AddedRecipe itemidentifier="autoshotgun" />
+      <AddedRecipe itemidentifier="stungundartfulgurium" />
+      <AddedRecipe itemidentifier="riotshield" />
+      <AddedRecipe itemidentifier="thermalgoggles" />
+      <AddedRecipe itemidentifier="boardingaxe" />
+      <AddedRecipe itemidentifier="slipsuit" />
+      <AddedRecipe itemidentifier="harpooncoilrifle" />
+      <AddedRecipe itemidentifier="bandolier" />
+      <AddedRecipe itemidentifier="shotgunslugexplosive" />
+      <AddedRecipe itemidentifier="shotgun" />
+      <AddedRecipe itemidentifier="smg" />
+      <AddedRecipe itemidentifier="hmg" />
+      <AddedRecipe itemidentifier="hmgmagazine" />
+      <AddedRecipe itemidentifier="smgmagazine" />
+      <AddedRecipe itemidentifier="shotgunshell" />
+      <AddedRecipe itemidentifier="makeshiftshelf" />
+      <AddedRecipe itemidentifier="handhelditemfinder" />
+      <AddedRecipe itemidentifier="petraptoregg" />
+      <AddedRecipe itemidentifier="backpack" />
+      <AddedRecipe itemidentifier="ceremonialsword" />
+      <AddedRecipe itemidentifier="clowncrate" />
+      <AddedRecipe itemidentifier="clowndivingmask" />
+      <AddedRecipe itemidentifier="clownexosuit" />
+      <AddedRecipe itemidentifier="cdreusable_shotgunshell" />
+    </Talent>
+    <!-- 肌肉发达 -->
+    <Talent identifier="cdshipmother1">
+      <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="0,6" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdshipmother1">
+        <Replace tag="[chance]" value="50" color="gui.green" />
+        <Replace tag="[duration]" value="50" color="gui.green" />
+      </Description>
+      <AbilityGroupEffect abilityeffecttype="OnAttack">
+        <Conditions>
+          <AbilityConditionServerRandom randomchance="0.5" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityGiveAffliction affliction="lacerations" strength="8.5" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!--绞碎利刃 -->
+    <Talent identifier="cdshipmother2">
+      <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="4,4" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdShipmother2.1">
+        <Replace tag="[chance]" value="50" color="gui.green" />
+        <Replace tag="[duration]" value="0.5" color="gui.green" />
+      </Description>
+      <AbilityGroupEffect abilityeffecttype="OnAttack">
+        <Conditions>
+          <AbilityConditionServerRandom randomchance="0.50" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityApplyStatusEffects>
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="Character" multiplyafflictionsbymaxvitality="true">
+                <Affliction identifier="stun" strength="0.5" />
+                <Affliction identifier="bleeding" strength="3.0" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffects>
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 武器技工：获得相当于你武器和电气技能总和的15%的攻击速度奖励。 -->
+    <Talent identifier="cdshipmother3">
+      <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="0,3" sheetelementsize="128,128" />
+      <Description tag="talentdescription.crafthighqualityweapons">
+        <Replace tag="[qualitybonus]" value="1" color="gui.green" />
+      </Description>
+      <Description tag="talentdescription.cdShipmother3.1">
+        <Replace tag="[skillpercentage1]" value="5" color="gui.green" />
+        <Replace tag="[skillpercentage2]" value="10" color="gui.green" />
+      </Description>
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Abilities>
+          <CharacterAbilityGivePermanentStat statidentifier="weapon" stattype="IncreaseFabricationQuality" value="1" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupInterval interval="0.5">
+        <Abilities>
+          <CharacterAbilityModifyStatToSkill stattype="turretattackspeed" maxvalue="0.1" skillidentifier="electrical" />
+          <CharacterAbilityModifyStatToSkill stattype="MeleeAttackSpeed" maxvalue="0.1" skillidentifier="electrical" />
+          <CharacterAbilityModifyStatToSkill stattype="RangedAttackSpeed" maxvalue="0.1" skillidentifier="electrical" />
+          <CharacterAbilityModifyStatToSkill stattype="turretattackspeed" maxvalue="0.05" skillidentifier="weapons" />
+          <CharacterAbilityModifyStatToSkill stattype="MeleeAttackSpeed" maxvalue="0.05" skillidentifier="weapons" />
+          <CharacterAbilityModifyStatToSkill stattype="RangedAttackSpeed" maxvalue="0.05" skillidentifier="weapons" />
+        </Abilities>
+      </AbilityGroupInterval>
+    </Talent>
+    <!-- 危机管理 -->
+    <Talent identifier="cdshipmother4">
+      <Icon texture="%ModDir%/content/png/TalentsIcons2.png" sheetindex="6,2" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdShipmother4.1">
+        <Replace tag="[statamount1]" value="75" color="gui.green" />
+        <Replace tag="[statamount2]" value="75" color="gui.green" />
+      </Description>
+      <AbilityGroupInterval interval="0.5">
+        <Abilities>
+          <CharacterAbilityModifyStatToFlooding stattype="SwimmingSpeed" maxvalue="0.75" />
+          <CharacterAbilityModifyStatToFlooding stattype="RepairSpeed" maxvalue="0.75" />
+        </Abilities>
+      </AbilityGroupInterval>
+    </Talent>
+    <!-- 暴力军阀：潜艇受击增加炮塔射速和伤害，每次10%持续3秒，最大50%加成。 -->
+    <Talent identifier="cdshipmother5">
+      <Description tag="talentdescription.cdshipmother5.1">
+        <Replace tag="[amount]" value="10" color="gui.green" />
+        <Replace tag="[seconds]" value="3" color="gui.green" />
+        <Replace tag="[maxamount]" value="50" color="gui.green" />
+      </Description>
+      <Description tag="talentdescription.warlord">
+        <Replace tag="[amount]" value="10" color="gui.green" />
+        <Replace tag="[maxamount]" value="50" color="gui.green" />
+      </Description>
+      <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="3,4" sheetelementsize="128,128" />
+      <AbilityGroupEffect abilityeffecttype="OnAttack">
+        <Conditions>
+          <AbilityConditionAttackData weapontype="handheldranged" />
+          <AbilityConditionNearbyCharacterCount distance="500" targettypes="Enemy" count="1" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyAttackData addeddamagemultiplier="0.1" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnAttack">
+        <Conditions>
+          <AbilityConditionAttackData weapontype="handheldranged" />
+          <AbilityConditionNearbyCharacterCount distance="500" targettypes="Enemy" count="2" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyAttackData addeddamagemultiplier="0.1" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnAttack">
+        <Conditions>
+          <AbilityConditionAttackData weapontype="handheldranged" />
+          <AbilityConditionNearbyCharacterCount distance="500" targettypes="Enemy" count="3" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyAttackData addeddamagemultiplier="0.1" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnAttack">
+        <Conditions>
+          <AbilityConditionAttackData weapontype="handheldranged" />
+          <AbilityConditionNearbyCharacterCount distance="500" targettypes="Enemy" count="4" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyAttackData addeddamagemultiplier="0.1" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnAttack">
+        <Conditions>
+          <AbilityConditionAttackData weapontype="handheldranged" />
+          <AbilityConditionNearbyCharacterCount distance="500" targettypes="Enemy" count="5" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyAttackData addeddamagemultiplier="0.1" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="AfterSubmarineAttacked">
+        <Abilities>
+          <CharacterAbilityApplyStatusEffects>
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="This" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+                <Affliction identifier="cdwarlord1" amount="1.0" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffects>
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 身强体壮：添加肌肉发达的+10％血量效果 -->
+    <Talent identifier="cdshipmother6">
+      <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="6,4" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdShipmotherbuff1">
+        <Replace tag="[amount]" value="50" color="gui.green" />
+        <Replace tag="[stattype]" value="stattypenames.maximumhealthmultiplier" color="gui.orange" />
+      </Description>
+      <Description tag="talentdescription.cdShipmotherbuff1">
+        <Replace tag="[amount]" value="50" color="gui.green" />
+        <Replace tag="[stattype]" value="stattypenames.buffdurationmultiplier" color="gui.orange" />
+      </Description>
+      <Description tag="talentdescription.cdShipmotherbuff2">
+        <Replace tag="[amount]" value="25" color="gui.green" />
+        <Replace tag="[affliction]" value="afflictionname.opiateaddiction" color="gui.orange" />
+      </Description>
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Abilities>
+          <CharacterAbilityGiveStat stattype="MaximumHealthMultiplier" value="0.5" />
+          <CharacterAbilityGiveStat stattype="BuffDurationMultiplier" value="0.5" />
+          <CharacterAbilityGiveResistance resistanceid="opiateaddiction" multiplier="0.75" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 冥土追魂 -->
+    <Talent identifier="cdshipmother7">
+      <Icon texture="%ModDir%/content/png/TalentsIcons1.png" sheetindex="5,5" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdShipmother7.1" />
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Abilities>
+          <CharacterAbilityGiveStat stattype="CPRBoost" value="2" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 野战医生 -->
+    <Talent identifier="cdshipmother8">
+      <Icon texture="%ModDir%/content/png/TalentsIcons1.png" sheetindex="2,5" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdshipmother8.1">
+        <Replace tag="[skillincrease]" value="3" color="gui.green" />
+      </Description>
+      <Description tag="talentdescription.cdShipmotherbuff7" />
+      <Description tag="talentdescription.cdShipmotherbuff1">
+        <Replace tag="[amount]" value="20" color="gui.green" />
+        <Replace tag="[stattype]" value="stattypenames.maximumhealthmultiplier" color="gui.orange" />
+      </Description>
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Abilities>
+          <CharacterAbilityGiveStat stattype="MaximumHealthMultiplier" value="0.2" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnAnyMissionCompleted">
+        <Conditions>
+          <AbilityConditionNoCrewDied />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityApplyStatusEffects>
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="This">
+                <GiveSkill skillidentifier="medical" amount="3" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffects>
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 治疗态度 -->
+    <Talent identifier="cdshipmother9">
+      <Icon texture="%ModDir%/content/png/TalentsIcons1.png" sheetindex="4,5" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdshipmother9.1">
+        <Replace tag="[physicaldamageresistance]" value="20" color="gui.green" />
+        <Replace tag="[skillgainincrease]" value="25" color="gui.green" />
+      </Description>
+      <AbilityGroupEffect abilityeffecttype="OnApplyTreatment">
+        <Conditions>
+          <AbilityConditionCharacter targettype="Ally,NotSelf" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityGiveAffliction affliction="bedsidemannerold" strength="3.5" multiplystrengthbyskill="medical" setvalue="true" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 一心二用 -->
+    <Talent identifier="cdshipmother10">
+      <Icon texture="%ModDir%/content/png/TalentsIcons1.png" sheetindex="1,5" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdshipmother10.1">
+        <Replace tag="[physicaldamagedecrease]" value="25" color="gui.green" />
+        <Replace tag="[skillincrease]" value="20" color="gui.green" />
+      </Description>
+      <AbilityGroupInterval>
+        <Conditions>
+          <AbilityConditionInFriendlySubmarine invert="true" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyResistance resistanceid="damage" multiplier="0.75" />
+        </Abilities>
+      </AbilityGroupInterval>
+      <AbilityGroupInterval>
+        <Conditions>
+          <AbilityConditionInFriendlySubmarine />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyStat stattype="MedicalSkillBonus" value="20" />
+        </Abilities>
+      </AbilityGroupInterval>
+    </Talent>
+    <!-- 体能训练：添加肌肉发达的+25％近战伤害效果 -->
+    <Talent identifier="cdshipmother11">
+      <Description tag="talentdescription.additionalstattypeself">
+        <Replace tag="[amount]" value="50" color="gui.green" />
+        <Replace tag="[stattype]" value="stattypenames.movementspeed" color="gui.orange" />
+      </Description>
+      <Description tag="talentdescription.additionalstattypeself">
+        <Replace tag="[amount]" value="50" color="gui.green" />
+        <Replace tag="[stattype]" value="stattypenames.meleeattackspeed" color="gui.orange" />
+      </Description>
+      <Description tag="talentdescription.additionalstattypeself">
+        <Replace tag="[amount]" value="50" color="gui.green" />
+        <Replace tag="[stattype]" value="stattypenames.meleeattackmultiplier" color="gui.orange" />
+      </Description>
+      <Description tag="talentdescription.additionalresistanceself">
+        <Replace tag="[amount]" value="30" color="gui.green" />
+        <Replace tag="[affliction]" value="afflictionname.oxygenlow" color="gui.orange" />
+      </Description>
+      <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="1,2" sheetelementsize="128,128" />
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Abilities>
+          <CharacterAbilityGiveStat stattype="MovementSpeed" value="0.50" />
+          <CharacterAbilityGiveStat stattype="MeleeAttackMultiplier" value="0.50" />
+          <CharacterAbilityGiveResistance resistanceid="oxygenlow" multiplier="0.7" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 作战意识 -->
+    <Talent identifier="cdshipmother12">
+      <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="3,5" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdshipmother12.1">
+        <Replace tag="[probability]" value="30" color="gui.green" />
+      </Description>
+      <AbilityGroupEffect abilityeffecttype="OnAttack">
+        <Conditions>
+          <AbilityConditionAttackData weapontype="melee" />
+          <AbilityConditionServerRandom randomchance="0.3" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyAttackData addeddamagemultiplier="3" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 破釜沉舟（改为末梢的效果） -->
+    <Talent identifier="cdshipmother13">
+      <Description tag="talentdescription.cdshipmother13.1">
+      </Description>
+      <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="2,3" sheetelementsize="128,128" />
+      <AbilityGroupInterval interval="0.9">
+        <Abilities>
+          <CharacterAbilityApplyStatusEffects>
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="Character" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+                <Affliction identifier="cdimplacable1" amount="100.0" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffects>
+        </Abilities>
+      </AbilityGroupInterval>
+    </Talent>
+    <!-- 体育特长 -->
+    <Talent identifier="cdshipmother14">
+      <Icon texture="%ModDir%/content/png/TalentsIcons2.png" sheetindex="0,1" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdShipmotherbuff1">
+        <Replace tag="[amount]" value="35" color="gui.green" />
+        <Replace tag="[stattype]" value="stattypenames.maximumhealthmultiplier" color="gui.orange" />
+      </Description>
+      <Description tag="talentdescription.cdShipmotherbuff1">
+        <Replace tag="[amount]" value="30" color="gui.green" />
+        <Replace tag="[stattype]" value="stattypenames.swimmingspeed" color="gui.orange" />
+      </Description>
+      <Description tag="talentdescription.cdShipmotherbuff1">
+        <Replace tag="[amount]" value="20" color="gui.green" />
+        <Replace tag="[stattype]" value="stattypenames.walkingspeed" color="gui.orange" />
+      </Description>
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Abilities>
+          <CharacterAbilityGiveStat stattype="MaximumHealthMultiplier" value="0.35" />
+          <CharacterAbilityGiveStat stattype="SwimmingSpeed" value="0.3" />
+          <CharacterAbilityGiveStat stattype="WalkingSpeed" value="0.2" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 埋头苦干 -->
+    <Talent identifier="cdshipmother15">
+      <Icon texture="%ModDir%/content/png/TalentsIcons2.png" sheetindex="5,3" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdshipmother15.1">
+        <Replace tag="[statamount]" value="15" color="gui.green" />
+      </Description>
+      <Description tag="talentdescription.cdshipmother15.2">
+        <Replace tag="[skillamount]" value="5" color="gui.green" />
+      </Description>
+      <Description tag="talentdescription.cdShipmotherbuff5">
+        <Replace tag="[skillamount]" value="100" color="gui.green" />
+      </Description>
+      <Description tag="talentdescription.cdShipmotherbuff6" />
+      <AbilityGroupEffect abilityeffecttype="OnItemDeconstructed">
+        <Conditions>
+          <AbilityConditionItem identifiers="scrap" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityGivePermanentStat statidentifier="elbowgrease" stattype="MechanicalSkillBonus" value="5" maxvalue="100" removeondeath="true" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnItemDeconstructed">
+        <Abilities>
+          <CharacterAbilityGivePermanentStat statidentifier="elbowgreasemaster" stattype="MechanicalSkillBonus" value="5" maxvalue="100" removeondeath="true" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupInterval interval="0.5">
+        <Abilities>
+          <CharacterAbilityModifyStatToSkill stattype="MeleeAttackMultiplier" maxvalue="0.15" skillidentifier="mechanical" />
+          <CharacterAbilityModifyStatToSkill stattype="MaximumHealthMultiplier" maxvalue="0.15" skillidentifier="mechanical" />
+        </Abilities>
+      </AbilityGroupInterval>
+    </Talent>
+    <!--战地医生：获得相当于你医疗技能30%的游泳速度、远程射击速度和近战攻击速度加成。 -->
+    <Talent identifier="cdshipmother16">
+      <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="7,5" sheetelementsize="128,128" />
+      <Description tag="talentdescription.increaseappliedbuffduration">
+        <Replace tag="[amount]" value="25" color="gui.green" />
+      </Description>
+      <Description tag="talentdescription.cdshipmother16.1">
+        <Replace tag="[skillpercentage]" value="10" color="gui.green" />
+      </Description>
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Abilities>
+          <CharacterAbilityGiveStat stattype="MedicalItemDurationMultiplier" value="0.25" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupInterval interval="0.5">
+        <Abilities>
+          <CharacterAbilityModifyStatToSkill stattype="swimmingspeed" maxvalue="0.1" skillidentifier="medical" />
+          <CharacterAbilityModifyStatToSkill stattype="MeleeAttackSpeed" maxvalue="0.1" skillidentifier="medical" />
+          <CharacterAbilityModifyStatToSkill stattype="RangedAttackSpeed" maxvalue="0.1" skillidentifier="medical" />
+        </Abilities>
+      </AbilityGroupInterval>
+    </Talent>
+    <!-- 近身威胁 -->
+    <Talent identifier="cdshipmother17">
+      <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,1" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdshipmother17.1">
+        <Replace tag="[amount]" value="20" color="gui.green" />
+        <Replace tag="[maxamount]" value="100" color="gui.green" />
+      </Description>
+      <AbilityGroupEffect abilityeffecttype="OnAttack">
+        <Conditions>
+          <AbilityConditionAttackData weapontype="melee" />
+          <AbilityConditionNearbyCharacterCount distance="800" targettypes="Enemy,Monster" count="1" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyAttackData addeddamagemultiplier="0.2" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnAttack">
+        <Conditions>
+          <AbilityConditionAttackData weapontype="melee" />
+          <AbilityConditionNearbyCharacterCount distance="800" targettypes="Enemy,Monster" count="2" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyAttackData addeddamagemultiplier="0.20" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnAttack">
+        <Conditions>
+          <AbilityConditionAttackData weapontype="melee" />
+          <AbilityConditionNearbyCharacterCount distance="800" targettypes="Enemy,Monster" count="3" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyAttackData addeddamagemultiplier="0.20" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnAttack">
+        <Conditions>
+          <AbilityConditionAttackData weapontype="melee" />
+          <AbilityConditionNearbyCharacterCount distance="800" targettypes="Enemy,Monster" count="4" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyAttackData addeddamagemultiplier="0.20" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnAttack">
+        <Conditions>
+          <AbilityConditionAttackData weapontype="melee" />
+          <AbilityConditionNearbyCharacterCount distance="800" targettypes="Enemy,Monster" count="5" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyAttackData addeddamagemultiplier="0.20" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 好斗利刃 -->
+    <Talent identifier="cdshipmother18">
+      <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="3,1" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdshipmother18.1"></Description>
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Abilities>
+          <CharacterAbilityGiveStat stattype="MeleeAttackSpeed" value="1" />
+          <CharacterAbilityGiveStat stattype="MeleeAttackMultiplier" value="1" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 主力领队-->
+    <Talent identifier="cdshipmother19">
+      <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="1,5" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdshipmother19.1"></Description>
+      <AbilityGroupInterval interval="0.9">
+        <Conditions>
+          <AbilityConditionHasTalent identifier="cdshipmother20" truthywhen="HasTalent" />
+          <AbilityConditionNoCrewDied />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityApplyStatusEffectsToAllies allowself="true" requiresalive="true" allowclientsimulation="false">
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="Character" disabledeltatime="true">
+                <Affliction identifier="cdshipmother19buff" amount="10.0" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffectsToAllies>
+        </Abilities>
+        <FallbackAbilities>
+          <CharacterAbilityApplyStatusEffectsToAllies allowself="true" requiresalive="true" allowclientsimulation="false">
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="Character" disabledeltatime="true">
+                <Affliction identifier="cdshipmother20buff" amount="10.0" />
+                <ReduceAffliction identifier="cdshipmother19buff" strength="10.0" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffectsToAllies>
+        </FallbackAbilities>
+      </AbilityGroupInterval>
+    </Talent>
+    <!-- 旗舰编队 -->
+    <Talent identifier="cdshipmother33">
+      <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="2,2" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdshipmother33.3">
+        <Replace tag="[xpamount]" value="50" color="gui.green"/>
+      </Description>
+      <Description tag="talentdescription.cdshipmother33.2"></Description>
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Conditions>
+          <AbilityConditionHasPermanentStat statidentifier="family" min="1" invert="true" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityGiveTalentPointsToAllies amount="1" />
+          <CharacterAbilityGivePermanentStat statidentifier="family" value="1" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnGainMissionExperience">
+        <Abilities>
+          <CharacterAbilityModifyValue multiplyvalue="1.5"/>
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 熟练工 -->
+    <Talent identifier="cdshipmother21">
+      <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="2,2" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdshipmother21.1">
+        <Replace tag="[skillamount]" value="20" color="gui.green" />
+        <Replace tag="[skillspeedboost]" value="50" color="gui.green" />
+      </Description>
+      <AbilityGroupInterval interval="0.1">
+        <Abilities>
+          <CharacterAbilityApplyStatusEffectsToAllies allowself="true">
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="Character" disabledeltatime="true">
+                <Affliction identifier="cdjourneyman" strength="1.0" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffectsToAllies>
+        </Abilities>
+      </AbilityGroupInterval>
+    </Talent>
+    <!-- 忠诚助手 -->
+    <Talent identifier="cdshipmother22">
+      <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="4,3" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdshipmother22.1">
+        <Replace tag="[amount]" value="1" color="gui.green" />
+      </Description>
+      <AbilityGroupInterval interval="0.1">
+        <Abilities>
+          <CharacterAbilityApplyStatusEffectsToAllies allowself="true">
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="Character" disabledeltatime="true">
+                <Affliction identifier="loyalassistant" strength="1.0" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffectsToAllies>
+        </Abilities>
+      </AbilityGroupInterval>
+    </Talent>
+    <!-- 奸诈人渣 -->
+    <Talent identifier="cdshipmother23">
+      <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="0,2" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdshipmother23.1">
+        <Replace tag="[amount]" value="20" color="gui.green" />
+      </Description>
+      <AbilityGroupInterval interval="0.1">
+        <Abilities>
+          <CharacterAbilityApplyStatusEffectsToAllies allowself="true">
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="Character" disabledeltatime="true">
+                <Affliction identifier="disloyalscum" strength="1.0" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffectsToAllies>
+        </Abilities>
+      </AbilityGroupInterval>
+    </Talent>
+    <!-- 毕业典礼：还原近战伤害、修理速度、炮塔耗能降低、游泳速度加成 -->
+    <Talent identifier="cdshipmother20">
+      <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="2,5" sheetelementsize="128,128" />
+      <!--<Description tag="talentdescription.unlockapprenticeshiptalents" />-->
+      <Description tag="talentdescription.gainskillspastmax" />
+      <Description tag="talentdescription.olympian">
+        <Replace tag="[skillpercentage]" value="50%" color="gui.green" />
+      </Description>
+      <Description tag="talentdescription.cdshipmother20.3">
+        <Replace tag="[project1]" value="stattypenames.meleeattackmultiplier" color="gui.orange" />
+        <Replace tag="[project2]" value="stattypenames.repairspeed" color="gui.orange" />
+        <Replace tag="[project3]" value="stattypenames.turretpowercostreduction" color="gui.orange" />
+        <Replace tag="[project4]" value="stattypenames.swimmingspeed" color="gui.orange" />
+      </Description>
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Abilities>
+          <CharacterAbilityGiveFlag flagtype="GainSkillPastMaximum" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupInterval interval="0.5">
+        <Abilities>
+          <CharacterAbilityModifyStatToSkill stattype="meleeattackmultiplier" maxvalue="0.5" skillidentifier="all" />
+          <CharacterAbilityModifyStatToSkill stattype="repairspeed" maxvalue="0.5" skillidentifier="all" />
+          <CharacterAbilityModifyStatToSkill stattype="turretpowercostreduction" maxvalue="0.5" skillidentifier="all" />
+          <CharacterAbilityModifyStatToSkill stattype="swimmingspeed" maxvalue="0.5" skillidentifier="all" />
+        </Abilities>
+      </AbilityGroupInterval>
+    </Talent>
+    <!-- 吐息之焰 -->
+    <Talent identifier="cdshipmother24">
+      <Icon texture="%ModDir%/content/png/吐息之焰.png" sheetindex="0,0" sheetelementsize="80,82" />
+      <Description tag="talentdescription.cdshipmother24" />
+      <AbilityGroupInterval interval="0.5">
+        <Abilities>
+          <CharacterAbilityModifyStatToSkill stattype="attackmultiplier" maxvalue="0.5" skillidentifier="weapons" />
+        </Abilities>
+      </AbilityGroupInterval>
+      <AbilityGroupInterval Interval="0.9">
+        <Conditions>
+          <AbilityConditionHasPermanentStat statidentifier="YOGtl_ydsskill" min="1" />
+        </Conditions>
+        <!-- 消耗计数器获得BUFF -->
+        <Abilities>
+          <CharacterAbilityApplyStatusEffects applytoself="true">
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="Character" disabledeltatime="true" multiplyafflictionsbymaxvitality="true">
+                <Affliction identifier="cdShipmothebuff24" amount="1" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffects>
+          <CharacterAbilityGivePermanentStat statidentifier="YOGtl_ydsskill" value="-1" />
+        </Abilities>
+      </AbilityGroupInterval>
+      <!-- 击杀生物计数器+1 -->
+      <AbilityGroupEffect abilityeffecttype="OnKillCharacter">
+        <Abilities>
+          <CharacterAbilityGivePermanentStat statidentifier="YOGtl_ydsskill" value="1" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 规避机动 -->
+    <Talent identifier="cdshipmother25">
+      <Description tag="talentdescription.cdshipmother25.1">
+        <Replace tag="[helmbonus]" value="75" color="gui.green" />
+        <Replace tag="[seconds]" value="5" color="gui.green" />
+      </Description>
+      <Description tag="talentdescription.cdshipmother25.2">
+        <Replace tag="[extra]" value="15" color="gui.green" />
+      </Description>
+      <Icon texture="%ModDir%/content/png/TalentsIcons1.png" sheetindex="5,0" sheetelementsize="128,128" />
+      <AbilityGroupEffect abilityeffecttype="AfterSubmarineAttacked">
+        <Conditions>
+          <AbilityConditionEvasiveManeuvers />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityApplyStatusEffects>
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="This" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+                <Affliction identifier="cdevasivemaneuversold1" amount="1.0" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffects>
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnGainMissionMoney">
+        <Conditions>
+          <AbilityConditionMission missiontype="Monster" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyValue addedvalue="0.15" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnGainMissionMoney">
+        <Conditions>
+          <AbilityConditionMission missiontype="Nest" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyValue addedvalue="0.15" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 建立信任 -->
+    <Talent identifier="cdshipmother26">
+      <Description tag="talentdescription.cdshipmother26.1">
+        <Replace tag="[smallgain]" value="2.5" color="gui.green" />
+        <Replace tag="[largegain]" value="5" color="gui.green" />
+        <Replace tag="[maxgain]" value="25" color="gui.green" />
+      </Description>
+      <Description tag="talentdescription.cdShipmotherbuff6" />
+      <Description tag="talentdescription.cdShipmotherbuff7" />
+      <Icon texture="%ModDir%/content/png/TalentsIcons1.png" sheetindex="4,1" sheetelementsize="128,128" />
+      <AbilityGroupEffect abilityeffecttype="OnGainMissionMoney">
+        <Abilities>
+          <CharacterAbilityGivePermanentStat statidentifier="trustbuilding" stattype="MaximumHealthMultiplier" value="0.025" maxvalue="0.25" targetallies="true" removeondeath="true" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnGainMissionMoney">
+        <Conditions>
+          <AbilityConditionNoCrewDied />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityGivePermanentStat statidentifier="trustbuilding" stattype="MaximumHealthMultiplier" value="0.025" maxvalue="0.25" targetallies="true" removeondeath="true" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 赏金猎人 -->
+    <Talent identifier="cdshipmother27">
+      <Description tag="talentdescription.cdshipmother27.1">
+        <Replace tag="[percentage]" value="25" color="gui.green" />
+      </Description>
+      <Icon texture="%ModDir%/content/png/TalentsIcons1.png" sheetindex="4,0" sheetelementsize="128,128" />
+      <AbilityGroupEffect abilityeffecttype="OnCrewKillCharacter">
+        <Conditions>
+          <AbilityConditionCharacter targettypes="Monster" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityBountyHunter vitalitypercentage="0.25" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 舰船之灵 -->
+    <Talent identifier="cdshipmother28">
+      <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="5,2" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdshipmother28.1" />
+      <AbilityGroupInterval interval="1">
+        <Conditions>
+          <AbilityConditionInWater />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityApplyStatusEffects>
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="Character" disabledeltatime="true" multiplyafflictionsbymaxvitality="true">
+                <Affliction identifier="cdShipmothebuff28" amount="2.0" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffects>
+        </Abilities>
+      </AbilityGroupInterval>
+    </Talent>
+    <!-- 一路顺风 -->
+    <Talent identifier="cdshipmother29">
+      <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="5,1" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdshipmother29.1" />
+      <AbilityGroupEffect abilityeffecttype="OnAnyMissionCompleted">
+        <Conditions>
+          <AbilityConditionNoCrewDied assistantsdontcount="false" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityApplyStatusEffects>
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="Character" disabledeltatime="true">
+                <GiveSkill skillidentifier="weapons" amount="2" triggertalents="false" />
+                <GiveSkill skillidentifier="helm" amount="2" triggertalents="false" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffects>
+          <CharacterAbilityApplyStatusEffectsToAllies requiresalive="true" allowself="false">
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="Character" disabledeltatime="true">
+                <GiveSkill skillidentifier="weapons" amount="1" triggertalents="false" />
+                <GiveSkill skillidentifier="helm" amount="1" triggertalents="false" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffectsToAllies>
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 与舰休戚 -->
+    <Talent identifier="cdshipmother30">
+      <Description tag="talentdescription.cdshipmother30.1">
+        <Replace tag="[flooded]" value="50" color="gui.green" />
+        <Replace tag="[swimmingboost]" value="50" color="gui.green" />
+        <Replace tag="[skillboost]" value="25" color="gui.green" />
+        <Replace tag="[repairspeed]" value="50" color="gui.green" />
+        <Replace tag="[duration]" value="60" color="gui.green" />
+      </Description>
+      <Icon texture="%ModDir%/content/png/TalentsIcons1.png" sheetindex="0,1" sheetelementsize="128,128" />
+      <AbilityGroupInterval interval="1">
+        <Conditions>
+          <AbilityConditionShipFlooded floodpercentage="0.5" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityApplyStatusEffects>
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="Character" disabledeltatime="true" multiplyafflictionsbymaxvitality="true">
+                <Affliction identifier="cddownwiththeshipold1" amount="60.0" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffects>
+        </Abilities>
+      </AbilityGroupInterval>
+    </Talent>
+    <!-- 鼓舞 -->
+    <Talent identifier="cdshipmother31">
+      <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="5,4" sheetelementsize="128,128" />
+      <Description tag="talentdescription.cdshipmother31.1">
+        <Replace tag="[amount]" value="20" color="gui.green" />
+      </Description>
+      <Description tag="talentdescription.cdshipmother31.2" />
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Abilities>
+          <CharacterAbilityGiveStat stattype="ExtraMissionCount" value="1" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Abilities>
+          <CharacterAbilityGivePermanentStat statidentifier="campaigning" stattype="ShipyardBuyMultiplierAffiliated" value="0.2" targetallies="true" setvalue="true" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 无尽狩猎-->
+    <Talent identifier="cdshipmother32">
+      <Description tag="talentdescription.cdshipmother32.1" />
+      <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="3,4" sheetelementsize="128,128" />
+      <AbilityGroupEffect abilityeffecttype="OnAddDamageAffliction">
+        <Conditions>
+          <AbilityConditionCharacter targettype="Monster">
+            <Conditional HealthPercentage="gt 50" />
+          </AbilityConditionCharacter>
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyAffliction afflictionidentifiers="gunshotwound" addedmultiplier="0.1" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnAddDamageAffliction">
+        <Conditions>
+          <AbilityConditionHasSkill skillidentifier="weapons" minvalue="80" />
+          <AbilityConditionCharacter targettype="Monster">
+            <Conditional HealthPercentage="gt 50" />
+          </AbilityConditionCharacter>
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyAffliction afflictionidentifiers="gunshotwound" addedmultiplier="0.1" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnAddDamageAffliction">
+        <Conditions>
+          <AbilityConditionHasSkill skillidentifier="weapons" minvalue="100" />
+          <AbilityConditionCharacter targettype="Monster">
+            <Conditional HealthPercentage="gt 50" />
+          </AbilityConditionCharacter>
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyAffliction afflictionidentifiers="gunshotwound" addedmultiplier="0.2" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnAddDamageAffliction">
+        <Conditions>
+          <AbilityConditionCharacter targettype="Monster" invert="true">
+            <Conditional HealthPercentage="gt 50" />
+          </AbilityConditionCharacter>
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyAffliction afflictionidentifiers="gunshotwound" addedmultiplier="0.05" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnAddDamageAffliction">
+        <Conditions>
+          <AbilityConditionHasSkill skillidentifier="weapons" minvalue="80" />
+          <AbilityConditionCharacter targettype="Monster" invert="true">
+            <Conditional HealthPercentage="gt 50" />
+          </AbilityConditionCharacter>
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyAffliction afflictionidentifiers="gunshotwound" addedmultiplier="0.05" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="OnAddDamageAffliction">
+        <Conditions>
+          <AbilityConditionHasSkill skillidentifier="weapons" minvalue="100" />
+          <AbilityConditionCharacter targettype="Monster" invert="true">
+            <Conditional HealthPercentage="gt 50" />
+          </AbilityConditionCharacter>
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyAffliction afflictionidentifiers="gunshotwound" addedmultiplier="0.1" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Abilities>
+          <CharacterAbilityGiveStat stattype="WeaponsSkillBonus" value="5" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+    <!-- 魔方强化 -->
+    <Talent identifier="cdEnhancement">
+      <Description tag="talentdescription.cdEnhancement"></Description>
+      <Icon texture="%ModDir%/content/png/TalentsIcons2.png" sheetindex="2,4" sheetelementsize="128,128" />
+      <AbilityGroupInterval interval="1">
+        <Abilities>
+          <CharacterAbilityApplyStatusEffects>
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="Character" disabledeltatime="true">
+                <Affliction identifier="cdEnhancementbuff" amount="100.0" />
+                <Affliction identifier="cdEnhancementbuff1" amount="100.0" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffects>
+        </Abilities>
+      </AbilityGroupInterval>
+    </Talent>
+    <!-- 奇迹创造者：自身不再对"奇迹进行中"免疫 -->
+    <Talent identifier="cdshipmother34">
+      <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="7,2" sheetelementsize="128,128" />
+      <Description tag="talentdescription.miracleworker001" />
+      <Description tag="talentdescription.miracleworker002" />
+      <AbilityGroupInterval interval="0.9">
+        <Abilities>
+          <CharacterAbilityApplyStatusEffectsToAllies maxdistance="1000" allowself="true">
+            <StatusEffects>
+              <StatusEffect type="OnAbility" target="Character" disabledeltatime="true">
+                <Affliction identifier="cdmiracleworker011" amount="1.0" />
+              </StatusEffect>
+            </StatusEffects>
+          </CharacterAbilityApplyStatusEffectsToAllies>
+        </Abilities>
+      </AbilityGroupInterval>
+    </Talent>
+  </Talents>
+</Override>

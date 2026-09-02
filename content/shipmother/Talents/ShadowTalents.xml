@@ -1,0 +1,3126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Talents>
+  <!--生命线终章-->
+  <Talent identifier="cdshadowtalent0-1" trackedstat="cdshadowtalent0" trackedmax="6">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.cdshadowtalent00">
+      <Replace tag="[amount]" value="6" color="gui.green"/>
+    </Description>
+    <Description tag="talentdescription.cdshadowtalent01">
+      <Replace tag="[stattype]" value="当你的生命值低于0时，在短时间内快速治疗普通类型伤害，此效果触发冷却60秒。" color="gui.orange"/>
+    </Description>
+    <AbilityGroupInterval interval="1">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+              <Affliction identifier="cdshadowguarded" amount="1.0"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupInterval maxtriggercount="10000">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent0" min="6" />
+        <AbilityConditionAboveVitality invert="true" vitalitypercentage="0" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdshadowguarded" minimumpercentage="1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+              <Affliction identifier="cdmanystillkicking" amount="1.0" />
+              <ReduceAffliction identifier="cdshadowguarded" strength="60.0"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--攻击线终章-->
+  <Talent identifier="cdshadowtalent0-2" trackedstat="cdshadowtalent2" trackedmax="6">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.cdshadowtalent00">
+      <Replace tag="[amount]" value="6" color="gui.green"/>
+    </Description>
+    <Description tag="talentdescription.cdshadowtalent01">
+      <Replace tag="[stattype]" value="当你的生命值低于0时，你仍会保持清醒。" color="gui.orange"/>
+    </Description>
+    <AbilityGroupInterval  interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent2" min="6" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyFlag flagtype="AlwaysStayConscious" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--修理线终章-->
+  <Talent identifier="cdshadowtalent0-3" trackedstat="cdshadowtalent3" trackedmax="6">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.cdshadowtalent00">
+      <Replace tag="[amount]" value="6" color="gui.green"/>
+    </Description>
+    <Description tag="talentdescription.cdshadowtalent01">
+      <Replace tag="[stattype]" value="获得50全职业技能加成，且技能升级速度提高100%。每隔10秒自动修复附近3米的船体。" color="gui.orange"/>
+    </Description>
+    <AbilityGroupInterval  interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent3" min="6" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="ElectricalSkillBonus" value="50" />
+        <CharacterAbilityModifyStat stattype="HelmSkillBonus" value="50" />
+        <CharacterAbilityModifyStat stattype="MechanicalSkillBonus" value="50" />
+        <CharacterAbilityModifyStat stattype="MedicalSkillBonus" value="50" />
+        <CharacterAbilityModifyStat stattype="WeaponsSkillBonus" value="50" />
+        <CharacterAbilityModifyStat stattype="SkillGainSpeed" value="1" />
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupInterval interval="10">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent3" min="6" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" disabledeltatime="true">
+              <Explosion range="300" force="0.0" camerashake="0" sparks="false" shockwave="false" flames="false" smoke="false" flash="false" underwaterbubble="false"  ballastfloradamage="0" itemdamage="0" structuredamage="-400" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--攻速线终章-->
+  <Talent identifier="cdshadowtalent0-4" trackedstat="cdshadowtalent4" trackedmax="6">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.cdshadowtalent00">
+      <Replace tag="[amount]" value="6" color="gui.green"/>
+    </Description>
+    <Description tag="talentdescription.cdshadowtalent01">
+      <Replace tag="[stattype]" value="你的攻击将对目标额外造成5撕裂伤。" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="OnAttack">
+      <Conditions>
+        <AbilityConditionAttackData weapontype="Melee,Ranged,Turret" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent4" min="6" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData>
+          <Afflictions>
+            <Affliction identifier="lacerations" strength="5.0" />
+          </Afflictions>
+        </CharacterAbilityModifyAttackData>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!--移速线终章-->
+  <Talent identifier="cdshadowtalent0-5" trackedstat="cdshadowtalent5" trackedmax="6">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.cdshadowtalent00">
+      <Replace tag="[amount]" value="6" color="gui.green"/>
+    </Description>
+    <Description tag="talentdescription.cdshadowtalent01">
+      <Replace tag="[stattype]" value="当你昏迷时，收到的伤害降低90%，且敌人会无视你的存在。" color="gui.orange"/>
+    </Description>
+    <AbilityGroupInterval effectdelay="2">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent5" min="6" />
+        <AbilityConditionRagdolled />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyFlag flagtype="IgnoredByEnemyAI" />
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupEffect abilityeffecttype="OnAttacked">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent5" min="6" />
+        <AbilityConditionCharacterUnconcious />
+        <AbilityConditionAttackData ignorenonharmfulattacks="false" ignoreOwnAttacks="false" weapontype="Ranged,Turret,NoWeapon,Melee" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData addeddamagemultiplier="-0.9" />
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent1-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent01_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent01_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent1-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent21_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent21_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent1-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent31_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent31_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent1-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent41_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent41_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent1-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent51_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent51_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent2-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent02_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent02_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent2-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent22_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent22_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent2-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent32_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent32_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent2-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent42_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent42_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent2-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent52_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent52_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent3-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent03_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent03_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent3-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent23_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent23_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent3-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent33_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent33_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent3-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent43_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent43_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent3-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent53_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent53_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent4-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent04_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent04_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent4-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent24_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent24_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent4-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent34_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent34_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent4-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent44_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent44_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent4-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent54_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent54_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent5-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent05_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent05_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent5-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent25_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent25_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent5-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent35_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent35_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent5-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent45_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent45_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent5-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent55_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent55_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent6-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent06_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent06_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent6-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent26_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent26_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent6-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent36_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent36_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent6-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent46_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent46_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent6-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent56_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent56_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent7-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent07_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent07_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent7-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent27_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent27_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent7-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent37_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent37_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent7-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent47_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent47_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent7-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent57_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent57_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent8-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent08_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent08_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent8-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent28_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent28_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent8-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent38_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent38_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent8-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent48_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent48_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent8-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent58_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent58_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent9-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent09_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent09_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent9-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent29_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent29_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent9-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent39_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent39_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent9-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent49_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent49_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent9-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent59_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent59_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent10-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent010_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent010_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent10-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent210_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent210_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent10-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent310_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent310_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent10-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent410_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent410_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent10-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent510_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent510_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent11-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent011_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent011_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent11-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent211_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent211_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent11-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent311_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent311_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent11-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent411_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent411_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent11-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent511_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent511_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent12-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent012_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent012_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent12-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent212_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent212_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent12-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent312_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent312_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent12-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent412_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent412_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent12-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent512_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent512_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent13-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent013_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent013_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent13-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent213_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent213_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent13-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent313_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent313_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent13-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent413_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent413_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent13-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent513_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent513_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent14-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent014_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent014_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent14-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent214_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent214_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent14-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent314_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent314_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent14-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent414_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent414_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent14-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent514_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent514_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent15-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent015_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent015_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent15-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent215_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent215_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent15-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent315_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent315_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent15-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent415_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent415_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent15-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent515_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent515_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent16-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent016_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent016_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent16-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent216_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent216_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent16-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent316_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent316_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent16-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent416_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent416_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent16-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent516_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent516_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent17-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent017_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent017_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent17-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent217_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent217_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent17-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent317_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent317_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent17-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent417_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent417_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent17-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent517_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent517_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent18-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent018_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent018_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent18-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent218_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent218_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent18-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent318_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent318_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent18-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent418_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent418_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent18-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent518_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent518_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent19-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent019_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent019_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent19-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent219_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent219_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent19-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent319_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent319_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent19-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent419_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent419_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent19-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent519_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent519_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--2nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn2-->
+   
+  <!--加10血上限减5伤害-->
+  <Talent identifier="cdshadowtalent20-1">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent020_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent0" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent020_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10伤害减5修理速度-->
+  <Talent identifier="cdshadowtalent20-2">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.AttackMultiplier" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="AttackMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent220_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent2" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent220_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10修理速度减5攻速-->
+  <Talent identifier="cdshadowtalent20-3">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="修复速度" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+        <CharacterAbilityModifyStat stattype="RepairSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="-0.05" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent320_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent3" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent320_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10攻速减5移速-->
+  <Talent identifier="cdshadowtalent20-4">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MeleeAttackSpeed,stattypenames.MeleeAttackSpeed,stattypenames.TurretAttackSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="MeleeAttackSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="RangedAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="TurretAttackSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="-0.05" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent420_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent4" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent420_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <!--加10移速减5血上限-->
+  <Talent identifier="cdshadowtalent20-5">
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="2,2" sheetelementsize="128,128" />
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.SwimmingSpeed,stattypenames.WalkingSpeed" color="gui.orange"/>
+    </Description>
+    <Description tag="talentdescription.reductiontostattypeself">
+      <Replace tag="[amount]" value="5" color="gui.green"/>
+      <Replace tag="[stattype]" value="stattypenames.MaximumHealthMultiplier" color="gui.orange"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityModifyStat stattype="SwimmingSpeed" value="0.1" />
+        <CharacterAbilityModifyStat stattype="WalkingSpeed"  value="0.1" />
+        <CharacterAbilityModifyStat stattype="MaximumHealthMultiplier" value="-0.05" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshadowtalent520_Done" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent5" value="1" removeondeath="false"/>
+        <CharacterAbilityGivePermanentStat statidentifier="cdshadowtalent520_Done" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+</Talents>

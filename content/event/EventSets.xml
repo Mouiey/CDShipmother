@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Randomevents>
+  <EventSet identifier="cdoutpostevent" leveltype="outpost" locationtype="outpost,tsm_city,city,research,military,mine,colony,settlement,construction,camp,base,blockade,survey,excavation,study,lab,clinic,hospital,surgery,hydroponics,biosphere,nourishment,factory,shipyard,fusion" allowatstart="true" minleveldifficulty="0" maxleveldifficulty="100" SelectAlways="true" additive="true" chooserandom="true" ignorecooldown="true">
+    <EventSet identifier="cdoutpostevent" minleveldifficulty="0" maxleveldifficulty="100" allowatstart="true" eventcount="1" chooserandom="true" exhaustible="true" selectalways="true">
+      <ScriptedEvent identifier="findmoney" commonness="5" triggercooldown="false" />
+      <ScriptedEvent identifier="cdnoevent" commonness="95" triggercooldown="false" />
+    </EventSet>
+  </EventSet>
+  <EventSet identifier="cdoutpostevent1" leveltype="outpost" locationtype="outpost,tsm_city,city,research,military,mine,colony,settlement,construction,camp,base,blockade,survey,excavation,study,lab,clinic,hospital,surgery,hydroponics,biosphere,nourishment,factory,shipyard,fusion" allowatstart="true" minleveldifficulty="0" maxleveldifficulty="100" SelectAlways="true" additive="true" chooserandom="true" ignorecooldown="true">
+    <EventSet identifier="cdoutpostevent1" minleveldifficulty="0" maxleveldifficulty="100" allowatstart="true" eventcount="1" chooserandom="true" exhaustible="true" selectalways="true">
+      <ScriptedEvent identifier="cd_cqb_unstun" commonness="100" triggercooldown="false" />
+    </EventSet>
+  </EventSet>
+</Randomevents>

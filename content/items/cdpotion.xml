@@ -1,0 +1,1076 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <!-- 霉菌溶剂 -->
+    <Item name="实验性霉菌培养液" identifier="cdungalpotion" description="高压环境下培育的共生霉菌，也许对人体有益？ ‖color:255,0,0,255‖警告！不稳定实验药物，可能导致不良后果。‖end‖" category="Medical" maxstacksize="36" Tags="smallitem,chem,medical,syringe" allowasextracargo="true" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <!--捞-->
+      <PreferredContainer secondary="wrecktoxcab,abandonedtoxcab,piratetoxcab" spawnprobability="0.05" />
+      <PreferredContainer primary="toxcab" secondary="toxcontainer" spawnprobability="0.05"/>
+      <!-- 加工台合成[待定] -->
+      <Fabricate suitablefabricators="medicalfabricator" amount="1" requiredtime="5">
+        <RequiredSkill identifier="medical" level="80" />
+        <RequiredItem identifier="sulphuricacidsyringe" count="2" />
+        <RequiredItem identifier="alienblood" count="1" />
+        <RequiredItem identifier="incendium" count="1" />
+      </Fabricate>
+      <!-- 分解台分解[待定] -->
+      <Deconstruct time="10">
+        <Item identifier="sulphuricacid" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/content/png/cdMedicines2.png" sourcerect="261,4,35,67" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/png/cdMedicines2.png" sourcerect="261,4,35,67" depth="0.6" origin="0.5,0.5" />
+      <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+      <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+        <RequiredSkill identifier="medical" level="60" />
+        <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" interval="0.0" delay="0.0" setvalue="true" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <Affliction identifier="insideacidburn" amount="100" /><!--溶解-->
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" interval="0.0" delay="0.0" setvalue="true" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <Affliction identifier="insideacidburn" amount="100" /><!--溶解-->
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" interval="0.0" delay="0.0" setvalue="false" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--霉菌-->
+          <Affliction identifier="cdungalinfections" strength="5" probability="1" MultiplyByMaxVitality="false"/>
+          <Affliction identifier="cdungalinfections" strength="10" probability="0.5" MultiplyByMaxVitality="false"/>
+          <Affliction identifier="cdungalinfections" strength="20" probability="0.2" MultiplyByMaxVitality="false"/>
+          <Affliction identifier="cdungalinfections" strength="50" probability="0.1" MultiplyByMaxVitality="false"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" interval="0.0" delay="0.0" setvalue="false" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--霉菌-->
+          <Affliction identifier="cdungalinfections" strength="5" probability="1" MultiplyByMaxVitality="false"/>
+          <Affliction identifier="cdungalinfections" strength="10" probability="0.5" MultiplyByMaxVitality="false"/>
+          <Affliction identifier="cdungalinfections" strength="20" probability="0.2" MultiplyByMaxVitality="false"/>
+          <Affliction identifier="cdungalinfections" strength="50" probability="0.1" MultiplyByMaxVitality="false"/>
+        </StatusEffect>
+        <StatusEffect type="OnSuccess" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+          <Affliction identifier="stun" amount="0.1" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </MeleeWeapon>
+      <Projectile characterusable="false" launchimpulse="18.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
+    </Item>
+    <!-- 突变霉菌溶剂 -->
+    <Item name="突变霉菌溶液" identifier="cdungalpluspotion" description="在活体菌床下孕育出的突变霉菌" category="Medical" maxstacksize="36" Tags="smallitem,chem,medical,syringe" allowasextracargo="true" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <!-- 分解台分解[待定] -->
+      <Deconstruct time="10">
+        <Item identifier="sulphuricacid" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/content/png/cdMedicines2.png" sourcerect="261,4,35,67" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/png/cdMedicines2.png" sourcerect="261,4,35,67" depth="0.6" origin="0.5,0.5" />
+      <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+      <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+        <RequiredSkill identifier="medical" level="60" />
+        <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" interval="0.0" delay="0.0" setvalue="true" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <Affliction identifier="insideacidburn" amount="150" /><!--溶解-->
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" interval="0.0" delay="0.0" setvalue="true" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <Affliction identifier="insideacidburn" amount="150" /><!--溶解-->
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" interval="0.0" delay="0.0" setvalue="false" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌-->
+          <Affliction identifier="cdungalinfectionsplus" strength="5" probability="1" MultiplyByMaxVitality="false"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" interval="0.0" delay="0.0" setvalue="false" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌-->
+          <Affliction identifier="cdungalinfectionsplus" strength="5" probability="1" MultiplyByMaxVitality="false"/>
+        </StatusEffect>
+        <StatusEffect type="OnSuccess" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+          <Affliction identifier="stun" amount="0.1" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </MeleeWeapon>
+      <Projectile characterusable="false" launchimpulse="18.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
+    </Item>
+    <!-- 霉菌诱变剂 -->
+    <Item name="霉菌诱变剂" identifier="cdungalchangepotion" description="一定程度上改变霉菌的性状" category="Medical" maxstacksize="36" Tags="smallitem,chem,medical,syringe" allowasextracargo="true" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <!-- 加工台合成[待定] -->
+      <Fabricate suitablefabricators="medicalfabricator" amount="1" requiredtime="5">
+        <RequiredSkill identifier="medical" level="80" />
+        <RequiredItem identifier="alienblood" count="1" />
+        <RequiredItem identifier="incendium" count="1" />
+      </Fabricate>
+      <!-- 分解台分解[待定] -->
+      <Deconstruct time="10">
+        <Item identifier="sulphuricacid" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/content/png/cdMedicines2.png" sourcerect="261,4,35,67" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/png/cdMedicines2.png" sourcerect="261,4,35,67" depth="0.6" origin="0.5,0.5" />
+      <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+      <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+        <RequiredSkill identifier="medical" level="60" />
+        <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" interval="0.0" delay="0.0" setvalue="false" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <Affliction identifier="insideacidburn" amount="50" /><!--溶解-->
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" interval="0.0" delay="0.0" setvalue="false" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <Affliction identifier="insideacidburn" amount="50" /><!--溶解-->
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="false" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌-->
+          <Conditional cdungalinfectionsplus="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusA1" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+          <Affliction identifier="cdungalinfectionsplusB1" strength="1" probability="0.5" MultiplyByMaxVitality="true"/>
+          <Affliction identifier="cdungalinfectionsplusC1" strength="1" probability="0.33" MultiplyByMaxVitality="true"/>
+          <Affliction identifier="cdungalinfectionsplusD1" strength="1" probability="0.25" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="false" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌-->
+          <Conditional cdungalinfectionsplus="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusA1" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+          <Affliction identifier="cdungalinfectionsplusB1" strength="1" probability="0.5" MultiplyByMaxVitality="true"/>
+          <Affliction identifier="cdungalinfectionsplusC1" strength="1" probability="0.33" MultiplyByMaxVitality="true"/>
+          <Affliction identifier="cdungalinfectionsplusD1" strength="1" probability="0.25" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="false" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--霉菌-->
+          <Conditional cdungalinfections="gt 0" />
+          <Affliction identifier="cdungalinfections" strength="5" probability="1" MultiplyByMaxVitality="false"/>
+          <Affliction identifier="cdungalinfections" strength="10" probability="0.5" MultiplyByMaxVitality="false"/>
+          <Affliction identifier="cdungalinfections" strength="20" probability="0.2" MultiplyByMaxVitality="false"/>
+          <Affliction identifier="cdungalinfections" strength="50" probability="0.1" MultiplyByMaxVitality="false"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="false" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--霉菌-->
+          <Conditional cdungalinfections="gt 0" />
+          <Affliction identifier="cdungalinfections" strength="5" probability="1" MultiplyByMaxVitality="false"/>
+          <Affliction identifier="cdungalinfections" strength="10" probability="0.5" MultiplyByMaxVitality="false"/>
+          <Affliction identifier="cdungalinfections" strength="20" probability="0.2" MultiplyByMaxVitality="false"/>
+          <Affliction identifier="cdungalinfections" strength="50" probability="0.1" MultiplyByMaxVitality="false"/>
+        </StatusEffect>
+        <StatusEffect type="OnSuccess" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+          <Affliction identifier="stun" amount="0.1" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </MeleeWeapon>
+      <Projectile characterusable="false" launchimpulse="18.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
+    </Item>
+    <!-- 霉菌稳定剂 -->
+    <Item name="霉菌稳定剂" identifier="cdungalreducepotion" description="抑制过于活跃的共生霉菌" category="Medical" maxstacksize="36" Tags="smallitem,chem,medical,syringe" allowasextracargo="true" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <!--捞-->
+      <PreferredContainer secondary="wrecktoxcab,abandonedtoxcab,piratetoxcab" spawnprobability="0.03" />
+      <PreferredContainer primary="toxcab" secondary="toxcontainer" spawnprobability="0.03"/>
+      <!-- 加工台合成[待定] -->
+      <Fabricate suitablefabricators="medicalfabricator" amount="1" requiredtime="5">
+        <RequiredSkill identifier="medical" level="80" />
+        <RequiredItem identifier="alienblood" count="1" />
+        <RequiredItem identifier="incendium" count="1" />
+        <RequiredItem identifier="cdungalpluspotion" count="1" />
+      </Fabricate>
+      <!-- 分解台分解[待定] -->
+      <Deconstruct time="10">
+        <Item identifier="sulphuricacid" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/content/png/cdMedicines2.png" sourcerect="261,4,35,67" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/png/cdMedicines2.png" sourcerect="261,4,35,67" depth="0.6" origin="0.5,0.5" />
+      <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+      <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+        <RequiredSkill identifier="medical" level="60" />
+        <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" interval="0.0" delay="0.0" setvalue="false" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <Affliction identifier="insideacidburn" amount="50" /><!--溶解-->
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" interval="0.0" delay="0.0" setvalue="false" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <Affliction identifier="insideacidburn" amount="50" /><!--溶解-->
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌-->
+          <Conditional cdungalinfectionsplus="gt 0" />
+          <Affliction identifier="cdungalinfectionsplus" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌-->
+          <Conditional cdungalinfectionsplus="gt 0" />
+          <Affliction identifier="cdungalinfectionsplus" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--霉菌-->
+          <Conditional cdungalinfections="gt 0" />
+          <Affliction identifier="cdungalinfections" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--霉菌-->
+          <Conditional cdungalinfections="gt 0" />
+          <Affliction identifier="cdungalinfections" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌A1-->
+          <Conditional cdungalinfectionsplusA1="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusA1" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌A1-->
+          <Conditional cdungalinfectionsplusA1="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusA1" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌A2-->
+          <Conditional cdungalinfectionsplusA2="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusA2" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌A2-->
+          <Conditional cdungalinfectionsplusA2="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusA2" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌A3-->
+          <Conditional cdungalinfectionsplusA3="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusA3" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌A3-->
+          <Conditional cdungalinfectionsplusA3="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusA3" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌B1-->
+          <Conditional cdungalinfectionsplusB1="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusB1" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌B1-->
+          <Conditional cdungalinfectionsplusB1="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusB1" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌B2-->
+          <Conditional cdungalinfectionsplusB2="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusB2" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌B2-->
+          <Conditional cdungalinfectionsplusB2="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusB2" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌B3-->
+          <Conditional cdungalinfectionsplusB3="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusB3" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌B3-->
+          <Conditional cdungalinfectionsplusB3="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusB3" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌A1-->
+          <Conditional cdungalinfectionsplusC1="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusC1" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌A1-->
+          <Conditional cdungalinfectionsplusC1="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusC1" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌A2-->
+          <Conditional cdungalinfectionsplusC2="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusC2" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌A2-->
+          <Conditional cdungalinfectionsplusC2="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusC2" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌A3-->
+          <Conditional cdungalinfectionsplusC3="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusC3" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌A3-->
+          <Conditional cdungalinfectionsplusC3="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusC3" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌A1-->
+          <Conditional cdungalinfectionsplusD1="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusD1" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌A1-->
+          <Conditional cdungalinfectionsplusD1="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusD1" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌A2-->
+          <Conditional cdungalinfectionsplusD2="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusD2" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌A2-->
+          <Conditional cdungalinfectionsplusD2="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusD2" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌A3-->
+          <Conditional cdungalinfectionsplusD3="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusD3" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" ConditionalComparison="And" interval="0.0" delay="0.0" setvalue="True" disabledeltatime="true">
+          <Conditional entitytype="e Character" /><!--突变霉菌A3-->
+          <Conditional cdungalinfectionsplusD3="gt 0" />
+          <Affliction identifier="cdungalinfectionsplusD3" strength="1" probability="1" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect type="OnSuccess" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+          <Affliction identifier="stun" amount="0.1" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </MeleeWeapon>
+      <Projectile characterusable="false" launchimpulse="18.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
+    </Item>
+    <!-- 兴奋剂 -->
+    <Item name="M-D04中枢神经兴奋剂" identifier="cdstimulantpotion" description="短时间内提高你的身体机能，极易上瘾" category="Medical" maxstacksize="8" Tags="smallitem,chem,medical,syringe" allowasextracargo="true" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <!--捞-->
+      <PreferredContainer primary="medcab" secondary="medcontainer" spawnprobability="0.1"/>
+      <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" amount="1" spawnprobability="0.1" />
+      <PreferredContainer secondary="outpostmedcab" amount="1" spawnprobability="0.1" />
+      <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.05" />
+      <!-- 加工台合成[待定] -->
+      <Fabricate suitablefabricators="medicalfabricator" amount="1" requiredtime="5">
+        <RequiredSkill identifier="medical" level="80" />
+        <RequiredItem identifier="adrenaline" count="3" />
+        <RequiredItem identifier="combatstimulantsyringe" count="1" />
+        <RequiredItem identifier="hyperzine" count="2" />
+        <RequiredItem identifier="meth" count="2" />
+      </Fabricate>
+      <!-- 分解台分解[待定] -->
+      <Deconstruct time="10">
+        <RequiredItem identifier="meth" count="1" />
+        <RequiredItem identifier="combatstimulantsyringe" count="1" />
+        <RequiredItem identifier="hyperzine" count="1" />
+        <RequiredItem identifier="adrenaline" count="1" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/content/png/cdMedicines.png" sourcerect="448,190,64,64" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/png/cdMedicines.png" sourcerect="113,211,35,67" depth="0.6" origin="0.5,0.5" />
+      <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+      <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+        <RequiredSkill identifier="medical" level="50" />
+        <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" interval="0.0" delay="0.0" setvalue="false" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <Affliction identifier="cdstimulant" strength="1200" probability="1" MultiplyByMaxVitality="false"/><!--兴奋剂-->
+          <Affliction identifier="cdwithdrawal" strength="50" probability="1" MultiplyByMaxVitality="true"/><!--戒断-->
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" interval="0.0" delay="0.0" setvalue="false" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <Affliction identifier="cdstimulant" strength="300" probability="1" MultiplyByMaxVitality="false"/><!--兴奋剂-->
+          <Affliction identifier="cdwithdrawal" strength="100" probability="1" MultiplyByMaxVitality="true"/><!--戒断-->
+        </StatusEffect>
+        <StatusEffect type="OnSuccess" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+          <Affliction identifier="stun" amount="0.1" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </MeleeWeapon>
+      <SkillRequirementHint identifier="medical" level="50" />
+      <Projectile characterusable="false" launchimpulse="18.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
+    </Item>
+    <!--d03-->
+    <Item name="M-D03肉体强化剂" identifier="cd03potion" description="短时间内提高你的肉体强度，但会造成不可逆的损伤" category="Medical" maxstacksize="8" Tags="smallitem,chem,syringe" allowasextracargo="true" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <!--捞-->
+      <PreferredContainer primary="medcab" secondary="medcontainer" spawnprobability="0.1"/>
+      <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" amount="1" spawnprobability="0.1" />
+      <PreferredContainer secondary="outpostmedcab" amount="1" spawnprobability="0.1" />
+      <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.05" />
+      <!-- 加工台合成[待定] -->
+      <Fabricate suitablefabricators="medicalfabricator" amount="1" requiredtime="5">
+        <RequiredSkill identifier="medical" level="80" />
+        <RequiredItem identifier="steroids" count="3" />
+        <RequiredItem identifier="deusizine" count="1" />
+        <RequiredItem identifier="liquidoxygenite" count="2" />
+      </Fabricate>
+      <!-- 分解台分解[待定] -->
+      <Deconstruct time="10">
+        <RequiredItem identifier="deusizine" count="1" />
+        <RequiredItem identifier="liquidoxygenite" count="1" />
+        <RequiredItem identifier="steroids" count="1" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/content/png/cdMedicines.png" sourcerect="448,126,64,64" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/png/cdMedicines.png" sourcerect="152,211,35,67" depth="0.6" origin="0.5,0.5" />
+      <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+      <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+        <RequiredSkill identifier="medical" level="50" />
+        <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" interval="0.0" delay="0.0" setvalue="false" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <Affliction identifier="cdD03stimulant" strength="2400" probability="1" MultiplyByMaxVitality="false"/><!--兴奋剂-->
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" interval="0.0" delay="0.0" setvalue="false" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <Affliction identifier="cdD03stimulant" strength="2400" probability="1" MultiplyByMaxVitality="false"/><!--兴奋剂-->
+        </StatusEffect>
+        <StatusEffect type="OnSuccess" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+          <Affliction identifier="stun" amount="0.1" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </MeleeWeapon>
+      <SkillRequirementHint identifier="medical" level="50" />
+      <Projectile characterusable="false" launchimpulse="18.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
+    </Item>
+    <!-- 魔方强化药 -->
+    <Item name="哑药" identifier="cdsilentmed" description="嘘。" category="Medical" maxstacksize="36" Tags="smallitem,chem,medical,syringe" allowasextracargo="true" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <!-- 加工台合成[待定] -->
+      <!-- 分解台分解[待定] -->
+      <Deconstruct time="10">
+        <Item identifier="cdcuberemover" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/content/png/Medicines.png" sourcerect="260,4,35,67" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/png/Medicines.png" sourcerect="260,4,35,67" depth="0.6" origin="0.5,0.5" />
+      <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+      <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+        <RequiredSkill identifier="medical" level="60" />
+        <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" interval="0.0" delay="0.0" setvalue="true" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <Affliction identifier="cdsilentaff" amount="100" />
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" interval="0.0" delay="0.0" setvalue="true" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <Affliction identifier="cdsilentaff" amount="100" />
+        </StatusEffect>
+        <StatusEffect type="OnSuccess" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+          <Affliction identifier="stun" amount="0.1" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </MeleeWeapon>
+      <Projectile characterusable="false" launchimpulse="18.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
+    </Item>
+    <!-- 奇迹药水药 -->
+    <Item name="奇迹药剂" identifier="cdwonderpotion" description="去创造奇迹吧。" category="Medical" maxstacksize="36" Tags="smallitem,chem,medical,syringe" allowasextracargo="true" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <!-- 加工台合成[待定] -->
+      <!-- 分解台分解[待定] -->
+      <Deconstruct time="10">
+        <Item identifier="cdwonderremover" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/content/png/Medicines.png" sourcerect="260,4,35,67" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/png/Medicines.png" sourcerect="260,4,35,67" depth="0.6" origin="0.5,0.5" />
+      <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+      <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+        <RequiredSkill identifier="medical" level="60" />
+        <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" interval="0.0" delay="0.0" setvalue="true" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <Affliction identifier="cdmiracleworker" amount="100" /><!--奇迹-->
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" interval="0.0" delay="0.0" setvalue="true" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <Affliction identifier="cdmiracleworker" amount="100" /><!--奇迹-->
+        </StatusEffect>
+        <StatusEffect type="OnSuccess" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+          <Affliction identifier="stun" amount="0.1" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </MeleeWeapon>
+      <Projectile characterusable="false" launchimpulse="18.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
+    </Item>
+    <!-- 魔方去除药 -->
+    <Item name="奇迹清除剂" identifier="cdwonderremover" description="已经...什么都守护不了了。" category="Medical" maxstacksize="36" Tags="smallitem,chem,medical,syringe" allowasextracargo="true" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <!-- 加工台合成[待定] -->
+      <!-- 分解台分解[待定] -->
+      <Deconstruct time="10">
+        <Item identifier="cdwonderpotion" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/content/png/Medicines.png" sourcerect="223,73,35,67" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/png/Medicines.png" sourcerect="223,73,35,67" depth="0.6" origin="0.5,0.5" />
+      <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+      <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+        <RequiredSkill identifier="medical" level="60" />
+        <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" interval="0.0" delay="0.0" setvalue="true" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <ReduceAffliction identifier="cdmiracleworker" amount="1000" />
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" interval="0.0" delay="0.0" setvalue="true" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <ReduceAffliction identifier="cdmiracleworker" amount="1000" />
+        </StatusEffect>
+        <StatusEffect type="OnSuccess" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+          <Affliction identifier="stun" amount="0.1" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </MeleeWeapon>
+      <Projectile characterusable="false" launchimpulse="18.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
+    </Item>
+
+    <!-- 魔方强化药 -->
+    <Item name="魔方药剂" identifier="cdcubepotion" description="离超人只差一步。" category="Medical" maxstacksize="36" Tags="smallitem,chem,medical,syringe" allowasextracargo="true" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <!-- 加工台合成[待定] -->
+      <!-- 分解台分解[待定] -->
+      <Deconstruct time="10">
+        <Item identifier="cdcuberemover" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/content/png/Medicines.png" sourcerect="260,4,35,67" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/png/Medicines.png" sourcerect="260,4,35,67" depth="0.6" origin="0.5,0.5" />
+      <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+      <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+        <RequiredSkill identifier="medical" level="60" />
+        <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" interval="0.0" delay="0.0" setvalue="true" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <Affliction identifier="cdEnhancementbuff" amount="100" /><!--魔方强化-->
+          <Affliction identifier="cdEnhancementbuff1" amount="100" /><!--big j-->
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" interval="0.0" delay="0.0" setvalue="true" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <Affliction identifier="cdEnhancementbuff" amount="100" /><!--魔方强化-->
+          <Affliction identifier="cdEnhancementbuff1" amount="100" /><!--big j-->
+        </StatusEffect>
+        <StatusEffect type="OnSuccess" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+          <Affliction identifier="stun" amount="0.1" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </MeleeWeapon>
+      <Projectile characterusable="false" launchimpulse="18.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
+    </Item>
+    <!-- 魔方去除药 -->
+    <Item name="魔方清除剂" identifier="cdcuberemover" description="并非适格者" category="Medical" maxstacksize="36" Tags="smallitem,chem,medical,syringe" allowasextracargo="true" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <!-- 加工台合成[待定] -->
+      <!-- 分解台分解[待定] -->
+      <Deconstruct time="10">
+        <Item identifier="cdcubepotion" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/content/png/Medicines.png" sourcerect="223,73,35,67" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/png/Medicines.png" sourcerect="223,73,35,67" depth="0.6" origin="0.5,0.5" />
+      <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+      <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+        <RequiredSkill identifier="medical" level="60" />
+        <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" interval="0.0" delay="0.0" setvalue="true" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <ReduceAffliction identifier="cdEnhancementbuff" amount="1000" />
+          <ReduceAffliction identifier="cdEnhancementbuff1" amount="1000" />
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" interval="0.0" delay="0.0" setvalue="true" disabledeltatime="true">
+          <Conditional entitytype="e Character" />
+          <ReduceAffliction identifier="cdEnhancementbuff" amount="1000" />
+          <ReduceAffliction identifier="cdEnhancementbuff1" amount="1000" />
+        </StatusEffect>
+        <StatusEffect type="OnSuccess" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+          <Affliction identifier="stun" amount="0.1" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </MeleeWeapon>
+      <Projectile characterusable="false" launchimpulse="18.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
+    </Item>
+    <!-- 真复活神药 -->
+    <Item name="上帝之手" identifier="cdtruerevivemed" description="" category="Medical" maxstacksize="36" Tags="smallitem,chem,medical,syringe" allowasextracargo="true" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <!-- 加工台合成[待定] -->
+      <!-- 分解台分解[待定] -->
+      <Deconstruct time="10">
+        <Item identifier="physicorium" amount="1" />
+        <Item identifier="fulgurium" amount="1" />
+        <Item identifier="dementonite" amount="1" />
+        <Item identifier="incendium" amount="1" />
+        <Item identifier="sulphuriteshard" amount="1" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/content/png/Medicines.png" sourcerect="5,379,35,67" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/png/Medicines.png" sourcerect="5,379,35,67" depth="0.6" origin="0.5,0.5" />
+      <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+      <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+        <RequiredSkill identifier="medical" level="60" />
+        <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" interval="0.0" delay="0" setvalue="true" disabledeltatime="true" isdead="false">
+          <Conditional entitytype="e Character" />
+          <LuaHook name="cdrevive.OnUse" />
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" interval="0.0" delay="0" setvalue="true" disabledeltatime="true" isdead="false">
+          <Conditional entitytype="e Character" />
+          <LuaHook name="cdrevive.OnUse" />
+        </StatusEffect>
+        <StatusEffect type="OnSuccess" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+          <Affliction identifier="stun" amount="0.1" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </MeleeWeapon>
+      <Projectile characterusable="false" launchimpulse="18.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
+    </Item>
+    <!-- 超级恢复药 -->
+    <Item name="上帝之视" identifier="cdhealmed" description="" category="Medical" maxstacksize="36" Tags="smallitem,chem,medical,syringe" allowasextracargo="true" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <!-- 加工台合成[待定] -->
+      <!-- 分解台分解[待定] -->
+      <Deconstruct time="10">
+        <Item identifier="physicorium" amount="1" />
+        <Item identifier="fulgurium" amount="1" />
+        <Item identifier="dementonite" amount="1" />
+        <Item identifier="incendium" amount="1" />
+        <Item identifier="sulphuriteshard" amount="1" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/content/png/Medicines.png" sourcerect="5,379,35,67" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/png/Medicines.png" sourcerect="5,379,35,67" depth="0.6" origin="0.5,0.5" />
+      <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+      <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+        <RequiredSkill identifier="medical" level="60" />
+        <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" interval="0.0" delay="0" setvalue="true" disabledeltatime="true" isdead="false">
+          <Conditional entitytype="e Character" />
+          <LuaHook name="cdallheal.OnUse" />
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget" interval="0.0" delay="0" setvalue="true" disabledeltatime="true" isdead="false">
+          <Conditional entitytype="e Character" />
+          <LuaHook name="cdallheal.OnUse" />
+        </StatusEffect>
+        <StatusEffect type="OnSuccess" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+          <Affliction identifier="stun" amount="0.1" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </MeleeWeapon>
+      <Projectile characterusable="false" launchimpulse="18.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
+    </Item>
+    <Item name="小丑能量棒" identifier="cddfcrazyproteinbar" category="Medical,Material" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="chemicalcrate" Tags="smallitem,medical" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light" description="是时候关掉游戏看看窗外了">
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+      <Fabricate suitablefabricators="medicalfabricator" requiredtime="30" amount="1">
+        <RequiredItem identifier="antipsychosis"/>
+        <RequiredItem identifier="deliriumine" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="0,768,64,64" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Medical/Medicines.png" sourcerect="285,452,30,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="35" height="65" density="10.1" />
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" characterusable="false" aimpos="32,15" holdangle="0" aimangle="90" aimable="false" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnSecondaryUse" target="This" Condition="-30.0">
+          <ParticleEmitter particle="brownchunks" AngleMin="80" AngleMax="100" DistanceMin="30" DistanceMax="45" VelocityMin="80" VelocityMax="90" ScaleMin="0.08" ScaleMax="0.1" EmitInterval="1.5" ParticleAmount="10" InitialDelay="0.2" CopyEntityAngle="True" ColorMultiplier="255,255,255,255" LifeTimeMultiplier="0.75" />
+        </StatusEffect>
+        <StatusEffect type="OnSecondaryUse" target="This">
+          <Conditional Condition="gte 99" />
+          <Sound file="Content/Items/Medical/ITEM_proteinBarOpen.ogg" range="250" />
+        </StatusEffect>
+        <StatusEffect type="OnSecondaryUse" target="This">
+          <Conditional Condition="lt 95" />
+          <Sound file="Content/Items/Medical/ITEM_eatingLoop.ogg" range="250" loop="true" />
+        </StatusEffect>
+        <StatusEffect type="OnSecondaryUse" target="This,Character" disabledeltatime="true">
+          <Conditional Condition="lte 1" />
+          <Use/>
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" Condition="-100.0" setvalue="true">
+          <Conditional Condition="gt 1" />
+          <Sound file="Content/Items/Medical/ITEM_eatingBiteQuick.ogg" range="250" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="UseTarget" stackable="false">
+          <Affliction identifier="cddfpsychoclown" />
+        </StatusEffect> 
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+    </Item>
+    <Item name="“灰熊”医疗包" identifier="dfmedicpkge" category="Medical" scale="0.1" Tags="smallitem,medical" maxstacksize="8" maxstacksizecharacterinventory="1" MaxStackSizeHoldableOrWearableInventory="1" cargocontaineridentifier="mediccrate" description="邪恶的沙皇依旧残酷统治着诺文斯克地区，画皮圣徒会决定使用神秘绿色卡片入侵无菌实验室窃取沙俄帝国的医学知识。现在你看到的就是在那边名为“灰熊”的医疗包，使用缓慢但是可以修复大量损伤。画皮圣徒会实验室生产发售">
+      <PreferredContainer secondary="wreckmedcab,abandonedmedcab,piratemedcab" amount="1" spawnprobability="0.1" />
+      <PreferredContainer secondary="abandonedcrewcab,piratecrewcab" minamount="1" maxamount="2" spawnprobability="0.15" />
+      <PreferredContainer primary="crewcab"/>
+      <Fabricate suitablefabricators="vendingmachine" requiredtime="1" requiredmoney="1000" fabricationlimitmin="5" fabricationlimitmax="10"/>
+      <InventoryIcon texture="%ModDir%/content/png/medic.png" sourcerect="42,90,427,377" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/png/medic.png" sourcerect="42,90,427,377" depth="0.6" origin="0.5,0.5"/>
+      <Body width="35" height="150" density="10.1" />
+      <Fabricate suitablefabricators="medicalfabricator" requiredtime="30" amount="1">
+        <RequiredItem identifier="antibleeding3" amount="3"/>
+        <RequiredItem identifier="antidama2" amount="2"/>
+        <RequiredItem identifier="antibloodloss2" />
+        <RequiredItem identifier="deusizine"  amount="2"/>
+      </Fabricate>
+        <Deconstruct time="10">
+      </Deconstruct>
+      <Fabricate suitablefabricators="medicalfabricator" displayname="recycleitem" requiredtime="8">
+        <RequiredItem identifier="antibleeding1" amount="5"/>
+        <RequiredItem identifier="antidama1" amount="3"/>
+        <RequiredItem identifier="dfmedicpkge" mincondition="0.0" maxcondition="1.0" usecondition="false" />
+      </Fabricate>
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" characterusable="false" aimpos="32,15" holdangle="0" aimangle="90" aimable="false" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnSecondaryUse" target="This" Condition="-0.5">
+        </StatusEffect>
+        <StatusEffect type="OnSecondaryUse" target="This">
+          <Sound file="Content/Items/Medical/Bandage2.ogg" range="250" loop="true" />
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSecondaryUse" target="UseTarget">
+          <Affliction identifier="dfheal2" amount="5"/>
+        </StatusEffect>
+      </Holdable>
+    </Item>
+    <Item name="标准医疗包" identifier="cdmedicalkits" description="源自地球联军配备的军用标准医疗包，内含一套完整的急救药品，可以用于处理大部分伤势" subcategory="CD" category="Medical" Tags="smallitem,medical"  maxstacksize="8" maxstacksizecharacterinventory="3" useinhealthinterface="true" cargocontaineridentifier="mediccrate" scale="0.04" impactsoundtag="impact_soft" RequireAimToUse="True">
+      <Upgrade gameversion="0.10.0.0" scale="0.25" />
+      <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.1" notcampaign="true" />
+      <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.1" />
+      <PreferredContainer secondary="wreckmedcab,abandonedmedcab" minamount="1" maxamount="1" spawnprobability="0.1" />
+      <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="1" spawnprobability="0.1" />
+      <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.2" />
+      <PreferredContainer primary="medcab" secondary="medcontainer" />
+      <Price baseprice="800" minavailable="5" maxavailable="5">
+        <Price storeidentifier="merchantoutpost" />
+        <Price storeidentifier="merchantcity" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" />
+        <Price storeidentifier="merchantmine" />
+        <Price storeidentifier="merchantmedical" multiplier="0.9" />
+      </Price>
+      <Fabricate suitablefabricators="medicalfabricator" requiredtime="10" amount="1">
+        <RequiredSkill identifier="medical" level="30" />
+        <RequiredItem identifier="organicfiber" amount="4" />
+        <RequiredItem identifier="opium" amount="3" />
+        <RequiredItem identifier="stabilozine" amount="3" />
+        <RequiredItem identifier="antibloodloss1" amount="2" />
+        <RequiredItem identifier="paralyxis" amount="1" />
+      </Fabricate>
+      <Deconstruct time="2" />
+      <!-- AI的使用优先级 -->
+      <SuitableTreatment type="damage" suitability="30" />
+      <SuitableTreatment type="burn" suitability="30" />
+      <SuitableTreatment identifier="bleeding" suitability="10" />
+      <SuitableTreatment identifier="bloodloss" suitability="10" />
+      <SuitableTreatment identifier="triton_9C" suitability="100" />
+      <SuitableTreatment identifier="triton_burn" suitability="100" />
+      <InventoryIcon texture="%ModDir%/content/png/医疗包.png" sourcerect="0,0,1100,900" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/png/医疗包.png" sourcerect="0,0,1100,900" depth="0.6" origin="0.5,0.5" />
+      <Body width="1100" height="900" density="10.2" waterdragcoefficient="1" />
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect">
+        <RequiredSkill identifier="medical" level="55" />
+        <!-- 使用减少耐久和音效 -->
+        <StatusEffect statuseffecttags="medical" type="OnUse" Condition="-33.0" target="This" disabledeltatime="true">
+          <Sound file="Content/Items/Medical/Bandage1.ogg" range="500" />
+          <Sound file="Content/Items/Medical/Bandage2.ogg" range="500" />
+        </StatusEffect>
+        <!-- 使用成功的效果，物理伤害、烧伤、流血 -->
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget, This" duration="8">
+          <ReduceAffliction type="damage" amount="8" />
+          <ReduceAffliction type="burn" amount="8" />
+          <ReduceAffliction type="bleeding" amount="8" />
+          <ReduceAffliction type="bloodloss" amount="8" />
+          <Affliction identifier="cdreducets" strength="4" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <!-- 使用失败的效果-->
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget, This" duration="8">
+          <ReduceAffliction type="damage" amount="2.5" />
+          <ReduceAffliction type="burn" amount="2.5" />
+          <ReduceAffliction type="bleeding" amount="2.5" />
+          <ReduceAffliction type="bloodloss" amount="2.5" />
+          <Affliction identifier="cdreducets" strength="3" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <!-- 无耐久移除 -->
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+      <!-- 需要技能等级 -->
+      <SkillRequirementHint identifier="medical" level="55" />
+    </Item>
+    <!-- 人机药水 -->
+    <Item name="人机强化剂" identifier="cdrobotmed" category="Medical" maxstacksize="36" Tags="smallitem,chem,medical,syringe" allowasextracargo="true" description="救救在高难环境下痛苦挣扎的可怜人机，现在他们可以躺着挣扎了" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <!-- 加工台合成[待定] 
+      <Fabricate suitablefabricators="medicalfabricator" requiredtime="20">
+        <Item identifier="tormsdalereport" amount="1" />
+        <Item identifier="fulgurium" amount="5" />
+        <Item identifier="dementonite" amount="5" />
+        <Item identifier="incendium" amount="5" />
+        <Item identifier="sulphuriteshard" amount="5" />
+      </Fabricate>
+      
+      <Deconstruct time="10">
+        <Item identifier="cdgeneticmaterialGoblin" />
+      </Deconstruct>
+      -->
+      <InventoryIcon texture="%ModDir%/content/png/Medicines.png" sourcerect="448,256,64,64" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/png/Medicines.png" sourcerect="303,310,35,67" depth="0.6" origin="0.5,0.5" />
+      <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+      <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+        <RequiredSkill identifier="medical" level="60" />
+        <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" comparison="and">
+          <Conditional IsPlayer="false" />
+          <Conditional TeamID="Team1" />
+          <Conditional speciesname="human" />
+          <GiveTalentInfo talentidentifiers="cdnonthreatening1" />
+          <GiveTalentInfo talentidentifiers="cdunpressure" />
+          <GiveTalentInfo talentidentifiers="cdneverdie" />
+          <GiveTalentInfo talentidentifiers="cdnoinfection" />
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget"  comparison="and">
+          <Conditional IsPlayer="false" />
+          <Conditional TeamID="Team1" />
+          <Conditional speciesname="human" />
+          <GiveTalentInfo talentidentifiers="cdnonthreatening1" />
+          <GiveTalentInfo talentidentifiers="cdunpressure" />
+          <GiveTalentInfo talentidentifiers="cdneverdie" />
+          <GiveTalentInfo talentidentifiers="cdnoinfection" />
+        </StatusEffect>
+        <StatusEffect type="OnSuccess" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+          <Affliction identifier="stun" amount="0.1" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </MeleeWeapon>
+      <Projectile characterusable="false" launchimpulse="18.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
+    </Item>
+    <!-- 人机药水 -->
+    <Item name="防坠机药水" identifier="cdredblunttraumamed" category="Medical" maxstacksize="36" Tags="smallitem,chem,medical,syringe" allowasextracargo="true" description="孩子们我能活下来吗" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <!-- 加工台合成[待定] 
+      <Fabricate suitablefabricators="medicalfabricator" requiredtime="20">
+        <Item identifier="tormsdalereport" amount="1" />
+        <Item identifier="fulgurium" amount="5" />
+        <Item identifier="dementonite" amount="5" />
+        <Item identifier="incendium" amount="5" />
+        <Item identifier="sulphuriteshard" amount="5" />
+      </Fabricate>
+      
+      <Deconstruct time="10">
+        <Item identifier="cdgeneticmaterialGoblin" />
+      </Deconstruct>
+      -->
+      <InventoryIcon texture="%ModDir%/content/png/Medicines.png" sourcerect="448,256,64,64" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/png/Medicines.png" sourcerect="303,310,35,67" depth="0.6" origin="0.5,0.5" />
+      <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+      <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+        <RequiredSkill identifier="medical" level="60" />
+        <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget" comparison="and">
+          <Conditional speciesname="human" />
+          <GiveTalentInfo talentidentifiers="cdredblunttraumatalent" />
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget"  comparison="and">
+          <Conditional speciesname="human" />
+          <GiveTalentInfo talentidentifiers="cdredblunttraumatalent" />
+        </StatusEffect>
+        <StatusEffect type="OnSuccess" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/content/ogg/A1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+          <Affliction identifier="stun" amount="0.1" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </MeleeWeapon>
+      <Projectile characterusable="false" launchimpulse="18.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
+    </Item>
+    <Item name="惯用肢体修复包" identifier="cdarmmedicalkits" description="用于治愈受到严重损伤的四肢" subcategory="CD" category="Medical" Tags="smallitem,medical"  maxstacksize="8" maxstacksizecharacterinventory="3" useinhealthinterface="true" cargocontaineridentifier="mediccrate" scale="0.2" impactsoundtag="impact_soft" RequireAimToUse="True">
+      <Upgrade gameversion="0.10.0.0" scale="0.25" />
+      <PreferredContainer secondary="supplycab" minamount="1" maxamount="1" spawnprobability="0.1" notcampaign="true" />
+      <PreferredContainer secondary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.1" />
+      <PreferredContainer secondary="wreckmedcab,abandonedmedcab" minamount="1" maxamount="1" spawnprobability="0.1" />
+      <PreferredContainer secondary="outpostmedcab" minamount="1" maxamount="1" spawnprobability="0.1" />
+      <PreferredContainer secondary="outpostmedcompartment" amount="1" spawnprobability="0.2" />
+      <PreferredContainer primary="medcab" secondary="medcontainer" />
+      <!--贩卖机兑换 -->
+      <Fabricate suitablefabricators="vendingmachine" requiredtime="1" requiredmoney="1000" fabricationlimitmin="5" fabricationlimitmax="10" quality="0" />
+      <Price baseprice="1200" minavailable="3" maxavailable="3">
+        <Price storeidentifier="merchantoutpost" />
+        <Price storeidentifier="merchantcity" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" />
+        <Price storeidentifier="merchantmine" />
+        <Price storeidentifier="merchantmedical" multiplier="0.9" />
+      </Price>
+      <Fabricate suitablefabricators="medicalfabricator" requiredtime="10" amount="1">
+        <RequiredSkill identifier="medical" level="30" />
+        <RequiredItem identifier="antibleeding1" amount="8" />
+        <RequiredItem identifier="sulphuricacid" amount="3" />
+        <RequiredItem identifier="calcium" amount="3" />
+      </Fabricate>
+      <Deconstruct time="2" />
+      <!-- AI的使用优先级 -->
+      <SuitableTreatment identifier="cddroprighthandtagaff" suitability="100" />
+      <SuitableTreatment identifier="cddroplefthandtagaff" suitability="100" />
+      <SuitableTreatment identifier="cddroprightlegtagaff" suitability="100" />
+      <SuitableTreatment identifier="cddropleftlegtagaff" suitability="100" />
+      <InventoryIcon texture="%ModDir%/content/png/石膏绷带.png" sourcerect="85,0,219,176" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/png/石膏绷带.png" sourcerect="0,0,84,176" depth="0.6" origin="0.5,0.5" />
+      <Body width="84" height="176" density="10.2" waterdragcoefficient="1" />
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect">
+        <RequiredSkill identifier="medical" level="55" />
+        <!-- 使用减少耐久和音效 -->
+        <StatusEffect statuseffecttags="medical" type="OnUse" Condition="-34.0" target="This" disabledeltatime="true">
+          <Sound file="Content/Items/Medical/Bandage1.ogg" range="500" />
+          <Sound file="Content/Items/Medical/Bandage2.ogg" range="500" />
+        </StatusEffect>
+        <!-- 使用成功治愈目标位置 -->
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="This,Limb" targetLimbs="RightHand" duration="1">
+          <Affliction identifier="cdhealrighthandaff" strength="10" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="This,Limb" targetLimbs="LeftHand" duration="1">
+          <Affliction identifier="cdheallefthandaff" strength="10" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="This,Limb" targetLimbs="RightLeg" duration="1">
+          <Affliction identifier="cdhealrightlegaff" strength="10" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <StatusEffect statuseffecttags="medical" type="OnSuccess" target="This,Limb" targetLimbs="LeftLeg" duration="1">
+          <Affliction identifier="cdhealleftlegaff" strength="10" MultiplyByMaxVitality="true"/>
+        </StatusEffect>
+        <!-- 使用失败的效果-->
+        <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget, This" duration="1">
+        </StatusEffect>
+        <!-- 无耐久移除 -->
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+      <!-- 需要技能等级 -->
+      <SkillRequirementHint identifier="medical" level="60" />
+    </Item>
+  </Items>
+</Override>

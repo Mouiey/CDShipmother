@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <sounds>
+    <peanut_footstep file="%ModDir%/content/character/SCP173/Characters/173-Running1.ogg" range="400" />
+    <peanut_footstep file="%ModDir%/content/character/SCP173/Characters/173-Running2.ogg" range="400" />
+    <peanut_footstep file="%ModDir%/content/character/SCP173/Characters/173-Running3.ogg" range="400" />
+  </sounds>
+</Override>

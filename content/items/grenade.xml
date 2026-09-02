@@ -1,0 +1,349 @@
+<Items>
+<Item name="F-1手榴弹" identifier="dfgrenadef1" category="Weapon" maxstacksize="32" scale="0.085" maxstacksizecharacterinventory="8" cargocontaineridentifier="explosivecrate" tags="smallitem,weapon,explosive,demolitionsexpert,handgrenade" impactsoundtag="impact_metal_heavy" description="防御性破片手榴弹，爆炸伤害一般但是会散射致命的破片，使用时注意掩体。潜水鸭军工复合体生产发售">
+    <PreferredContainer primary="secarmcab" minamount="1" maxamount="3" spawnprobability="0.75" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab,piratearmcab" minamount="1" maxamount="2" spawnprobability="0.2" />
+    <PreferredContainer secondary="armcab" />
+    <Upgrade gameversion="0.9.3.0" />
+    <Price baseprice="150">
+        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.35" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="2" sold="false" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="3" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="3" />
+    </Price>
+    <Deconstruct time="10">
+        <Item identifier="iron" />
+        <Item identifier="sodium" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="15" amount="2">
+        <RequiredSkill identifier="weapons" level="50" />
+        <RequiredItem identifier="steel" amount="1" />
+        <RequiredItem identifier="c4block" amount="1" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%\content\png\F-1手榴弹.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\F-1手榴弹.png" sourcerect="0,0,512,512" depth="0.55" origin="0.5,0.5" />
+    <Body radius="20" height="10" density="30" />
+    <Throwable characterusable="false" slots="Any,RightHand,LeftHand" throwforce="7" aimpos="35,-10" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+            <SpawnItem identifier="f1shell" spawnposition="This" count="25" aimspread="360" rotationtype="Collider" rotation="15" />
+            <Explosion range="30.0" structuredamage="0" camerashake="15.0" camerashakerange="500" force="8.0" itemdamage="10" severlimbsprobability="0.15" decal="explosion" decalsize="0.3">
+                <Affliction identifier="explosiondamage" strength="25" />
+            </Explosion>
+            <sound file="Content/Items/Weapons/ExplosionLarge1.ogg" volume="2" selectionmode="Random" range="20000" />
+            <sound file="Content/Items/Weapons/ExplosionLarge2.ogg" volume="2" selectionmode="Random" range="20000" />
+            <ParticleEmitter particle="shrapnel" anglemin="0" anglemax="360" particleamount="60" velocitymin="150" velocitymax="2200" scalemin="1" scalemax="2.5" />
+            <RemoveItem />
+        </StatusEffect>
+        <StatusEffect type="OnUse" targettype="This" Condition="0" setvalue="true" comparison="OR">
+            <Conditional HasTag="detonator" targetcontainer="true" />
+            <Conditional HasTag="railgunammo" targetcontainer="true" />
+            <Conditional HasTag="depthchargeammo" targetcontainer="true" />
+        </StatusEffect>
+        <StatusEffect type="OnSecondaryUse" target="This" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional IsActive="false" targetitemcomponent="ItemComponent" />
+            <Use />
+        </StatusEffect>
+    </Throwable>
+    <ItemComponent IsActive="false" CharacterUsable="true">
+        <StatusEffect type="OnUse" targettype="This" IsActive="true" DontCleanUp="true" IsDangerous="true" comparison="AND" condition="-2.5">
+            <Conditional HasTag="neq detonator" targetcontainer="true" />
+            <Conditional HasTag="neq railgunammo" targetcontainer="true" />
+            <Conditional HasTag="neq depthchargeammo" targetcontainer="true" />
+            <Conditional IsActive="false" targetitemcomponent="ItemComponent" />
+            <ParticleEmitter particle="grenadepin" emitinterval="10" particleamount="1" anglemin="70" anglemax="100" velocitymin="120" velocitymax="220" copyentityangle="true" scalemin="0.6" scalemax="0.6" />
+            <ParticleEmitter particle="grenadelever" emitinterval="10" particleamount="1" anglemin="120" anglemax="210" velocitymin="120" velocitymax="220" copyentityangle="true" scalemin="0.6" scalemax="0.6" />
+            <Sound file="Content/Items/Weapons/pinpull.ogg" type="OnUse" range="800" />
+        </StatusEffect>
+        <StatusEffect type="OnActive" targettype="This" Condition="-22">
+            <ParticleEmitter particle="flamethrowersmoke" particlespersecond="30" anglemin="0" anglemax="0" velocitymin="90" velocitymax="140" copyentityangle="true" scalemin="0.15" scalemax="0.2" colormultiplier="255,255,255,180" />
+        </StatusEffect>
+    </ItemComponent>
+    <Quality>
+        <QualityStat stattype="ExplosionRadius" value="0.5" />
+        <QualityStat stattype="ExplosionDamage" value="0.5" />
+    </Quality>
+</Item>
+<Item name="f1shell" identifier="f1shell" category="Weapon" scale="0.095" sonarsize="1" hideinmenus="true">
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="143,414,113,9" depth="0.55" />
+    <Body width="180" height="12" density="22" />
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-50" handle1="-10,0" handle2="10,0" aimable="false" />
+    <Projectile characterusable="false" launchimpulse="40.0" impulsespread="0.15" damagedoors="true" DamageUser="true" ShowInWater="true" ShowInAir="true" maxtargetstohit="200">
+        <Attack structuredamage="0" itemdamage="300" severlimbsprobability="0.5" penetration="0">
+            <Affliction identifier="lacerations" strength="85" />
+            <Affliction identifier="bleeding" strength="125" />
+        </Attack>
+        <StatusEffect type="OnActive" target="This" lifetime="3.5">
+            <ParticleEmitter particle="ammotrailwater" copyentityangle="true" anglemin="-7" anglemax="7" particleamount="4" velocitymin="-15" velocitymax="-120" scalemin="0.6" scalemax="1.2" />
+        </StatusEffect>
+        <StatusEffect type="OnNotContained" target="This" stackable="false" delay="3.5">
+            <Remove />
+        </StatusEffect>
+<StatusEffect type="OnImpact" target="This" delay="0.085">
+<Remove/>
+</StatusEffect>
+    </Projectile>
+</Item>
+
+<Item name="M67手榴弹" identifier="dfgrenadem67" category="Weapon" maxstacksize="32" scale="0.085" maxstacksizecharacterinventory="8" cargocontaineridentifier="explosivecrate" tags="smallitem,weapon,explosive,demolitionsexpert,handgrenade" impactsoundtag="impact_metal_heavy" description="防御性破片手榴弹，爆炸伤害一般但是会散射致命的破片，使用时注意掩体。潜水鸭军工复合体生产发售">
+    <PreferredContainer primary="secarmcab" minamount="1" maxamount="3" spawnprobability="0.75" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab,piratearmcab" minamount="1" maxamount="2" spawnprobability="0.2" />
+    <PreferredContainer secondary="armcab" />
+    <Upgrade gameversion="0.9.3.0" />
+    <Price baseprice="150">
+        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.35" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="2" sold="false" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="3" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="3" />
+    </Price>
+    <Deconstruct time="10">
+        <Item identifier="iron" />
+        <Item identifier="sodium" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="15" amount="2">
+        <RequiredSkill identifier="weapons" level="50" />
+        <RequiredItem identifier="steel" amount="1" />
+        <RequiredItem identifier="c4block" amount="1" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%\content\png\M67手榴弹.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\M67手榴弹.png" sourcerect="0,0,512,512" depth="0.55" origin="0.5,0.5" />
+    <Body radius="20" height="10" density="30" />
+    <Throwable characterusable="false" slots="Any,RightHand,LeftHand" throwforce="7" aimpos="35,-10" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+            <SpawnItem identifier="dfm67shell" spawnposition="This" count="7" aimspread="360" rotationtype="Collider" rotation="60" />
+            <Explosion range="1250.0" structuredamage="0" camerashake="15.0" camerashakerange="500" force="8.0" itemdamage="10" severlimbsprobability="0.15" decal="explosion" decalsize="0.3">
+          <Affliction identifier="explosiondamage" strength="150" />
+          <Affliction identifier="bleeding" strength="25" />
+          <Affliction identifier="bleeding" strength="150" probability="0.1" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="1" />
+            </Explosion>
+            <sound file="Content/Items/Weapons/ExplosionLarge1.ogg" volume="2" selectionmode="Random" range="20000" />
+            <sound file="Content/Items/Weapons/ExplosionLarge2.ogg" volume="2" selectionmode="Random" range="20000" />
+            <ParticleEmitter particle="shrapnel" anglemin="0" anglemax="360" particleamount="60" velocitymin="150" velocitymax="2200" scalemin="1" scalemax="2.5" />
+            <RemoveItem />
+        </StatusEffect>
+        <StatusEffect type="OnUse" targettype="This" Condition="0" setvalue="true" comparison="OR">
+            <Conditional HasTag="detonator" targetcontainer="true" />
+            <Conditional HasTag="railgunammo" targetcontainer="true" />
+            <Conditional HasTag="depthchargeammo" targetcontainer="true" />
+        </StatusEffect>
+        <StatusEffect type="OnSecondaryUse" target="This" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional IsActive="false" targetitemcomponent="ItemComponent" />
+            <Use />
+        </StatusEffect>
+    </Throwable>
+    <ItemComponent IsActive="false" CharacterUsable="true">
+        <StatusEffect type="OnUse" targettype="This" IsActive="true" DontCleanUp="true" IsDangerous="true" comparison="AND" condition="-2.5">
+            <Conditional HasTag="neq detonator" targetcontainer="true" />
+            <Conditional HasTag="neq railgunammo" targetcontainer="true" />
+            <Conditional HasTag="neq depthchargeammo" targetcontainer="true" />
+            <Conditional IsActive="false" targetitemcomponent="ItemComponent" />
+            <ParticleEmitter particle="grenadepin" emitinterval="10" particleamount="1" anglemin="70" anglemax="100" velocitymin="120" velocitymax="220" copyentityangle="true" scalemin="0.6" scalemax="0.6" />
+            <ParticleEmitter particle="grenadelever" emitinterval="10" particleamount="1" anglemin="120" anglemax="210" velocitymin="120" velocitymax="220" copyentityangle="true" scalemin="0.6" scalemax="0.6" />
+            <Sound file="Content/Items/Weapons/pinpull.ogg" type="OnUse" range="800" />
+        </StatusEffect>
+        <StatusEffect type="OnActive" targettype="This" Condition="-22">
+            <ParticleEmitter particle="flamethrowersmoke" particlespersecond="30" anglemin="0" anglemax="0" velocitymin="90" velocitymax="140" copyentityangle="true" scalemin="0.15" scalemax="0.2" colormultiplier="255,255,255,180" />
+        </StatusEffect>
+    </ItemComponent>
+    <Quality>
+        <QualityStat stattype="ExplosionRadius" value="0.5" />
+        <QualityStat stattype="ExplosionDamage" value="0.5" />
+    </Quality>
+</Item>
+<Item name="dfm67shell" identifier="dfm67shell" category="Weapon" scale="0.095" sonarsize="1" hideinmenus="true">
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="143,414,113,9" depth="0.55" />
+    <Body width="180" height="12" density="22" />
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-50" handle1="-10,0" handle2="10,0" aimable="false" />
+    <Projectile characterusable="false" launchimpulse="40.0" impulsespread="0.15" damagedoors="true" DamageUser="true" ShowInWater="true" ShowInAir="true" maxtargetstohit="200">
+        <Attack structuredamage="0" itemdamage="300" severlimbsprobability="0.5" penetration="0">
+            <Affliction identifier="lacerations" strength="85" />
+            <Affliction identifier="bleeding" strength="125" />
+        </Attack>
+        <StatusEffect type="OnActive" target="This" lifetime="3.5">
+            <ParticleEmitter particle="ammotrailwater" copyentityangle="true" anglemin="-7" anglemax="7" particleamount="4" velocitymin="-15" velocitymax="-120" scalemin="0.6" scalemax="1.2" />
+        </StatusEffect>
+        <StatusEffect type="OnNotContained" target="This" stackable="false" delay="3.5">
+            <Remove />
+        </StatusEffect>
+<StatusEffect type="OnImpact" target="This" delay="0.1">
+<Remove/>
+</StatusEffect>
+    </Projectile>
+</Item>
+
+
+<Item name="VOG-17手榴弹" identifier="dfgrenadevog17" category="Weapon" maxstacksize="32" scale="0.085" maxstacksizecharacterinventory="8" cargocontaineridentifier="explosivecrate" tags="smallitem,weapon,explosive,demolitionsexpert,handgrenade" impactsoundtag="impact_metal_heavy" description="防御性破片手榴弹，爆炸伤害一般但是会散射致命的破片，使用时注意掩体。潜水鸭军工复合体生产发售">
+    <PreferredContainer primary="secarmcab" minamount="1" maxamount="3" spawnprobability="0.75" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab,piratearmcab" minamount="1" maxamount="2" spawnprobability="0.2" />
+    <PreferredContainer secondary="armcab" />
+    <Upgrade gameversion="0.9.3.0" />
+    <Price baseprice="150">
+        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.35" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="2" sold="false" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="3" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="3" />
+    </Price>
+    <Deconstruct time="10">
+        <Item identifier="iron" />
+        <Item identifier="sodium" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="15" amount="3">
+        <RequiredItem identifier="40mmgrenade" amount="1" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="3" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%\content\png\VOG-17.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\VOG-17.png" sourcerect="0,0,512,512" depth="0.55" origin="0.5,0.5" />
+    <Body radius="20" height="10" density="30" />
+    <Throwable characterusable="false" slots="Any,RightHand,LeftHand" throwforce="7" aimpos="35,-10" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+            <SpawnItem identifier="dfvog17shell" spawnposition="This" count="15" aimspread="360" rotationtype="Collider" rotation="60" />
+            <Explosion range="450.0" structuredamage="0" camerashake="15.0" camerashakerange="500" force="8.0" itemdamage="10" severlimbsprobability="0.15" decal="explosion" decalsize="0.3">
+          <Affliction identifier="explosiondamage" strength="150" />
+          <Affliction identifier="bleeding" strength="25" />
+          <Affliction identifier="bleeding" strength="150" probability="0.1" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="1" />
+            </Explosion>
+            <sound file="Content/Items/Weapons/ExplosionLarge1.ogg" volume="2" selectionmode="Random" range="20000" />
+            <sound file="Content/Items/Weapons/ExplosionLarge2.ogg" volume="2" selectionmode="Random" range="20000" />
+            <ParticleEmitter particle="shrapnel" anglemin="0" anglemax="360" particleamount="60" velocitymin="150" velocitymax="2200" scalemin="1" scalemax="2.5" />
+            <RemoveItem />
+        </StatusEffect>
+        <StatusEffect type="OnUse" targettype="This" Condition="0" setvalue="true" comparison="OR">
+            <Conditional HasTag="detonator" targetcontainer="true" />
+            <Conditional HasTag="railgunammo" targetcontainer="true" />
+            <Conditional HasTag="depthchargeammo" targetcontainer="true" />
+        </StatusEffect>
+        <StatusEffect type="OnSecondaryUse" target="This" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional IsActive="false" targetitemcomponent="ItemComponent" />
+            <Use />
+        </StatusEffect>
+    </Throwable>
+    <ItemComponent IsActive="false" CharacterUsable="true">
+        <StatusEffect type="OnUse" targettype="This" IsActive="true" DontCleanUp="true" IsDangerous="true" comparison="AND" condition="-2.5">
+            <Conditional HasTag="neq detonator" targetcontainer="true" />
+            <Conditional HasTag="neq railgunammo" targetcontainer="true" />
+            <Conditional HasTag="neq depthchargeammo" targetcontainer="true" />
+            <Conditional IsActive="false" targetitemcomponent="ItemComponent" />
+            <ParticleEmitter particle="grenadepin" emitinterval="10" particleamount="1" anglemin="70" anglemax="100" velocitymin="120" velocitymax="220" copyentityangle="true" scalemin="0.6" scalemax="0.6" />
+            <ParticleEmitter particle="grenadelever" emitinterval="10" particleamount="1" anglemin="120" anglemax="210" velocitymin="120" velocitymax="220" copyentityangle="true" scalemin="0.6" scalemax="0.6" />
+            <Sound file="Content/Items/Weapons/pinpull.ogg" type="OnUse" range="800" />
+        </StatusEffect>
+        <StatusEffect type="OnActive" targettype="This" Condition="-22">
+            <ParticleEmitter particle="flamethrowersmoke" particlespersecond="30" anglemin="0" anglemax="0" velocitymin="90" velocitymax="140" copyentityangle="true" scalemin="0.15" scalemax="0.2" colormultiplier="255,255,255,180" />
+        </StatusEffect>
+    </ItemComponent>
+    <Quality>
+        <QualityStat stattype="ExplosionRadius" value="0.5" />
+        <QualityStat stattype="ExplosionDamage" value="0.5" />
+    </Quality>
+</Item>
+<Item name="dfvog17shell" identifier="dfvog17shell" category="Weapon" scale="0.095" sonarsize="1" hideinmenus="true">
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="143,414,113,9" depth="0.55" />
+    <Body width="180" height="12" density="22" />
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-50" handle1="-10,0" handle2="10,0" aimable="false" />
+    <Projectile characterusable="false" launchimpulse="40.0" impulsespread="0.15" damagedoors="true" DamageUser="true" ShowInWater="true" ShowInAir="true" maxtargetstohit="200">
+        <Attack structuredamage="0" itemdamage="300" severlimbsprobability="0.5" penetration="0">
+            <Affliction identifier="lacerations" strength="25" />
+            <Affliction identifier="bleeding" strength="40" />
+        </Attack>
+        <StatusEffect type="OnActive" target="This" lifetime="3.5">
+            <ParticleEmitter particle="ammotrailwater" copyentityangle="true" anglemin="-7" anglemax="7" particleamount="4" velocitymin="-15" velocitymax="-120" scalemin="0.6" scalemax="1.2" />
+        </StatusEffect>
+        <StatusEffect type="OnNotContained" target="This" stackable="false" delay="3.5">
+            <Remove />
+        </StatusEffect>
+<StatusEffect type="OnImpact" target="This" delay="0.05">
+<Remove/>
+</StatusEffect>
+    </Projectile>
+</Item>
+
+<Item name="VOG-25手榴弹" identifier="dfgrenadevog25" category="Weapon" maxstacksize="32" scale="0.085" maxstacksizecharacterinventory="8" cargocontaineridentifier="explosivecrate" tags="smallitem,weapon,explosive,demolitionsexpert,handgrenade" impactsoundtag="impact_metal_heavy" description="防御性破片手榴弹，爆炸伤害一般但是会散射致命的破片，使用时注意掩体。潜水鸭军工复合体生产发售">
+    <PreferredContainer primary="secarmcab" minamount="1" maxamount="3" spawnprobability="0.75" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab,piratearmcab" minamount="1" maxamount="2" spawnprobability="0.2" />
+    <PreferredContainer secondary="armcab" />
+    <Upgrade gameversion="0.9.3.0" />
+    <Price baseprice="150">
+        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.35" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="2" sold="false" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="3" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="3" />
+    </Price>
+    <Deconstruct time="10">
+        <Item identifier="iron" />
+        <Item identifier="sodium" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="1" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="15" amount="3">
+        <RequiredSkill identifier="weapons" level="50" />
+        <RequiredItem identifier="iron" amount="1" />
+        <RequiredItem identifier="dfgrenadevog17" amount="3" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%\content\png\VOG-25.png" sourcerect="0,0,512,512" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%\content\png\VOG-25.png" sourcerect="0,0,512,512" depth="0.55" origin="0.5,0.5" />
+    <Body radius="20" height="10" density="30" />
+    <Throwable characterusable="false" slots="Any,RightHand,LeftHand" throwforce="7" aimpos="35,-10" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+            <SpawnItem identifier="dfvog17shell" spawnposition="This" count="17" aimspread="360" rotationtype="Collider" rotation="60" />
+            <Explosion range="225.0" structuredamage="0" camerashake="15.0" camerashakerange="500" force="8.0" itemdamage="10" severlimbsprobability="0.15" decal="explosion" decalsize="0.3">
+          <Affliction identifier="explosiondamage" strength="150" />
+          <Affliction identifier="bleeding" strength="25" />
+          <Affliction identifier="bleeding" strength="150" probability="0.1" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="1" />
+            </Explosion>
+            <sound file="Content/Items/Weapons/ExplosionLarge1.ogg" volume="2" selectionmode="Random" range="20000" />
+            <sound file="Content/Items/Weapons/ExplosionLarge2.ogg" volume="2" selectionmode="Random" range="20000" />
+            <ParticleEmitter particle="shrapnel" anglemin="0" anglemax="360" particleamount="60" velocitymin="150" velocitymax="2200" scalemin="1" scalemax="2.5" />
+            <RemoveItem />
+        </StatusEffect>
+        <StatusEffect type="OnUse" targettype="This" Condition="0" setvalue="true" comparison="OR">
+            <Conditional HasTag="detonator" targetcontainer="true" />
+            <Conditional HasTag="railgunammo" targetcontainer="true" />
+            <Conditional HasTag="depthchargeammo" targetcontainer="true" />
+        </StatusEffect>
+        <StatusEffect type="OnSecondaryUse" target="This" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional IsActive="false" targetitemcomponent="ItemComponent" />
+            <Use />
+        </StatusEffect>
+    </Throwable>
+    <ItemComponent IsActive="false" CharacterUsable="true">
+        <StatusEffect type="OnUse" targettype="This" IsActive="true" DontCleanUp="true" IsDangerous="true" comparison="AND" condition="-2.5">
+            <Conditional HasTag="neq detonator" targetcontainer="true" />
+            <Conditional HasTag="neq railgunammo" targetcontainer="true" />
+            <Conditional HasTag="neq depthchargeammo" targetcontainer="true" />
+            <Conditional IsActive="false" targetitemcomponent="ItemComponent" />
+            <ParticleEmitter particle="grenadepin" emitinterval="10" particleamount="1" anglemin="70" anglemax="100" velocitymin="120" velocitymax="220" copyentityangle="true" scalemin="0.6" scalemax="0.6" />
+            <ParticleEmitter particle="grenadelever" emitinterval="10" particleamount="1" anglemin="120" anglemax="210" velocitymin="120" velocitymax="220" copyentityangle="true" scalemin="0.6" scalemax="0.6" />
+            <Sound file="Content/Items/Weapons/pinpull.ogg" type="OnUse" range="800" />
+        </StatusEffect>
+        <StatusEffect type="OnActive" targettype="This" Condition="-22">
+            <ParticleEmitter particle="flamethrowersmoke" particlespersecond="30" anglemin="0" anglemax="0" velocitymin="90" velocitymax="140" copyentityangle="true" scalemin="0.15" scalemax="0.2" colormultiplier="255,255,255,180" />
+        </StatusEffect>
+    </ItemComponent>
+    <Quality>
+        <QualityStat stattype="ExplosionRadius" value="0.5" />
+        <QualityStat stattype="ExplosionDamage" value="0.5" />
+    </Quality>
+</Item>
+<Item name="dfgrenadevog25" identifier="dfgrenadevog25shell" category="Weapon" scale="0.1" sonarsize="1" hideinmenus="true">
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="143,414,113,9" depth="0.55" />
+    <Body width="180" height="12" density="22" />
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-50" handle1="-10,0" handle2="10,0" aimable="false" />
+    <Projectile characterusable="false" launchimpulse="40.0" impulsespread="0.15" damagedoors="true" DamageUser="true" ShowInWater="true" ShowInAir="true" maxtargetstohit="200">
+        <Attack structuredamage="0" itemdamage="300" severlimbsprobability="0.5" penetration="0">
+            <Affliction identifier="lacerations" strength="35" />
+            <Affliction identifier="bleeding" strength="55" />
+        </Attack>
+        <StatusEffect type="OnActive" target="This" lifetime="3.5">
+            <ParticleEmitter particle="ammotrailwater" copyentityangle="true" anglemin="-7" anglemax="7" particleamount="4" velocitymin="-15" velocitymax="-120" scalemin="0.6" scalemax="1.2" />
+        </StatusEffect>
+        <StatusEffect type="OnNotContained" target="This" stackable="false" delay="3.5">
+            <Remove />
+        </StatusEffect>
+<StatusEffect type="OnImpact" target="This" delay="0.075">
+<Remove/>
+</StatusEffect>
+    </Projectile>
+</Item>
+</Items>

@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Jobs>
+  <Job identifier="cdShipmother" minnumber="0" maxnumber="0" initialcount="0" minkarma="0"  vitalitymodifier="0" hiddenjob="true" pricemultiplier="1.5" idlebehavior="Patrol"><!--uicolor="0.5,0.86,0.9"-->
+    <Jobicon>
+      <sprite texture="%ModDir%/content/png/artificialintelligence.png"  sourcerect="0,0,624,624" origin="0.5,0.5" />
+    </Jobicon>
+    <JobiconSmall>
+      <sprite texture="%ModDir%/content/png/artificialintelligence.png"  sourcerect="0,0,624,624" origin="0.5,0.5" />
+    </JobiconSmall>
+    <Skills>
+      <Skill identifier="helm" level="50" />
+      <Skill identifier="weapons" level="50" />
+      <Skill identifier="mechanical" level="50" />
+      <Skill identifier="electrical" level="50" />
+      <Skill identifier="medical" level="50" />
+    </Skills>
+    <ItemSet>
+      <Item identifier="idcard" equip="true" />
+      <Item identifier="headset" equip="true" showpreview="false" />
+      <Item identifier="doctorsuniform1" equip="true" />
+    </ItemSet>
+    <AutonomousObjectives>
+      <Order identifier="fightintruders" prioritymodifier="1" />
+      <Order identifier="extinguishfires" prioritymodifier="1" />
+      <Order identifier="rescue" prioritymodifier="1" />
+      <Order identifier="operatereactor" option="powerup" prioritymodifier="1" />
+      <Order identifier="fixleaks" prioritymodifier="1" />
+    </AutonomousObjectives>
+    <AppropriateOrders>
+      <Order identifier="operateweapons" />
+      <Order identifier="fightintruders" />
+    </AppropriateOrders>
+  </Job>
+  <Job identifier="cdnormalShipmother" minnumber="0" maxnumber="0" initialcount="0" minkarma="0"  vitalitymodifier="0" hiddenjob="true" pricemultiplier="1.5" idlebehavior="Patrol"><!--uicolor="0.5,0.86,0.9"-->
+    <Jobicon>
+      
+      <sprite texture="%ModDir%/content/png/image.png"  sourcerect="0,0,328,328" origin="0.5,0.5" />
+      <!--
+      <sprite texture="Content/UI/MainIconsAtlas.png" sourcerect="640,256,128,128" origin="0.5,0.5"/>-->
+    </Jobicon>
+    <JobiconSmall>
+      <sprite texture="%ModDir%/content/png/image.png"  sourcerect="0,0,328,328" origin="0.5,0.5" />
+      <!--
+      <sprite texture="Content/UI/CommandUIAtlas.png" sourcerect="641,669,28,28" origin="0.5,0.5"/>-->
+    </JobiconSmall>
+    <Skills>
+      <Skill identifier="helm" level="50" />
+      <Skill identifier="weapons" level="50" />
+      <Skill identifier="mechanical" level="50" />
+      <Skill identifier="electrical" level="50" />
+      <Skill identifier="medical" level="50" />
+    </Skills>
+    <ItemSet>
+      <Item identifier="idcard" equip="true" />
+      <Item identifier="headset" equip="true" showpreview="false" />
+      <Item identifier="doctorsuniform1" equip="true" />
+    </ItemSet>
+    <AutonomousObjectives>
+      <Order identifier="fightintruders" prioritymodifier="1" />
+      <Order identifier="extinguishfires" prioritymodifier="1" />
+      <Order identifier="rescue" prioritymodifier="1" />
+      <Order identifier="operatereactor" option="powerup" prioritymodifier="1" />
+      <Order identifier="fixleaks" prioritymodifier="1" />
+    </AutonomousObjectives>
+    <AppropriateOrders>
+      <Order identifier="operateweapons" />
+      <Order identifier="fightintruders" />
+    </AppropriateOrders>
+  </Job>
+  <Job identifier="cdfriendlyshadow" minnumber="0" maxnumber="0" initialcount="0" minkarma="0"  vitalitymodifier="0" hiddenjob="true" pricemultiplier="1.5" idlebehavior="Patrol"><!--uicolor="0.5,0.86,0.9"-->
+    <Jobicon>
+      <sprite texture="%ModDir%/content/png/MainIconsAtlas.png" sourcerect="640,256,128,128" origin="0.5,0.5"  color="0,0,0,255" />
+    </Jobicon>
+    <JobiconSmall>
+      <sprite texture="%ModDir%/content/png/MainIconsAtlas.png" sourcerect="640,256,128,128" origin="0.5,0.5" color="0,0,0,255" />
+    </JobiconSmall>
+    <Skills>
+      <Skill identifier="helm" level="30" />
+      <Skill identifier="weapons" level="30" />
+      <Skill identifier="mechanical" level="30" />
+      <Skill identifier="electrical" level="30" />
+      <Skill identifier="medical" level="30" />
+    </Skills>
+    <ItemSet>
+      <Item identifier="cdshadowclose" equip="true" />
+      <Item identifier="headset" equip="true" showpreview="false" />
+    </ItemSet>
+    <AutonomousObjectives>
+      <Order identifier="fightintruders" prioritymodifier="1" />
+      <Order identifier="extinguishfires" prioritymodifier="1" />
+      <Order identifier="rescue" prioritymodifier="1" />
+      <Order identifier="operatereactor" option="powerup" prioritymodifier="1" />
+      <Order identifier="fixleaks" prioritymodifier="1" />
+    </AutonomousObjectives>
+    <AppropriateOrders>
+      <Order identifier="operateweapons" />
+      <Order identifier="fightintruders" />
+    </AppropriateOrders>
+  </Job>
+</Jobs>

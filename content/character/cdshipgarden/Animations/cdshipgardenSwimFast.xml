@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CDShipgardenSwimFast UseSineMovement="False" Flip="False" FlipCooldown="1" FlipDelay="0.5" Mirror="False" MirrorLerp="False" WaveAmplitude="5" WaveLength="10" RotateTowardsMovement="True" TailTorque="50" TailTorqueMultiplier="1" FootAngles="" UpdateAnimationWhenNotMoving="False" TailAngle="NaN" SteerTorque="2" LegTorque="25" AnimationType="SwimFast" MovementSpeed="3" CycleSpeed="1" HeadAngle="0" TorsoAngle="90" HeadTorque="3" TorsoTorque="6" FootTorque="25" ArmIKStrength="1" HandIKStrength="1" />

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OutpostGenerationParameters>
+  
+  <OutpostConfig
+    identifier="cdresearchoutpost"
+    replaceinradiation="AbandonedIrradiated"
+    totalmodulecount="8"
+    appendtoreachtotalmodulecount="false"
+    minhallwaylength="200"
+    alwaysgeneratehallways="false"
+    allowedlocationtypes="cdResearch">
+    <modulecount flag="Airlock" count="1"/>
+    <modulecount flag="EngineeringModule" count="1"/>
+    <modulecount flag="AdminModule" count="1"/>
+    <modulecount flag="CrewModule" count="1"/>
+    <modulecount flag="MedicalModule" count="1"/>
+    <modulecount flag="ResearchModule" count="1"/>
+    <modulecount flag="ClownModule" count="1" order="1" requiredfaction="clowns"/>
+    <modulecount flag="HuskModule" count="1" order="1" requiredfaction="huskcult"/>
+    <modulecount flag="OptionalModule" probability="0.3" count="1"/>
+    <npcs>
+      <npc from="outpostnpcs1" identifier="outpostmanagercoalition" faction="cd"/>
+      <npc from="outpostnpcs1" identifier="securitynpccoalition" faction="cd"/>
+      <npc from="outpostnpcs1" identifier="securitynpccoalition" faction="cd"/>
+
+      <npc from="outpostnpcs1" identifier="outpostmanagerseparatists" faction="cd"/>
+      <npc from="outpostnpcs1" identifier="securitynpcseparatists" faction="cd"/>
+      <npc from="outpostnpcs1" identifier="securitynpcseparatists" faction="cd"/>
+      
+      <npc from="outpostnpcs1" identifier="hrmanager"/>
+      <npc from="outpostnpcs1" identifier="subupgradenpc"/>
+      <npc from="outpostnpcs1" identifier="subsalesnpc"/>
+      <npc from="outpostnpcs1" identifier="reactoroperator"/>
+      <npc from="outpostnpcs1" identifier="merchantresearch"/>
+      <npc from="outpostnpcs1" identifier="merchantmedical"/>
+      <npc from="outpostnpcs1" identifier="merchantengineering"/>
+      <!-- night club merchant is configured to only spawn if there's appropriate spawn points in the outpost -->
+      <npc from="outpostnpcs1" identifier="merchantnightclub" />
+      <npc from="outpostnpcs1" identifier="outpostdoctor"/>
+      <npc from="outpostnpcs1" identifier="researcher"/>
+      <npc from="outpostnpcs1" identifier="researcher"/>
+      <npc from="outpostnpcs1" identifier="researcher"/>
+
+      <npc from="outpostnpcs1" identifier="clown" faction="clowns"/>
+      <npc from="outpostnpcs1" identifier="clown" faction="clowns"/>
+      <npc from="outpostnpcs1" identifier="clown" faction="clowns"/>
+      <npc from="outpostnpcs1" identifier="merchantclown" faction="clowns"/>
+
+      <npc from="outpostnpcs1" identifier="huskcultist" faction="huskcult"/>
+      <npc from="outpostnpcs1" identifier="huskcultist" faction="huskcult"/>
+      <npc from="outpostnpcs1" identifier="huskcultist" faction="huskcult"/>
+      <npc from="outpostnpcs1" identifier="merchanthusk" faction="huskcult"/>
+    </npcs>
+  </OutpostConfig>
+  
+</OutpostGenerationParameters>

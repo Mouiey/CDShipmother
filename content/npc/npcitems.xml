@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="沉底任务员常服" description="和某位开拓者的衣服相似,但这是工作服" identifier="cdSpecialClothes" category="Equipment" subcategory="Clothes" tags="clothes_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" fireproof="false" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_soft">
+    <InventoryIcon texture="%ModDir%/content/npc/npcitempng/aw92_1.png" sourcerect="194,24,79,182" origin="0.5,0.5" />
+    <Sprite name="aw92" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="374,73,118,65" depth="0.6" origin="0.5,0.5" />
+    <Body width="150" height="50" density="15" friction="0.8" restitution="0.01" />
+    <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+      <sprite name="aw92 Torso" texture="%ModDir%/content/npc/npcitempng/aw92_1.png" limb="Torso" hidelimb="false" hideotherwearables="false" inheritsourcerect="false" sourcerect="145,0,155,255" inheritorigin="false" origin="0.54789716,0.355" inheritscale="true" inheritlimbdepth="true" depthlimb="None" />
+      <sprite name="aw92 Right Hand" texture="%ModDir%/content/npc/npcitempng/aw92.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw92 Left Hand" texture="%ModDir%/content/npc/npcitempng/aw92.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw92 Left Lower Arm" texture="%ModDir%/content/npc/npcitempng/aw92.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw92 Right Lower Arm" texture="%ModDir%/content/npc/npcitempng/aw92.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw92 Left Upper Arm" texture="%ModDir%/content/npc/npcitempng/aw92.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw92 Right Upper Arm" texture="%ModDir%/content/npc/npcitempng/aw92.png" limb="RightArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw92 Waist" texture="%ModDir%/content/npc/npcitempng/aw92.png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw92 Right Thigh" texture="%ModDir%/content/npc/npcitempng/aw92.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw92 Left Thigh" texture="%ModDir%/content/npc/npcitempng/aw92.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw92 Right Leg" texture="%ModDir%/content/npc/npcitempng/aw92.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw92 Left Leg" texture="%ModDir%/content/npc/npcitempng/aw92.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw92 Right Shoe" texture="%ModDir%/content/npc/npcitempng/aw92.png" limb="RightFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw92 Left Shoe" texture="%ModDir%/content/npc/npcitempng/aw92.png" limb="LeftFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma" damagemultiplier="0.95" />
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,burn,acidburn" damagemultiplier="0.9" />
+      <SkillModifier skillidentifier="electrical" skillvalue="5" />
+      <SkillModifier skillidentifier="helm" skillvalue="5" />
+      <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+      <SkillModifier skillidentifier="medical" skillvalue="5" />
+      <SkillModifier skillidentifier="weapons" skillvalue="5" />
+    </Wearable>
+    <ItemContainer capacity="3">
+      <Containable items="chem,medical,simpletool" excludeditems="toolbox,toolbelt" />
+    </ItemContainer>
+  </Item>
+  <Item name="白色假发" identifier="cdHairW" category="alien" subcategory="Clothes" tags="hats_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" cargocontaineridentifier="metalcrate" description="白色的假发,可以藏一个热成像" scale="0.4">
+    <InventoryIcon texture="%ModDir%/content/npc/npcitempng/HairSurtrW.png" sourcerect="198,156,160,195" origin="0.5,0.5" />
+    <sprite name="HairSurtrWDrop" texture="%ModDir%/content/npc/npcitempng/HairSurtrW.png" limb="Head" HideWearablesOfType="Hair,Beard,moustache" CanBeHiddenByOtherWearables="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.5" sourcerect="201,157,156,194" origin="0.44956,0.30923" />
+    <Body width="75" height="80" density="30" />
+    <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
+      <sprite name="HairSurtrW" texture="%ModDir%/content/npc/npcitempng/HairSurtrW.png" limb="Head" HideWearablesOfType="Hair,Beard,moustache" CanBeHiddenByOtherWearables="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.5" sourcerect="0,0,640,912" origin="0.44956,0.30923" />
+      <SkillModifier skillidentifier="electrical" skillvalue="5" />
+      <SkillModifier skillidentifier="helm" skillvalue="10" />
+      <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+      <SkillModifier skillidentifier="medical" skillvalue="5" />
+      <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations" armorsector="0.0,360.0" damagemultiplier="0.8" />
+      <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+    </Wearable>
+    <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+      <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
+        <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" debugwiring="false" delay="1" stackable="false" />
+      </Containable>
+      <Containable Items="healthscanner">
+        <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,0,0,0" showtexts="true" />
+      </Containable>
+      <Containable Items="thermalgoggles">
+        <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+      </Containable>
+      <Containable Items="electriciansgoggles">
+        <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+      </Containable>
+      <SlotIcon slotindex="0" texture="%ModDir%/content/png/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
+    </ItemContainer>
+    <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+  </Item>
+  <Item name="无限尖晶弹" identifier="cd_handcannonround" description="海盗船长的无限尖晶弹" tags="smallitem,handcannonammo,pistolammoitem,handcannonround,tsmrifleammo" showcontentsintooltip="true" category="Weapon" sonarsize="5" scale="0.5" impactsoundtag="impact_metal_heavy" hideinmenus="true" nonplayerteaminteractable="True">
+    <InventoryIcon texture="%ModDir:3607199400%/weapons/bullet.png" sourcerect="458,213,39,27" />
+    <Sprite texture="%ModDir:3607199400%/weapons/bullet.png" depth="0.55" sourcerect="122,71,42,11" origin="0.5,0.5" />
+    <Body width="42" height="11" density="50" />
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" aimable="false" msg="ItemMsgPickUpSelect" />
+    <ItemContainer hideitems="true" capacity="1" maxstacksize="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="hw_cdrailgunshell" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="tsm_handcannonround" />
+      <StatusEffect type="Always" target="This" condition="-0.0" disabledeltatime="true">
+        <SpawnItem identifiers="tsm_handcannonround" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+  </Item>
+  <!-- 手炮：提升制造品质，提高射速 -->
+  <Item name="海盗船长手炮" identifier="cd_pirate_handcannon" category="Weapon" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,weapon,gun,pistolitem,mountableweapon,provocativetohumanai" Scale="0.5" impactsoundtag="impact_metal_light" nonplayerteaminteractable="True">
+    <InventoryIcon texture="%ModDir%/content/png/TalentGear.png" sourcerect="303,364,42,67" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/TalentGear.png" sourcerect="0,256,111,56" depth="0.55" origin="0.5,0.5" />
+    <Body width="106" height="49" density="30" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="90,10" handle1="-45,-4" handle2="-45,-15" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.5" reloadnoskill="1" weapondamagemodifier="1.3" reloadskillrequirement="60" barrelpos="40,6" spread="0" unskilledspread="8" combatPriority="90" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <Sound file="Content/Items/Jobgear/Captain/WEAPONS_handCannon.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="Content/Items/Jobgear/Captain/WEAPONS_handCannon_1.ogg" type="OnUse" range="3000" />
+      <Sound file="Content/Items/Jobgear/Captain/WEAPONS_handCannon_2.ogg" type="OnUse" range="3000" />
+      <Sound file="Content/Items/Jobgear/Captain/WEAPONS_handCannon_3.ogg" type="OnUse" range="3000" />
+      <Sound file="Content/Items/Jobgear/Captain/WEAPONS_handCannon_4.ogg" type="OnUse" range="3000" />
+      <Sound file="Content/Items/Jobgear/Captain/WEAPONS_handCannon_5.ogg" type="OnUse" range="3000" />
+      <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="7.0,7.0" colormultiplier="255,200,115,200" />
+      <StatusEffect type="OnUse" target="This">
+        <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+        <Explosion range="150.0" force="5" shockwave="false" smoke="false" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="6.0" />
+      </StatusEffect>
+      <RequiredItems items="handcannonammo" type="Contained" msg="ItemMsgAmmoRequired" />
+      <RequiredSkill identifier="weapons" level="60" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="6" hideitems="false" containedstateindicatorstyle="bullet" containedstateindicatorslot="0" containedspritedepth="0.56">
+      <Containable items="handcannonammo" hide="true" />
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+      <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="flashlight" hide="false" itempos="17,4" setactive="true" />
+      </SubContainer>
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="5000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+    </Quality>
+    <SkillRequirementHint identifier="weapons" level="60" />
+  </Item>
+  <!-- 九尾狐作战服 -->
+  <Item name="机动特遣队-九尾狐" description="基金会提供的机动特遣队九尾狐作战服,site-19-ba行动结束后回收;支持芬太尼,抗生素凝胶自注射,以及可进行护盾拓展" identifier="scpNinetailedfox" tags="diving,deepdiving,divinggear_wearableindoors,scp_site19_removeItem" allowasextracargo="False" scale="0.5" fireproof="true" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" HideConditionBar="false" botpriority="5">
+    <InventoryIcon texture="%ModDir%/content/png/九尾狐服装.png" sourcerect="180,3,78,181" origin="0.5,0.5" />
+    <!-- 物品栏图标 -->
+    <Sprite texture="%ModDir%/content/png/九尾狐服装.png" sourcerect="180,3,78,181" depth="0.55" origin="0.5,0.5" />
+    <!-- 基础物品精灵图 -->
+    <Body radius="45" width="34" density="15" />
+    <Wearable slots="OuterClothes" msg="ItemEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite texture="%ModDir%/content/png/九尾狐服装.png" limb="Head" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="416,70,68,63" scale="1.7" origin="0.6,0.5" />
+      <sprite texture="%ModDir%/content/png/九尾狐服装.png" limb="Torso" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="180,3,78,181" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/九尾狐服装.png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="292,160,25,39" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/九尾狐服装.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="356,160,25,39" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/九尾狐服装.png" limb="RightArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="288,5,37,77" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/九尾狐服装.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="356,5,30,78" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/九尾狐服装.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="295,100,23,60" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/九尾狐服装.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="358,100,23,60" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/九尾狐服装.png" limb="Waist" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="189,193,57,55" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/九尾狐服装.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="26,132,38,103" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/九尾狐服装.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="105,132,37,105" origiin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/九尾狐服装.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="18,9,50,103" origiin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/九尾狐服装.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="96,10,51,103" origiin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/九尾狐服装.png" limb="LeftFoot" sound="footstep_metal_boots" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="281,218,53,37" origiin="0.5,0.5" />
+      <!-- 左脚金属靴脚步声 -->
+      <sprite texture="%ModDir%/content/png/九尾狐服装.png" limb="RightFoot" sound="footstep_metal_boots" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="346,218,52,35" origiin="0.5,0.5" />
+      <!-- 右脚金属靴脚步声 -->
+      <StatValue stattype="FlowResistance" value="0.25" />
+      <StatusEffect type="OnWearing" target="Character" disabledeltatime="true" setvalue="true">
+        <Affliction identifier="pressurestabilized" amount="5" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-10" targetslot="0" interval="0.75" disabledeltatime="true">
+        <RequiredItem items="antidama2" type="Contained" targetslot="0" />
+        <Conditional internaldamage="gt 0.0" />
+        <Conditional blunttrauma="gt 0.0" />
+        <Conditional lacerations="gt 0.0" />
+        <Conditional bitewounds="gt 0.0" />
+        <Conditional gunshotwound="gt 0.0" />
+        <Conditional organdamage="gt 0.0" />
+        <Conditional explosiondamage="gt 0.0" />
+        <Conditional concussion="gt 0.0" />
+        <ReduceAffliction type="damage" amount="7.5" />
+        <ReduceAffliction type="burn" amount="1.0" />
+        <Affliction identifier="oxygenlow" amount="1.0" />
+        <Affliction identifier="opiateoverdose" amount="2.0" />
+        <ReduceAffliction identifier="opiatewithdrawal" amount="10" />
+      </StatusEffect>
+      <!-- 自动注射终点_______________________________ -->
+      <!-- 自动使用止血喷雾 -->
+      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-2" targetslot="1">
+        <RequiredItem items="antibleeding3" type="Contained" targetslot="1" />
+        <Conditional burn="gt 0" />
+        <Conditional acidburn="gt 0" />
+        <Conditional bleeding="gt 0" />
+        <Conditional bleedingnonstop="gt 0" />
+        <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="8" velocitymin="50" velocitymax="65" anglemin="90" anglemax="90" distancemin="0" distancemax="0" colormultiplier="255,192,203,255" />
+        <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="8" velocitymin="50" velocitymax="65" anglemin="-90" anglemax="-90" distancemin="0" distancemax="0" colormultiplier="255,192,203,255" />
+        <sound file="Content/Items/Tools/Sprayer.ogg" type="OnUse" range="250.0" loop="true" />
+        <ReduceAffliction type="bleeding" amount="25" />
+        <ReduceAffliction type="burn" amount="25" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" targetslot="2" interval="0.5" disabledeltatime="true">
+        <RequiredItem items="cdprotectvest" type="Contained" targetslot="2" />
+        <GiveTalentInfo giverandom="false" talentidentifiers="cdprotect" />
+        <Affliction identifier="cdequipprotect" strength="2.0" MultiplyByMaxVitality="true" />
+      </StatusEffect>
+      <!-- 防御配置 -->
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding,explosiondamage" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+      <!-- 物理伤害减免80%，偏转投射物 -->
+      <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.1" damagesound="" deflectprojectiles="true" />
+      <!-- 烧伤伤害减免90% -->
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.0" damagesound="LimbArmor" />
+      <!-- 辐射伤害完全免疫 -->
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" probabilitymultiplier="0.5" damagesound="LimbArmor" />
+      <!-- 外皮感染概率降低50% -->
+      <StatValue stattype="WalkingSpeed" value="0.25" />
+      <StatValue stattype="SwimmingSpeed" value="0.20" />
+    </Wearable>
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" >
+      <StatusEffect type="OnSpawn" target="this" delay="0.5" >
+        <TriggerEvent  identifier="cdsite19_itemRemove_event"/>
+      </StatusEffect>
+    </Holdable>
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+      <GuiFrame relativesize="0.1,0.09" anchor="BottomRight" pivot="BottomRight" relativeoffset="0,0.18" />
+      <Button text="外置止血喷雾">
+        <StatusEffect type="OnUse" target="This" tags="active" duration="4" stackable="false">
+          <RequiredItem items="antibleeding3" type="Contained" targetslot="1" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="Contained" Condition="-6.25" targetslot="1" duration="4" stackable="false">
+          <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="15" velocitymin="50" velocitymax="65" anglemin="90" anglemax="90" distancemin="10" distancemax="10" colormultiplier="255,192,203,255" />
+          <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="15" velocitymin="50" velocitymax="65" anglemin="-30" anglemax="-30" distancemin="20" distancemax="20" colormultiplier="255,192,203,255" />
+          <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="15" velocitymin="50" velocitymax="65" anglemin="-150" anglemax="-150" distancemin="20" distancemax="20" colormultiplier="255,192,203,255" />
+          <sound file="Content/Items/Tools/Sprayer.ogg" type="OnUse" range="250.0" loop="true" />
+        </StatusEffect>
+      </Button>
+    </CustomInterface>
+    <!-- 容器配置 -->
+    <ItemContainer capacity="0" maxstacksize="0" hideitems="true" containedstateindicatorslot="1">
+      <Containable items="none" />
+      <SlotIcon slotindex="0" texture="Content/Items/InventoryIconAtlas.png" sourcerect="256,448,64,64" origin="0.5,0.45" />
+      <SlotIcon slotindex="1" texture="Content/Items/InventoryIconAtlas.png" sourcerect="0,448,64,64" origin="0.5,0.45" />
+      <SlotIcon slotindex="2" texture="%ModDir%/content/png/护盾发生器.png" sourcerect="0,0,72,105" origin="0.5,0.45" />
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="antidama2" />
+      </SubContainer>
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="antibleeding3">
+          <StatusEffect type="OnWearing" target="This" interval="0.1" disabledeltatime="false">
+            <Conditional HasStatusTag="active" />
+            <SpawnItem identifiers="cdantibleedburnemitter" spawnposition="This" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="cdprotectvest" />
+      </SubContainer>
+    </ItemContainer>
+  </Item>
+  <Item name="门禁卡" identifier="scpidcard" description="站点的门禁卡" category="Equipment" Tags="smallitem,wreck_id,identitycard,scpcard,scp_site19_removeItem" scale="0.15" cargocontaineridentifier="metalcrate">
+    <PreferredContainer primary="crewcab" />
+    <Price baseprice="10" sold="false" />
+    <InventoryIcon texture="%ModDir%/content/png/scpidcard.png" sourcerect="0,0,152,96" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/scpidcard.png" depth="0.5" sourcerect="0,0,152,96" />
+    <Body width="16" height="12" density="10.05" />
+    <IdCard slots="Card,Any" msg="ItemMsgPickUpSelect" />
+    <Holdable slots="Any,RightHand,LeftHand" controlpose="true"  canbeselected="false" canbepicked="true"  aimpos="100,0" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSpawn" target="this" delay="0.5">
+        <TriggerEvent  identifier="cdsite19_itemRemove_event"/>
+      </StatusEffect>
+    </Holdable>
+  </Item>
+</Items>

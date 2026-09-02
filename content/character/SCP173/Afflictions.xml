@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Afflictions>
+  <Affliction name="颈部折断" identifier="cdsnapneck" description="伤者的脖子在颅底被折断了。" type="poison" causeofdeathdescription="脖子断了。" selfcauseofdeathdescription="你的脖子被折断了。" limbspecific="false" indicatorlimb="Head" maxstrength="100">
+    <Effect minstrength="0" maxstrength="1" strengthchange="5" minvitalitydecrease="0" maxvitalitydecrease="0" minscreendistort="0.0" maxscreendistort="3.0" minchromaticaberration="5.0" maxchromaticaberration="10.0" minradialdistort="0.0" maxradialdistort="10.0" />
+    <Effect minstrength="5" maxstrength="15" strengthchange="100" minvitalitydecrease="0" maxvitalitydecrease="0" minscreendistort="0.0" maxscreendistort="3.0" minchromaticaberration="5.0" maxchromaticaberration="10.0" minradialdistort="0.0" maxradialdistort="10.0"></Effect>
+    <Effect minstrength="16" maxstrength="98" strengthchange="200" minvitalitydecrease="0" maxvitalitydecrease="0" minscreendistort="0.0" maxscreendistort="3.0" minchromaticaberration="5.0" maxchromaticaberration="10.0" minradialdistort="0.0" maxradialdistort="10.0"></Effect>
+    <Effect minstrength="99" maxstrength="100" strengthchange="0" multiplybymaxvitality="true"  minvitalitydecrease="2" maxvitalitydecrease="2" minscreendistort="0.0" maxscreendistort="3.0" minchromaticaberration="5.0" maxchromaticaberration="10.0" minradialdistort="0.0" maxradialdistort="10.0"></Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="640,639,128,130" color="125,0,0,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="雕塑" identifier="cdsculptureblink" type="poison" limbspecific="false" indicatorlimb="Torso" showiconthreshold="10" karmachangeonapplied="-10" maxstrength="100">
+    <Effect minstrength="0" maxstrength="98" strengthchange="250" minscreendistort="0.0" maxscreendistort="0.2" minscreenblur="0.0" maxscreenblur="0.2">
+      <StatusEffect target="Character" setvalue="true" SpeedMultiplier="0.1" />
+    </Effect>
+    <Effect minstrength="99" maxstrength="100" strengthchange="25" minscreendistort="0.8" maxscreendistort="1.0" minscreenblur="0.8" maxscreenblur="1.0">
+      <StatusEffect target="Character" setvalue="true" SpeedMultiplier="0" />
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="640,640,128,128" color="0,255,0,255" origin="0,0" />
+  </Affliction>
+  <!--强化aff-->
+  <Affliction name="" identifier="cd173strength" isbuff="true"  type="buff" limbspecific="false" maxstrength="1"  showiconthreshold="10" showinhealthscannerthreshold="10"  affectmachines="false" iconcolors="186,153,242,255;140,77,245,255;105,20,245,255">
+    <Effect minstrength="0" maxstrength="1" strengthchange="0" resistancefor="paralysis,slow" minresistance="1" maxresistance="1">
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="640,640,128,128" color="0,255,0,255" origin="0,0" />
+  </Affliction>
+</Afflictions>

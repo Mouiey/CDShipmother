@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Randomevents>
+  <EventSprites>
+    <Sprite identifier="cdShipmother1" texture="%ModDir%/content/png/BLHX.png" sourcerect="0,0,329,236" origin="0.5,0.5" />
+  </EventSprites>
+  <!--"At Wit's End"-->
+  <EventPrefabs>
+    <ScriptedEvent identifier="cdnormalShipmother1" commonness="200">
+      <CheckDataAction identifier="cdnormalShipmother1_complete" condition="eq true">
+        <Success>
+          <!--Don't repeat event-->
+        </Success>
+        <Failure>
+          <TagAction criteria="player" tag="player" />
+          <SpawnAction npcsetidentifier="cdShip" npcidentifier="cdnormallg" targettag="Battleship" spawnlocation="Outpost" targetmoduletags="airlock" />
+          <TriggerEventAction identifier="givebufftoshipmother" />
+          <StatusEffectAction targettag="Battleship">
+            <StatusEffect target="This" enabledespawn="true">
+              <GiveTalentInfo giverandom="false" talentidentifiers="cdisshipmother" />
+            </StatusEffect>
+          </StatusEffectAction>
+          <TriggerAction target1tag="Battleship" target2tag="player" applytotarget2="triggerer_player" radius="200" waitforinteraction="true" />
+          <NPCFollowAction npctag="Battleship" targettag="triggerer_player" follow="true" />
+          <ConversationAction targettag="triggerer_player" text="舰娘喵" eventsprite="cdShipmother">
+            <Option text="上船喵">
+                <ConversationAction targettag="triggerer_player" text="喵" />
+                <NPCChangeTeamAction npctag="Battleship" teamid="Team1" addtocrew="true" />
+                <NPCFollowAction npctag="Battleship" targettag="triggerer_player" follow="false" />
+            </Option>
+          </ConversationAction>
+          <SetDataAction identifier="cdnormalShipmother1_complete" value="true" />
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+  </EventPrefabs>
+  <EventPrefabs>
+    <ScriptedEvent identifier="cdnormalShipmother2" commonness="200">
+      <CheckDataAction identifier="cdnormalShipmother2_complete" condition="eq true">
+        <Success>
+          <!--Don't repeat event-->
+        </Success>
+        <Failure>
+          <TagAction criteria="player" tag="player" />
+          <SpawnAction npcsetidentifier="cdShip" npcidentifier="cdnormalTAT" targettag="Battleship" spawnlocation="Outpost" targetmoduletags="airlock" />
+          <TriggerEventAction identifier="givebufftoshipmother" />
+          <StatusEffectAction targettag="Battleship">
+            <StatusEffect target="This" enabledespawn="true">
+              <GiveTalentInfo giverandom="false" talentidentifiers="cdisshipmother" />
+            </StatusEffect>
+          </StatusEffectAction>
+          <TriggerAction target1tag="Battleship" target2tag="player" applytotarget2="triggerer_player" radius="200" waitforinteraction="true" />
+          <NPCFollowAction npctag="Battleship" targettag="triggerer_player" follow="true" />
+          <ConversationAction targettag="triggerer_player" text="舰娘喵" eventsprite="cdShipmother">
+            <Option text="上船喵">
+                <ConversationAction targettag="triggerer_player" text="喵" />
+                <NPCChangeTeamAction npctag="Battleship" teamid="Team1" addtocrew="true" />
+                <NPCFollowAction npctag="Battleship" targettag="triggerer_player" follow="false" />
+            </Option>
+          </ConversationAction>
+          <SetDataAction identifier="cdnormalShipmother2_complete" value="true" />
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+  </EventPrefabs>
+  <EventPrefabs>
+    <ScriptedEvent identifier="cdShipmother1" commonness="200">
+      <CheckDataAction identifier="cdShipmother1_complete" condition="eq true">
+        <Success>
+          <!--Don't repeat event-->
+        </Success>
+        <Failure>
+          <TagAction criteria="player" tag="player" />
+          <SpawnAction npcsetidentifier="cdShip" npcidentifier="cdlg" targettag="Battleship" spawnlocation="Outpost" targetmoduletags="airlock" />
+          <TriggerEventAction identifier="givebufftoshipmother" />
+          <StatusEffectAction targettag="Battleship">
+            <StatusEffect target="This" enabledespawn="true">
+              <GiveTalentInfo giverandom="false" talentidentifiers="cdisshipmother" />
+            </StatusEffect>
+          </StatusEffectAction>
+          <TriggerAction target1tag="Battleship" target2tag="player" applytotarget2="triggerer_player" radius="200" waitforinteraction="true" />
+          <NPCFollowAction npctag="Battleship" targettag="triggerer_player" follow="true" />
+          <ConversationAction targettag="triggerer_player" text="舰娘喵" eventsprite="cdShipmother">
+            <Option text="上船喵">
+                <ConversationAction targettag="triggerer_player" text="喵" />
+                <NPCChangeTeamAction npctag="Battleship" teamid="Team1" addtocrew="true" />
+                <NPCFollowAction npctag="Battleship" targettag="triggerer_player" follow="false" />
+            </Option>
+          </ConversationAction>
+          <SetDataAction identifier="cdShipmother1_complete" value="true" />
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+  </EventPrefabs>
+  <EventPrefabs>
+    <ScriptedEvent identifier="cdShipmother2" commonness="200">
+      <CheckDataAction identifier="cdShipmother2_complete" condition="eq true">
+        <Success>
+          <!--Don't repeat event-->
+        </Success>
+        <Failure>
+          <TagAction criteria="player" tag="player" />
+          <SpawnAction npcsetidentifier="cdShip" npcidentifier="cdTAT" targettag="Battleship" spawnlocation="Outpost" targetmoduletags="airlock" />
+          <TriggerEventAction identifier="givebufftoshipmother" />
+          <StatusEffectAction targettag="Battleship">
+            <StatusEffect target="This" enabledespawn="true">
+              <GiveTalentInfo giverandom="false" talentidentifiers="cdisshipmother" />
+            </StatusEffect>
+          </StatusEffectAction>
+          <TriggerAction target1tag="Battleship" target2tag="player" applytotarget2="triggerer_player" radius="200" waitforinteraction="true" />
+          <NPCFollowAction npctag="Battleship" targettag="triggerer_player" follow="true" />
+          <ConversationAction targettag="triggerer_player" text="舰娘喵" eventsprite="cdShipmother">
+            <Option text="上船喵">
+                <ConversationAction targettag="triggerer_player" text="喵" />
+                <NPCChangeTeamAction npctag="Battleship" teamid="Team1" addtocrew="true" />
+                <NPCFollowAction npctag="Battleship" targettag="triggerer_player" follow="false" />
+            </Option>
+          </ConversationAction>
+          <SetDataAction identifier="cdShipmother2_complete" value="true" />
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+  </EventPrefabs>
+  <!--"At Wit's End"-->
+  <EventPrefabs>
+    <ScriptedEvent identifier="cdShipmother" commonness="200">
+      <CheckDataAction identifier="cdShipmother_complete" condition="eq true">
+        <Success>
+          <!--Don't repeat event-->
+        </Success>
+        <Failure>
+          <TagAction criteria="player" tag="player" />
+          <SpawnAction npcsetidentifier="cdShip" npcidentifier="cdJersey" targettag="Battleship" spawnlocation="Outpost" targetmoduletags="airlock" />
+          <TriggerAction target1tag="Battleship" target2tag="player" applytotarget2="triggerer_player" radius="200" waitforinteraction="true" />
+          <NPCFollowAction npctag="Battleship" targettag="triggerer_player" follow="true" />
+          <ConversationAction targettag="triggerer_player" text="EventText.cdShipmother.c1" eventsprite="cdShipmother1">
+            <Option text="EventText.cdShipmother.o1">
+              <ConversationAction targettag="triggerer_player" text="EventText.cdShipmother.o1.c1">
+                <Option text="EventText.cdShipmother.o1.o1">
+                  <ConversationAction targettag="triggerer_player" text="EventText.cdShipmother.o1.o1.c1" />
+                  <NPCChangeTeamAction npctag="Battleship" teamid="Team1" addtocrew="true" />
+                  <NPCFollowAction npctag="Battleship" targettag="triggerer_player" follow="false" />
+                </Option>
+                <Option text="EventText.cdShipmother.o1.o2">
+                  <ConversationAction targettag="triggerer_player" text="EventText.cdShipmother.o1.o2.c1" />
+                  <NPCFollowAction npctag="Battleship" targettag="triggerer_player" follow="false" />
+                </Option>
+              </ConversationAction>
+            </Option>
+            <Option text="EventText.cdShipmother.o2">
+              <ConversationAction targettag="triggerer_player" text="EventText.cdShipmother.o2.c1" />
+              <NPCFollowAction npctag="Battleship" targettag="triggerer_player" follow="false" />
+            </Option>
+          </ConversationAction>
+          <SetDataAction identifier="cdShipmother_complete" value="true" />
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+  </EventPrefabs>
+  <EventPrefabs>
+    <!--舰娘标识符-->
+    <ScriptedEvent identifier="givebufftoshipmother">
+      <TagAction criteria="humanprefabidentifier:cdnormallg" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+      <TagAction criteria="humanprefabidentifier:cdnormalTAT" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+      <TagAction criteria="humanprefabidentifier:cdlg" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+      <TagAction criteria="humanprefabidentifier:cdTAT" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+      <StatusEffectAction targettag="teshuzhan1dui">
+        <StatusEffect target="This" enabledespawn="true">
+          <GiveTalentInfo giverandom="false" talentidentifiers="cdisshipmother" />
+          <Affliction identifier="cdifshipmotheraff" strength="100" MultiplyByMaxVitality="True" />
+        </StatusEffect>
+      </StatusEffectAction>
+    </ScriptedEvent>
+  </EventPrefabs>
+  <EventPrefabs>
+    <!--影子召唤-->
+    <ScriptedEvent identifier="cdspawnfriendlyshadow">
+      <CheckDataAction identifier="cdshadowalive" condition="eq true">
+        <Success>
+          <!--Don't repeat event-->
+        </Success>
+        <Failure>
+          <TagAction criteria="player" tag="player" />
+          <SpawnAction npcsetidentifier="cdshadownpc" npcidentifier="cdshadownpc1" targettag="coalition" lootingisstealing="false" spawnlocation="MainSub" TeamID="Team1" allowinplayerview="false" CanInventoryBeAccessed="false" />
+          <StatusEffectAction targettag="coalition" enabledespawn="true">
+            <StatusEffect target="This">
+              <Sound file="%ModDir%/content/ogg/产生影子.ogg" range="10000" volume="1" />
+            </StatusEffect>
+          </StatusEffectAction>
+          <StatusEffectAction targettag="coalition">
+            <StatusEffect target="This" enabledespawn="true">
+              <Affliction identifier="cdisshadow" strength="10000" MultiplyByMaxVitality="True" />
+              <Affliction identifier="cdrobotafffriendlyshadow" strength="1000" MultiplyByMaxVitality="True" />
+            </StatusEffect>
+          </StatusEffectAction>
+          <NPCChangeTeamAction npctag="coalition" teamid="Team1" addtocrew="true" />
+          <SetDataAction identifier="cdshadowalive" value="true" />
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+  </EventPrefabs>
+  <EventPrefabs>
+    <!--影子死亡-->
+    <ScriptedEvent identifier="cdspawnfriendlyshadowdead">
+      <SetDataAction identifier="cdshadowalive" value="false" />
+    </ScriptedEvent>
+  </EventPrefabs>
+  <EventSet identifier="cdAzurLaneNPCchooserandom" leveltype="outpost" locationtype="outpost,tsm_city,city,research,military,mine,colony,settlement,construction,camp,base,blockade,survey,excavation,study,lab,clinic,hospital,surgery,hydroponics,biosphere,nourishment,factory,shipyard,fusion" allowatstart="true" minleveldifficulty="0" maxleveldifficulty="100" chooserandom="true" campaign="true" additive="true" ignorecooldown="true" commonness="233">
+    <ScriptedEvent identifier="cdShipmother" commonness="200" triggercooldown="false" />
+  </EventSet>
+  <EventSet identifier="cdNPCchooserandom1" leveltype="outpost" locationtype="outpost,tsm_city,city,research,military,mine,colony,settlement,construction,camp,base,blockade,survey,excavation,study,lab,clinic,hospital,surgery,hydroponics,biosphere,nourishment,factory,shipyard,fusion" allowatstart="true" minleveldifficulty="10000" maxleveldifficulty="10000" chooserandom="true" campaign="true" additive="true" ignorecooldown="true" commonness="233">
+    <ScriptedEvent identifier="cdnormalShipmother1" commonness="200" triggercooldown="false" />
+    <ScriptedEvent identifier="cdnormalShipmother2" commonness="200" triggercooldown="false" />
+  </EventSet>
+  <EventSet identifier="cdNPCchooserandom" leveltype="outpost" locationtype="outpost,tsm_city,city,research,military,mine,colony,settlement,construction,camp,base,blockade,survey,excavation,study,lab,clinic,hospital,surgery,hydroponics,biosphere,nourishment,factory,shipyard,fusion" allowatstart="true" minleveldifficulty="10000" maxleveldifficulty="10000" chooserandom="true" campaign="true" additive="true" ignorecooldown="true" commonness="233">
+    <ScriptedEvent identifier="cdShipmother1" commonness="200" triggercooldown="false" />
+    <ScriptedEvent identifier="cdShipmother2" commonness="200" triggercooldown="false" />
+  </EventSet>
+</Randomevents>

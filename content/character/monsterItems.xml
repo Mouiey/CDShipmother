@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!-- 熔岩蛇阶段1火球 -->
+  <Item name="snakeAttack1" subcategory="cdboosAttack_A" identifier="cdboosAttack_A" noninteractable="true" category="Misc" hideinmenus="true" scale="0.5" spritecolor="255,255,255,0">
+    <InventoryIcon texture="%ModDir%/content/png/micro_data.png" sourcerect="0,0,234,234" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/micro_data.png" sourcerect="0,0,10,10" depth="0.55" />
+    <Body width="20" height="20" density="10" />
+    <Projectile characterusable="false" launchimpulse="57.0">
+      <Attack penetration="0.8">
+        <Affliction identifier="burn" strength="53" />
+        <Affliction identifier="stun" strength="0.5" />
+      </Attack>
+      <StatusEffect type="OnActive" target="This">
+        <sound file="Content/Sounds/FireMedium.ogg" range="20000" loop="true" />
+        <ParticleEmitter particle="cdfireball" AngleMax="360" DistanceMin="1" DistanceMax="3" ScaleMin="0" ScaleMultiplier="6,3" ParticleAmount="1" ParticlesPerSecond="1" ColorMultiplier="103,3,255,255" />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" stackable="false" Condition="-5.0" />
+      <!-- 撞击无敌墙销毁 -->
+      <StatusEffect type="OnImpact" target="UseTarget,This" condition="0" setvalue="true" comparison="Or">
+        <Conditional Indestructible="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" OnlyInside="true" Condition="0" setvalue="true" delay="0.5" />
+      <StatusEffect type="OnBroken" target="This">
+        <sound file="Content/Sounds/FireLarge.ogg" range="20000" loop="true" />
+        <sound file="Content/Sounds/FireMedium.ogg" range="20000" loop="true" />
+        <Fire size="200.0" />
+        <SpawnItem identifier="incendiumemitter" count="10" aimspread="120" rotationtype="Collider" rotation="0" />
+        <Explosion range="500" camerashake="10" underwaterbubble="false" force="1.0" distancefalloff="false" sparks="false" shockwave="false" flames="false" smoke="false" flash="false">
+          <Affliction identifier="burn" strength="20" />
+          <Affliction identifier="explosiondamage" strength="20" />
+        </Explosion>
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="20000" volume="0.4" selectionmode="random" />
+        <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="20000" volume="0.4" />
+        <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="20000" volume="0.4" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!-- 熔岩蛇阶段2火球 -->
+  <Item name="snakeAttack2" subcategory="cdboosAttack_B" identifier="cdboosAttack_B" noninteractable="true" category="Misc" hideinmenus="true" scale="0.5" spritecolor="255,255,255,0">
+    <InventoryIcon texture="%ModDir%/content/png/micro_data.png" sourcerect="0,0,234,234" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/micro_data.png" sourcerect="0,0,10,10" depth="0.55" />
+    <Body width="20" height="20" density="10" />
+    <Projectile characterusable="false" launchimpulse="57.0">
+      <Attack penetration="0.8">
+        <Affliction identifier="burn" strength="53" />
+        <Affliction identifier="stun" strength="0.5" />
+      </Attack>
+      <StatusEffect type="OnActive" target="This">
+        <sound file="Content/Sounds/FireMedium.ogg" range="20000" loop="true" />
+        <ParticleEmitter particle="cdfireball" AngleMax="360" DistanceMin="1" DistanceMax="3" ScaleMin="0" ScaleMultiplier="6,3" ParticleAmount="1" ParticlesPerSecond="1" ColorMultiplier="103,3,255,255" />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" stackable="false" Condition="-5.0" />
+      <!-- 撞击无敌墙销毁 -->
+      <StatusEffect type="OnImpact" target="UseTarget,This" condition="0" setvalue="true" comparison="Or">
+        <Conditional Indestructible="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" OnlyInside="true" Condition="0" setvalue="true" delay="0.5" />
+      <StatusEffect type="OnBroken" target="This">
+        <sound file="Content/Sounds/FireLarge.ogg" range="20000" loop="true" />
+        <sound file="Content/Sounds/FireMedium.ogg" range="20000" loop="true" />
+        <!-- 造成火灾 -->
+        <Fire size="200.0" />
+        <SpawnItem identifier="incendiumemitter" count="10" aimspread="120" rotationtype="Collider" rotation="0" />
+        <Explosion range="750" camerashake="10" underwaterbubble="false" structuredamage="50" levelwalldamage="50" ballastfloradamage="50" itemdamage="50" force="1.0" distancefalloff="false" sparks="false" shockwave="false" flames="false" smoke="false" flash="false">
+          <Affliction identifier="burn" strength="20" />
+          <Affliction identifier="explosiondamage" strength="20" />
+          <Affliction identifier="burn" strength="20" Probability="0.5" />
+          <Affliction identifier="explosiondamage" strength="20" Probability="0.5" />
+        </Explosion>
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="20000" volume="0.4" selectionmode="random" />
+        <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="20000" volume="0.4" />
+        <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="20000" volume="0.4" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!-- a4攻击机炸弹-穿甲 -->
+  <Item name="a4bomb_ap" subcategory="a4bomb_ap" identifier="a4bomb_ap" noninteractable="true" category="Misc" hideinmenus="true" scale="0.5" spritecolor="255,255,255,255">
+    <InventoryIcon texture="%ModDir%/content/png/a4bomb.png" sourcerect="0,0,960,152" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/a4bomb.png" sourcerect="0,0,960,152" depth="0.55" />
+    <Body width="20" height="20" density="10" />
+    <Projectile characterusable="false" launchimpulse="85.0">
+      <Attack penetration="0.8">
+        <Affliction identifier="lacerations" strength="40" />
+        <Affliction identifier="stun" strength="1" />
+      </Attack>
+      <StatusEffect type="OnActive" target="This"></StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" stackable="false" Condition="-10.0" />
+      <!-- 撞击无敌墙销毁 -->
+      <StatusEffect type="OnImpact" target="UseTarget,This" condition="0" setvalue="true" comparison="Or">
+        <Conditional Indestructible="true" />
+      </StatusEffect>
+      <!-- 进入船壳引爆 -->
+      <StatusEffect type="OnActive" target="This" OnlyInside="true" Condition="0" setvalue="true" delay="0.2" />
+      <StatusEffect type="OnBroken" target="This">
+        <!-- 造成火灾 -->
+        <Fire size="100.0" />
+        <SpawnItem identifier="incendiumemitter" count="10" aimspread="120" rotationtype="Collider" rotation="0" />
+        <sound file="Content/Items/Weapons/ExplosionMedium1.ogg" type="OnUse" range="20000" selectionmode="All" />
+        <sound file="Content/Items/Weapons/ExplosionDebris1.ogg" type="OnUse" range="20000" />
+        <ParticleEmitter particle="weldspark" particleamount="20" distancemin="0" distancemax="256" anglemin="-360" anglemax="360" scalemin="2.5" scalemax="5.0" velocitymin="250" velocitymax="500" />
+        <ParticleEmitter particle="explosionfire" particleamount="20" distancemin="0" distancemax="256" anglemin="-360" anglemax="360" scalemin="1.5" scalemax="3.5" velocitymin="250" velocitymax="500" />
+        <ParticleEmitter particle="explosionsmoke" particleamount="4" distancemin="0" distancemax="256" anglemin="-360" anglemax="360" scalemin="2.5" scalemax="5.0" velocitymin="250" velocitymax="500" />
+        <Explosion range="750" camerashake="10" underwaterbubble="false" structuredamage="30" levelwalldamage="30" ballastfloradamage="30" itemdamage="30" force="1.0" distancefalloff="false" sparks="true" shockwave="true" flames="true" smoke="true" flash="true">
+          <Affliction identifier="burn" strength="40" />
+          <Affliction identifier="stun" strength="10" />
+          <Affliction identifier="explosiondamage" strength="40" />
+          <Affliction identifier="burn" strength="40" Probability="0.5" />
+          <Affliction identifier="explosiondamage" strength="40" Probability="0.5" />
+        </Explosion>
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!-- a4攻击机炸弹-高爆 -->
+  <Item name="a4bomb_he" subcategory="a4bomb_he" identifier="a4bomb_he" noninteractable="true" category="Misc" hideinmenus="true" scale="0.5" spritecolor="255,255,255,255">
+    <InventoryIcon texture="%ModDir%/content/png/a4bomb.png" sourcerect="0,0,960,152" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/a4bomb.png" sourcerect="0,0,960,152" depth="0.55" />
+    <Body width="20" height="20" density="10" />
+    <Projectile characterusable="false" launchimpulse="70.0">
+      <Attack penetration="0.8">
+        <Affliction identifier="lacerations" strength="40" />
+        <Affliction identifier="stun" strength="1" />
+      </Attack>
+      <StatusEffect type="OnActive" target="This"></StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" stackable="false" Condition="-10.0" />
+      <!-- 撞击外壳引爆 -->
+      <!-- 进入船壳引爆 -->
+      <StatusEffect type="OnActive" target="This" OnlyInside="true" Condition="0" setvalue="true" delay="0.2" />
+      <StatusEffect type="OnImpact" target="UseTarget,This" condition="0" setvalue="true" comparison="Or" />
+      <StatusEffect type="OnBroken" target="This">
+        <sound file="Content/Items/Weapons/ExplosionMedium1.ogg" type="OnUse" range="20000" selectionmode="All" />
+        <sound file="Content/Items/Weapons/ExplosionDebris1.ogg" type="OnUse" range="20000" />
+        <ParticleEmitter particle="weldspark" particleamount="20" distancemin="0" distancemax="256" anglemin="-360" anglemax="360" scalemin="2.5" scalemax="5.0" velocitymin="250" velocitymax="500" />
+        <ParticleEmitter particle="explosionfire" particleamount="20" distancemin="0" distancemax="256" anglemin="-360" anglemax="360" scalemin="1.5" scalemax="3.5" velocitymin="250" velocitymax="500" />
+        <ParticleEmitter particle="explosionsmoke" particleamount="4" distancemin="0" distancemax="256" anglemin="-360" anglemax="360" scalemin="2.5" scalemax="5.0" velocitymin="250" velocitymax="500" />
+        <Explosion range="500" camerashake="10" underwaterbubble="false" structuredamage="20" levelwalldamage="20" ballastfloradamage="20" itemdamage="20" force="1.0" distancefalloff="false" sparks="true" shockwave="true" flames="true" smoke="true" flash="true">
+          <Affliction identifier="burn" strength="30" />
+          <Affliction identifier="stun" strength="10" />
+          <Affliction identifier="explosiondamage" strength="35" />
+          <Affliction identifier="burn" strength="30" Probability="0.5" />
+          <Affliction identifier="explosiondamage" strength="20" Probability="0.5" />
+        </Explosion>
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!-- 树灵攻击-酸液弹 -->
+  <Item name="cdboostreeAttack1" subcategory="cdboosAttack" identifier="cdboostreeAttack" noninteractable="true" category="Misc" hideinmenus="true" scale="0.5" spritecolor="255,255,255,0">
+    <InventoryIcon texture="%ModDir%/content/png/micro_data.png" sourcerect="0,0,234,234" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/micro_data.png" sourcerect="0,0,10,10" depth="0.55" />
+    <Body width="20" height="20" density="10" />
+    <Projectile characterusable="false" launchimpulse="80" maxtargetstohit="4">
+      <Attack penetration="0.8" structuredamage="120" targetforce="10" itemdamage="100">
+        <Affliction identifier="burn" strength="53" />
+        <Affliction identifier="stun" strength="0.5" />
+      </Attack>
+      <StatusEffect type="OnActive" target="This">
+        <ParticleEmitter particle="cdacidityparticle" AngleMax="360" DistanceMin="1" DistanceMax="3" ScaleMin="0" ScaleMultiplier="6,3" ParticleAmount="1" ParticlesPerSecond="1" />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" stackable="false" Condition="-5.0" />
+      <!-- 撞击无敌墙销毁 -->
+      <StatusEffect type="OnImpact" target="UseTarget,This" condition="0" setvalue="true" comparison="Or">
+        <Conditional Indestructible="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" OnlyInside="true" Condition="0" setvalue="true" delay="2" />
+      <StatusEffect type="OnBroken" target="This">
+        <SpawnItem identifier="cdboostreeAttack2" count="2" aimspread="120" rotationtype="Collider" rotation="0" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!-- 树灵攻击-酸液生成 -->
+  <Item name="cdboostreeAttack2" subcategory="cdboosAttack" identifier="cdboostreeAttack2" noninteractable="true" category="Misc" hideinmenus="true" scale="0.5" spritecolor="255,255,255,0">
+    <InventoryIcon texture="%ModDir%/content/png/micro_data.png" sourcerect="0,0,234,234" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/micro_data.png" sourcerect="0,0,10,10" depth="0.55" />
+    <Body width="20" height="20" density="10" />
+    <Projectile characterusable="false" launchimpulse="20">
+      <StatusEffect type="OnNotContained" target="This" stackable="false" Condition="-20.0" />
+      <StatusEffect type="OnActive" target="This">
+        <ParticleEmitter particle="cdacidityparticle" AngleMax="360" DistanceMin="1" DistanceMax="3" ScaleMin="0" ScaleMultiplier="6,3" ParticleAmount="1" ParticlesPerSecond="1" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This">
+        <sound file="Content/Items/Tools/Sprayer.ogg" range="1000" dontmuffle="true" loop="true" stream="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="NearbyCharacters" range="500">
+        <Affliction identifier="acidburn" strength="5" />
+        <Affliction identifier="insideacidburn" strength="1" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!-- 龙火球 -->
+  <Item name="dragonfireball" identifier="dragonfireball" category="Weapon" interactthroughwalls="false" cargocontaineridentifier="metalcrate" tags="mediumitem,spell,demolitionsexpert" hideinmenus="true" Scale="0.5" impactsoundtag="impact_metal_light">
+    <Sprite texture="%ModDir%/content/png/micro_data.png" sourcerect="0,0,1,1" depth="0.55" origin="0.5,0.5" />
+    <Body width="160" height="10" density="30" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" launchimpulse="100.0" maxtargetstohit="3" severlimbsprobability="0.1" sticktocharacters="true" sticktoitems="true" sticktostructures="true" sticktodoors="true">
+      <Attack structuredamage="50" targetforce="30" penetration="0.5" itemdamage="150">
+        <Affliction identifier="explosiondamage" strength="75" />
+      </Attack>
+      <StatusEffect type="OnNotContained" target="This" stackable="false" Condition="-5.0">
+        <ParticleEmitter particle="cdacidityparticle" AngleMax="360" DistanceMin="1" DistanceMax="3" ScaleMin="0" ScaleMultiplier="6,3" ParticleAmount="1" ParticlesPerSecond="1" />
+        <sound file="Content/Items/Tools/Sprayer.ogg" range="1000" dontmuffle="true" loop="true" stream="true" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="NearbyCharacters" OnlyInside="true" interval="0.5" range="500">
+        <Affliction identifier="acidburn" strength="10" />
+        <Affliction identifier="insideacidburn" strength="5" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+  <Item identifier="monstercd100000MK" name="十万面值马克币" category="Misc" description="追缴回来的货币" maxstacksize="10" subcategory="CD" tags="smallitem" scale="0.4" cargocontaineridentifier="metalcrate">
+    <InventoryIcon texture="%ModDir%/content/png/百元呼噜币.png" sourcerect="0,0,64,64" depth="0.55" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/百元呼噜币.png" sourcerect="0,0,64,64" depth="0.55" />
+    <Body width="32" height="32" density="20" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="100,0" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="D级人员服装" identifier="scpClassD" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing" scale="0.5" impactsoundtag="impact_soft" nonplayerteaminteractable="True">
+    <Deconstruct time="10">
+      <Item identifier="organicfiber" />
+    </Deconstruct>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sheetindex="5,8" sheetelementsize="64,64" />
+    <Sprite texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="769,297,120,56" depth="0.6" origin="0.5,0.5" />
+    <Body width="180" height="50" density="15" friction="0.8" restitution="0.01" />
+    <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+      <sprite name="Prisoner's Uniform Torso" texture="Content/Items/Jobgear/Commoner/Prisoner.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Prisoner's Uniform Right Hand" texture="Content/Items/Jobgear/Commoner/Prisoner.png" limb="RightHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Prisoner's Uniform Left Hand" texture="Content/Items/Jobgear/Commoner/Prisoner.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Prisoner's Uniform Left Lower Arm" texture="Content/Items/Jobgear/Commoner/Prisoner.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Prisoner's Uniform Right Lower Arm" texture="Content/Items/Jobgear/Commoner/Prisoner.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Prisoner's Uniform Left Upper Arm" texture="Content/Items/Jobgear/Commoner/Prisoner.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Prisoner's Uniform Right Upper Arm" texture="Content/Items/Jobgear/Commoner/Prisoner.png" limb="RightArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Prisoner's Uniform Waist" texture="Content/Items/Jobgear/Commoner/Prisoner.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Prisoner's Uniform Right Thigh" texture="Content/Items/Jobgear/Commoner/Prisoner.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Prisoner's Uniform Left Thigh" texture="Content/Items/Jobgear/Commoner/Prisoner.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Prisoner's Uniform Right Leg" texture="Content/Items/Jobgear/Commoner/Prisoner.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Prisoner's Uniform Left Leg" texture="Content/Items/Jobgear/Commoner/Prisoner.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Prisoner's Uniform Right Shoe" texture="Content/Items/Jobgear/Commoner/Prisoner.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Prisoner's Uniform Left Shoe" texture="Content/Items/Jobgear/Commoner/Prisoner.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <damagemodifier afflictionidentifiers="cdicedebuff" armorsector="0.0,360.0" damagemultiplier="0.2" deflectprojectiles="true" damageParticle="spark" />
+      <damagemodifier afflictionidentifiers="lacerations" armorsector="0.0,360.0" damagemultiplier="0.25" deflectprojectiles="true" damageParticle="spark" />
+      <damagemodifier afflictionidentifiers="gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.1" deflectprojectiles="true" damageParticle="spark" />
+      <damagemodifier afflictionidentifiers="blunttrauma" armorsector="0.0,360.0" damagemultiplier="0.25" deflectprojectiles="true" damageParticle="spark" />
+      <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.3" deflectprojectiles="true" damageParticle="spark" />
+      <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.2" deflectprojectiles="true" damageParticle="spark" />
+      <damagemodifier afflictionidentifiers="explosiondamage" armorsector="0.0,360.0" damagemultiplier="0.25" deflectprojectiles="true" damageParticle="spark" />
+    </Wearable>
+  </Item>
+  <Item name="XM250" identifier="Scp_war_xm250" category="Weapon" tags="bigitem,weapon,gun,gunsmith,mountableweapon" Scale="0.25" impactsoundtag="impact_metal_light" hideinmenus="true" nonplayerteaminteractable="True">
+    <InventoryIcon texture="%ModDir%/content/png/coalition.png" sourcerect="1338,2159,197,204" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/coalition.png" sourcerect="647,2424,669,125" depth="0.55" origin="0.5,0.5" />
+    <Body width="620" height="130" density="46" />
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="30,-50" aimpos="85,0" handle1="-170,-30" handle2="50,0" holdangle="50" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="Character" SpeedMultiplier="0.4" setvalue="true" />
+    </Holdable>
+    <RangedWeapon reload="0.11" weapondamagemodifier="1.1" holdtrigger="true" barrelpos="320,25" spread="3" unskilledspread="10" combatPriority="90" drawhudwhenequipped="true" crosshairscale="0.35">
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="4.0,4.0" colormultiplier="255,200,200,200" />
+      <StatusEffect type="OnUse" target="This" forceplaysounds="true">
+        <Sound file="%ModDir%/content/ogg/ar.ogg" type="OnUse" range="3000" loop="true" />
+      </StatusEffect>
+      <StatusEffect type="OnSpawn" target="This" targetitemcomponent="ItemContainer">
+        <SpawnItem identifier="scp_68_ai_mgmag" spawnposition="ThisInventory" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This">
+        <Remove />
+      </StatusEffect>
+      <RequiredItems items="scp_68_ai_mgmag" type="Contained" msg="ItemMsgAmmoRequired" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet" containedspritedepth="0.54">
+      <Containable items="scp_68_ai_mgmag" hide="false" itempos="-15,-7" depth="0.56" setactive="true" />
+    </ItemContainer>
+  </Item>
+  <Item name="XM250_2" identifier="Scp_war_xm250_2" category="Weapon" tags="bigitem,weapon,gun,gunsmith,mountableweapon" Scale="0.25" impactsoundtag="impact_metal_light" hideinmenus="true" nonplayerteaminteractable="True">
+    <InventoryIcon texture="%ModDir%/content/png/coalition.png" sourcerect="1338,2159,197,204" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/coalition.png" sourcerect="647,2424,669,125" depth="0.55" origin="0.5,0.5" />
+    <Body width="620" height="130" density="46" />
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="30,-50" aimpos="85,0" handle1="-170,-30" handle2="50,0" holdangle="50" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="Character" SpeedMultiplier="0.4" setvalue="true" />
+    </Holdable>
+    <RangedWeapon reload="0.06" weapondamagemodifier="1.1" holdtrigger="true" barrelpos="320,25" spread="3" unskilledspread="10" combatPriority="90" drawhudwhenequipped="true" crosshairscale="0.35">
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="4.0,4.0" colormultiplier="255,200,200,200" />
+      <StatusEffect type="OnUse" target="This" forceplaysounds="true">
+        <Sound file="%ModDir%/content/ogg/ar.ogg" type="OnUse" range="3000" loop="true" />
+      </StatusEffect>
+      <StatusEffect type="OnSpawn" target="This" targetitemcomponent="ItemContainer">
+        <SpawnItem identifier="scp_68_ai_mgmag" spawnposition="ThisInventory" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This">
+        <Remove />
+      </StatusEffect>
+      <RequiredItems items="scp_68_ai_mgmag" type="Contained" msg="ItemMsgAmmoRequired" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet" containedspritedepth="0.54">
+      <Containable items="scp_68_ai_mgmag" hide="false" itempos="-15,-7" depth="0.56" setactive="true" />
+    </ItemContainer>
+  </Item>
+  <Item name="机枪穿甲弹匣（8.6*70）" identifier="scp_68_ai_mgmag" subcategory="tsm_coalition" scale="0.23" category="weapon" maxstacksize="2" cargocontaineridentifier="tsm_metalcrate" linkable="true" tags="lm_magazine,smallitem,lm_gjzd,68_51_mgmag,magazine,handheldammo" impactsoundtag="impact_metal_light" health="450">
+    <InventoryIcon texture="%ModDir%/content/png/coalition.png" sourcerect="2281,643,84,105" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/coalition.png" depth="0.56" sourcerect="2281,643,84,105" origin="0.5,0.5" />
+    <PreferredContainer primary="secarmcab" secondary="armcab,weaponholder" />
+    <Body width="46" height="72" density="12" />
+    <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="cj_86_ai_70" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="cj_86_ai_70" />
+      <StatusEffect type="OnUse" target="This" condition="-0.1" disabledeltatime="true">
+        <SpawnItem identifiers="cj_86_ai_70" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+  <Item name="8.6*70机枪穿甲" identifier="cj_86_ai_70" subcategory="bullet" category="weapon" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="smallitem,sniperammo" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.5">
+    <InventoryIcon texture="%ModDir%/content/png/bullet.png" sourcerect="31,201,59,14" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/bullet.png" sourcerect="31,201,59,14" depth="0.55" origin="0.5,0.5" />
+    <Body width="40" height="14" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,100,100,175" scalemultiplier="1,0.6" />
+      <Attack structuredamage="10" targetforce="23" itemdamage="54" penetration="0.48" severlimbsprobability="0.5">
+        <Affliction identifier="gunshotwound" strength="62" />
+        <Affliction identifier="cdtsm_armorbreak_jz" strength="16" />
+        <Affliction identifier="bleeding" strength="10" />
+        <Affliction identifier="stun" strength="0.3" probability="0.4" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+        <ParticleEmitter particle="weldspark" particleamount="5" anglemin="0" anglemax="360" velocitymin="600" velocitymax="800" scalemin="0.75" scalemax="1" drawontop="true" colormultiplier="255,100,100,175" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Explosion range="10.0" strength="10" ballastfloradamage="100" levelwalldamage="120" itemdamage="20" force="10.0" severlimbsprobability="0.5" decal="explosion" decalsize="0.1" />
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+        <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" stackable="false" delay="1">
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+  <Item name="维克托" identifier="scp_vk" category="weapon" tags="smallitem,weapon,gun,gunsmith,mountableweapon" scale="0.33" impactsoundtag="impact_metal_light" hideinmenus="true" nonplayerteaminteractable="True">
+    <InventoryIcon texture="%ModDir%/content/png/smg.png" sourcerect="832,1392,91,108" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/smg.png" sourcerect="0,997,252,88" depth="0.55" origin="0.5,0.5" />
+    <Body width="252" height="80" density="20" />
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="50,0" aimpos="50,0" handle1="-20,-12" handle2="42,10" holdangle="-35" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.95" setvalue="true" />
+      <StatusEffect type="OnSecondaryUse" target="Character" SpeedMultiplier="0.85" setvalue="true" />
+    </Holdable>
+    <RangedWeapon reload="0.05" weapondamagemodifier="1.1" holdtrigger="true" barrelpos="125,7" spread="9" unskilledspread="20" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.35">
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="229,221,215,255" />
+      <StatusEffect type="OnUse" target="This" forceplaysounds="true">
+        <Sound file="%ModDir%/content/ogg/ar.ogg" type="OnUse" range="1000" loop="true" />
+      </StatusEffect>
+      <StatusEffect type="OnSpawn" target="This" targetitemcomponent="ItemContainer">
+        <SpawnItem identifier="scp_45_smgmag" spawnposition="ThisInventory" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This">
+        <Remove />
+      </StatusEffect>
+      <RequiredItems items="scp_45_smgmag" type="Contained" msg="ItemMsgAmmoRequired" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet" containedspritedepth="0.56">
+      <Containable items="scp_45_smgmag" hide="false" rotation="-35" itempos="12,-13" />
+    </ItemContainer>
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <SkillRequirementHint identifier="weapons" level="40" />
+  </Item>
+  <Item name="冲锋枪扩容弹匣（.45）" identifier="scp_45_smgmag" scale="0.25" category="weapon" subcategory="other" maxstacksize="6" maxstacksizecharacterinventory="4" cargocontaineridentifier="metalcrate" linkable="true" tags="smallitem,tsm_45_smgmag,ump45mag,magazine,handheldammo,deep_smg_ump45,smg_specail_zd" impactsoundtag="impact_metal_light" health="40">
+    <InventoryIcon texture="%ModDir%/content/png/smg.png" sourcerect="1440,0,60,137" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/smg.png" sourcerect="1440,0,60,137" depth="0.56" origin="0.5,0.5" />
+    <Body width="65" height="95" density="10" />
+    <ItemContainer maxstacksize="1" hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="scp_45_ammo" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="scp_45_ammo" />
+      <StatusEffect type="OnUse" target="This" condition="-0.25" disabledeltatime="true">
+        <SpawnItem identifiers="scp_45_ammo" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name=".45" identifier="scp_45_ammo" subcategory="bullet" category="Weapon" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="jiuzhou_zd" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.5">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="896,960,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="195,282,17,6" depth="0.55" origin="0.5,0.5" />
+    <Body width="40" height="14" density="1" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,255,115,175" scalemultiplier="1,0.6" />
+      <Attack structuredamage="0.3" targetforce="1" itemdamage="7" penetration="0.1" severlimbsprobability="0.2">
+        <Affliction identifier="bleeding" strength="25" />
+        <Affliction identifier="gunshotwound" strength="40" />
+        <Affliction identifier="stun" strength="0.3" probability="0.3" />
+        <Affliction identifier="incrementalstun" strength="8" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+        <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" stackable="false" delay="1">
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <Item name="站点安保服装" identifier="scpsitedefense" tags="diving,deepdiving,divinggear_wearableindoors" allowasextracargo="False" scale="0.5" fireproof="true" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" HideConditionBar="true" nonplayerteaminteractable="true" botpriority="5">
+    <InventoryIcon texture="%ModDir%/content/png/站点安保服装.png" sourcerect="180,3,78,181" origin="0.5,0.5" />
+    <!-- 物品栏图标 -->
+    <Sprite texture="%ModDir%/content/png/站点安保服装.png" sourcerect="180,3,78,181" depth="0.55" origin="0.5,0.5" />
+    <!-- 基础物品精灵图 -->
+    <Body radius="45" width="34" density="15" />
+    <Wearable slots="OuterClothes" msg="ItemEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite texture="%ModDir%/content/png/站点安保服装.png" limb="Head" hidelimb="false" inherittexturescale="true" hideotherwearables="false" sourcerect="416,70,68,63" scale="1.7" origin="0.6,0.5" />
+      <sprite texture="%ModDir%/content/png/站点安保服装.png" limb="Torso" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="180,3,78,181" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/站点安保服装.png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="292,160,25,39" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/站点安保服装.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="356,160,25,39" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/站点安保服装.png" limb="RightArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="288,5,37,77" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/站点安保服装.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="356,5,30,78" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/站点安保服装.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="295,100,23,60" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/站点安保服装.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="358,100,23,60" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/站点安保服装.png" limb="Waist" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="189,193,57,55" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/站点安保服装.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="26,132,38,103" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/站点安保服装.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="105,132,37,105" origiin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/站点安保服装.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="18,9,50,103" origiin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/站点安保服装.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="96,10,51,103" origiin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/png/站点安保服装.png" limb="LeftFoot" sound="footstep_metal_boots" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="281,218,53,37" origiin="0.5,0.5" />
+      <!-- 左脚金属靴脚步声 -->
+      <sprite texture="%ModDir%/content/png/站点安保服装.png" limb="RightFoot" sound="footstep_metal_boots" hidelimb="true" inherittexturescale="true" hideotherwearables="true" sourcerect="346,218,52,35" origiin="0.5,0.5" />
+      <!-- 右脚金属靴脚步声 -->
+      <!-- 防御配置 -->
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding,explosiondamage" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+      <!-- 物理伤害减免80%，偏转投射物 -->
+      <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.1" damagesound="" deflectprojectiles="true" />
+      <!-- 烧伤伤害减免90% -->
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.0" damagesound="LimbArmor" />
+      <!-- 辐射伤害完全免疫 -->
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" probabilitymultiplier="0.5" damagesound="LimbArmor" />
+      <!-- 外皮感染概率降低50% -->
+      <StatValue stattype="WalkingSpeed" value="0.25" />
+      <StatValue stattype="SwimmingSpeed" value="0.20" />
+    </Wearable>
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
+  </Item>
+</Items>

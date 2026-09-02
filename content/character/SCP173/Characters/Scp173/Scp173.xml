@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Character speciesname="cdScp173" humanoid="False" speciestranslationoverride="" displayname="SCP-173" group="scp" hasinfo="False" husk="False" usehuskappendage="False" needsair="False" needswater="False" canspeak="True" noise="100" visibility="100" blooddecal="blood" UseBossHealthBar="True" bleedparticleair="blooddrop" bleedparticlewater="waterblood" eatingspeed="10" pathfinderpriority="1" hideinsonar="False" sonardisruption="0">
+    <ragdolls folder="%ModDir%/content/character/SCP173/Characters/Scp173/Ragdolls/" />
+    <animations folder="%ModDir%/content/character/SCP173/Characters/Scp173/Animations/" />
+    <health vitality="750000" doesbleed="False" CrushDepth="1300" usehealthwindow="False" bleedingreduction="0.1" burnreduction="0.1" constanthealthregeneration="0.1" healthregenerationwheneating="0" />
+    <ai combatstrength="1000" sight="10" hearing="10" aggressionhurt="100" aggressiongreed="10" fleehealththreshold="0" attackwhenprovoked="False" avoidgunfire="True" avoidtime="3" minfleetime="20" aggressiveboarding="False" enforceaggressivebehaviorformissions="True" targetouterwalls="False" randomattack="False">
+      <target tag="human" state="Attack" priority="100" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" />
+      <target tag="dead" state="Idle" priority="80" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" />
+    </ai>
+    <StatusEffect type="Always" target="This" delay="1.5" checkconditionalalways="true" disabledeltatime="true" stackable="False" comparison="and">
+      <Conditional cdsculptureblink="lt 1" />
+      <Conditional isdead="False" />
+      <Affliction identifier="cdsculptureblink" amount="100" MultiplyByMaxVitality="true" />
+      <sound file="%ModDir%/content/character/SCP173/Characters/Horror0.ogg" range="500" selectionmode="random" />
+      <sound file="%ModDir%/content/character/SCP173/Characters/Horror1.ogg" range="500" />
+      <sound file="%ModDir%/content/character/SCP173/Characters/Horror2.ogg" range="500" />
+      <sound file="%ModDir%/content/character/SCP173/Characters/Horror3.ogg" range="500" />
+      <sound file="%ModDir%/content/character/SCP173/Characters/Horror4.ogg" range="500" />
+      <sound file="%ModDir%/content/character/SCP173/Characters/Horror5.ogg" range="500" />
+      <sound file="%ModDir%/content/character/SCP173/Characters/Horror6.ogg" range="500" />
+      <sound file="%ModDir%/content/character/SCP173/Characters/Horror7.ogg" range="500" />
+      <sound file="%ModDir%/content/character/SCP173/Characters/Horror8.ogg" range="500" />
+      <sound file="%ModDir%/content/character/SCP173/Characters/Horror9.ogg" range="500" />
+      <sound file="%ModDir%/content/character/SCP173/Characters/Horror10.ogg" range="500" />
+      <sound file="%ModDir%/content/character/SCP173/Characters/Horror11.ogg" range="500" />
+      <sound file="%ModDir%/content/character/SCP173/Characters/Horror12.ogg" range="500" />
+      <sound file="%ModDir%/content/character/SCP173/Characters/Horror13.ogg" range="500" />
+      <sound file="%ModDir%/content/character/SCP173/Characters/Horror14.ogg" range="500" />
+      <sound file="%ModDir%/content/character/SCP173/Characters/Horror15.ogg" range="500" />
+      <sound file="%ModDir%/content/character/SCP173/Characters/Horror16.ogg" range="500" />
+    </StatusEffect>
+    <StatusEffect type="Always" target="This">
+      <Affliction identifier="cd173strength" amount="1" MultiplyByMaxVitality="true" />
+    </StatusEffect>
+    <StatusEffect type="OnDeath" target="This" delay="10" setvalue="true" isdead="false"></StatusEffect>
+    <StatusEffect type="Always" target="This" delay="8" checkconditionalalways="true" stackable="False" disabledeltatime="true" comparison="and">
+      <Conditional isdead="False" />
+      <Conditional cdsculptureblink="gt 1" />
+      <ReduceAffliction identifier="cdsculptureblink" amount="100" />
+    </StatusEffect>
+    <StatusEffect type="Always" target="This" duration="84" checkconditionalalways="true" stackable="False" comparison="and">
+      <Conditional isdead="False" />
+      <Sound file="%ModDir%/content/character/SCP173/Characters/CRUNCH.ogg" loop="true" range="1000" dontmuffle="true" />
+    </StatusEffect>
+  </Character>
+</Override>

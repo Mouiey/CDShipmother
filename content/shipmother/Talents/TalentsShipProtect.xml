@@ -1,0 +1,1185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Talents>
+  <!--天枢护盾天赋-->
+  <Talent identifier="cdshipprotect"  trackedstat="cdshipprotectcount" trackedmax="99">
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="4,6" sheetelementsize="128,128" />
+    <Description tag="talentdescription.cdshipprotect">
+      <Replace tag="[name]" value="entityname.cdprotectvestEX" color="gui.green"/>
+      <Replace tag="[seconds]" value="10" color="gui.green"/>
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="OnAttacked">
+      <Conditions>
+        <AbilityConditionHasAffliction afflictionidentifier="cdprotectaff"/>
+        <AbilityConditionAttackData ignorenonharmfulattacks="false" ignoreOwnAttacks="false" weapontype="Ranged"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData addeddamagemultiplier="-0.9999" />
+        <CharacterAbilityApplyStatusEffectsToAttacker>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" targetlimb="Torso" delay="0" disabledeltatime="true">
+              <ParticleEmitter particle="cdprotect" distancemin="30" distancemax="30" anglemin="-90" anglemax="-90" particlespersecond="1" particleamount="1" velocitymin="0" velocitymax="0" scalemin="0.25" scalemax="0.25"/>
+              <sound file="Content/Items/Weapons/WEAPONS_electricalDischarge1.ogg" range="500" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffectsToAttacker>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" disabledeltatime="true">
+              <ReduceAffliction identifier="cdprotectaff" strength="1"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+    <!--减cd-->
+    <AbilityGroupEffect abilityeffecttype="OnAttacked">
+      <Conditions>
+        <AbilityConditionAttackData ignorenonharmfulattacks="false" ignoreOwnAttacks="false" weapontype="Ranged"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" disabledeltatime="true">
+              <ReduceAffliction identifier="cdprotectcd" strength="10"/>
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+    <!-- 杀敌计数触发器 -->
+    <AbilityGroupEffect abilityeffecttype="OnKillCharacter">
+      <Conditions>
+        <AbilityConditionCharacter targettypes="Enemy">
+          <Conditional speciesname="eq human" />
+          <Conditional maxhealth="gte 50" />
+        </AbilityConditionCharacter>
+      </Conditions>
+      <Abilities>
+        <!-- 增加计数器 -->
+        <CharacterAbilityGivePermanentStat statidentifier="cdshipprotectcount" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnKillCharacter">
+      <Conditions>
+        <AbilityConditionCharacter targettypes="Enemy">
+          <Conditional speciesname="eq human" />
+          <Conditional maxhealth="gte 200" />
+        </AbilityConditionCharacter>
+      </Conditions>
+      <Abilities>
+        <!-- 增加计数器 -->
+        <CharacterAbilityGivePermanentStat statidentifier="cdshipprotectcount" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnKillCharacter">
+      <Conditions>
+        <AbilityConditionCharacter targettypes="Enemy">
+          <Conditional speciesname="eq human" />
+          <Conditional maxhealth="gte 400" />
+        </AbilityConditionCharacter>
+      </Conditions>
+      <Abilities>
+        <!-- 增加计数器 -->
+        <CharacterAbilityGivePermanentStat statidentifier="cdshipprotectcount" value="1" removeondeath="false" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="1"/>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="1" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.01"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="1" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="2" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.02"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="2" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="3" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.03"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="3" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="4" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.04"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="4" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="5" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.05"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="5" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="6" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.06"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="6" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="7" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.07"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="7" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="8" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.08"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="8" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="9" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.09"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="9" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="10" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.1"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="10" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="11" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.11"/>
+      </Abilities>
+    </AbilityGroupInterval>
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="11" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="12" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.12"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="12" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="13" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.13"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="13" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="14" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.14"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="14" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="15" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.15"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="15" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="16" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.16"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="16" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="17" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.17"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="17" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="18" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.18"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="18" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="19" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.19"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="19" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="20" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.2"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="20" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="21" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.21"/>
+      </Abilities>
+    </AbilityGroupInterval>
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="21" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="22" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.22"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="22" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="23" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.23"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="23" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="24" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.24"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="24" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="25" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.25"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="25" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="26" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.26"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="26" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="27" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.27"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="27" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="28" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.28"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="28" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="29" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.29"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="29" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="30" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.3"/>
+      </Abilities>
+    </AbilityGroupInterval>        
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="30" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="31" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.31"/>
+      </Abilities>
+    </AbilityGroupInterval>
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="31" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="32" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.32"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="32" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="33" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.33"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="33" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="34" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.34"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="34" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="35" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.35"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="35" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="36" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.36"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="36" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="37" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.37"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="37" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="38" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.38"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="38" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="39" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.39"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="39" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="40" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.4"/>
+      </Abilities>
+    </AbilityGroupInterval>        
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="40" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="41" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.41"/>
+      </Abilities>
+    </AbilityGroupInterval>
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="41" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="42" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.42"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="42" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="43" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.43"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="43" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="44" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.44"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="44" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="45" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.45"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="45" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="46" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.46"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="46" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="47" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.47"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="47" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="48" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.48"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="48" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="49" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.49"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="49" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="50" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.50"/>
+      </Abilities>
+    </AbilityGroupInterval>        
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="50" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="51" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.51"/>
+      </Abilities>
+    </AbilityGroupInterval>
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="51" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="52" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.52"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="52" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="53" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.53"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="53" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="54" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.54"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="54" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="55" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.55"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="55" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="56" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.56"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="56" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="57" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.57"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="57" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="58" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.58"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="58" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="59" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.59"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="59" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="60" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.6"/>
+      </Abilities>
+    </AbilityGroupInterval>        
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="60" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="61" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.61"/>
+      </Abilities>
+    </AbilityGroupInterval>
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="61" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="62" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.62"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="62" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="63" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.63"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="63" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="64" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.64"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="64" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="65" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.65"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="65" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="66" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.66"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="66" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="67" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.67"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="67" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="68" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.68"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="68" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="69" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.69"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="69" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="70" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.70"/>
+      </Abilities>
+    </AbilityGroupInterval>        
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="70" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="71" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.71"/>
+      </Abilities>
+    </AbilityGroupInterval>
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="71" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="72" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.72"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="72" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="73" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.73"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="73" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="74" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.74"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="74" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="75" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.75"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="75" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="76" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.76"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="76" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="77" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.77"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="77" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="78" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.78"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="78" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="79" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.79"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="79" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="80" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.80"/>
+      </Abilities>
+    </AbilityGroupInterval>        
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="80" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="81" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.81"/>
+      </Abilities>
+    </AbilityGroupInterval>
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="81" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="82" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.82"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="82" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="83" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.83"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="83" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="84" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.84"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="84" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="85" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.85"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="85" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="86" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.86"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="86" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="87" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.87"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="87" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="88" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.88"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="88" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="89" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.89"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="89" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="90" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.90"/>
+      </Abilities>
+    </AbilityGroupInterval>        
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="90" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="91" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.91"/>
+      </Abilities>
+    </AbilityGroupInterval>
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="91" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="92" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.92"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="92" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="93" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.93"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="93" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="94" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.94"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="94" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="95" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.95"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="95" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="96" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.96"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="96" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="97" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.97"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="97" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="98" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.98"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="98" />
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="99" invert="true" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="0.99"/>
+      </Abilities>
+    </AbilityGroupInterval>    
+    <!--计数-->
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionHasPermanentStat statidentifier="cdshipprotectcount" min="99" />
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect" minimumpercentage="0.1"/>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="cdprotectaff" multiplier="1"/>
+      </Abilities>
+    </AbilityGroupInterval>        
+  </Talent>
+</Talents>

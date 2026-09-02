@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Randomevents>
+  <EventPrefabs>
+    <ScriptedEvent identifier="cdmisson1" commonness="100">
+      <SpawnAction npcsetidentifier="cdspecialnpc" npcidentifier="cdspecialnpc_1" targettag="missionnpc" spawnlocation="Outpost" targetmoduletags="airlock" />
+      <ConversationAction text="我这有几个任务,你可以试一下" speakertag="missionnpc" endeventifinterrupted="false" dialogtype="Small" />
+      <MissionAction missiontag="cd_mission_gt0_A" />
+      <MissionAction missiontag="cd_mission_gt0_A" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="cdmisson2" commonness="100">
+      <SpawnAction npcsetidentifier="cdspecialnpc" npcidentifier="cdspecialnpc_1" targettag="missionnpc" spawnlocation="Outpost" targetmoduletags="airlock" />
+      <ConversationAction text="我这有几个任务,你可以试一下" speakertag="missionnpc" endeventifinterrupted="false" dialogtype="Small" />
+      <MissionAction missiontag="cd_mission_gt0_B" />
+      <MissionAction missiontag="cd_mission_gt0_B" />
+    </ScriptedEvent>
+    <!-- 二图任务发布___________________________________________________ -->
+    <ScriptedEvent identifier="cdmisson3" commonness="100">
+      <SpawnAction npcsetidentifier="cdspecialnpc" npcidentifier="cdspecialnpc_1" targettag="missionnpc" spawnlocation="Outpost" targetmoduletags="airlock" />
+      <ConversationAction text="我这有几个任务,你可以试一下" speakertag="missionnpc" endeventifinterrupted="false" dialogtype="Small" />
+      <MissionAction missiontag="cd_mission_gt20_A" commonness="50" />
+      <MissionAction missiontag="cd_mission_gt20_A" commonness="50" />
+      <MissionAction missiontag="cd_mission_gt20_A" commonness="50" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="cdmisson4" commonness="100">
+      <SpawnAction npcsetidentifier="cdspecialnpc" npcidentifier="cdspecialnpc_1" targettag="missionnpc" spawnlocation="Outpost" targetmoduletags="airlock" />
+      <ConversationAction text="我这有几个任务,你可以试一下" speakertag="missionnpc" endeventifinterrupted="false" dialogtype="Small" />
+      <MissionAction missiontag="cd_mission_gt20_B" commonness="50" />
+      <MissionAction missiontag="cd_mission_gt20_B" commonness="50" />
+      <MissionAction missiontag="cd_mission_gt20_B" commonness="50" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="cdmisson5" commonness="100">
+      <SpawnAction npcsetidentifier="cdspecialnpc" npcidentifier="cdspecialnpc_1" targettag="missionnpc" spawnlocation="Outpost" targetmoduletags="airlock" />
+      <ConversationAction text="我这有几个任务,你可以试一下" speakertag="missionnpc" endeventifinterrupted="false" dialogtype="Small" />
+      <MissionAction missiontag="cd_mission_gt20_A" commonness="50" />
+      <MissionAction missiontag="cd_mission_gt20_B" commonness="50" />
+      <MissionAction missiontag="cd_mission_gt20_P" commonness="50" />
+    </ScriptedEvent>
+    <!-- 三图任务发布___________________________________________________ -->
+    <ScriptedEvent identifier="cdmisson6" commonness="100">
+      <SpawnAction npcsetidentifier="cdspecialnpc" npcidentifier="cdspecialnpc_1" targettag="missionnpc" spawnlocation="Outpost" targetmoduletags="airlock" />
+      <ConversationAction text="我这有几个任务,你可以试一下" speakertag="missionnpc" endeventifinterrupted="false" dialogtype="Small" />
+      <MissionAction missiontag="cd_mission_gt40_A" />
+      <MissionAction missiontag="cd_mission_gt40_A" />
+      <MissionAction missiontag="cd_mission_gt40_A" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="cdmisson7" commonness="100">
+      <SpawnAction npcsetidentifier="cdspecialnpc" npcidentifier="cdspecialnpc_1" targettag="missionnpc" spawnlocation="Outpost" targetmoduletags="airlock" />
+      <ConversationAction text="我这有几个任务,你可以试一下" speakertag="missionnpc" endeventifinterrupted="false" dialogtype="Small" />
+      <MissionAction missiontag="cd_mission_gt40_B" />
+      <MissionAction missiontag="cd_mission_gt40_B" />
+      <MissionAction missiontag="cd_mission_gt40_B" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="cdmisson8" commonness="100">
+      <SpawnAction npcsetidentifier="cdspecialnpc" npcidentifier="cdspecialnpc_1" targettag="missionnpc" spawnlocation="Outpost" targetmoduletags="airlock" />
+      <ConversationAction text="我这有几个任务,你可以试一下" speakertag="missionnpc" endeventifinterrupted="false" dialogtype="Small" />
+      <MissionAction missiontag="cd_mission_gt40_A" />
+      <MissionAction missiontag="cd_mission_gt40_B" />
+      <MissionAction missiontag="cd_mission_gt40_P" />
+    </ScriptedEvent>
+  </EventPrefabs>
+  <!--银行业务-->
+  <EventPrefabs>
+    <ScriptedEvent identifier="cdbankevent" commonness="100">
+      <TagAction criteria="player" tag="player" />
+      <SpawnAction npcsetidentifier="cdspecialnpc" npcidentifier="cdbanker" targettag="cdbanker" spawnlocation="Outpost" targetmoduletags="airlock" />
+      <StatusEffectAction targettag="cdbanker">
+        <StatusEffect target="This" UseHealthWindow="false" />
+      </StatusEffectAction>
+      <Label name="beginningofthejourney" />
+      <NPCWaitAction npctag="cdbanker" wait="false" />
+      <TriggerAction target1tag="cdbanker" target2tag="player" applytotarget2="triggerer_player" radius="200" waitforinteraction="true" />
+      <ConversationAction targettag="triggerer_player" text="欢迎使用沉底银行，需要什么服务吗？">
+        <Option text="取款服务">
+          <ConversationAction targettag="triggerer_player" text="感谢使用取款服务，本服务将为你兑现你的银行额度，请选择取款金额">
+            <Option text="取出一万马克">
+              <CheckReputationAction targettype="faction" identifier="cdbank" condition="gte -50">
+                <Success>
+                  <ReputationAction targettype="Faction" identifier="cdbank" increase="-1" />
+                  <ConversationAction targettag="triggerer_player" text="这是您的钱，请收好，欢迎下次再来" />
+                  <SpawnAction itemidentifier="cd10000MK" targetinventory="triggerer_player" />
+                  <ClearTagAction tag="triggerer_player" />
+                  <GoTo name="beginningofthejourney" />
+                </Success>
+                <Failure>
+                  <ConversationAction targettag="triggerer_player" text="对不起，您的信用已严重透支，本行拒绝服务" />
+                  <ClearTagAction tag="triggerer_player" />
+                  <GoTo name="beginningofthejourney" />
+                </Failure>
+              </CheckReputationAction>
+            </Option>
+            <Option text="取出五万马克">
+              <CheckReputationAction targettype="faction" identifier="cdbank" condition="gte -50">
+                <Success>
+                  <ReputationAction targettype="Faction" identifier="cdbank" increase="-5" />
+                  <ConversationAction targettag="triggerer_player" text="这是您的钱，请收好，欢迎下次再来" />
+                  <SpawnAction itemidentifier="cd10000MK" targetinventory="triggerer_player" />
+                  <SpawnAction itemidentifier="cd10000MK" targetinventory="triggerer_player" />
+                  <SpawnAction itemidentifier="cd10000MK" targetinventory="triggerer_player" />
+                  <SpawnAction itemidentifier="cd10000MK" targetinventory="triggerer_player" />
+                  <SpawnAction itemidentifier="cd10000MK" targetinventory="triggerer_player" />
+                  <ClearTagAction tag="triggerer_player" />
+                  <GoTo name="beginningofthejourney" />
+                </Success>
+                <Failure>
+                  <ConversationAction targettag="triggerer_player" text="对不起，您的信用已严重透支，本行拒绝服务" />
+                  <ClearTagAction tag="triggerer_player" />
+                  <GoTo name="beginningofthejourney" />
+                </Failure>
+              </CheckReputationAction>
+            </Option>
+            <Option text="取出十万马克">
+              <CheckReputationAction targettype="faction" identifier="cdbank" condition="gte -50">
+                <Success>
+                  <ReputationAction targettype="Faction" identifier="cdbank" increase="-10" />
+                  <ConversationAction targettag="triggerer_player" text="这是您的钱，请收好，欢迎下次再来" />
+                  <SpawnAction itemidentifier="cd100000MK" targetinventory="triggerer_player" />
+                  <ClearTagAction tag="triggerer_player" />
+                  <GoTo name="beginningofthejourney" />
+                </Success>
+                <Failure>
+                  <ConversationAction targettag="triggerer_player" text="对不起，您的信用已严重透支，本行拒绝服务" />
+                  <ClearTagAction tag="triggerer_player" />
+                  <GoTo name="beginningofthejourney" />
+                </Failure>
+              </CheckReputationAction>
+            </Option>
+          </ConversationAction>
+        </Option>
+        <Option text="存款服务">
+          <ConversationAction targettag="triggerer_player" text="感谢使用存款服务，本服务使用马克为您换取银行额度，请选择存款金额">
+            <Option text="存款一万马克">
+              <CheckMoneyAction amount="10000">
+                <Success>
+                  <MoneyAction amount="-10000" />
+                  <ReputationAction targettype="Faction" identifier="cdbank" increase="1" />
+                  <ConversationAction targettag="triggerer_player" text="存款成功，感谢您使用本银行" />
+                  <ClearTagAction tag="triggerer_player" />
+                  <GoTo name="beginningofthejourney" />
+                </Success>
+                <Failure>
+                  <ConversationAction targettag="triggerer_player" text="您的钱好像不够呢" />
+                  <ClearTagAction tag="triggerer_player" />
+                  <GoTo name="beginningofthejourney" />
+                </Failure>
+              </CheckMoneyAction>
+            </Option>
+            <Option text="存款五万马克">
+              <CheckMoneyAction amount="50000">
+                <Success>
+                  <MoneyAction amount="-50000" />
+                  <ReputationAction targettype="Faction" identifier="cdbank" increase="5" />
+                  <ConversationAction targettag="triggerer_player" text="存款成功，感谢您使用本银行" />
+                  <ClearTagAction tag="triggerer_player" />
+                  <GoTo name="beginningofthejourney" />
+                </Success>
+                <Failure>
+                  <ConversationAction targettag="triggerer_player" text="您的钱好像不够呢" />
+                  <ClearTagAction tag="triggerer_player" />
+                  <GoTo name="beginningofthejourney" />
+                </Failure>
+              </CheckMoneyAction>
+            </Option>
+            <Option text="存款十万马克">
+              <CheckMoneyAction amount="100000">
+                <Success>
+                  <MoneyAction amount="-100000" />
+                  <ReputationAction targettype="Faction" identifier="cdbank" increase="10" />
+                  <ConversationAction targettag="triggerer_player" text="存款成功，感谢您使用本银行" />
+                  <ClearTagAction tag="triggerer_player" />
+                  <GoTo name="beginningofthejourney" />
+                </Success>
+                <Failure>
+                  <ConversationAction targettag="triggerer_player" text="您的钱好像不够呢" />
+                  <ClearTagAction tag="triggerer_player" />
+                  <GoTo name="beginningofthejourney" />
+                </Failure>
+              </CheckMoneyAction>
+            </Option>
+          </ConversationAction>
+        </Option>
+        <Option text="等下再来">
+          <ConversationAction text="好的，随时欢迎您的光临" dialogtype="Small" targettag="triggerer_player" />
+          <ClearTagAction tag="triggerer_player" />
+          <GoTo name="beginningofthejourney" />
+        </Option>
+      </ConversationAction>
+      <NPCWaitAction npctag="cdbanker" wait="false" />
+    </ScriptedEvent>
+  </EventPrefabs>
+  <!--银行利息-->
+  <EventPrefabs>
+    <ScriptedEvent identifier="cdbankreputationevent" commonness="100">
+      <TagAction criteria="player" tag="player" />
+      <CheckReputationAction targettype="faction" identifier="cdbank" condition="lte -80">
+        <Success>
+          <RNGAction chance="0.8">
+            <Success>
+              <ReputationAction targettype="Faction" identifier="cdbank" increase="-4" />
+              <ReputationAction targettype="Faction" identifier="separatists" increase="-4" />
+              <ReputationAction targettype="Faction" identifier="coalition" increase="-4" />
+            </Success>
+            <Failure></Failure>
+          </RNGAction>
+        </Success>
+        <Failure>
+          <CheckReputationAction targettype="faction" identifier="cdbank" condition="lte -50">
+            <Success>
+              <RNGAction chance="0.7">
+                <Success>
+                  <ReputationAction targettype="Faction" identifier="cdbank" increase="-3" />
+                  <ReputationAction targettype="Faction" identifier="separatists" increase="-3" />
+                  <ReputationAction targettype="Faction" identifier="coalition" increase="-3" />
+                </Success>
+                <Failure></Failure>
+              </RNGAction>
+            </Success>
+            <Failure>
+              <CheckReputationAction targettype="faction" identifier="cdbank" condition="lte -30">
+                <Success>
+                  <RNGAction chance="0.6">
+                    <Success>
+                      <ReputationAction targettype="Faction" identifier="cdbank" increase="-2" />
+                      <ReputationAction targettype="Faction" identifier="separatists" increase="-2" />
+                      <ReputationAction targettype="Faction" identifier="coalition" increase="-2" />
+                    </Success>
+                    <Failure></Failure>
+                  </RNGAction>
+                </Success>
+                <Failure>
+                  <CheckReputationAction targettype="faction" identifier="cdbank" condition="lte -10">
+                    <Success>
+                      <RNGAction chance="0.5">
+                        <Success>
+                          <ReputationAction targettype="Faction" identifier="cdbank" increase="-1" />
+                          <ReputationAction targettype="Faction" identifier="separatists" increase="-1" />
+                          <ReputationAction targettype="Faction" identifier="coalition" increase="-1" />
+                        </Success>
+                        <Failure></Failure>
+                      </RNGAction>
+                    </Success>
+                    <Failure>
+                      <CheckReputationAction targettype="faction" identifier="cdbank" condition="gte 10">
+                        <Success>
+                          <RNGAction chance="0.1">
+                            <Success>
+                              <ReputationAction targettype="Faction" identifier="cdbank" increase="1" />
+                              <ReputationAction targettype="Faction" identifier="separatists" increase="1" />
+                              <ReputationAction targettype="Faction" identifier="coalition" increase="1" />
+                            </Success>
+                            <Failure></Failure>
+                          </RNGAction>
+                        </Success>
+                        <Failure>
+                          <CheckReputationAction targettype="faction" identifier="cdbank" condition="gte 30">
+                            <Success>
+                              <RNGAction chance="0.1">
+                                <Success>
+                                  <ReputationAction targettype="Faction" identifier="cdbank" increase="2" />
+                                  <ReputationAction targettype="Faction" identifier="separatists" increase="2" />
+                                  <ReputationAction targettype="Faction" identifier="coalition" increase="2" />
+                                </Success>
+                                <Failure></Failure>
+                              </RNGAction>
+                            </Success>
+                            <Failure>
+                              <CheckReputationAction targettype="faction" identifier="cdbank" condition="gte 50">
+                                <Success>
+                                  <RNGAction chance="0.1">
+                                    <Success>
+                                      <ReputationAction targettype="Faction" identifier="cdbank" increase="3" />
+                                      <ReputationAction targettype="Faction" identifier="separatists" increase="3" />
+                                      <ReputationAction targettype="Faction" identifier="coalition" increase="3" />
+                                    </Success>
+                                    <Failure></Failure>
+                                  </RNGAction>
+                                </Success>
+                                <Failure>
+                                  <CheckReputationAction targettype="faction" identifier="cdbank" condition="gte 80">
+                                    <Success>
+                                      <RNGAction chance="0.1">
+                                        <Success>
+                                          <ReputationAction targettype="Faction" identifier="cdbank" increase="4" />
+                                          <ReputationAction targettype="Faction" identifier="separatists" increase="4" />
+                                          <ReputationAction targettype="Faction" identifier="coalition" increase="4" />
+                                        </Success>
+                                        <Failure></Failure>
+                                      </RNGAction>
+                                    </Success>
+                                    <Failure></Failure>
+                                  </CheckReputationAction>
+                                </Failure>
+                              </CheckReputationAction>
+                            </Failure>
+                          </CheckReputationAction>
+                        </Failure>
+                      </CheckReputationAction>
+                    </Failure>
+                  </CheckReputationAction>
+                </Failure>
+              </CheckReputationAction>
+            </Failure>
+          </CheckReputationAction>
+        </Failure>
+      </CheckReputationAction>
+    </ScriptedEvent>
+  </EventPrefabs>
+  <EventSet identifier="cdbankreputationeventset" leveltype="outpost" locationtype="construction,outpost,settlement,colony,city,camp,base,military,blockade,survey,mine,study,research,clinic,hospital,hydroponics,factory,shipyard,huskchurch,sinkingcircus,PirateOutpost,lair,lairmudraptor,lairthresher,huskgroundsde,militaryforces" allowatstart="true" minleveldifficulty="0" maxleveldifficulty="100" SelectAlways="true" additive="true" chooserandom="false" ignorecooldown="true">
+    <EventSet identifier="cdbankreputationeventset1" minleveldifficulty="0" maxleveldifficulty="100" allowatstart="true" eventcount="1" chooserandom="true" exhaustible="true">
+      <ScriptedEvent identifier="cdbankreputationevent" />
+    </EventSet>
+  </EventSet>
+  <EventSet identifier="cdbankset" leveltype="outpost" locationtype="construction,outpost,settlement,colony,city,camp,base,military,blockade,survey,mine,study,research,clinic,hospital,hydroponics,factory,shipyard,huskchurch,sinkingcircus,PirateOutpost,lair,lairmudraptor,lairthresher,huskgroundsde,militaryforces" allowatstart="true" minleveldifficulty="0" maxleveldifficulty="100" SelectAlways="true" additive="true" chooserandom="false" ignorecooldown="true">
+    <EventSet identifier="cdbankset1" minleveldifficulty="0" maxleveldifficulty="100" allowatstart="true" eventcount="1" chooserandom="true" exhaustible="true">
+      <ScriptedEvent identifier="cdbankevent" />
+    </EventSet>
+  </EventSet>
+  <!-- 任务派发员生成 -->
+  <EventSet identifier="cdmisson_any" leveltype="outpost" locationtype="construction,outpost,settlement,colony,city,camp,base,military,blockade,survey,mine,study,research,clinic,hospital,hydroponics,factory,shipyard,huskchurch,sinkingcircus,PirateOutpost,lair,lairmudraptor,lairthresher,huskgroundsde,militaryforces" allowatstart="true" minleveldifficulty="0" maxleveldifficulty="100" chooserandom="true" ignorecooldown="true" additive="true" selectalways="true" commonness="100">
+    <!-- 一图派发员 -->
+    <EventSet identifier="cdmisson_gt0" minleveldifficulty="0" maxleveldifficulty="20" allowatstart="true" chooserandom="true" onceperoutpost="true" eventcount="1" additive="false" selectalways="true">
+      <EventSet identifier="cdmisson_gt0_A" commonness="50">
+        <ScriptedEvent identifier="cdmisson1" />
+      </EventSet>
+      <EventSet identifier="cdmisson_gt0_B" commonness="50">
+        <ScriptedEvent identifier="cdmisson2" />
+      </EventSet>
+    </EventSet>
+    <!-- 二图派发员 -->
+    <EventSet identifier="cdmisson_gt20" minleveldifficulty="20" maxleveldifficulty="40" allowatstart="true" chooserandom="true" onceperoutpost="true" eventcount="1" additive="false" selectalways="true">
+      <EventSet identifier="cdmisson_gt20_A" commonness="40">
+        <ScriptedEvent identifier="cdmisson3" />
+      </EventSet>
+      <EventSet identifier="cdmisson_gt20_B" commonness="40">
+        <ScriptedEvent identifier="cdmisson4" />
+      </EventSet>
+      <EventSet identifier="cdmisson_gt20_P" commonness="20">
+        <ScriptedEvent identifier="cdmisson5" />
+      </EventSet>
+    </EventSet>
+    <!-- 三图以上派发员 -->
+    <EventSet identifier="cdmisson_gt40" minleveldifficulty="40" maxleveldifficulty="100" allowatstart="true" chooserandom="true" onceperoutpost="true" eventcount="1" additive="false" selectalways="true">
+      <EventSet identifier="cdmisson_gt40_A" commonness="40">
+        <ScriptedEvent identifier="cdmisson6" />
+      </EventSet>
+      <EventSet identifier="cdmisson_gt40_B" commonness="40">
+        <ScriptedEvent identifier="cdmisson7" />
+      </EventSet>
+      <EventSet identifier="cdmisson_gt40_P" commonness="20">
+        <ScriptedEvent identifier="cdmisson8" />
+      </EventSet>
+    </EventSet>
+  </EventSet>
+</Randomevents>

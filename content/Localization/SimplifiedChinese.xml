@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<infotext language="Simplified Chinese" nowhitespace="true" translatedname="中文(简体)">
+  <faction.cdbank>沉底银行</faction.cdbank>
+  <faction.cdbank.shortdescription>沉底银行是一家高认可度的私人银行，提供安全的存款与借贷服务。</faction.cdbank.shortdescription>
+  <faction.cdbank.description>沉底银行提供优质的银行服务，用户可以在本行工作人员处进行存取款操作。银行声望代表用户余额额度，高额度用户本行会不定期为用户发放额度利息。本行也支持贷款服务，即使额度为零也可以在本行预支马克，同样的，会收取一定额度的利息。本行信用情况已列入木卫二联盟信用普查系统，本行的信用额度会在一定程度上影响用户在整个木卫二的声望。</faction.cdbank.description>
+  <faction.cd>沉底生物研究所</faction.cd>
+  <faction.cd.description>联盟旗下的生物研究院，从事生物制药与生物研究工作。</faction.cd.description>
+  <!--
+  <faction.cd.shortdescription>世界终成灰烬 ———— static</faction.cd.shortdescription>
+  -->
+  <locationchange.cdResearch.changeto.abandoned>无法与[previousname]取得联系。</locationchange.cdResearch.changeto.abandoned>
+  <locationchange.cdResearch.changeto.abandoned>生物研究所[previousname]被攻陷。</locationchange.cdResearch.changeto.abandoned>
+  <locationchange.cdResearch.changeto.none>生物研究所[previousname]已经迁往其他更适宜居住的地方</locationchange.cdResearch.changeto.none>
+  <locationchange.none.changeto.cdResearch>联盟发现了生态区[previousname]，并建立了一座研究基地</locationchange.none.changeto.cdResearch>
+  <locationchange.abandoned.changeto.cdResearch>联盟清扫了[previousname]的内部威胁，并以此为基础建立了一座研究基地</locationchange.abandoned.changeto.cdResearch>
+  <locationname.cdResearch>沉底生物研究中心</locationname.cdResearch>
+  <locationdescription.cdResearch>联盟旗下的生物研究基地</locationdescription.cdResearch>
+  <locationnameformat.cdResearch>[name]</locationnameformat.cdResearch>
+  <locationnameformat.cdResearch>[name]城</locationnameformat.cdResearch>
+  <locationnameformat.cdResearch>[name]站</locationnameformat.cdResearch>
+  <!--敌人-->
+  <npctitle.chemicalprotectors_soldier>化学防卫队突击兵</npctitle.chemicalprotectors_soldier>
+  <npctitle.chemicalprotectors_fireer>焚火型人形兵器</npctitle.chemicalprotectors_fireer>
+  <npctitle.chemicalprotectors_fireer_blueprint>焚火型人形兵器</npctitle.chemicalprotectors_fireer_blueprint>
+  <npctitle.chemicalprotectors_doctor>化学防卫队医疗兵</npctitle.chemicalprotectors_doctor>
+  <npctitle.predators_man>掠食者</npctitle.predators_man>
+  <npctitle.predators_jq>掠食者</npctitle.predators_jq>
+  <npctitle.predators_xd>掠食者</npctitle.predators_xd>
+  <npctitle.predators_man_enemy>掠食者</npctitle.predators_man_enemy>
+  <npctitle.predators_jq_enemy>掠食者</npctitle.predators_jq_enemy>
+  <npctitle.predators_xd_enemy>掠食者</npctitle.predators_xd_enemy>
+  <npctitle.predators_xd_blueprint>掠食者</npctitle.predators_xd_blueprint>
+  <npctitle.predatorsfkj_tjbq_enemy>掠食者</npctitle.predatorsfkj_tjbq_enemy>
+  <npctitle.predatorsfkj_tjbq_enemy_patrol>掠食者</npctitle.predatorsfkj_tjbq_enemy_patrol>
+  <npctitle.predatorsfkj_m4_enemy>掠食者</npctitle.predatorsfkj_m4_enemy>
+  <npctitle.predatorsfkj_m4_enemy_patrol>掠食者</npctitle.predatorsfkj_m4_enemy_patrol>
+  <npctitle.predatorsfkj_hs50_enemy>掠食者</npctitle.predatorsfkj_hs50_enemy>
+  <npctitle.predatorsfkj_hs50_enemy_blueprint>掠食者</npctitle.predatorsfkj_hs50_enemy_blueprint>
+  <npctitle.predatorsfkj_hc_enemy>掠食者</npctitle.predatorsfkj_hc_enemy>
+  <npctitle.predatorsfkj_hc_enemy_patrol>掠食者</npctitle.predatorsfkj_hc_enemy_patrol>
+  <npctitle.predatorsfkj_eglm_enemy>掠食者</npctitle.predatorsfkj_eglm_enemy>
+  <npctitle.predatorsfkj_eglm_enemy_patrol>掠食者</npctitle.predatorsfkj_eglm_enemy_patrol>
+  <!-- 任务派发员 -->
+  <npctitle.cdspecialnpc_1>沉底任务派发员</npctitle.cdspecialnpc_1>
+  <npctitle.cdbanker>银行服务官</npctitle.cdbanker>
+  <!--职业-->
+  <jobname.cdShipmother>舰娘</jobname.cdShipmother>
+  <jobdescription.cdShipmother>非玩家职业。</jobdescription.cdShipmother>
+  <jobname.cdnormalShipmother>舰娘</jobname.cdnormalShipmother>
+  <jobdescription.cdnormalShipmother>非玩家职业。</jobdescription.cdnormalShipmother>
+  <jobname.cdfriendlyshadow>影仆</jobname.cdfriendlyshadow>
+  <jobdescription.cdfriendlyshadow>非玩家职业。</jobdescription.cdfriendlyshadow>
+  <!--天赋-->
+  <talentname.cdcdshipsnipertalent>极光</talentname.cdcdshipsnipertalent>
+  <talentdescription.cdcdshipsnipertalent1>当你使用‖color:gui.orange‖极光‖end‖击杀敌人时，刷新其冷却时间。</talentdescription.cdcdshipsnipertalent1>
+  <talentdescription.cdcdshipsnipertalent2>当你使用‖color:gui.orange‖极光‖end‖击中敌人头部时，补充一枚弹药。</talentdescription.cdcdshipsnipertalent2>
+  <talentname.cdchameliolincoating>迷彩斗篷</talentname.cdchameliolincoating>
+  <talentdescription.cdchameliolincoating>蹲下[seconds1]秒后，你对敌人隐形，持续[seconds2]秒，冷却时间[seconds3]秒。隐形状态下你造成的伤害提高[amount]%。造成或受到伤害会移除隐形效果。</talentdescription.cdchameliolincoating>
+  <talentname.cdgethudun>战术补给协议</talentname.cdgethudun>
+  <talentdescription.cdgethudun>巡回结束后，获得“天枢”个人偏导护盾、极光。</talentdescription.cdgethudun>
+  <talentname.cdredblunttraumatalent>头铁</talentname.cdredblunttraumatalent>
+  <talentdescription.cdredblunttraumatalent>你对[type]获得[amount]%减免。</talentdescription.cdredblunttraumatalent>
+  <talentname.cddeathonlyondamage3>钢铁意志SP</talentname.cddeathonlyondamage3>
+  <talentname.cddeathonlyondamage>钢铁意志</talentname.cddeathonlyondamage>
+  <talentdescription.cddeathonlyondamage>你对除[type]外的伤害获得大幅减免。</talentdescription.cddeathonlyondamage>
+  <talentname.cddeathonlyondamage2>钢铁意志II</talentname.cddeathonlyondamage2>
+  <talentdescription.cddeathonlyondamage2>你只会因为[type]而死亡。</talentdescription.cddeathonlyondamage2>
+  <afflictionname.cddeathonlyondamageaff>钢铁意志</afflictionname.cddeathonlyondamageaff>
+  <talentname.cdsniper>精准猎杀协议</talentname.cdsniper>
+  <talentdescription.cdsniper>使用‖color:gui.orange‖狙击步枪‖end‖造成的伤害增加[amount]%。</talentdescription.cdsniper>
+  <talentname.cdprotect>能量护盾</talentname.cdprotect>
+  <talentname.cdshipprotect>“天枢”能量护盾</talentname.cdshipprotect>
+  <talentdescription.cdprotect>装备[name]时，如果你在[seconds]秒内没有受到远程攻击，则生成一道抵御远程攻击的能量护盾。</talentdescription.cdprotect>
+  <talentdescription.cdshipprotect>装备[name]时，如果你在[seconds]秒内没有受到远程攻击，则生成一道抵御远程攻击的能量护盾。\n杀死敌人会使你的护盾得到强化。</talentdescription.cdshipprotect>
+  <talentname.cdsealtalent>受命于天</talentname.cdsealtalent>
+  <talentdescription.cdsealtalent>当你持有[name]时，获得以下效果</talentdescription.cdsealtalent>
+  <talentdescription.cdsealtalent1>你或其他盟友击杀怪物后，你获得[mk]马克奖励。</talentdescription.cdsealtalent1>
+  <talentdescription.cdsealtalent2>你或其他盟友击杀怪物后，你获得[experience]经验奖励。</talentdescription.cdsealtalent2>
+  <talentdescription.cdsealtalent3>最后一个得到你命令的其他角色获得以下增益：\n  技能升级速度提高[skillspeedboost]%。\n  获得[skillamount]全职业技能加成。\n  提高[fixspeed]%的设备修复速度。\n  提高[repairspeed]%的船壳修复速度。</talentdescription.cdsealtalent3>
+  <talentname.cdextrapowder>额外火药II</talentname.cdextrapowder>
+  <talentdescription.cdextrapowder>爆炸范围提高[rangeamount]%，爆炸伤害提高[damageamount]%。</talentdescription.cdextrapowder>
+  <talentname.cdnonthreatdown>紧急安全协议</talentname.cdnonthreatdown>
+  <talentdescription.cdnonthreatdown>当你昏迷时，不会受到远程伤害。</talentdescription.cdnonthreatdown>
+  <talentname.cdstoneskin1>机械飞升I</talentname.cdstoneskin1>
+  <talentname.cdstoneskin2>机械飞升II</talentname.cdstoneskin2>
+  <talentname.cdstoneskin3>机械飞升III</talentname.cdstoneskin3>
+  <talentdescription.cdstoneskin1>你受到的[type]减少[amount]%。</talentdescription.cdstoneskin1>
+  <talentname.cdoiledmachinery>终极制造者</talentname.cdoiledmachinery>
+  <talentdescription.cdoiledmachinery>‖color:gui.orange‖加工台‖end‖和‖color:gui.orange‖分解器‖end‖运行速度提高[amount]%。</talentdescription.cdoiledmachinery>
+  <talentname.cdspecops>弱点击破协议</talentname.cdspecops>
+  <talentdescription.cdspecopsnew>你有[probability1]%的概率对敌人造成双倍(非炮塔)伤害，在面对满血敌人时概率提升到[probability2]%</talentdescription.cdspecopsnew>
+  <talentname.cdmagbusiness>军火补给</talentname.cdmagbusiness>
+  <talentdescription.cdmagbusiness>被击杀的‖color:gui.orange‖敌人‖end‖概率掉落[item]。</talentdescription.cdmagbusiness>
+  <talentname.cdmanyimplacable>最终协议II</talentname.cdmanyimplacable>
+  <talentdescription.cdmanycannotfallunconsciousforsecondsnew>当你的生命值低于0时，在短时间内快速治疗普通类型伤害，并保持清醒，同时攻击力提高[powerincrease]%，‖color:gui.orange‖不会因受到伤害而致死‖end‖，持续[seconds]秒。</talentdescription.cdmanycannotfallunconsciousforsecondsnew>
+  <talentdescription.cdmanycannotfallmaxtriggeruntildeath>此效果每轮每条命只能触发[count]次，触发冷却[seconds]秒。</talentdescription.cdmanycannotfallmaxtriggeruntildeath>
+  <talentname.cdlightningwizard>相位偏转II</talentname.cdlightningwizard>
+  <talentname.cdlightningwizard1>相位偏转</talentname.cdlightningwizard1>
+  <talentname.cdlightningwizard2>反击</talentname.cdlightningwizard2>
+  <talentdescription.cdlightningwizard>如果你在[seconds]秒内没有受到攻击，则针对你的下一次近战攻击伤害将受到[powerreduction]%减免，攻击者还将被眩晕[stunseconds]秒。</talentdescription.cdlightningwizard>
+  <talentname.cdchemicaltalent>化学抑制</talentname.cdchemicaltalent>
+  <talentdescription.cdchemicaltalent>你的攻击降削弱敌对生物。</talentdescription.cdchemicaltalent>
+  <talentname.cdpyromaniac>火焰狂人II</talentname.cdpyromaniac>
+  <talentdescription.cdpyromaniac>造成的燃烧伤害提高[burnincrease]%。</talentdescription.cdpyromaniac>
+  <talentname.cdfirenearby>焚火者</talentname.cdfirenearby>
+  <talentdescription.cdfirenearby>使用远程武器时有[burnprobability]%几率焚烧附近[distance]米的角色，当你附近[distance2]米内有敌人时，你收到的[damagetype]增加[resistant]%。</talentdescription.cdfirenearby>
+  <talentname.cdungalinfectionsplusA3talent>溃烂之触</talentname.cdungalinfectionsplusA3talent>
+  <talentdescription.cdungalinfectionsplusA3talent>你的攻击将对目标造成 [strength_1_percentage]% 的 [affliction_1]。</talentdescription.cdungalinfectionsplusA3talent>
+  <talentname.cdarmorbreaktalent>脆骨症</talentname.cdarmorbreaktalent>
+  <talentdescription.cdarmorbreaktalent>你的攻击将对目标造成 [strength_1_percentage]% 的 [affliction_1]。</talentdescription.cdarmorbreaktalent>
+  <talentname.cddownss>火控共鸣</talentname.cddownss>
+  <talentdescription.cddownss>获得[amount]% [stattype]减少</talentdescription.cddownss>
+  <talentdescription.cdShipmotherbuff1>获得[amount]% [stattype]增益</talentdescription.cdShipmotherbuff1>
+  <talentdescription.cdShipmotherbuff2>获得[amount]% [affliction]抗性增益</talentdescription.cdShipmotherbuff2>
+  <talentdescription.cdShipmotherbuff3>+[amount]% [stattype]</talentdescription.cdShipmotherbuff3>
+  <talentdescription.cdShipmotherbuff4>+[amount]% [affliction]抗性</talentdescription.cdShipmotherbuff4>
+  <talentdescription.cdShipmotherbuff5>此天赋只能给与至多[skillamount]技能点。</talentdescription.cdShipmotherbuff5>
+  <talentdescription.cdShipmotherbuff6>这个奖励会在死亡时消失。</talentdescription.cdShipmotherbuff6>
+  <talentdescription.cdShipmotherbuff7>助手的死亡不计算在内。</talentdescription.cdShipmotherbuff7>
+  <talentname.cdnonthreatening1>拟态伪装</talentname.cdnonthreatening1>
+  <talentname.cdtalmiracleworker>永远在一起</talentname.cdtalmiracleworker>
+  <talentdescription.cdmiracleworkernew>附近[num]米内的其他舰娘除非主动放弃，否则不会因伤痛死亡。</talentdescription.cdmiracleworkernew>
+  <talentname.cdimplacable>最终协议</talentname.cdimplacable>
+  <talentdescription.cdcannotfallunconsciousforsecondsnew>当你的生命值低于0时，在短时间内快速治疗普通类型伤害，并保持清醒，同时攻击力提高[powerincrease]%，‖color:gui.orange‖不会因受到伤害而致死‖end‖，持续[seconds]秒。</talentdescription.cdcannotfallunconsciousforsecondsnew>
+  <talentname.cdstonewall>刚韧之躯</talentname.cdstonewall>
+  <talentdescription.cdstonewallnew>物理伤害抗性和击晕抗性提升[resistance]%，当你受到攻击后，[seconds]秒内效果翻倍。</talentdescription.cdstonewallnew>
+  <!--，当你受到攻击后，[seconds]秒内效果翻倍。-->
+  <talentname.cdegghead>深度学习协议</talentname.cdegghead>
+  <talentname.cdGeneDatabase>基因超频</talentname.cdGeneDatabase>
+  <talentdescription.cdaliengenetics1>将不同类型的遗传材料结合在一起，对材料造成污染的可能性降低[probability]。</talentdescription.cdaliengenetics1>
+  <talentdescription.cdaliengenetics2>精炼基因材料将使其效果[amount]%。</talentdescription.cdaliengenetics2>
+  <talentname.cdgeneharvester>基因收割</talentname.cdgeneharvester>
+  <talentdescription.cdgeneharvesternew>搜索怪物尸体时有[probability1]%几率找到基因材料,有[probability2]%几率额外找到一个基因材料。</talentdescription.cdgeneharvesternew>
+  <talentname.cdgeneticgenious>基因统御</talentname.cdgeneticgenious>
+  <talentdescription.cdadvancedsplicingnew>每当你或其他友军组合或精炼基因材料时，获得[skillbonus]医疗技能的奖励。</talentdescription.cdadvancedsplicingnew>
+  <talentname.cdolympian>奥林匹克</talentname.cdolympian>
+  <talentname.cdrecipeall>全知全能</talentname.cdrecipeall>
+  <talentname.cdscavenger>物资支援协议</talentname.cdscavenger>
+  <talentdescription.cdscavenger>离开潜艇后第一次打开箱子，获得额外物品的概率提升[probability]%。</talentdescription.cdscavenger>
+  <talentname.cdscavenger2>物资支援协议</talentname.cdscavenger2>
+  <talentdescription.cdscavenger2>离开潜艇后第一次打开箱子，有小概率获得稀有物品。</talentdescription.cdscavenger2>
+  <talentname.cdshipmother1>肌肉发达</talentname.cdshipmother1>
+  <talentdescription.cdshipmother1>近战攻击50%几率对敌人造成50%撕裂伤。</talentdescription.cdshipmother1>
+  <talentname.cdshipmother2>绞碎利刃</talentname.cdshipmother2>
+  <talentdescription.cdShipmother2.1>近战攻击有50%几率使敌人眩晕0.5秒并造成流血效果。</talentdescription.cdShipmother2.1>
+  <talentname.cdshipmother3>武器操控协议</talentname.cdshipmother3>
+  <talentdescription.cdShipmother3.1>获得相当于你[skillpercentage1]%武器技能和[skillpercentage2]%电气技能的攻击速度奖励。</talentdescription.cdShipmother3.1>
+  <talentname.cdshipmother4>危机管理</talentname.cdshipmother4>
+  <talentdescription.cdShipmother4.1>潜艇进水情况越严重，你修复设备和游泳的速度就越快，最高可获得额外的[statamount1]%修复速度和[statamount2]%游泳速度。</talentdescription.cdShipmother4.1>
+  <talentname.cdshipmother5>火力压制协议</talentname.cdshipmother5>
+  <talentdescription.cdShipmother5.1>当你的舰船因怪物攻击受到伤害时，你使用炮塔造成的伤害和炮塔射速提高[amount]%，持续[seconds]秒。最高[maxamount]%。</talentdescription.cdShipmother5.1>
+  <afflictionname.cdshipmother5.2>反击</afflictionname.cdshipmother5.2>
+  <afflictiondescription.cdshipmother5.2>该向那些进攻潜艇的坏家伙们反击了！</afflictiondescription.cdshipmother5.2>
+  <talentname.cdshipmother6>身强体壮</talentname.cdshipmother6>
+  <talentname.cdshipmother7>冥土追魂</talentname.cdshipmother7>
+  <talentdescription.cdShipmother7.1>你施展的心肺复苏效力大幅增强。</talentdescription.cdShipmother7.1>
+  <talentname.cdshipmother8>生命保障协议</talentname.cdshipmother8>
+  <talentdescription.cdShipmother8.1>每当你完成一个任务，如果所有船员都幸存，则获得[skillincrease]医疗技能点。</talentdescription.cdShipmother8.1>
+  <talentname.cdshipmother9>创伤医疗协议</talentname.cdshipmother9>
+  <talentdescription.cdShipmother9.1>当你为友方角色治疗时，他们将暂时获得[physicaldamageresistance]物理伤害抗性和[skillgainincrease]%技能获取速度加成，持续时间取决于你的医疗技能。</talentdescription.cdShipmother9.1>
+  <talentname.cdshipmother10>一心二用</talentname.cdshipmother10>
+  <talentdescription.cdshipmother10.1>只要你在你的潜艇外，受到的物理伤害就会减少[physicaldamagedecrease]%。只要你在你的潜艇内，就能获得[skillincrease]的医疗技能加成。</talentdescription.cdshipmother10.1>
+  <talentname.cdshipmother11>体能训练</talentname.cdshipmother11>
+  <talentname.cdshipmother12>作战意识</talentname.cdshipmother12>
+  <talentdescription.cdShipmother12.1>暴击率提升30%,暴击伤害提升100%。</talentdescription.cdShipmother12.1>
+  <talentname.cdshipmother13>最终协议</talentname.cdshipmother13>
+  <talentdescription.cdShipmother13.1>当你的生命值低于0时，你仍会保持清醒。</talentdescription.cdShipmother13.1>
+  <talentname.cdshipmother14>强韧生命</talentname.cdshipmother14>
+  <talentname.cdshipmother15>机械亲和</talentname.cdshipmother15>
+  <talentdescription.cdShipmother15.1>你的近战力量和最大生命值提升机修技能的[statamount]%。</talentdescription.cdShipmother15.1>
+  <talentdescription.cdShipmother15.2>每当你分解一个废料时，获得[skillamount]的机械技能奖励。</talentdescription.cdShipmother15.2>
+  <talentname.cdshipmother16>保卫协议</talentname.cdshipmother16>
+  <talentdescription.cdShipmother16.1>获得相当于你医疗技能[skillpercentage]%的移动速度、远程射击速度和近战攻击速度的奖励。</talentdescription.cdShipmother16.1>
+  <talentname.cdshipmother17>近身威胁</talentname.cdshipmother17>
+  <talentdescription.cdShipmother17.1>附近每有1个敌人，提升20%近战伤害，最高可提升100%</talentdescription.cdShipmother17.1>
+  <talentname.cdshipmother18>好斗利刃</talentname.cdshipmother18>
+  <talentdescription.cdShipmother18.1>你近战攻击力提升100%，攻击速度增加100%</talentdescription.cdShipmother18.1>
+  <talentname.cdshipmother19>主力领队</talentname.cdshipmother19>
+  <talentdescription.cdShipmother19.1>只要您还活着，所有队员都会获得队伍的奖励，提高近战攻击和攻速</talentdescription.cdShipmother19.1>
+  <talentname.cdshipmother33>舰装超载</talentname.cdshipmother33>
+  <talentdescription.cdShipmother33.1>在任务中，如果没有船员死亡，将主力领队升级为舰装超载，加成加倍。</talentdescription.cdShipmother33.1>
+  <talentdescription.cdShipmother33.2>‖color:gui.green‖解锁时:‖end‖每位船员提高一级。</talentdescription.cdShipmother33.2>
+  <talentdescription.cdShipmother33.3>额外获得[xpamount]%经验值。</talentdescription.cdShipmother33.3>
+  <talentname.cdshipmother21>阵列增幅</talentname.cdshipmother21>
+  <talentdescription.cdShipmother21.1>你和所有船员获得[skillamount]全职业技能加成，且技能升级速度提高[skillspeedboost]%。</talentdescription.cdShipmother21.1>
+  <talentname.cdshipmother22>造物赐福</talentname.cdshipmother22>
+  <talentdescription.cdShipmother22.1>你和所有船员制造物品的质量提高[amount]。</talentdescription.cdShipmother22.1>
+  <talentname.cdshipmother23>系统升格</talentname.cdshipmother23>
+  <talentdescription.cdShipmother23.1>你和所有船员获得[amount]%维修，焊接和技能升级速度加成。</talentdescription.cdShipmother23.1>
+  <talentname.cdshipmother20>限制器解除</talentname.cdshipmother20>
+  <talentdescription.cdShipmother20.3>[project1],[project2],[project3],[project4]</talentdescription.cdShipmother20.3>
+  <talentname.cdshipmother24>吐息之焰</talentname.cdshipmother24>
+  <talentdescription.cdShipmother24>每次‖color:gui.orange‖击杀‖end‖都会为你恢复生命值。\n获得相当于你武器技能‖color:gui.green‖50%‖end‖的攻击力奖励。</talentdescription.cdShipmother24>
+  <talentname.cdshipmother25>规避机动</talentname.cdshipmother25>
+  <talentdescription.cdShipmother25.1>当你的舰船因怪物攻击受到伤害时，在[seconds]秒内获得[helmbonus]的掌舵技能加成。</talentdescription.cdShipmother25.1>
+  <talentdescription.cdShipmother25.2>怪物剿灭与清理巢穴任务报酬提高[extra]%。</talentdescription.cdShipmother25.2>
+  <talentname.cdshipmother26>建立信任</talentname.cdshipmother26>
+  <talentdescription.cdShipmother26.1>每当你完成一项任务，你的船员增加[smallgain]%最大生命。若所有船员都幸存，则船员增加[largegain]%的最大生命，上限为[maxgain]%。</talentdescription.cdShipmother26.1>
+  <talentname.cdshipmother27>死与税</talentname.cdshipmother27>
+  <talentdescription.cdShipmother27.1>你或其他盟友击杀怪物后，额外获得该怪物生命值上限[percentage]%的马克奖励。</talentdescription.cdShipmother27.1>
+  <talentname.cdshipmother28>舰船之灵</talentname.cdshipmother28>
+  <talentdescription.cdShipmother28.1>在水中，每秒获得‖color:gui.green‖10%‖end‖的游泳速度，至多‖color:gui.green‖100%‖end‖。</talentdescription.cdShipmother28.1>
+  <talentname.cdshipmother29>一路顺风</talentname.cdshipmother29>
+  <talentdescription.cdShipmother29.1>完成任意任务后，若没有船员死亡，则获得‖color:gui.green‖2‖end‖点‖color:gui.orange‖武器‖end‖与‖color:gui.orange‖驾驶‖end‖技能，其余船员获得‖color:gui.green‖1‖end‖点‖color:gui.orange‖武器‖end‖与‖color:gui.orange‖驾驶‖end‖技能。</talentdescription.cdShipmother29.1>
+  <talentname.cdshipmother30>与舰休戚</talentname.cdshipmother30>
+  <talentdescription.cdShipmother30.1>如果你在你的潜艇上，并且已经进水[flooded]%，你的游泳速度提高[swimmingboost]%，并且机修工程和电气工程技能获得25的提升以及修复船壳速度提高[repairspeed]%，持续[duration]秒。</talentdescription.cdShipmother30.1>
+  <talentname.cdshipmother31>信用折扣</talentname.cdshipmother31>
+  <talentdescription.cdShipmother31.1>加盟派系的船厂在升级和购买潜艇时提供[amount]%的折扣。</talentdescription.cdShipmother31.1>
+  <talentdescription.cdShipmother31.2>你可以多选择一个任务。</talentdescription.cdShipmother31.2>
+  <talentname.cdshipmother32>无尽狩猎</talentname.cdshipmother32>
+  <talentdescription.cdShipmother32.1>对生命值高于‖color:gui.green‖50%‖end‖的目标造成的‖color:gui.orange‖枪击伤‖end‖增加‖color:gui.green‖5%‖end‖。\n若武器操作等级至少为‖color:gui.orange‖80‖end‖，则改为‖color:gui.green‖10%‖end‖。\n若武器操作等级至少为‖color:gui.orange‖100‖end‖，则改为‖color:gui.green‖20%‖end‖。\n此效果对怪物翻倍。\n额外获得‖color:gui.green‖5‖end‖的‖color:gui.orange‖武器操作‖end‖等级。</talentdescription.cdShipmother32.1>
+  <talentname.cdnonthreatening>类人生命</talentname.cdnonthreatening>
+  <talentdescription.cdnonthreatening>怪物会无视你的存在。</talentdescription.cdnonthreatening>
+  <talentname.cdnoinfection>无机体质</talentname.cdnoinfection>
+  <talentdescription.cdnoinfection01>让你的身体免于寄生。</talentdescription.cdnoinfection01>
+  <afflictionname.cdnoinfectionbuff>无机体质</afflictionname.cdnoinfectionbuff>
+  <talentname.cdfiremanscarry>紧急救援协议</talentname.cdfiremanscarry>
+  <talentdescription.cdfiremanscarry>你可以拖动角色全速移动。</talentdescription.cdfiremanscarry>
+  <talentname.cdunpressure>深潜者</talentname.cdunpressure>
+  <talentdescription.cdunpressure>你将免疫深海的压力。</talentdescription.cdunpressure>
+  <talentname.cdunoxygen>静海之息</talentname.cdunoxygen>
+  <talentdescription.cdunoxygen>你不再需要氧气。</talentdescription.cdunoxygen>
+  <talentname.cdneverdie>奇迹眷顾</talentname.cdneverdie>
+  <talentdescription.cdneverdie01>你不会因伤痛死亡。</talentdescription.cdneverdie01>
+  <talentname.cdshipmother34>永远在一起</talentname.cdshipmother34>
+  <talentdescription.miracleworker001>附近的船员除非主动放弃，否则不会因伤痛死亡。</talentdescription.miracleworker001>
+  <talentdescription.miracleworker002>你不再对‖color:gui.orange‖奇迹进行中‖end‖免疫。</talentdescription.miracleworker002>
+  <afflictionname.cdmiracleworker011>奇迹进行中</afflictionname.cdmiracleworker011>
+  <afflictiondescription.cdmiracleworker011>你的生命力正在减弱，但有位医生却像灯塔一样闪耀着光芒。当他们在附近时，你不会屈服于死亡。</afflictiondescription.cdmiracleworker011>
+  <entityname.miracleworker103>医学奇迹</entityname.miracleworker103>
+  <entitydescription.miracleworker103>原版天赋"奇迹创造者"升级版，范围扩大并且对自己也有效。</entitydescription.miracleworker103>
+  <talentname.cdEnhancement>魔方强化</talentname.cdEnhancement>
+  <talentdescription.cdEnhancement>心智魔方大幅强化了你的体质</talentdescription.cdEnhancement>
+  <afflictionname.cdEnhancementbuff>魔方强化</afflictionname.cdEnhancementbuff>
+  <afflictiondescription.cdEnhancementbuff>心智魔方大幅强化了你的体质</afflictiondescription.cdEnhancementbuff>
+  <afflictionname.cdEnhancementbuff1>Big J</afflictionname.cdEnhancementbuff1>
+  <afflictiondescription.cdEnhancementbuff1>提升自身全方位属性</afflictiondescription.cdEnhancementbuff1>
+  <talenttree.cdShipmother_flagship>躯体改造</talenttree.cdShipmother_flagship>
+  <talenttree.cdShipmother_fleet>舰队增益</talenttree.cdShipmother_fleet>
+  <talenttree.cdShipmother_Shipborne>舰装强化</talenttree.cdShipmother_Shipborne>
+  <charactername.cdJersey>新泽西</charactername.cdJersey>
+  <charactername.cdlg>舰娘流光pro</charactername.cdlg>
+  <charactername.cdTAT>舰娘TATpro</charactername.cdTAT>
+  <charactername.cdnormallg>舰娘流光</charactername.cdnormallg>
+  <charactername.cdnormalTAT>舰娘TAT</charactername.cdnormalTAT>
+  <entityname.Genesplicerss>试做型基因拼接器</entityname.Genesplicerss>
+  <entitydescription.Genesplicerss>能够容纳大部分的基因类物质</entitydescription.Genesplicerss>
+  <entityname.cdTideControlPillar>‖color:gold‖定海神针‖end‖</entityname.cdTideControlPillar>
+  <entitydescription.cdTideControlPillar>‖color:255,100,125,255‖棒是九转镔铁炼，老君亲手炉中煅。禹王求得号神珍，四海八河为定验。\n中间星斗暗铺陈，两头箝裹黄金片。花纹密布鬼神惊，上造龙纹与凤篆。\n名号灵阳棒一条，深藏海藏人难见。成形变化要飞腾，飘爨五色霞光现。\n老孙得道取归山，无穷变化多经验。时间要大瓮来粗，或小些微如铁线。\n粗如南岳细如针，长短随吾心意变。轻轻举动彩云生，亮亮飞腾如闪电。\n攸攸冷气逼人寒，条条杀雾空中现。降龙伏虎谨随身，天涯海角都游遍。\n曾将此棍闹天宫，威风打散蟠桃宴。天王赌斗未曾赢，哪吒对敌难交战。\n棍打诸神没躲藏，天兵十万都逃窜。雷霆众将护灵霄，飞身打上通明殿。\n掌朝天使尽皆惊，护驾仙卿俱搅乱。举棒掀翻北斗宫，回首振开南极院。\n金阙天皇见棍凶，特请如来与我见。兵家胜负自如然，困苦灾危无可辨。\n整整挨排五百年，亏了南海菩萨劝。大唐有个出家僧，对天发下洪誓愿。\n枉死城中度鬼魂，灵山会上求经卷。西方一路有妖魔，行动甚是不方便。\n已知铁棒世无双，央我途中为侣伴。邪魔汤着赴幽冥，肉化红尘骨化面。\n处处妖精棒下亡，论万成千无打算。上方击坏斗牛宫，下方压损森罗殿。\n天将曾将九曜追，地府打伤催命判。半空丢下振山川，胜如太岁新华剑。\n全凭此棍保唐僧，天下妖魔都打遍！\n鸿蒙初判陶镕铁，大禹神人亲所设。湖海江河浅共深，曾将此棒知之切。\n开山治水太平时，流落东洋镇海阙。日久年深放彩霞，能消能长能光洁。\n老孙有分取将来，变化无方随口诀。要大弥于宇宙间，要小却似针儿节。\n棒名如意号金箍，天上人间称一绝。\n重该一万三千五百斤，或粗或细能生灭。\n也曾助我闹天宫，也曾随我攻地阙。伏虎降龙处处通，炼魔荡怪方方彻。\n举头一指太阳昏，天地鬼神皆胆怯。混沌仙传到至今，原来不是凡间铁。‖end‖</entitydescription.cdTideControlPillar>
+  <entityname.cdprotectvest>“溯光”个人偏导护盾</entityname.cdprotectvest>
+  <entityname.cdprotectvestEX>“天枢”个人偏导护盾</entityname.cdprotectvestEX>
+  <entitydescription.cdprotectvest>激活后生成能量护盾，可抵挡远程攻击，每次抵挡消耗护盾能量。若连续10秒未受到攻击，护盾将自动开始快速充能回复。能量耗尽时，护盾将暂时过载失效。\n“它不是一面让你躲在后面的墙，而是一阵精巧引导风暴的风”</entitydescription.cdprotectvest>
+  <entitydescription.cdprotectvestEX>激活后生成能量护盾，护盾强度随你的杀敌次数成长，护盾可抵挡远程攻击，每次抵挡消耗护盾能量。若连续10秒未受到攻击，护盾将自动开始快速充能回复。能量耗尽时，护盾将暂时过载失效。\n“它不是一面让你躲在后面的墙，而是一阵精巧引导风暴的风”</entitydescription.cdprotectvestEX>
+  <entitydescription.cdwhitesight>提供精准打击\n+30%伤害</entitydescription.cdwhitesight>
+  <entitydescription.cdwhitemuzzle>让你变安静的同时还能火力全开\n+25%射速</entitydescription.cdwhitemuzzle>
+  <entitydescription.cdwhitegrip>使装弹变得更顺手\n+57%换弹速度</entitydescription.cdwhitegrip>
+  <!--geneticmaterialbetchergland-->
+  <character.cdMolochDark>"黑色"摩螺克</character.cdMolochDark>
+  <!-- 对话 -->
+  <eventtext.cdShipmother.c1>一位舰娘叫住了你：\n\n“您好指挥官，我是新泽西，奉碧蓝航线海事局的命令前来加入您的舰队”\n</eventtext.cdShipmother.c1>
+  <eventtext.cdShipmother.o1>你一个人？</eventtext.cdShipmother.o1>
+  <eventtext.cdShipmother.o1.c1>我是白鹰战列舰，最大最强的Black Dragon——新泽西号。这可不是什么自夸哦，或者说，“世界最强”也不为过呢~只要充分认识我了，关于这个话题的疑惑你很快就会打消的~</eventtext.cdShipmother.o1.c1>
+  <eventtext.cdShipmother.o1.o1>我觉得不错，欢迎加入。</eventtext.cdShipmother.o1.o1>
+  <eventtext.cdShipmother.o1.o1.c1>白鹰战列舰，最大最强的Black Dragon，新泽西登场！见识下我的力量吧！开玩笑的~指挥官喜欢这样的感觉吗？。</eventtext.cdShipmother.o1.o1.c1>
+  <eventtext.cdShipmother.o1.o2>不感兴趣。</eventtext.cdShipmother.o1.o2>
+  <eventtext.cdShipmother.o1.o2.c1>试试总没错的Honey~♪</eventtext.cdShipmother.o1.o2.c1>
+  <eventtext.cdShipmother.o2>我的船队暂时不需要新的船员。</eventtext.cdShipmother.o2>
+  <eventtext.cdShipmother.o2.c1>我会再来找您的Honey~♪</eventtext.cdShipmother.o2.c1>
+  <eventtext.findmoney.c1>有人把钱落在走廊里了。</eventtext.findmoney.c1>
+  <eventtext.findmoney.o1>检查一下</eventtext.findmoney.o1>
+  <eventtext.findmoney.o1.c1>地上躺着一枚沾满污垢一万面值马克币，带着一丝丝血腥味，不知道是谁落在这里的。</eventtext.findmoney.o1.c1>
+  <eventtext.findmoney.o1.o1>带走。</eventtext.findmoney.o1.o1>
+  <eventtext.findmoney.o1.o1.c1>你若无其事地将手伸向地上的马克币，同时用余光环顾四周，似乎没人注意到你，现在它是你的了。</eventtext.findmoney.o1.o1.c1>
+  <eventtext.findmoney.o1.o2>不是我丢的。</eventtext.findmoney.o1.o2>
+  <eventtext.findmoney.o1.o2.c1>你把喇叭抬起，然后用力挤压。喇叭响起后，这群小丑喧声作乱、拍手叫好，尖笑不止，仿佛听到了什么有趣的笑话一样。他们中的一位赞许地弄乱了你的头发。</eventtext.findmoney.o1.o2.c1>
+  <eventtext.findmoney.o2>还是算了。</eventtext.findmoney.o2>
+  <!-- 对话 -->
+  <!--药物-->
+  <afflictiondescription.cdungalinfections01>你的体能得到强化，赞美菌主！</afflictiondescription.cdungalinfections01>
+  <afflictiondescription.cdungalinfections02>你的体能与速度得到强化，赞美菌主！</afflictiondescription.cdungalinfections02>
+  <afflictiondescription.cdungalinfections03>共生霉菌强化了你的体能，移速与攻击速度，赞美菌主！</afflictiondescription.cdungalinfections03>
+  <afflictiondescription.cdungalinfections04>共生霉菌强化了你的体能，移速与攻击速度，并提高了你的恢复能力，赞美菌主！</afflictiondescription.cdungalinfections04>
+  <afflictiondescription.cdungalinfections05>菌主赐予你的体能，移速，攻击速度，恢复能力与承受能力上的的恩泽，赞美菌主！</afflictiondescription.cdungalinfections05>
+  <afflictiondescription.cdungalinfections06>赞美菌主，赞美菌主，赞美菌主！</afflictiondescription.cdungalinfections06>
+  <afflictiondescription.insideacidburn01>霉菌正在侵蚀你的身体。</afflictiondescription.insideacidburn01>
+  <afflictiondescription.insideacidburn02>你的五脏六腑正在瓦解。</afflictiondescription.insideacidburn02>
+  <afflictiondescription.insideacidburn03>你的器官支离破碎。</afflictiondescription.insideacidburn03>
+  <afflictiondescription.cdfightingspirit01>让激战为你开嗓</afflictiondescription.cdfightingspirit01>
+  <afflictiondescription.cdfightingspirit02>为前往英灵殿的敌人献唱</afflictiondescription.cdfightingspirit02>
+  <afflictiondescription.cdfightingspirit03>用战歌为战士们理清思路</afflictiondescription.cdfightingspirit03>
+  <afflictiondescription.cdfightingspirit04>炽热的表演将使你免受敌人目光的灼伤</afflictiondescription.cdfightingspirit04>
+  <afflictiondescription.huntingdamage01>追魂</afflictiondescription.huntingdamage01>
+  <afflictiondescription.huntingdamage02>索命</afflictiondescription.huntingdamage02>
+  <afflictiondescription.huntingdamage03>神离</afflictiondescription.huntingdamage03>
+  <afflictiondescription.curseflamedes1>你感受到了发自灵魂的灼热</afflictiondescription.curseflamedes1>
+  <afflictiondescription.curseflamedes2>诅咒沿着你的血液流动，你的体内燃起熊熊大火</afflictiondescription.curseflamedes2>
+  <afflictiondescription.curseflamedes3>你的灵魂已被点燃，诅咒的火舌从你体内喷薄而出，焚烧着一切</afflictiondescription.curseflamedes3>
+  <afflictionname.cdicedebuff>激寒</afflictionname.cdicedebuff>
+  <afflictiondescription.icedebuffdesc1>好冷！</afflictiondescription.icedebuffdesc1>
+  <afflictiondescription.icedebuffdesc2>你的身体开始结冰了</afflictiondescription.icedebuffdesc2>
+  <afflictiondescription.icedebuffdesc3>凝霜爬上了你的脊梁，刺骨的寒冷逐渐侵蚀你的思维</afflictiondescription.icedebuffdesc3>
+  <afflictiondescription.icedebuffdesc4>你的意识快要被极寒剥离，世界只剩下一片雪白</afflictiondescription.icedebuffdesc4>
+  <entitydescription.cdungalpotion01>高压环境下培育的共生霉菌，也许对人体有益？</entitydescription.cdungalpotion01>
+  <entitydescription.cdungalpotion02>‖color:255,0,0,255‖警告！不稳定实验药物，擅自使用后果自负！‖end‖</entitydescription.cdungalpotion02>
+  <!--任务-->
+  <missionname.cdabandoneoutpostpredators>消灭掠食者突击队</missionname.cdabandoneoutpostpredators>
+  <missiondescription.cdabandoneoutpostpredators>一队“掠食者”于[location1]驻军，消灭他们并炸毁反应堆，你将得到[reward]马克的奖励</missiondescription.cdabandoneoutpostpredators>
+  <missionsuccess.cdabandoneoutpostpredators>掠食者驻军已被铲除，干得漂亮船长</missionsuccess.cdabandoneoutpostpredators>
+  <missionfailure.cdabandoneoutpostpredators>深表遗憾</missionfailure.cdabandoneoutpostpredators>
+  <missionheader0.cdabandoneoutpostpredators>狩猎完成</missionheader0.cdabandoneoutpostpredators>
+  <missionmessage0.cdabandoneoutpostpredators>掠食者驻军已被铲除，干得漂亮船长</missionmessage0.cdabandoneoutpostpredators>
+  <missionname.cdabandoneoutpostnightsight>暮色之城</missionname.cdabandoneoutpostnightsight>
+  <missiondescription.cdabandoneoutpostnightsight>我们的原型光线吸收装置最近遭到了一场有预谋的盗窃，窃贼带着我们最新的研究成果逃至了[location1]，现在那里已经变成了一片暗无天日的死城。我们派往调查的两只侦查小队进去不久就失去了联系，现在城内局势不明，如果你愿意，请帮助我们干掉窃贼追回吸光装置，我们愿意支付[reward]马克的酬金。</missiondescription.cdabandoneoutpostnightsight>
+  <missionsuccess.cdabandoneoutpostnightsight>吸光装置已全部追回，但是联盟却以此次失窃影响过大为由强行叫停了我们的研究，并没收了我们所有的研究成果...不过我们还是会支付给你们报酬的。</missionsuccess.cdabandoneoutpostnightsight>
+  <missionfailure.cdabandoneoutpostnightsight>我们会考虑换一位雇主。</missionfailure.cdabandoneoutpostnightsight>
+  <missionheader0.cdabandoneoutpostnightsight>破晓</missionheader0.cdabandoneoutpostnightsight>
+  <missionmessage0.cdabandoneoutpostnightsight>盗窃者已被尽数消灭，剩下的交给我们就好。</missionmessage0.cdabandoneoutpostnightsight>
+  <missionname.cdabandoneoutpostcreeps>审判庭</missionname.cdabandoneoutpostcreeps>
+  <missiondescription.cdabandoneoutpostcreeps>“菌毯”作战部队是极地的核心武装力量，是极地为木卫二联盟进行武器研究与生物实验的主要武力保障。多年以来他们打着维和的名义四处建立据点，充当联盟的鹰犬进行大肆的武力扩张。现在他们正在[location1]进行部署，如果放任不管这里很快就会成为联盟的下一座军事堡垒。你们要做的就是清理掉这里所有的武装人员，帮助我们拔除这一颗钉子，事成之后你将会收到[reward]马克。切记不可轻敌，这可能会是一场艰难的战斗。</missiondescription.cdabandoneoutpostcreeps>
+  <missionsuccess.cdabandoneoutpostcreeps>这群家伙从出生起就会接受武器化改造，他们的身体会为了胜利不断榨取自己的生命力直至油尽灯枯。对于为战争而生的机器而言战死沙场也许是最好的归宿了。</missionsuccess.cdabandoneoutpostcreeps>
+  <missionfailure.cdabandoneoutpostcreeps>还不是时候...</missionfailure.cdabandoneoutpostcreeps>
+  <missionheader0.cdabandoneoutpostcreeps>伏诛</missionheader0.cdabandoneoutpostcreeps>
+  <missionmessage0.cdabandoneoutpostcreeps>嗜血的毒龙倒在了我们脚下，我能感觉到局势正在逆转，我们会赢下这场消耗战。</missionmessage0.cdabandoneoutpostcreeps>
+  <missionname.cdabandoneoutpostpredatorsfkj>消灭掠食者叛军</missionname.cdabandoneoutpostpredatorsfkj>
+  <missiondescription.cdabandoneoutpostpredatorsfkj>分离派“掠食者”部队自独立以来就以肉眼可见的速度壮大，这次的任务是消灭驻扎在[location1]的所有掠食者，你将得到[reward]马克的奖励</missiondescription.cdabandoneoutpostpredatorsfkj>
+  <missionsuccess.cdabandoneoutpostpredatorsfkj>掠食者叛军已被赶出[location1]</missionsuccess.cdabandoneoutpostpredatorsfkj>
+  <missionfailure.cdabandoneoutpostpredatorsfkj>战火未熄</missionfailure.cdabandoneoutpostpredatorsfkj>
+  <missionheader0.cdabandoneoutpostpredatorsfkj>清算</missionheader0.cdabandoneoutpostpredatorsfkj>
+  <missionmessage0.cdabandoneoutpostpredatorsfkj>做的好船长，联盟将接管这里</missionmessage0.cdabandoneoutpostpredatorsfkj>
+  <cdcreeps_text>抱歉船长,我们需要这条船</cdcreeps_text>
+  <cdcreeps_text>为了菌毯的未来!</cdcreeps_text>
+  <cdcreeps_text>时间到了,行动开始吧</cdcreeps_text>
+  <cdcreeps_text>我们知道,这是背叛</cdcreeps_text>
+  
+
+  <!--影子-->
+  <talentdescription.cdshadowtalent00>当你拥有[amount]个同列天赋时，获得以下效果：</talentdescription.cdshadowtalent00>
+  <talentdescription.cdshadowtalent01>[stattype]</talentdescription.cdshadowtalent01>
+  <talentname.cdshadowtalent0-1> </talentname.cdshadowtalent0-1> 
+  <talentname.cdshadowtalent0-2> </talentname.cdshadowtalent0-2> 
+  <talentname.cdshadowtalent0-3> </talentname.cdshadowtalent0-3> 
+  <talentname.cdshadowtalent0-4> </talentname.cdshadowtalent0-4> 
+  <talentname.cdshadowtalent0-5> </talentname.cdshadowtalent0-5> 
+  <talentname.cdshadowtalent1-1> </talentname.cdshadowtalent1-1> 
+  <talentname.cdshadowtalent1-2> </talentname.cdshadowtalent1-2> 
+  <talentname.cdshadowtalent1-3> </talentname.cdshadowtalent1-3> 
+  <talentname.cdshadowtalent1-4> </talentname.cdshadowtalent1-4> 
+  <talentname.cdshadowtalent1-5> </talentname.cdshadowtalent1-5> 
+  <talentname.cdshadowtalent2-1> </talentname.cdshadowtalent2-1> 
+  <talentname.cdshadowtalent2-2> </talentname.cdshadowtalent2-2> 
+  <talentname.cdshadowtalent2-3> </talentname.cdshadowtalent2-3> 
+  <talentname.cdshadowtalent2-4> </talentname.cdshadowtalent2-4> 
+  <talentname.cdshadowtalent2-5> </talentname.cdshadowtalent2-5> 
+  <talentname.cdshadowtalent3-1> </talentname.cdshadowtalent3-1> 
+  <talentname.cdshadowtalent3-2> </talentname.cdshadowtalent3-2> 
+  <talentname.cdshadowtalent3-3> </talentname.cdshadowtalent3-3> 
+  <talentname.cdshadowtalent3-4> </talentname.cdshadowtalent3-4> 
+  <talentname.cdshadowtalent3-5> </talentname.cdshadowtalent3-5> 
+  <talentname.cdshadowtalent4-1> </talentname.cdshadowtalent4-1> 
+  <talentname.cdshadowtalent4-2> </talentname.cdshadowtalent4-2> 
+  <talentname.cdshadowtalent4-3> </talentname.cdshadowtalent4-3> 
+  <talentname.cdshadowtalent4-4> </talentname.cdshadowtalent4-4> 
+  <talentname.cdshadowtalent4-5> </talentname.cdshadowtalent4-5> 
+  <talentname.cdshadowtalent5-1> </talentname.cdshadowtalent5-1> 
+  <talentname.cdshadowtalent5-2> </talentname.cdshadowtalent5-2> 
+  <talentname.cdshadowtalent5-3> </talentname.cdshadowtalent5-3> 
+  <talentname.cdshadowtalent5-4> </talentname.cdshadowtalent5-4> 
+  <talentname.cdshadowtalent5-5> </talentname.cdshadowtalent5-5> 
+  <talentname.cdshadowtalent6-1> </talentname.cdshadowtalent6-1> 
+  <talentname.cdshadowtalent6-2> </talentname.cdshadowtalent6-2> 
+  <talentname.cdshadowtalent6-3> </talentname.cdshadowtalent6-3> 
+  <talentname.cdshadowtalent6-4> </talentname.cdshadowtalent6-4> 
+  <talentname.cdshadowtalent6-5> </talentname.cdshadowtalent6-5> 
+  <talentname.cdshadowtalent7-1> </talentname.cdshadowtalent7-1> 
+  <talentname.cdshadowtalent7-2> </talentname.cdshadowtalent7-2> 
+  <talentname.cdshadowtalent7-3> </talentname.cdshadowtalent7-3> 
+  <talentname.cdshadowtalent7-4> </talentname.cdshadowtalent7-4> 
+  <talentname.cdshadowtalent7-5> </talentname.cdshadowtalent7-5> 
+  <talentname.cdshadowtalent8-1> </talentname.cdshadowtalent8-1> 
+  <talentname.cdshadowtalent8-2> </talentname.cdshadowtalent8-2> 
+  <talentname.cdshadowtalent8-3> </talentname.cdshadowtalent8-3> 
+  <talentname.cdshadowtalent8-4> </talentname.cdshadowtalent8-4> 
+  <talentname.cdshadowtalent8-5> </talentname.cdshadowtalent8-5> 
+  <talentname.cdshadowtalent9-1> </talentname.cdshadowtalent9-1> 
+  <talentname.cdshadowtalent9-2> </talentname.cdshadowtalent9-2> 
+  <talentname.cdshadowtalent9-3> </talentname.cdshadowtalent9-3> 
+  <talentname.cdshadowtalent9-4> </talentname.cdshadowtalent9-4> 
+  <talentname.cdshadowtalent9-5> </talentname.cdshadowtalent9-5> 
+  <talentname.cdshadowtalent10-1> </talentname.cdshadowtalent10-1>
+  <talentname.cdshadowtalent10-2> </talentname.cdshadowtalent10-2>
+  <talentname.cdshadowtalent10-3> </talentname.cdshadowtalent10-3>
+  <talentname.cdshadowtalent10-4> </talentname.cdshadowtalent10-4>
+  <talentname.cdshadowtalent10-5> </talentname.cdshadowtalent10-5>
+  <talentname.cdshadowtalent11-1> </talentname.cdshadowtalent11-1>
+  <talentname.cdshadowtalent11-2> </talentname.cdshadowtalent11-2>
+  <talentname.cdshadowtalent11-3> </talentname.cdshadowtalent11-3>
+  <talentname.cdshadowtalent11-4> </talentname.cdshadowtalent11-4>
+  <talentname.cdshadowtalent11-5> </talentname.cdshadowtalent11-5>
+  <talentname.cdshadowtalent12-1> </talentname.cdshadowtalent12-1>
+  <talentname.cdshadowtalent12-2> </talentname.cdshadowtalent12-2>
+  <talentname.cdshadowtalent12-3> </talentname.cdshadowtalent12-3>
+  <talentname.cdshadowtalent12-4> </talentname.cdshadowtalent12-4>
+  <talentname.cdshadowtalent12-5> </talentname.cdshadowtalent12-5>
+  <talentname.cdshadowtalent13-1> </talentname.cdshadowtalent13-1>
+  <talentname.cdshadowtalent13-2> </talentname.cdshadowtalent13-2>
+  <talentname.cdshadowtalent13-3> </talentname.cdshadowtalent13-3>
+  <talentname.cdshadowtalent13-4> </talentname.cdshadowtalent13-4>
+  <talentname.cdshadowtalent13-5> </talentname.cdshadowtalent13-5>
+  <talentname.cdshadowtalent14-1> </talentname.cdshadowtalent14-1>
+  <talentname.cdshadowtalent14-2> </talentname.cdshadowtalent14-2>
+  <talentname.cdshadowtalent14-3> </talentname.cdshadowtalent14-3>
+  <talentname.cdshadowtalent14-4> </talentname.cdshadowtalent14-4>
+  <talentname.cdshadowtalent14-5> </talentname.cdshadowtalent14-5>
+  <talentname.cdshadowtalent15-1> </talentname.cdshadowtalent15-1>
+  <talentname.cdshadowtalent15-2> </talentname.cdshadowtalent15-2>
+  <talentname.cdshadowtalent15-3> </talentname.cdshadowtalent15-3>
+  <talentname.cdshadowtalent15-4> </talentname.cdshadowtalent15-4>
+  <talentname.cdshadowtalent15-5> </talentname.cdshadowtalent15-5>
+  <talentname.cdshadowtalent16-1> </talentname.cdshadowtalent16-1>
+  <talentname.cdshadowtalent16-2> </talentname.cdshadowtalent16-2>
+  <talentname.cdshadowtalent16-3> </talentname.cdshadowtalent16-3>
+  <talentname.cdshadowtalent16-4> </talentname.cdshadowtalent16-4>
+  <talentname.cdshadowtalent16-5> </talentname.cdshadowtalent16-5>
+  <talentname.cdshadowtalent17-1> </talentname.cdshadowtalent17-1>
+  <talentname.cdshadowtalent17-2> </talentname.cdshadowtalent17-2>
+  <talentname.cdshadowtalent17-3> </talentname.cdshadowtalent17-3>
+  <talentname.cdshadowtalent17-4> </talentname.cdshadowtalent17-4>
+  <talentname.cdshadowtalent17-5> </talentname.cdshadowtalent17-5>
+  <talentname.cdshadowtalent18-1> </talentname.cdshadowtalent18-1>
+  <talentname.cdshadowtalent18-2> </talentname.cdshadowtalent18-2>
+  <talentname.cdshadowtalent18-3> </talentname.cdshadowtalent18-3>
+  <talentname.cdshadowtalent18-4> </talentname.cdshadowtalent18-4>
+  <talentname.cdshadowtalent18-5> </talentname.cdshadowtalent18-5>
+  <talentname.cdshadowtalent19-1> </talentname.cdshadowtalent19-1>
+  <talentname.cdshadowtalent19-2> </talentname.cdshadowtalent19-2>
+  <talentname.cdshadowtalent19-3> </talentname.cdshadowtalent19-3>
+  <talentname.cdshadowtalent19-4> </talentname.cdshadowtalent19-4>
+  <talentname.cdshadowtalent19-5> </talentname.cdshadowtalent19-5>
+  <talentname.cdshadowtalent20-1> </talentname.cdshadowtalent20-1>
+  <talentname.cdshadowtalent20-2> </talentname.cdshadowtalent20-2>
+  <talentname.cdshadowtalent20-3> </talentname.cdshadowtalent20-3>
+  <talentname.cdshadowtalent20-4> </talentname.cdshadowtalent20-4>
+  <talentname.cdshadowtalent20-5> </talentname.cdshadowtalent20-5>
+</infotext>

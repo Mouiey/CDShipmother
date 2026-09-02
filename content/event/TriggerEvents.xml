@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Randomevents>
+  <EventPrefabs>
+    <!-- SLOT MACHINE: physical markka payouts, 0/1.5/4/10/20/50x. Only positive-profit outcomes signal win/jackpot. -->
+    <ScriptedEvent identifier="cd_slotmachine_winnings_1000" commonness="100">
+      <CheckItemAction targettag="cd_slotmachine_target" itemtags="cd_slotmachine_symbol_sevens" amount="3">
+        <Success>
+          <StatusEffectAction targettag="cd_slotmachine_target">
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd10000MK" count="5" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This" duration="3" voltage="1" StatusEffectTags="cd_slotmachine_jackpot">
+              <Sound file="Content/Sounds/ClubMusic_alien.ogg" loop="true" range="300" volume="2" frequencymultiplier="1.35" />
+              <ParticleEmitter particle="nasonovsparkles" scalemin="0.5" scalemax="0.8" anglemin="0" anglemax="360" distancemin="5" distancemax="40" particlespersecond="20" colormultiplier="255,255,255,255" lifetimemultiplier="1" />
+              <ParticleEmitter particle="confetti" scalemin="0.35" scalemax="0.5" anglemin="20" anglemax="160" distancemin="30" distancemax="50" emitinterval="0.25" particleamount="10" velocitymin="120" velocitymax="200" colormultiplier="255,255,255,255" lifetimemultiplier="1" />
+            </StatusEffect>
+          </StatusEffectAction>
+          <Goto name="end" />
+        </Success>
+      </CheckItemAction>
+      <CheckItemAction targettag="cd_slotmachine_target" itemtags="cd_slotmachine_symbol_kings" amount="3">
+        <Success>
+          <StatusEffectAction targettag="cd_slotmachine_target">
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd10000MK" count="1" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This" duration="2" voltage="1" StatusEffectTags="cd_slotmachine_win" />
+          </StatusEffectAction>
+          <Goto name="end" />
+        </Success>
+      </CheckItemAction>
+      <CheckItemAction targettag="cd_slotmachine_target" itemtags="cd_slotmachine_symbol_queens" amount="3">
+        <Success>
+          <StatusEffectAction targettag="cd_slotmachine_target">
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd1000MK" count="3" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This" duration="2" voltage="1" StatusEffectTags="cd_slotmachine_win" />
+          </StatusEffectAction>
+          <Goto name="end" />
+        </Success>
+      </CheckItemAction>
+      <CheckItemAction targettag="cd_slotmachine_target" itemtags="cd_slotmachine_symbol_spades" amount="3">
+        <Success>
+          <StatusEffectAction targettag="cd_slotmachine_target">
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd1000MK" count="3" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This" duration="2" voltage="1" StatusEffectTags="cd_slotmachine_win" />
+          </StatusEffectAction>
+          <Goto name="end" />
+        </Success>
+      </CheckItemAction>
+      <CheckItemAction targettag="cd_slotmachine_target" itemtags="cd_slotmachine_symbol_hearts" amount="3">
+        <Success>
+          <StatusEffectAction targettag="cd_slotmachine_target">
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd1000MK" count="3" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This" duration="2" voltage="1" StatusEffectTags="cd_slotmachine_win" />
+          </StatusEffectAction>
+          <Goto name="end" />
+        </Success>
+      </CheckItemAction>
+      <CheckItemAction targettag="cd_slotmachine_target" itemtags="cd_slotmachine_symbol_diamonds" amount="3">
+        <Success>
+          <StatusEffectAction targettag="cd_slotmachine_target">
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd1000MK" count="3" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This" duration="2" voltage="1" StatusEffectTags="cd_slotmachine_win" />
+          </StatusEffectAction>
+          <Goto name="end" />
+        </Success>
+      </CheckItemAction>
+      <CheckItemAction targettag="cd_slotmachine_target" itemtags="cd_slotmachine_symbol_clubs" amount="3">
+        <Success>
+          <StatusEffectAction targettag="cd_slotmachine_target">
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd1000MK" count="3" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This" duration="2" voltage="1" StatusEffectTags="cd_slotmachine_win" />
+          </StatusEffectAction>
+          <Goto name="end" />
+        </Success>
+      </CheckItemAction>
+      <CheckItemAction targettag="cd_slotmachine_target" itemtags="cd_slotmachine_symbol_reds" amount="3">
+        <Success>
+          <StatusEffectAction targettag="cd_slotmachine_target">
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd1000MK" count="3" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This" duration="2" voltage="1" StatusEffectTags="cd_slotmachine_win" />
+          </StatusEffectAction>
+          <Goto name="end" />
+        </Success>
+      </CheckItemAction>
+      <CheckItemAction targettag="cd_slotmachine_target" itemtags="cd_slotmachine_symbol_blacks" amount="3">
+        <Success>
+          <StatusEffectAction targettag="cd_slotmachine_target">
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd1000MK" count="2" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This" duration="3" voltage="1" StatusEffectTags="cd_slotmachine_win" />
+          </StatusEffectAction>
+          <Goto name="end" />
+        </Success>
+      </CheckItemAction>
+      <CheckItemAction targettag="cd_slotmachine_target" itemtags="cd_slotmachine_symbol_yellows" amount="3">
+        <Success>
+          <StatusEffectAction targettag="cd_slotmachine_target">
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd1000MK" count="3" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This" duration="2" voltage="1" StatusEffectTags="cd_slotmachine_win" />
+          </StatusEffectAction>
+          <Goto name="end" />
+        </Success>
+      </CheckItemAction>
+      <CheckItemAction targettag="cd_slotmachine_target" itemtags="cd_slotmachine_symbol_sevens" amount="2">
+        <Success>
+          <StatusEffectAction targettag="cd_slotmachine_target">
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd1000MK" count="1" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd100MK" count="2" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This" duration="2" voltage="1" StatusEffectTags="cd_slotmachine_win" />
+          </StatusEffectAction>
+          <Goto name="end" />
+        </Success>
+      </CheckItemAction>
+      <CheckItemAction targettag="cd_slotmachine_target" itemtags="cd_slotmachine_symbol_kings" amount="2">
+        <Success>
+          <StatusEffectAction targettag="cd_slotmachine_target">
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd1000MK" count="1" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd100MK" count="2" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This" duration="2" voltage="1" StatusEffectTags="cd_slotmachine_win" />
+          </StatusEffectAction>
+          <Goto name="end" />
+        </Success>
+      </CheckItemAction>
+      <CheckItemAction targettag="cd_slotmachine_target" itemtags="cd_slotmachine_symbol_queens" amount="2">
+        <Success>
+          <StatusEffectAction targettag="cd_slotmachine_target">
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd1000MK" count="1" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd100MK" count="2" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This" duration="2" voltage="1" StatusEffectTags="cd_slotmachine_win" />
+          </StatusEffectAction>
+          <Goto name="end" />
+        </Success>
+      </CheckItemAction>
+      <CheckItemAction targettag="cd_slotmachine_target" itemtags="cd_slotmachine_symbol_spades" amount="2">
+        <Success>
+          <StatusEffectAction targettag="cd_slotmachine_target">
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd1000MK" count="1" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd100MK" count="2" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This" duration="2" voltage="1" StatusEffectTags="cd_slotmachine_win" />
+          </StatusEffectAction>
+          <Goto name="end" />
+        </Success>
+      </CheckItemAction>
+      <CheckItemAction targettag="cd_slotmachine_target" itemtags="cd_slotmachine_symbol_hearts" amount="2">
+        <Success>
+          <StatusEffectAction targettag="cd_slotmachine_target">
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd1000MK" count="1" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd100MK" count="2" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This" duration="2" voltage="1" StatusEffectTags="cd_slotmachine_win" />
+          </StatusEffectAction>
+          <Goto name="end" />
+        </Success>
+      </CheckItemAction>
+      <CheckItemAction targettag="cd_slotmachine_target" itemtags="cd_slotmachine_symbol_diamonds" amount="2">
+        <Success>
+          <StatusEffectAction targettag="cd_slotmachine_target">
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd1000MK" count="1" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd100MK" count="2" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This" duration="2" voltage="1" StatusEffectTags="cd_slotmachine_win" />
+          </StatusEffectAction>
+          <Goto name="end" />
+        </Success>
+      </CheckItemAction>
+      <CheckItemAction targettag="cd_slotmachine_target" itemtags="cd_slotmachine_symbol_clubs" amount="2">
+        <Success>
+          <StatusEffectAction targettag="cd_slotmachine_target">
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd1000MK" count="1" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This">
+              <SpawnItem identifier="cd100MK" count="2" spawnposition="ThisInventory" spawnifcantbecontained="true" spawnifinventoryfull="true" />
+            </StatusEffect>
+            <StatusEffect target="This" duration="2" voltage="1" StatusEffectTags="cd_slotmachine_win" />
+          </StatusEffectAction>
+          <Goto name="end" />
+        </Success>
+      </CheckItemAction>
+      <StatusEffectAction targettag="cd_slotmachine_target">
+        <StatusEffect target="This" duration="2" voltage="1" StatusEffectTags="cd_slotmachine_lose" />
+      </StatusEffectAction>
+      <Label name="end" />
+    </ScriptedEvent>
+  </EventPrefabs>
+</Randomevents>

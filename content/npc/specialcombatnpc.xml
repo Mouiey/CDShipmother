@@ -1,0 +1,1041 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<npcsets>
+  <!--分离掠食者-->
+  <npcset identifier="predatorsfkj">
+    <!--突击步枪-->
+    <npc identifier="predatorsfkj_tjbq_enemy" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="100" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdfkjpredatorshead" equip="true" />
+        <Item identifier="cdfkjpredatorsvest" equip="true" />
+        <Item identifier="cdfkjpredatorsuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdpredatorassaultrifleapmagazine" equip="false" amount="8" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdpredatorassaultrifle" equip="true">
+          <Item identifier="cdpredatorassaultrifleapmagazine" equip="true" />
+        </Item>
+        <Item identifier="cdpredatorknife" equip="false" />
+      </ItemSet>
+    </npc>
+    <!--突击步枪-巡逻-->
+    <npc identifier="predatorsfkj_tjbq_enemy_patrol" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="Patrol" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="100" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdfkjpredatorshead" equip="true" />
+        <Item identifier="cdfkjpredatorsvest" equip="true" />
+        <Item identifier="cdfkjpredatorsuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdpredatorassaultrifleapmagazine" equip="false" amount="8" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdpredatorassaultrifle" equip="true">
+          <Item identifier="cdpredatorassaultrifleapmagazine" equip="true" />
+        </Item>
+        <Item identifier="cdpredatorknife" equip="false" />
+      </ItemSet>
+    </npc>
+    <!--M4机枪-->
+    <npc identifier="predatorsfkj_m4_enemy" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="100" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdfkjpredatorshead" equip="true" />
+        <Item identifier="cdfkjpredatorsvest" equip="true" />
+        <Item identifier="cdfkjpredatorsuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="MG43magazine" equip="false" amount="4" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdMG43" equip="true">
+          <Item identifier="MG43magazine" equip="true" />
+        </Item>
+        <Item identifier="cdpredatorknife" equip="false" />
+      </ItemSet>
+    </npc>
+    <!--M4机枪-巡逻-->
+    <npc identifier="predatorsfkj_m4_enemy_patrol" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="Patrol" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="100" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdfkjpredatorshead" equip="true" />
+        <Item identifier="cdfkjpredatorsvest" equip="true" />
+        <Item identifier="cdfkjpredatorsuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="MG43magazine" equip="false" amount="4" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdMG43" equip="true">
+          <Item identifier="MG43magazine" equip="true" />
+        </Item>
+        <Item identifier="cdpredatorknife" equip="false" />
+      </ItemSet>
+    </npc>
+    <!--狙击枪-->
+    <npc identifier="predatorsfkj_hs50_enemy" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="200" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdfkjpredatorshead" equip="true" />
+        <Item identifier="cdfkjpredatorsvest" equip="true" />
+        <Item identifier="cdfkjpredatorsuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdhs50mag" equip="false" amount="2" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdhs50" equip="true">
+          <Item identifier="cdhs50mag" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!--狙击枪-蓝图-->
+    <npc identifier="predatorsfkj_hs50_enemy_blueprint" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="200" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdfkjpredatorshead" equip="true" />
+        <Item identifier="cdfkjpredatorsvest" equip="true" />
+        <Item identifier="cdfkjpredatorsuniform" equip="true">
+          <Item identifier="cdfkjpredatorsblueprint" equip="false" />
+        </Item>
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdhs50mag" equip="false" amount="2" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdhs50" equip="true">
+          <Item identifier="cdhs50mag" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!--火铳-->
+    <npc identifier="predatorsfkj_hc_enemy" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="100" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdfkjpredatorshead" equip="true" />
+        <Item identifier="cdfkjpredatorsvest" equip="true" />
+        <Item identifier="cdfkjpredatorsuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdfirelancemagazine" equip="false" amount="2" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdfrozengrenade2" equip="true"/>
+        <Item identifier="cdfirelance" equip="false">
+          <Item identifier="cdfirelancemagazine"/>
+        </Item>
+        <Item identifier="cdpredatorknife" equip="false" />
+      </ItemSet>
+    </npc>
+    <!--火铳-巡逻-->
+    <npc identifier="predatorsfkj_hc_enemy_patrol" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="Patrol" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="100" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdfkjpredatorshead" equip="true" />
+        <Item identifier="cdfkjpredatorsvest" equip="true" />
+        <Item identifier="cdfkjpredatorsuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdfirelancemagazine" equip="false" amount="2" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdfrozengrenade2" equip="true"/>
+        <Item identifier="cdfirelance" equip="false">
+          <Item identifier="cdfirelancemagazine"/>
+        </Item>
+        <Item identifier="cdpredatorknife" equip="false" />
+      </ItemSet>
+    </npc>
+    <!--榴弹-->
+    <npc identifier="predatorsfkj_eglm_enemy" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="100" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdfkjpredatorshead" equip="true" />
+        <Item identifier="cdfkjpredatorsvest" equip="true" />
+        <Item identifier="cdfkjpredatorsuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdgrenadelauncher" equip="true">
+          <Item identifier="cdfragmentgrenade2" amount="6"/>
+        </Item>
+        <!-- 副武器及配件 -->
+        <Item identifier="cdfirelance" equip="true">
+          <Item identifier="cdfirelancemagazine" equip="true" />
+        </Item>
+        <Item identifier="cdpredatorknife" equip="false" />
+      </ItemSet>
+    </npc>
+    <!--榴弹-巡逻-->
+    <npc identifier="predatorsfkj_eglm_enemy_patrol" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="Patrol" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="100" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdfkjpredatorshead" equip="true" />
+        <Item identifier="cdfkjpredatorsvest" equip="true" />
+        <Item identifier="cdfkjpredatorsuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdgrenadelauncher" equip="true">
+          <Item identifier="cdfragmentgrenade2" amount="6"/>
+        </Item>
+        <!-- 副武器及配件 -->
+        <Item identifier="cdfirelance" equip="true">
+          <Item identifier="cdfirelancemagazine" equip="true" />
+        </Item>
+        <Item identifier="cdpredatorknife" equip="false" />
+      </ItemSet>
+    </npc>
+  </npcset>
+  <!-- Mions海盗 -->
+  <npcset identifier="cd_sub_npc">
+    <!-- EAN-141船长-这里将EAN141任务npc和mions放在同一npcset下,主要为了便捷 -->
+    <npc identifier="EAN_coalition_captain" moduleflags="none" job="captain" behavior="Patrol" healthmultiplier="1" healthmultiplierinmultiplayer="2" aimspeed="40" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="headset" equip="true" />
+        <Item identifier="captainscap3" equip="true" />
+        <Item identifier="EAHI_pucs" equip="true">
+          <Item identifier="cdekutility_reinforcedtank_oxygen" equip="true" />
+        </Item>
+        <Item identifier="captainsuniform3" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" amount="1" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cd_pirate_handcannon" equip="true">
+          <Item identifier="cd_handcannonround" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!-- EAN-141医生 -->
+    <npc identifier="EAN_coalition_medicaldoctor" moduleflags="none" job="medicaldoctor" behavior="Patrol" healthmultiplier="1" healthmultiplierinmultiplayer="2" aimspeed="40" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="headset" equip="true" />
+        <Item identifier="cdchemicaldefensemask" equip="true" />
+        <Item identifier="medicalofficerclothes" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" amount="3" />
+        <!-- 星界军激光枪 -->
+        <Item identifier="cdlasrifle_wh" equip="true">
+          <Item identifier="cdwhlasriflemagazine" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!-- EAN-141机修 -->
+    <npc identifier="EAN_coalition_mechanic" job="mechanic" behavior="Patrol" healthmultiplier="1" healthmultiplierinmultiplayer="2" aimspeed="40" aimaccuracy="1" reportrange="2000">
+    <ItemSet>
+      <Item identifier="mechanicseparatistsuniform2" equip="true" />
+      <Item identifier="baseballcap" equip="true"/>
+      <Item identifier="headset" equip="true" showpreview="false"/>
+      <Item identifier="idcard" equip="true" />
+      <Item identifier="wrench" equip="true" />
+      <Item identifier="screwdriver" equip="true" />
+      <Item identifier="divingmask">
+        <Item identifier="oxygentank" />
+      </Item>
+      <Item identifier="weldingtool">
+        <Item identifier="weldingfueltank" />
+      </Item>
+      </ItemSet>
+    </npc>
+    <!-- 海盗船长-曼波造型 -->
+    <npc identifier="Mions_pirate_captain" moduleflags="none" job="captain" behavior="Patrol" healthmultiplier="1" healthmultiplierinmultiplayer="2" aimspeed="40" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <!-- 莱伦汀幻化器 -->
+        <Item identifier="tsm_lerentine" equip="true" />
+        <!-- 母亲面容 -->
+        <Item identifier="clownmaskunique" equip="true" />
+        <Item identifier="tsm_jz_vest" equip="true" />
+        <Item identifier="tsm_jz_uniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" amount="1" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cd_pirate_handcannon" equip="true">
+          <Item identifier="cd_handcannonround" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!-- 海盗安全官-首领-燃素歼灭者 -->
+    <npc identifier="Mions_pirate_S" tags="Pirate" moduleflags="none" job="securityofficer" behavior="Patrol" healthmultiplier="1" healthmultiplierinmultiplayer="2" aimspeed="40" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="headset" equip="true" />
+        <Item identifier="cdpredatorshead" equip="true" />
+        <Item identifier="cdjtvest" equip="true" />
+        <Item identifier="cdchemicaldefenseuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" amount="1" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdjtriflersmagazine" equip="false" amount="4" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdjtrifle" equip="true">
+          <Item identifier="cdjtriflersmagazine" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!-- 海盗安全官-粒子加速器 -->
+    <npc identifier="Mions_pirate_A" tags="Pirate" moduleflags="none" job="securityofficer" behavior="Patrol" healthmultiplier="1" healthmultiplierinmultiplayer="2" aimspeed="40" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="headset" equip="true" />
+        <Item identifier="ironhelmet" equip="true" />
+        <Item identifier="makeshiftarmor" equip="true" />
+        <Item identifier="commonerclothes3" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="fulguriumfuelrod" equip="false" amount="1" />
+        <!-- 主武器及配件 -->
+        <Item identifier="nucleargun" equip="true">
+            <Item identifier="fulguriumfuelrod" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!-- 海盗医生-星界军 -->
+    <npc identifier="Mions_pirate_B" tags="Pirate" moduleflags="none" job="medicaldoctor" behavior="Patrol" healthmultiplier="1" healthmultiplierinmultiplayer="2" aimspeed="40" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="headset" equip="true" />
+        <Item identifier="cdjthead" equip="true" />
+        <!-- 防弹衣 -->
+        <Item identifier="bodyarmor" equip="true" />
+        <Item identifier="captainsuniform2" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" amount="3" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdwhlasriflemagazine" equip="false"  amount="1" />
+        <!-- 星界军激光枪 -->
+        <Item identifier="cdlasrifle_wh" equip="true">
+          <Item identifier="cdwhlasriflemagazine" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!-- 海盗安全官-步枪单位 -->
+    <npc identifier="Mions_pirate_C" tags="Pirate" moduleflags="none" job="securityofficer" behavior="Patrol" healthmultiplier="1" healthmultiplierinmultiplayer="2" aimspeed="40" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="headset" equip="true" />
+        <!-- 防弹头盔 -->
+        <Item identifier="ballistichelmet1" equip="true" />
+        <!-- 掠食者防弹衣 -->
+        <Item identifier="cdpredatorsvest" equip="true" />
+        <!-- 暴行 -->
+        <Item identifier="Arknights_Savage" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" amount="1" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdpredatorassaultriflemagazine" equip="false" amount="4" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdpredatorassaultrifle" equip="true">
+          <Item identifier="cdpredatorassaultriflemagazine" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!-- 海盗机修工-霰弹枪 -->
+    <npc identifier="Mions_pirate_D" job="mechanic" behavior="Patrol" healthmultiplier="1" healthmultiplierinmultiplayer="2" aimspeed="40" aimaccuracy="1" reportrange="2000">
+      <ItemSet>
+        <Item identifier="mechanicseparatistsuniform2" equip="true" />
+        <Item identifier="baseballcap" equip="true"/>
+        <Item identifier="headset" equip="true" showpreview="false"/>
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="wrench" equip="true" />
+        <Item identifier="screwdriver" equip="true" />
+        <Item identifier="divingmask">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="weldingtool">
+          <Item identifier="weldingfueltank" />
+        </Item>
+        <!-- 主武器及配件 -->
+        <Item identifier="cdM30" equip="true">
+          <Item identifier="M30magazine" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+  </npcset>
+  <!--菌毯-->
+  <npcset identifier="creeps">
+    <!--冲锋枪-->
+    <npc identifier="creeps_cfq_enemy" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="1" healthmultiplierinmultiplayer="2" aimspeed="40" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdjthead" equip="true" />
+        <Item identifier="cdjtvest" equip="true" />
+        <Item identifier="cdjtuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdpp22magazine" equip="false" amount="12" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdpp22" equip="true">
+          <Item identifier="cdpp22magazine" equip="true" />
+        </Item>
+        <Item identifier="cdjtknife" equip="false" />
+      </ItemSet>
+    </npc>
+    <!--冲锋枪-巡逻-->
+    <npc identifier="creeps_cfq_enemy_patrol" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="Patrol" healthmultiplier="1" healthmultiplierinmultiplayer="2" aimspeed="40" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdjthead" equip="true" />
+        <Item identifier="cdjtvest" equip="true" />
+        <Item identifier="cdjtuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdpp22magazine" equip="false" amount="12" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdpp22" equip="true">
+          <Item identifier="cdpp22magazine" equip="true" />
+        </Item>
+        <Item identifier="cdjtknife" equip="false" />
+      </ItemSet>
+    </npc>
+    <!--MRL-->
+    <npc identifier="creeps_mrl_enemy" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="1" healthmultiplierinmultiplayer="2" aimspeed="40" aimaccuracy="1" reportrange="2000">
+      <!--基础-->
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdjthead" equip="true" />
+        <Item identifier="cdjtvest" equip="true" />
+        <Item identifier="cdjtuniform" equip="true">
+          <Item identifier="cdungalreducepotion" equip="false" />
+          <Item identifier="cdmedicalkits" equip="false" />
+        </Item>
+        <!-- 医疗物品（独立存在） -->
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdMRLammo" equip="false" amount="36" />
+        <Item identifier="cdMRLsgammo" equip="false" amount="1" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdMRL" equip="true">
+          <Item identifier="cdMRLammo" equip="true" amount="4" />
+        </Item>
+      </ItemSet>
+      <!--穿甲-->
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdjthead" equip="true" />
+        <Item identifier="cdjtvest" equip="true" />
+        <Item identifier="cdjtuniform" equip="true">
+          <Item identifier="cdungalreducepotion" equip="false" />
+          <Item identifier="cdmedicalkits" equip="false" />
+        </Item>
+        <!-- 医疗物品（独立存在） -->
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdMRLcjammo" equip="false" amount="12" />
+        <Item identifier="cdMRLammo" equip="false" amount="12" />
+        <Item identifier="cdMRLcjammo" equip="false" amount="12" />
+        <Item identifier="cdMRLsgammo" equip="false" amount="1" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdMRL" equip="true">
+          <Item identifier="cdMRLcjammo" equip="true" amount="4" />
+        </Item>
+      </ItemSet>
+      <!--高爆-->
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdjthead" equip="true" />
+        <Item identifier="cdjtvest" equip="true" />
+        <Item identifier="cdjtuniform" equip="true">
+          <Item identifier="cdungalreducepotion" equip="false" />
+          <Item identifier="cdmedicalkits" equip="false" />
+        </Item>
+        <!-- 医疗物品（独立存在） -->
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdMRLgbammo" equip="false" amount="12" />
+        <Item identifier="cdMRLammo" equip="false" amount="12" />
+        <Item identifier="cdMRLgbammo" equip="false" amount="12" />
+        <Item identifier="cdMRLsgammo" equip="false" amount="1" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdMRL" equip="true">
+          <Item identifier="cdMRLgbammo" equip="true" amount="4" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!--MRL-蓝图-->
+    <npc identifier="creeps_mrl_blueprint" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="1" healthmultiplierinmultiplayer="2" aimspeed="40" aimaccuracy="1" reportrange="2000">
+      <!--基础-->
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdjthead" equip="true" />
+        <Item identifier="cdjtvest" equip="true" />
+        <Item identifier="cdjtuniform" equip="true">
+          <Item identifier="cdungalreducepotion" equip="false" />
+          <Item identifier="cdmedicalkits" equip="false" />
+          <Item identifier="cdcreepsblueprint" equip="false" />
+        </Item>
+        <!-- 医疗物品（独立存在） -->
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdMRLammo" equip="false" amount="36" />
+        <Item identifier="cdMRLsgammo" equip="false" amount="1" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdMRL" equip="true">
+          <Item identifier="cdMRLammo" equip="true" amount="4" />
+        </Item>
+      </ItemSet>
+      <!--穿甲-->
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdjthead" equip="true" />
+        <Item identifier="cdjtvest" equip="true" />
+        <Item identifier="cdjtuniform" equip="true">
+          <Item identifier="cdungalreducepotion" equip="false" />
+          <Item identifier="cdmedicalkits" equip="false" />
+          <Item identifier="cdcreepsblueprint" equip="false" />
+        </Item>
+        <!-- 医疗物品（独立存在） -->
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdMRLcjammo" equip="false" amount="12" />
+        <Item identifier="cdMRLammo" equip="false" amount="12" />
+        <Item identifier="cdMRLcjammo" equip="false" amount="12" />
+        <Item identifier="cdMRLsgammo" equip="false" amount="1" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdMRL" equip="true">
+          <Item identifier="cdMRLcjammo" equip="true" amount="4" />
+        </Item>
+      </ItemSet>
+      <!--高爆-->
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdjthead" equip="true" />
+        <Item identifier="cdjtvest" equip="true" />
+        <Item identifier="cdjtuniform" equip="true">
+          <Item identifier="cdungalreducepotion" equip="false" />
+          <Item identifier="cdmedicalkits" equip="false" />
+          <Item identifier="cdcreepsblueprint" equip="false" />
+        </Item>
+        <!-- 医疗物品（独立存在） -->
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdMRLgbammo" equip="false" amount="12" />
+        <Item identifier="cdMRLammo" equip="false" amount="12" />
+        <Item identifier="cdMRLgbammo" equip="false" amount="12" />
+        <Item identifier="cdMRLsgammo" equip="false" amount="1" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdMRL" equip="true">
+          <Item identifier="cdMRLgbammo" equip="true" amount="4" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!--MRL-巡逻-->
+    <npc identifier="creeps_mrl_enemy_patrol" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="Patrol" healthmultiplier="1" healthmultiplierinmultiplayer="2" aimspeed="40" aimaccuracy="1" reportrange="2000">
+      <!--基础-->
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdjthead" equip="true" />
+        <Item identifier="cdjtvest" equip="true" />
+        <Item identifier="cdjtuniform" equip="true">
+          <Item identifier="cdungalreducepotion" equip="false" />
+          <Item identifier="cdmedicalkits" equip="false" />
+        </Item>
+        <!-- 医疗物品（独立存在） -->
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdMRLammo" equip="false" amount="36" />
+        <Item identifier="cdMRLsgammo" equip="false" amount="1" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdMRL" equip="true">
+          <Item identifier="cdMRLammo" equip="true" amount="4" />
+        </Item>
+      </ItemSet>
+      <!--穿甲-->
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdjthead" equip="true" />
+        <Item identifier="cdjtvest" equip="true" />
+        <Item identifier="cdjtuniform" equip="true">
+          <Item identifier="cdungalreducepotion" equip="false" />
+          <Item identifier="cdmedicalkits" equip="false" />
+        </Item>
+        <!-- 医疗物品（独立存在） -->
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdMRLcjammo" equip="false" amount="12" />
+        <Item identifier="cdMRLammo" equip="false" amount="12" />
+        <Item identifier="cdMRLcjammo" equip="false" amount="12" />
+        <Item identifier="cdMRLsgammo" equip="false" amount="1" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdMRL" equip="true">
+          <Item identifier="cdMRLcjammo" equip="true" amount="4" />
+        </Item>
+      </ItemSet>
+      <!--高爆-->
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdjthead" equip="true" />
+        <Item identifier="cdjtvest" equip="true" />
+        <Item identifier="cdjtuniform" equip="true">
+          <Item identifier="cdungalreducepotion" equip="false" />
+          <Item identifier="cdmedicalkits" equip="false" />
+        </Item>
+        <!-- 医疗物品（独立存在） -->
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdMRLgbammo" equip="false" amount="12" />
+        <Item identifier="cdMRLammo" equip="false" amount="12" />
+        <Item identifier="cdMRLgbammo" equip="false" amount="12" />
+        <Item identifier="cdMRLsgammo" equip="false" amount="1" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdMRL" equip="true">
+          <Item identifier="cdMRLgbammo" equip="true" amount="4" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!--步枪-->
+    <npc identifier="creeps_cjbq_enemy" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="1" healthmultiplierinmultiplayer="2" aimspeed="40" aimaccuracy="1" reportrange="2000">
+      <!--穿甲-->
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdjthead" equip="true" />
+        <Item identifier="cdjtvest" equip="true" />
+        <Item identifier="cdjtuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdjtriflecjmagazine" equip="false" amount="10" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdjtrifle" equip="true">
+          <Item identifier="cdjtriflecjmagazine" equip="true" />
+        </Item>
+        <Item identifier="cdjtknife" equip="false" />
+      </ItemSet>
+      <!--雷素-->
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdjthead" equip="true" />
+        <Item identifier="cdjtvest" equip="true" />
+        <Item identifier="cdjtuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdjtriflelsmagazine" equip="false" amount="10" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdjtrifle" equip="true">
+          <Item identifier="cdjtriflelsmagazine" equip="true" />
+        </Item>
+        <Item identifier="cdjtknife" equip="false" />
+      </ItemSet>
+      <!--燃烧-->
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdjthead" equip="true" />
+        <Item identifier="cdjtvest" equip="true" />
+        <Item identifier="cdjtuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdjtriflersmagazine" equip="false" amount="10" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdjtrifle" equip="true">
+          <Item identifier="cdjtriflersmagazine" equip="true" />
+        </Item>
+        <Item identifier="cdjtknife" equip="false" />
+      </ItemSet>
+    </npc>
+    <!--步枪-巡逻-->
+    <npc identifier="creeps_cjbq_enemy_patrol" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="Patrol" healthmultiplier="1" healthmultiplierinmultiplayer="2" aimspeed="40" aimaccuracy="1" reportrange="2000">
+      <!--穿甲-->
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdjthead" equip="true" />
+        <Item identifier="cdjtvest" equip="true" />
+        <Item identifier="cdjtuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdjtriflecjmagazine" equip="false" amount="10" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdjtrifle" equip="true">
+          <Item identifier="cdjtriflecjmagazine" equip="true" />
+        </Item>
+        <Item identifier="cdjtknife" equip="false" />
+      </ItemSet>
+      <!--雷素-->
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdjthead" equip="true" />
+        <Item identifier="cdjtvest" equip="true" />
+        <Item identifier="cdjtuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdjtriflelsmagazine" equip="false" amount="10" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdjtrifle" equip="true">
+          <Item identifier="cdjtriflelsmagazine" equip="true" />
+        </Item>
+        <Item identifier="cdjtknife" equip="false" />
+      </ItemSet>
+      <!--燃烧-->
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdjthead" equip="true" />
+        <Item identifier="cdjtvest" equip="true" />
+        <Item identifier="cdjtuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdjtriflersmagazine" equip="false" amount="10" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdjtrifle" equip="true">
+          <Item identifier="cdjtriflersmagazine" equip="true" />
+        </Item>
+        <Item identifier="cdjtknife" equip="false" />
+      </ItemSet>
+    </npc>
+  </npcset>
+  <!--暮色小队-->
+  <npcset identifier="cdnightsight">
+    <!--军阀-->
+    <npc identifier="cdnightsight_jf" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="200" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="captainsseparatistcap2" equip="true" />
+        <Item identifier="piratebodyarmor" equip="true" />
+        <Item identifier="captainseparatistsuniform3" equip="true" />
+        <!--吸光设备-->
+        <Item identifier="cdnolighter" equip="false" amount="1" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" amount="1" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="thoriumfuelrod" equip="false" amount="10" />
+        <!-- 主武器及配件 -->
+        <Item identifier="nucleargun" equip="true">
+          <Item identifier="fulguriumfuelrod" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!--军阀-巡逻-->
+    <npc identifier="cdnightsight_jf_patrol" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="Patrol" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="200" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="captainsseparatistcap2" equip="true" />
+        <Item identifier="piratebodyarmor" equip="true" />
+        <Item identifier="captainseparatistsuniform3" equip="true" />
+        <!--吸光设备-->
+        <Item identifier="cdnolighter" equip="false" amount="1" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" amount="1" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="thoriumfuelrod" equip="false" amount="10" />
+        <!-- 主武器及配件 -->
+        <Item identifier="nucleargun" equip="true">
+          <Item identifier="fulguriumfuelrod" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!--外骨骼-->
+    <npc identifier="cdnightsight_wgg" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="200" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="piratehelmet" equip="true" />
+        <Item identifier="cdexosuit" equip="true">
+          <Item identifier="oxygenitetank" equip="true" />
+        </Item>
+        <Item identifier="securityseparatistsuniform1" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" amount="1" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="thoriumfuelrod" equip="false" amount="10" />
+        <!-- 主武器及配件 -->
+        <Item identifier="nucleargun" equip="true">
+          <Item identifier="fulguriumfuelrod" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!--星界军-->
+    <npc identifier="cdnightsight_xjj" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="Patrol" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="200" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="piratehelmet" equip="true" />
+        <Item identifier="piratebodyarmor" equip="true" />
+        <Item identifier="separatistcommoner3" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" amount="1" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdwhlasriflemagazine" equip="false" amount="4" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdlasrifle_wh" equip="true">
+          <Item identifier="cdwhlasriflemagazine" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!--刺客-->
+    <npc identifier="cdnightsight_ck" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="Patrol" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="200" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="turban" equip="true" />
+        <Item identifier="piratebodyarmor" equip="true" />
+        <Item identifier="banditclothes1" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" amount="1" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdknife" equip="true" />
+      </ItemSet>
+    </npc>
+  </npcset>
+  <!--化防-->
+  <npcset identifier="chemicalprotectors">
+    <!--士兵-->
+    <npc identifier="chemicalprotectors_soldier" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="30" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdchemicaldefensehead" equip="true" />
+        <Item identifier="cdchemicaldefensevest" equip="true" />
+        <Item identifier="cdchemicaldefenseuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" amount="3" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdelegunammo" equip="true" amount="4" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdelegun" equip="true">
+          <Item identifier="cdelegunammo" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!--防化-->
+    <npc identifier="chemicalprotectors_fireer" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="30" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdchemicalprotectiveclothing" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" amount="3" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="highflamermagazine" equip="true" amount="6" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdhighflamer" equip="false">
+          <Item identifier="highflamermagazine" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!--防化-蓝图-->
+    <npc identifier="chemicalprotectors_fireer_blueprint" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="30" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdchemicalprotectiveclothing" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" amount="3" />
+        <Item identifier="cdchemicalprotectorsblueprint" equip="false" amount="1" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="highflamermagazine" equip="true" amount="6" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdhighflamer" equip="false">
+          <Item identifier="highflamermagazine" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!--医生-->
+    <npc identifier="chemicalprotectors_doctor" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="medicaldoctor" behavior="Patrol" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="100" aimaccuracy="1" reportrange="4000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdchemicaldefensemask" equip="true" />
+        <Item identifier="cdchemicaldefenseuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" amount="8" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdhallucinogenicbomb2" equip="true" />
+        <Item identifier="cdflamer" equip="false">
+          <Item identifier="firestone" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+  </npcset>
+  <!--掠食者-->
+  <npcset identifier="predators">
+    <npc identifier="predators_man" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="Patrol" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="100" aimaccuracy="1" reportrange="3000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdpredatorshead" equip="true" />
+        <Item identifier="cdpredatorsvest" equip="true" />
+        <Item identifier="cdpredatorsuniform" equip="true" />
+        <Item identifier="headset" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdpredatorassaultriflemagazine" equip="true" amount="6" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdpredatorassaultrifle" equip="true">
+          <Item identifier="cdpredatorassaultriflemagazine" equip="true" />
+        </Item>
+        <Item identifier="cdpredatorknife" equip="true" />
+      </ItemSet>
+    </npc>
+    <npc identifier="predators_jq" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="Patrol" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="100" aimaccuracy="1" reportrange="3000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdpredatorshead" equip="true" />
+        <Item identifier="cdpredatorsvest" equip="true" />
+        <Item identifier="cdpredatorsuniform" equip="true" />
+        <Item identifier="headset" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="MG4magazine" equip="true" amount="4" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdMG4" equip="true">
+          <Item identifier="MG4magazine" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <npc identifier="predators_xd" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="Patrol" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="100" aimaccuracy="1" reportrange="3000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdpredatorshead" equip="true" />
+        <Item identifier="cdpredatorsvest" equip="true" />
+        <Item identifier="cdpredatorsuniform" equip="true" />
+        <Item identifier="headset" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <Item identifier="cdmedicalkits" equip="false" />
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="M30magazine" equip="true" amount="4" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdM30" equip="true">
+          <Item identifier="cdreusable_shotgunshell" equip="true" />
+        </Item>
+        <Item identifier="cdpredatorknife" equip="true" />
+      </ItemSet>
+    </npc>
+    <npc identifier="predators_man_enemy" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="30" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdpredatorshead" equip="true" />
+        <Item identifier="cdpredatorsvest" equip="true" />
+        <Item identifier="cdpredatorsuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="cdpredatorassaultriflemagazine" equip="true" amount="6" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdpredatorassaultrifle" equip="true">
+          <Item identifier="cdpredatorassaultriflemagazine" equip="true" />
+        </Item>
+        <Item identifier="cdpredatorknife" equip="true" />
+      </ItemSet>
+    </npc>
+    <npc identifier="predators_jq_enemy" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="30" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdpredatorshead" equip="true" />
+        <Item identifier="cdpredatorsvest" equip="true" />
+        <Item identifier="cdpredatorsuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="MG4magazine" equip="true" amount="4" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdMG4" equip="true">
+          <Item identifier="MG4magazine" equip="true" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <npc identifier="predators_xd_enemy" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="30" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdpredatorshead" equip="true" />
+        <Item identifier="cdpredatorsvest" equip="true" />
+        <Item identifier="cdpredatorsuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="M30magazine" equip="true" amount="4" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdM30" equip="true">
+          <Item identifier="cdreusable_shotgunshell" equip="true" />
+        </Item>
+        <Item identifier="cdpredatorknife" equip="true" />
+      </ItemSet>
+    </npc>
+    <!--蓝图-->
+    <npc identifier="predators_xd_blueprint" tags="coalition" moduleflags="crewmodule,engineeringmodule,securitymodule" job="securityofficer" behavior="StayInHull" healthmultiplier="2" healthmultiplierinmultiplayer="2" aimspeed="30" aimaccuracy="1" reportrange="2000">
+      <ItemSet commonness="1">
+        <!-- 基础装备 -->
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdpredatorshead" equip="true" />
+        <Item identifier="cdpredatorsvest" equip="true" />
+        <Item identifier="cdpredatorsuniform" equip="true" />
+        <!-- 医疗物品（独立存在） -->
+        <!-- 弹匣（独立装备） -->
+        <Item identifier="M30magazine" equip="true" amount="4" />
+        <Item identifier="cdpredatorsblueprint" equip="false" amount="1" />
+        <!-- 主武器及配件 -->
+        <Item identifier="cdM30" equip="true">
+          <Item identifier="cdreusable_shotgunshell" equip="true" />
+        </Item>
+        <Item identifier="cdpredatorknife" equip="true" />
+      </ItemSet>
+    </npc>
+  </npcset>
+  <npcset identifier="cdspecialnpc">
+    <!--试制沉底任务派发员-->
+    <npc identifier="cdspecialnpc_1" spawnpointtags="cdmission" behavior="Patrol" healthmultiplier="2" aimspeed="50" aimaccuracy="1">
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="headset" equip="true" />
+        <Item identifier="cdSpecialClothes" equip="true" />
+        <Item identifier="cdHairW" equip="true" />
+        <Item identifier="cdMedicalKits" equip="false" amount="3" />
+        <Item identifier="cdlasrifle_wh">
+          <Item identifier="cdwhlasriflemagazine" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <!--银行工作人员-->
+    <npc identifier="cdbanker" job="outpostmanager" tags="cdbanker" spawnpointtags="cdbank" healthmultiplier="2" behavior="Passive" skillmultiplier="5">
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="headset" equip="true" />
+        <Item identifier="vipclothes2" equip="true" />
+        <Item identifier="captainscap3" equip="true" />
+        <Item identifier="cdMedicalKits" equip="false" amount="1" />
+        <Item identifier="cdlasrifle_wh">
+          <Item identifier="cdwhlasriflemagazine" />
+        </Item>
+      </ItemSet>
+    </npc>
+  </npcset>
+</npcsets>

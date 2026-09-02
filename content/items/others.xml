@@ -1,0 +1,990 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!--影仆召唤器-->
+  <Item name="黑色核心" identifier="cdshadowspawner" description="驱动阴影之物" category="Misc" scale="0.1" Tags="smallitem" maxstacksize="1" impacttolerance="4"  isshootable="true"  impactsoundtag="impact_metal_heavy">
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="26,28" handle1="-30,-100" holdangle="0" aimangle="0" aimable="false" msg="ItemMsgPickUpSelect" >
+      <StatusEffect type="OnUse" target="This" Condition="0" setvalue="true">
+        <Conditional Condition="gte 100" />
+        <ParticleEmitter particle="nasonovfx" scalemultiplier="2,2" anglemax="360" particleamount="3" colormultiplier="0,0,0,255" />
+        <TriggerEvent identifier="cdspawnfriendlyshadow" />
+      </StatusEffect>
+    </Holdable>
+    <InventoryIcon texture="%ModDir%/content/png/影子召唤器.png" sourcerect="0,0,239,248" />
+    <Sprite texture="%ModDir%/content/png/影子召唤器.png" sourcerect="0,0,239,248" depth="0.55" origin="0.5,0.5" />
+    <Body width="239" height="248" density="30" />
+    <ItemContainer capacity="0" maxstacksize="0" hideitems="true">
+      <StatusEffect type="OnSpawn" target="This" disabledeltatime="true" delay="1" condition="100" />
+    </ItemContainer>
+  </Item>
+  <!--加固器-->
+  <Item name="加固器" identifier="cdundamager" tags="mediumitem" category="Misc" description="" inheritscale="false" isshootable="true" scale="0.6"  hideinmenus="true">
+    <sprite texture="Content/Map/Outposts/Art/ArmoryColonyModule.png" sourcerect="977,463,43,44" depth="0.86" premultiplyalpha="false" origin="0.5,0.5" />
+    <Body width="40" height="40" density="15" />
+    <!--fake-->
+    <Controller direction="None" canbepicked="true" msg="ItemMsgPressSelect"></Controller>
+    <!--fake-->
+    <Holdable selectkey="Select" pickkey="Use" slots="RightHand+LeftHand" msg="ItemMsgDetachWrench" PickingTime="2.0" aimpos="35,-10" handle1="0,0" attachable="true" attachedbydefault="false" aimable="true">
+      <RequiredItem items="wrench,deattachtool" excludeditems="multitool" type="Equipped" />
+    </Holdable>
+    <ItemContainer capacity="1" slotsperrow="1" canbeselected="true" hideitems="true" msg="ordername.cleanupitems" AllowAccessWhenDropped="false">
+      <GuiFrame relativesize="0.25,0.25" anchor="Center" minsize="140,170" maxsize="280,280" style="ItemUI" />
+    </ItemContainer>
+    <!--transparency maker-->
+    <CustomInterface canbeselected="true" drawhudwhenequipped="true">
+      <GuiFrame relativesize="0.25,0.15" anchor="Center" style="ConnectionPanel" />
+      <Button text="免疫伤害开启">
+        <StatusEffect type="OnUse" target="Contained" invulnerabletodamage="true" setvalue="true" disabledeltatime="true" />
+      </Button>
+      <Button text="免疫伤害关闭">
+        <StatusEffect type="OnUse" target="Contained" invulnerabletodamage="false" setvalue="true" disabledeltatime="true" />
+      </Button>
+    </CustomInterface>
+  </Item>
+  <!--万能弹药箱-->
+  <Item name="老旧的弹药箱" subcategory="CD" identifier="cdexammobox" health="1000" category="Equipment" tags="mediumitem" scale="0.5" pickdistance="150" impactsoundtag="impact_metal_heavy" maxstacksize="1"  hideinmenus="true" >
+    <Sprite texture="%ModDir%/content/png/coalition.png" depth="0.54" sourcerect="2271,2376,219,105" origin="0.5,0.5" />
+    <Body width="219" height="105" density="30" />
+    <RangedWeapon reload="1" MaxChargeTime="20" />
+    <Holdable slots="RightHand+LeftHand" aimable="false" holdpos="50,-50" aimpos="50,-40" handle1="-0,16" handle2="0,0" swingamount="20,100" swingspeed="1" swingwhenusing="true" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.7" setvalue="true" />
+    </Holdable>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" showcontainedstateindicator="false">
+      <SlotIcon slotindex="0" texture="%ModDir%/content/png/ui.png" sourcerect="128,13,111,111" origin="0.5,0.5" />
+      <Containable items="smallitem,mediumitem,bigitem,coilgunammo,ammobox,railgunammo,diving,crate,mobilecontainer,makeshiftshelf,alienartifact" excludebroken="false">
+        <StatusEffect type="OnContaining" target="Contained" Condition="10" comparison="and">
+          <Conditional IsFullCondition="false" />
+          <Conditional condition="gt 0" targetcontainer="true" />
+        </StatusEffect>
+        <StatusEffect type="OnContaining" target="This" Condition="-10" comparison="and">
+          <Conditional IsFullCondition="false" targetcontaineditem="true" />
+          <Conditional condition="gt 0" />
+          <sound file="%ModDir%/content/ogg/ammo_reload_2.ogg" range="300" loop="true" />
+        </StatusEffect>
+      </Containable>
+    </ItemContainer>
+  </Item>
+  <!-- 治疗效果生成器 -->
+  <Item name="Anti-Bleed-Burn Emitter" identifier="cdantibleedburnemitter" Scale="1" tags="gas" sonarsize="0" hideinmenus="true" depth="0.1" isdangerous="true" noninteractable="true">
+    <Sprite texture="%ModDir%/Content/png/空.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+    <Body width="38" height="15" bodytype="kinematic" />
+    <ItemComponent>
+      <StatusEffect type="Always" target="This" condition="0" setvalue="true" />
+      <StatusEffect type="Always" target="NearbyCharacters" range="250" duration="0.1" stackable="false">
+        <!-- 排除机械角色:不知道为什么不起效 -->
+        <!-- <Conditional ismachine="false" /> -->
+        <ReduceAffliction type="bleeding" amount="25" />
+        <ReduceAffliction type="burn" amount="25" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item name="饱龙珠" identifier="cdbaolong" description="以金祭珠,可得剑" category="Material" Tags="cdsplinter" maxstacksize="1" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <Deconstruct time="120"></Deconstruct>
+    <Sprite texture="%ModDir%/content/png/饱龙剑.png" depth="0.55" sourcerect="8,55,107,109" origin="0.5,0.5" />
+    <Body width="80" height="130" density="12" />
+    <Holdable slots="Any,RightHand+LeftHand" holdpos="30,-15" handle1="0,10" handle2="0,-10" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="Always" target="This,NearbyCharacters" range="500" interval="5.0" disabledeltatime="true">
+        <Conditional hastag="neq artifactcontainer" targetcontainer="true" />
+        <Conditional Voltage="lte 0" targetcontainer="true" />
+        <Affliction identifier="cdmkloseaff" strength="10" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This" disabledeltatime="true">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <!--锁手符-->
+  <Item name="摸鱼之手" identifier="cdarmlockright" description="你的右手受到了严重创伤，不能拿起武器了" scale="0.5" nonplayerteaminteractable="True" hideinmenus="true">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="0,0,1,1" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Medical/Medicines.png" sourcerect="0,0,1,1" depth="0.6" origin="0.5,0.5" />
+    <Holdable slots="RightHand" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <!--<Holdable selectkey="Action" pickkey="Use" slots="RightHand" msg="ItemMsgDetach" PickingTime="1" aimpos="85,-10" handle1="0,0" attachable="false" aimable="false">-->
+      <StatusEffect type="onnotcontained" target="This" disabledeltatime="true">
+        <Remove />
+      </StatusEffect>
+      <StatusEffect target="Character" type="always" targetLimbs="RightHand" setvalue="true">
+        <Affliction identifier="cddroprighthandtagaff" strength="1" MultiplyByMaxVitality="true" />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="摸鱼之手" identifier="cdarmlockleft" description="你的左手受到了严重创伤，不能拿起武器了" scale="0.5" nonplayerteaminteractable="True" hideinmenus="true">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="0,0,1,1" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Medical/Medicines.png" sourcerect="0,0,1,1" depth="0.6" origin="0.5,0.5" />
+    <Holdable slots="LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <!--<Holdable selectkey="Action" pickkey="Use" slots="LeftHand" msg="ItemMsgDetach" PickingTime="1" aimpos="85,-10" handle1="0,0" attachable="false" aimable="false">-->
+      <StatusEffect type="onnotcontained" target="This" disabledeltatime="true">
+        <Remove />
+      </StatusEffect>
+      <StatusEffect target="Character" type="always" targetLimbs="LeftHand" setvalue="true">
+        <Affliction identifier="cddroplefthandtagaff" strength="1" MultiplyByMaxVitality="true" />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <!--热诚屏蔽器-->
+  <Item name="热成像屏蔽器" identifier="cdallthermalstealthcomponent" category="CD" Tags="smallitem" maxstacksize="32" maxstacksizecharacterinventory="8" linkable="true" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true" GrabWhenSelected="true" signalcomponentcolor="#a66c6b" nonplayerteaminteractable="True" hideinmenus="true">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="512,900,63,54" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/空.png" depth="0.8" sourcerect="128,128,32,32" origin="0.5,0.5" canflipx="false" />
+    <Body width="31" height="25" density="15" />
+    <Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand,LeftHand" msg="ItemMsgDetachWrench" MsgWhenDropped="ItemMsgPickupSelect" PickingTime="5.0" aimpos="65,-10" handle1="0,0" attachable="true" aimable="true">
+      <RequiredItem items="wrench,deattachtool" excludeditems="multitool" type="Equipped" />
+      <StatusEffect target="NearbyCharacters" type="always" range="200000" disabledeltatime="true" interval="60">
+        <Affliction identifier="cdthermalstealth" amount="1.0" MultiplyByMaxVitality="true" />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <!--传送用登陆舱-->
+  <Item name="轻型登船艇" identifier="cdboardingpod" tags="depthchargeammo,autointeractabledepthchargeammo" showcontentsintooltip="true" category="Weapon" sonarsize="5" scale="0.5" impactsoundtag="impact_metal_heavy" cargocontaineridentifier="" AllowDeselectWhenIdling="false">
+    <PreferredContainer primary="depthchargeloader" />
+    <Deconstruct time="1"></Deconstruct>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="512,320,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items\Weapons\TurretsAndDepthCharges.png" sourcerect="629,0,279,142" depth="0.55" origin="0.5,0.5" />
+    <ContainedSprite name="Boarding Pod Contained" allowedcontainertags="depthchargeammosource" texture="Content/Items\Weapons\TurretsAndDepthCharges.png" sourcerect="489,90,119,95" depth="0.54" origin="0.5,0.5" />
+    <Body width="250" height="120" density="30" />
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-80" handle1="-30,14" handle2="30,14" aimable="false" msg="ItemMsgPickUpSelect">
+      <!-- slow down the character when holding the item -->
+      <StatValue stattype="MovementSpeed" value="-0.1" />
+    </Holdable>
+    <Projectile characterusable="false" launchimpulse="20" maxtargetstohit="3" damagedoors="true">
+      <Attack structuredamage="0" itemdamage="0" severlimbsprobability="5" penetration="0.6" targetforce="10">
+        <Affliction identifier="stun" strength="1" />
+      </Attack>
+      <StatusEffect type="OnActive" target="This">
+        <ParticleEmitter particle="bubbles" anglemin="0" anglemax="360" particleamount="5" velocitymin="0" velocitymax="50" scalemin="1" scalemax="3" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This" Condition="-34.0">
+        <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" selectionmode="Random" range="50000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall2.ogg" selectionmode="Random" range="50000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall3.ogg" selectionmode="Random" range="50000" />
+      </StatusEffect>
+      <!-- break immediately (instead of going through) if the wall has very high durability or is indestructible-->
+      <StatusEffect type="OnImpact" target="UseTarget,This" condition="0" setvalue="true" comparison="Or">
+        <Conditional Health="gte 3000" />
+        <Conditional Indestructible="true" />
+      </StatusEffect>
+      <!-- break (and throw the character out) when inside a hull, with a very brief delay -->
+      <StatusEffect type="OnActive" target="This" OnlyInside="true" Condition="0" setvalue="true" delay="0.1" />
+      <!-- Trigger explosions on contained items -->
+      <StatusEffect type="OnBroken" target="Contained">
+        <Use />
+      </StatusEffect>
+      <!-- Remove the item after exploding -->
+      <StatusEffect type="OnBroken" target="This">
+        <!-- short-range explosion to destroy walls immediately around the pod, making it less likely for the character to get stuck e.g. between multiple walls or inside some weird wall setup -->
+        <Explosion range="150.0" structuredamage="0" force="10.0" debris="true" decalsize="1.0" />
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+    <ItemContainer hideitems="true" capacity="1" maxstacksize="1" canbeselected="false">
+      <GuiFrame relativesize="0.2,0.25" anchor="Center" minsize="140,170" maxsize="280,280" style="ItemUI" />
+      <Containable items="smallitem" />
+    </ItemContainer>
+    <Controller UserPos="0,-20" direction="Right" canbeselected="true" AllowSelectingWhenSelectedByBot="false" AllowSelectingWhenSelectedByOther="false" selectkey="Use" drawuserbehind="true" forceusertostayattached="true" msg="itemmsggoinside">
+      <limbposition limb="Head" position="74,-40" />
+      <limbposition limb="Torso" position="74,-40" />
+      <limbposition limb="Waist" position="74,-40" />
+      <limbposition limb="LeftHand" position="74,-40" />
+      <limbposition limb="RightHand" position="74,-40" />
+      <limbposition limb="RightLeg" position="74,-40" />
+      <limbposition limb="LeftLeg" position="74,-40" />
+      <limbposition limb="RightFoot" position="74,-40" />
+      <limbposition limb="LeftFoot" position="74,-40" />
+      <StatusEffect type="OnActive" targettype="Character" delay="0.25" stackable="true" indetectable="true" DisableFocusingOnEntities="true" invisibletimer="0.1" IgnoreMeleeWeapons="true" PressureProtection="6500.0" setvalue="true" />
+      <!-- child of the Controller = active when someone's using it -->
+      <LightComponent range="100" PowerConsumption="0" lightcolor="150,255,150,0" blinkfrequency="1" AllowInGameEditing="false" IsOn="true">
+        <Sprite texture="Content/Items/Weapons/TurretsAndDepthCharges.png" sourcerect="700,55,33,30" depth="0.54" origin="2.1,0.5" alpha="1.0" />
+        <IsActiveConditional ContainerIdentifier="! depthchargeloader" />
+      </LightComponent>
+      <LightComponent range="100" PowerConsumption="0" lightcolor="150,255,150,0" blinkfrequency="1" AllowInGameEditing="false" IsOn="true">
+        <Sprite texture="Content/Items/Weapons/TurretsAndDepthCharges.png" sourcerect="700,55,33,30" depth="0.54" origin="0.1, 0.5" alpha="1.0" />
+        <IsActiveConditional ContainerIdentifier="depthchargeloader" />
+      </LightComponent>
+    </Controller>
+  </Item>
+  <Item identifier="cdseal" name="‖color:gold‖传国玉玺‖end‖" description="‖color:255,100,125,255‖受命于天 既寿永昌‖end‖" category="Misc" subcategory="CD" Tags="smallitem" maxstacksize="1" Scale="0.1" cargocontaineridentifier="explosivecrate" isshootable="true" impactsoundtag="impact_metal_heavy">
+    <PreferredContainer primary="engcab" secondary="locker" />
+    <Upgrade gameversion="0.9.3.0" scale="2.0" />
+    <InventoryIcon texture="%ModDir%/content/png/传国玉玺.png" sourcerect="0,0,177,251" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/传国玉玺.png" sourcerect="0,0,177,251" depth="0.55" origin="0.5,0.5" />
+    <Body width="177" height="251" density="50" />
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="kong" texture="%ModDir%/content/png/空.png" sourcerect="0,0,1,1" canbehiddenbyotherwearables="false" rotation="-90" inheritlimbdepth="false" depth="0.6" limb="Torso" scale="0.28" origin="0.55,0.0" />
+    </Wearable>
+    <!--
+    <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="Always" target="Character" setvalue="true" interval="4">
+        <GiveTalentInfo giverandom="false" talentidentifiers="cdsealtalent" />
+        <Affliction identifier="cdsealtalentaff" strength="10.0" MultiplyByMaxVitality="true"/>
+      </StatusEffect>
+    </Holdable>
+    -->
+    <Throwable slots="Any,RightHand,LeftHand" holdpos="0,0" handle1="0,0" throwforce="3.5" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="Always" target="Character" setvalue="true" interval="4">
+        <GiveTalentInfo giverandom="false" talentidentifiers="cdsealtalent" />
+        <Affliction identifier="cdsealtalentaff" strength="10.0" MultiplyByMaxVitality="true" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" delay="0.1">
+        <Use />
+      </StatusEffect>
+    </Throwable>
+    <Projectile characterusable="false" launchimpulse="0.0" sticktocharacters="false">
+      <Attack structuredamage="5">
+        <Affliction identifier="blunttrauma" strength="45" />
+        <Affliction identifier="stun" strength="1" />
+        <StatusEffect type="OnUse" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="Content/Items/Weapons/Smack1.ogg" selectionmode="random" range="500" />
+          <Sound file="Content/Items/Weapons/Smack2.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="Limb" targetLimbs="Head">
+          <Affliction identifier="concussion" strength="10" />
+          <Affliction identifier="stun" strength="5" />
+        </StatusEffect>
+      </Attack>
+    </Projectile>
+    <AiTarget soundrange="100000" sonarlabel="玉玺" sight="500" staticsight="true" />
+    <LightComponent LightColor="1.0,1.0,1.0,0.1" range="50" powerconsumption="0" blinkfrequency="0" IsOn="true" canbeselected="false">
+      <StatusEffect type="OnActive" targettype="This" SoundRange="100000" setvalue="true" />
+    </LightComponent>
+  </Item>
+  <Item name="黑光节点" identifier="cdnolighter" description="原型吸光装置的枢纽，扔出容器即可停止工作" category="Equipment" Tags="smallitem" cargocontaineridentifier="metalcrate" Scale="0.2" impactsoundtag="impact_metal_light" nonplayerteaminteractable="false" hideinmenus="true">
+    <InventoryIcon texture="%ModDir%/content/png/tools.png" sourcerect="71,265,84,99" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/tools.png" sourcerect="71,265,84,99" depth="0.55" origin="0.5,0.5" />
+    <Body width="84" height="99" density="12" />
+    <Holdable slots="Any,RightHand,LeftHand" holdangle="30" handle1="0,-15" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnContained" targettype="This" SoundRange="25000" setvalue="true">
+        <sound file="%ModDir%/content/ogg/吸光轰鸣.ogg" range="200.0" frequencymultiplier="0.7" loop="true" volume="1" />
+      </StatusEffect>
+      <StatusEffect type="OnContained" target="NearbyCharacters" range="5000">
+        <Affliction identifier="cddarknight" strength="20.0" MultiplyByMaxVitality="true" />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+    <!--<CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+    <GuiFrame relativesize="0.16,0.075" anchor="CenterLeft" pivot="BottomLeft" relativeoffset="0.006,-0.05" style="ItemUI" />
+    <TickBox text="radiojammer.transmit">
+      <StatusEffect type="OnUse" targettype="This" IsOn="true" />
+      <StatusEffect type="OnSecondaryUse" targettype="This" IsOn="false" />
+    </TickBox>
+  </CustomInterface>
+  <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="battery" spawnwithid="batterycell">
+    <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+    <Containable items="mobilebattery">
+      <StatusEffect type="OnContaining" targettype="This" Voltage="1.0" setvalue="true" />
+    </Containable>
+  </ItemContainer>-->
+  </Item>
+  <Item name="武器蓝图：掠食者" identifier="cdfkjpredatorsblueprint" description="物品制造蓝图。阅读它来永久解锁配方-分离派掠食者系列武器。" category="Misc" Tags="smallitem" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="engcab" secondary="locker" />
+    <InventoryIcon texture="%ModDir%/content/png/蓝图.png" sourcerect="256,512,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/AlienRuins_Items_02.png" sourcerect="0,1744,112,32" depth="0.6" origin="0.5,0.5" />
+    <Body width="110" height="30" density="8" />
+    <Holdable slots="Any,RightHand+LeftHand" aimable="false" aimpos="40,-20" handle1="5,0" aimangle="260" swingamount="0,3" swingspeed="0.5" swingwhenaiming="true" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" Condition="-10" />
+      <StatusEffect type="OnSecondaryUse" target="This,Character" unlockrecipe="cdpredatorassaultrifle,cdpredatorassaultrifleapmagazine,cdpredatorknife,cdhs50,cdhs50mag,cdMG43,MG43magazine,cdfirelance,cdfirelancemagazine,cdgrenadelauncher" disabledeltatime="true">
+        <Conditional Condition="lte 0" />
+        <RemoveItem />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="武器蓝图：菌毯" identifier="cdcreepsblueprint" description="物品制造蓝图。阅读它来永久解锁配方-菌毯系列武器。" category="Misc" Tags="smallitem" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="engcab" secondary="locker" />
+    <InventoryIcon texture="%ModDir%/content/png/蓝图.png" sourcerect="320,512,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/AlienRuins_Items_02.png" sourcerect="0,1744,112,32" depth="0.6" origin="0.5,0.5" />
+    <Body width="110" height="30" density="8" />
+    <Holdable slots="Any,RightHand+LeftHand" aimable="false" aimpos="40,-20" handle1="5,0" aimangle="260" swingamount="0,3" swingspeed="0.5" swingwhenaiming="true" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" Condition="-10" />
+      <StatusEffect type="OnSecondaryUse" target="This,Character" unlockrecipe="cdpp22magazine,cdpp22,cdjtriflersmagazine,cdjtriflelsmagazine,cdjtriflecjmagazine,cdjtrifle,cdMRLcjammo,cdMRLgbammo,cdMRLammo,cdMRL,cdjtknife" disabledeltatime="true">
+        <Conditional Condition="lte 0" />
+        <RemoveItem />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="武器蓝图：化学防卫队" identifier="cdchemicalprotectorsblueprint" description="物品制造蓝图。阅读它来永久解锁配方-化防系列武器。" category="Misc" Tags="smallitem" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="engcab" secondary="locker" />
+    <InventoryIcon texture="%ModDir%/content/png/蓝图.png" sourcerect="384,512,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/AlienRuins_Items_02.png" sourcerect="0,1744,112,32" depth="0.6" origin="0.5,0.5" />
+    <Body width="110" height="30" density="8" />
+    <Holdable slots="Any,RightHand+LeftHand" aimable="false" aimpos="40,-20" handle1="5,0" aimangle="260" swingamount="0,3" swingspeed="0.5" swingwhenaiming="true" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" Condition="-10" />
+      <StatusEffect type="OnSecondaryUse" target="This,Character" unlockrecipe="highflamermagazine,cdhighflamer,cdelegunammo,cdelegun" disabledeltatime="true">
+        <Conditional Condition="lte 0" />
+        <RemoveItem />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="武器蓝图：掠食者" identifier="cdpredatorsblueprint" description="物品制造蓝图。阅读它来永久解锁配方-掠食者系列武器。" category="Misc" Tags="smallitem" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="engcab" secondary="locker" />
+    <InventoryIcon texture="%ModDir%/content/png/蓝图.png" sourcerect="448,512,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/AlienRuins_Items_02.png" sourcerect="0,1744,112,32" depth="0.6" origin="0.5,0.5" />
+    <Body width="110" height="30" density="8" />
+    <Holdable slots="Any,RightHand+LeftHand" aimable="false" aimpos="40,-20" handle1="5,0" aimangle="260" swingamount="0,3" swingspeed="0.5" swingwhenaiming="true" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" Condition="-10" />
+      <StatusEffect type="OnSecondaryUse" target="This,Character" unlockrecipe="cdpredatorassaultrifle,cdpredatorassaultriflemagazine,cdpredatorknife,MG4magazine,cdMG4,cdM30flemagazine,M30magazine,cdM30" disabledeltatime="true">
+        <Conditional Condition="lte 0" />
+        <RemoveItem />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="制造蓝图：‖color:255,0,0,255‖小红‖end‖" identifier="cdXHblueprint" description="物品制造蓝图。阅读它来永久解锁配方-‖color:255,0,0,255‖小红‖end‖。" category="Misc" Tags="smallitem" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="engcab" secondary="locker" />
+    <PreferredContainer secondary="abandonedsecarmcab,piratesecarmcab" amount="1" spawnprobability="0.02" />
+    <InventoryIcon texture="%ModDir%/content/png/蓝图.png" sourcerect="256,576,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/AlienRuins_Items_02.png" sourcerect="0,1744,112,32" depth="0.6" origin="0.5,0.5" />
+    <Body width="110" height="30" density="8" />
+    <Holdable slots="Any,RightHand+LeftHand" aimable="false" aimpos="40,-20" handle1="5,0" aimangle="260" swingamount="0,3" swingspeed="0.5" swingwhenaiming="true" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" Condition="-10" />
+      <StatusEffect type="OnSecondaryUse" target="This,Character" unlockrecipe="cdXH" disabledeltatime="true">
+        <Conditional Condition="lte 0" />
+        <RemoveItem />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="制造蓝图：‖color:94,222,252,255‖奔雷‖end‖" identifier="cdBLMblueprint" description="物品制造蓝图。阅读它来永久解锁配方-‖color:94,222,252,255‖奔雷‖end‖。" category="Misc" Tags="smallitem" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="engcab" secondary="locker" />
+    <PreferredContainer secondary="abandonedsecarmcab,piratesecarmcab" amount="1" spawnprobability="0.02" />
+    <InventoryIcon texture="%ModDir%/content/png/蓝图.png" sourcerect="320,576,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/AlienRuins_Items_02.png" sourcerect="0,1744,112,32" depth="0.6" origin="0.5,0.5" />
+    <Body width="110" height="30" density="8" />
+    <Holdable slots="Any,RightHand+LeftHand" aimable="false" aimpos="40,-20" handle1="5,0" aimangle="260" swingamount="0,3" swingspeed="0.5" swingwhenaiming="true" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" Condition="-10" />
+      <StatusEffect type="OnSecondaryUse" target="This,Character" unlockrecipe="cdBLM" disabledeltatime="true">
+        <Conditional Condition="lte 0" />
+        <RemoveItem />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="制造蓝图：星云之誓" identifier="cdnebulablueprint" description="物品制造蓝图。阅读它来永久解锁配方-星云之誓。" category="Misc" Tags="smallitem" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="engcab" secondary="locker" />
+    <PreferredContainer secondary="abandonedsecarmcab,piratesecarmcab" amount="1" spawnprobability="0.02" />
+    <InventoryIcon texture="%ModDir%/content/png/蓝图.png" sourcerect="384,576,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/AlienRuins_Items_02.png" sourcerect="0,1744,112,32" depth="0.6" origin="0.5,0.5" />
+    <Body width="110" height="30" density="8" />
+    <Holdable slots="Any,RightHand+LeftHand" aimable="false" aimpos="40,-20" handle1="5,0" aimangle="260" swingamount="0,3" swingspeed="0.5" swingwhenaiming="true" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" Condition="-10" />
+      <StatusEffect type="OnSecondaryUse" target="This,Character" unlockrecipe="cdnebula" disabledeltatime="true">
+        <Conditional Condition="lte 0" />
+        <RemoveItem />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="制造蓝图：‖color:255,0,0,255‖斩舰‖end‖" identifier="cdshipkillerblueprint" description="物品制造蓝图。阅读它来永久解锁配方-‖color:255,0,0,255‖斩舰‖end‖。" category="Misc" Tags="smallitem" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="engcab" secondary="locker" />
+    <PreferredContainer secondary="abandonedsecarmcab,piratesecarmcab" amount="1" spawnprobability="0.02" />
+    <InventoryIcon texture="%ModDir%/content/png/蓝图.png" sourcerect="448,576,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/AlienRuins_Items_02.png" sourcerect="0,1744,112,32" depth="0.6" origin="0.5,0.5" />
+    <Body width="110" height="30" density="8" />
+    <Holdable slots="Any,RightHand+LeftHand" aimable="false" aimpos="40,-20" handle1="5,0" aimangle="260" swingamount="0,3" swingspeed="0.5" swingwhenaiming="true" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" Condition="-10" />
+      <StatusEffect type="OnSecondaryUse" target="This,Character" unlockrecipe="shipkiller" disabledeltatime="true">
+        <Conditional Condition="lte 0" />
+        <RemoveItem />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="个人货架" identifier="cdmakeshiftshelf" description="用于存放你无处安放的私人物品" tags="container,cargocontainer" linkable="true" canflipx="false" pickdistance="150" scale="0.5" isshootable="true">
+    <Deconstruct time="15">
+      <Item identifier="steel" amount="3" />
+      <Item identifier="iron" amount="4" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="false">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <RequiredSkill identifier="electrical" level="20" />
+      <RequiredItem identifier="steel" amount="4" />
+      <RequiredItem identifier="iron" amount="6" />
+    </Fabricate>
+    <Sprite texture="Content/Items/Containers/UnitLoadDevice.png" depth="0.84" sourcerect="567,433,185,187" origin="0.5,0.5" />
+    <Body width="185" height="187" density="25" />
+    <Holdable selectkey="Select" pickkey="Use" slots="RightHand+LeftHand" msg="ItemMsgDetach" PickingTime="20.0" aimpos="85,-10" handle1="0,0" attachable="true" attachedbydefault="true" limitedattachable="false" aimable="true" AttachesToFloor="false" DisallowAttachingOverTags="container,planter">
+      <StatusEffect target="This" type="Always">
+        <Conditional attached="false" targetitemcomponentname="Holdable" />
+        <DropContainedItems />
+      </StatusEffect>
+    </Holdable>
+    <ItemContainer capacity="2" slotsperrow="1" ItemsUseInventoryPlacement="true" maxstacksize="1" canbeselected="true" hideitems="false" itempos="92,-48" iteminterval="0,-92" AllowAccessWhenDropped="false" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.1,0.45" anchor="Center" style="ItemUI" />
+      <Containable items="crate,cdpersonalcrate" />
+    </ItemContainer>
+  </Item>
+  <!--个人物品箱-->
+  <Item identifier="cdpersonalcrate" name="个人物品箱" description="只有拥有者可以任意打开。" tags="identitycard" subcategory="CD" aliases="" scale="0.5" linkable="true" pickdistance="150" showcontentsintooltip="true" impactsoundtag="impact_metal_heavy">
+    <Sprite texture="%ModDir%/content/png/personalcontainers.png" depth="0.54" sourcerect="0,0,146,89" origin="0.5,0.5" />
+    <Body width="150" height="75" density="25" />
+    <Price baseprice="100" sold="true" soldelsewhere="false" buyingpricemultiplier="1.0" minamount="5" maxamount="10" canbespecial="true" minleveldifficulty="0" displaynonempty="false">
+      <Price storeidentifier="merchantcity" multiplier="1.0" minavailable="5" sold="true" />
+      <Price storeidentifier="merchantmine" multiplier="1.0" minavailable="5" sold="true" />
+      <Price storeidentifier="merchantoutpost" multiplier="1.0" minavailable="5" sold="true" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.0" minavailable="5" sold="true" />
+      <Price storeidentifier="merchantresearch" multiplier="1.0" minavailable="5" sold="true" />
+    </Price>
+    <Holdable slots="RightHand+LeftHand,Any" holdpos="0,-80" handle1="-30,14" handle2="30,14" canbeselected="true" canbepicked="true" pickkey="Use" PickingTime="300.0" msg="[crowbar] Force open" PickingMsg="Forcing crate">
+      <requireditem items="crowbar" type="Equipped" />
+    </Holdable>
+    <ItemContainer capacity="24" maxstacksize="32" canbeselected="false" hideitems="true" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="smallitem,mediumitem,handheldammo,gun" excludeditems="toolbelt,toolbox,bandolier,cargoscooter,largemobilecontainer" />
+    </ItemContainer>
+    <IdCard slots="RightHand+LeftHand,Any" msg="ItemMsgPickUpSelect" />
+    <MemoryComponent value="0" />
+  </Item>
+  <!--掠食者护卫信标-->
+  <Item name="护卫信标" identifier="cdpredatorshw" description="请求掠食者突击队提供支援" subcategory="CD" category="Misc" scale="0.5" sonarsize="6" tags="smallitem" hideinmenus="false">
+    <PreferredContainer primary="armcab" secondary="secarmcab" amount="1" spawnprobability="0.05" />
+    <PreferredContainer secondary="abandonedsecarmcab,piratesecarmcab,abandonedarmcab,piratearmcab" amount="1" spawnprobability="0.05" />
+    <Price baseprice="30000" minleveldifficulty="10">
+      <Price storeidentifier="merchantoutpost" multiplier="1.35" sold="false" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="1" maxavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantarmory" multiplier="1" minavailable="1" maxavailable="1" />
+    </Price>
+    <InventoryIcon texture="%ModDir%/content/png/弹药补给.png" sourcerect="1966,1408,36,35" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/弹药补给.png" sourcerect="2022,1428,37,15" depth="0.55" origin="0.5,0.7" />
+    <Body width="50" height="15" density="10" />
+    <Throwable slots="Any,RightHand,LeftHand" holdpos="0,0" handle1="0,0" holdangle="90" throwforce="2.0" aimpos="35,-10" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" launchimpulse="50" maxtargetstohit="3" sticktocharacters="false" sticktoitems="false" sticktostructures="false" friendlyfire="false" damagedoors="true">
+      <Attack structuredamage="1" itemdamage="1" severlimbsprobability="2.0" penetration="0.3">
+        <Affliction identifier="lacerations" strength="1" />
+        <Affliction identifier="bleeding" strength="1" />
+        <Affliction identifier="stun" strength="1" />
+      </Attack>
+      <StatusEffect type="OnActive" target="This" lifetime="0.5">
+        <ParticleEmitter particle="ammotrailwater" copyentityangle="true" anglemin="0" anglemax="0" particleamount="10" velocitymin="-10" velocitymax="-100" scalemin="0.5" scalemax="1" />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This">
+        <ParticleEmitter particle="tsm_flare_yellow" emitinterval="2.1" particleamount="10" particlespersecond="60" anglemin="70" anglemax="100" velocitymin="100" velocitymax="200" />
+        <ParticleEmitter particle="FlareBubbles" particlespersecond="40" anglemin="70" anglemax="100" velocitymin="100" velocitymax="200" scalemin="0.8" scalemax="1.2" />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" condition="-20" />
+      <StatusEffect type="OnBroken" target="NearbyCharacters,This" Interval="5" range="20000">
+        <Conditional speciesname="human" />
+        <TriggerEvent identifier="predatorshelp" />
+        <RemoveItem />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <ParticleEmitter particle="shrapnel" copyentityangle="true" anglemin="0" anglemax="360" particleamount="5" velocitymin="100" velocitymax="2000" scalemin="0.1" scalemax="0.2" />
+        <Explosion ignorecover="true" onlyinside="true" range="600" force="10" playtinnitus="false" showeffects="false" applyfireeffects="false">
+          <Affliction identifier="stun" strength="1" />
+        </Explosion>
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+        <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!--标记荧光棒-->
+  <Item name="标记荧光棒" identifier="cddfglowstick" category="Equipment" maxstacksize="32" maxstacksizecharacterinventory="1" cargocontaineridentifier="metalcrate" Scale="0.5" tags="smallitem,light,provocative,grenade" impactsoundtag="impact_soft" description="可以标记友军或者是安全房间">
+    <PreferredContainer primary="divingcab" minamount="3" maxamount="5" spawnprobability="1" notcampaign="true" />
+    <PreferredContainer secondary="outpostcrewcabinet" amount="1" spawnprobability="0.1" />
+    <Price baseprice="45" minavailable="6" displaynonempty="true">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="10" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.25" minavailable="8" />
+      <Price storeidentifier="merchantmine" minavailable="10" />
+      <Price storeidentifier="merchantarmory" multiplier="1.25" minavailable="8" />
+    </Price>
+    <Deconstruct time="5" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="10" amount="2">
+      <RequiredItem identifier="sodium" />
+      <RequiredItem identifier="plastic" />
+    </Fabricate>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="128,384,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Tools/tools.png" sourcerect="278,157,50,9" depth="0.55" origin="0.5,0.5" />
+    <Body width="50" height="9" density="10" />
+    <Throwable slots="Any,RightHand,LeftHand" holdpos="0,0" handle1="0,0" holdangle="90" throwforce="2.0" aimpos="35,-10" msg="ItemMsgPickUpSelect" DisableWhenRangedWeaponEquipped="true" />
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+      <GuiFrame relativesize="0.1,0.05" anchor="CenterLeft" pivot="BottomLeft" relativeoffset="0.006,-0.05" style="ItemUI" />
+      <TickBox text="enginepowered">
+        <StatusEffect type="OnUse" targettype="This" IsOn="true" />
+        <StatusEffect type="OnSecondaryUse" targettype="This" IsOn="false" />
+      </TickBox>
+    </CustomInterface>
+    <Projectile characterusable="false" launchimpulse="40" sticktocharacters="true" sticktoitems="true" sticktostructures="true" sticktodeflective="true" sticktodoors="false" sticktolighttargets="true"></Projectile>
+    <LightComponent LightColor="50,255,50,255" Flicker="0.0" range="400" IsOn="true">
+      <sprite texture="Content/Items/Tools/tools.png" sourcerect="374,140,62,20" alpha="1.0" origin="0.5,0.5" />
+      <StatusEffect type="OnActive" targettype="This" />
+      <StatusEffect type="OnActive" targettype="This">
+        <Conditional PhysicsBodyActive="eq true" />
+      </StatusEffect>
+    </LightComponent>
+  </Item>
+  <Item identifier="cd100MK" name="一百面值马克币" category="Misc" description="价值不菲的流通货币，拿在手上使用可以兑换为‖color:gui.yellow‖100‖end‖马克" maxstacksize="10" subcategory="CD" tags="smallitem" scale="0.4" cargocontaineridentifier="metalcrate">
+    <PreferredContainer primary="armcab" secondary="secarmcab" minamount="1" maxamount="10" spawnprobability="1" />
+    <PreferredContainer secondary="wrecksecarmcab,wreckarmcab,abandonedsecarmcab,piratesecarmcab,abandonedarmcab,piratearmcab" minamount="1" maxamount="10" spawnprobability="1" />
+    <!--贩卖机兑换 -->
+    <Fabricate suitablefabricators="vendingmachine" requiredtime="1" requiredmoney="100" fabricationlimitmin="100" fabricationlimitmax="100" quality="0" />
+    <Price baseprice="100" canbespecial="false" sold="False">
+      <Price storeidentifier="merchantoutpost" minavailable="1" />
+      <!--商人前哨-->
+      <Price storeidentifier="merchantcity" minavailable="1" />
+      <!--商业城市-->
+      <Price storeidentifier="merchantresearch" minavailable="1" />
+      <!--商人研究-->
+      <Price storeidentifier="merchantmilitary" minavailable="1" />
+      <!--商业军事-->
+      <Price storeidentifier="merchantmine" minavailable="1" />
+      <!--商业矿-->
+      <Price storeidentifier="merchantclown" minavailable="1" maxavailable="3" />
+      <!--商船小丑-->
+    </Price>
+    <InventoryIcon texture="%ModDir%/content/png/一百元.png" sourcerect="0,0,64,64" depth="0.55" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/一百元.png" sourcerect="0,0,64,64" depth="0.55" />
+    <Body width="32" height="32" density="20" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="100,0" handle1="0,0" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="2">
+      <Sound file="%ModDir%/content/ogg/金币.ogg" type="OnUse" range="800" volume="5.0" />
+      <StatusEffect type="OnUse" target="UseTarget" delay="0">
+        <TriggerEvent identifier="cd100mkin" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" delay="0.1">
+        <Remove />
+      </StatusEffect>
+    </RangedWeapon>
+    <aitarget soundrange="800" fadeouttime="3" />
+  </Item>
+  <Item identifier="cd1000MK" name="一千面值马克币" category="Misc" description="价值不菲的流通货币，拿在手上使用可以兑换为‖color:gui.yellow‖1000‖end‖马克" maxstacksize="10" subcategory="CD" tags="smallitem" scale="0.4" cargocontaineridentifier="metalcrate">
+    <PreferredContainer primary="armcab" secondary="secarmcab" minamount="1" maxamount="3" spawnprobability="0.75" />
+    <PreferredContainer secondary="wrecksecarmcab,wreckarmcab,abandonedsecarmcab,piratesecarmcab,abandonedarmcab,piratearmcab" minamount="1" maxamount="3" spawnprobability="0.75" />
+    <!--贩卖机兑换 -->
+    <Fabricate suitablefabricators="vendingmachine" requiredtime="1" requiredmoney="1000" fabricationlimitmin="50" fabricationlimitmax="100" quality="0" />
+    <Price baseprice="1000" canbespecial="false" sold="False">
+      <Price storeidentifier="merchantoutpost" minavailable="1" />
+      <Price storeidentifier="merchantcity" minavailable="1" />
+      <Price storeidentifier="merchantresearch" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" minavailable="1" />
+      <Price storeidentifier="merchantmine" minavailable="1" />
+      <Price storeidentifier="merchantclown" minavailable="1" maxavailable="3" />
+    </Price>
+    <InventoryIcon texture="%ModDir%/content/png/一元呼噜币.png" sourcerect="0,0,64,64" depth="0.55" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/一元呼噜币.png" sourcerect="0,0,64,64" depth="0.55" />
+    <Body width="32" height="32" density="20" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="100,0" handle1="0,0" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="2">
+      <Sound file="%ModDir%/content/ogg/金币.ogg" type="OnUse" range="800" volume="5.0" />
+      <StatusEffect type="OnUse" target="UseTarget" delay="0">
+        <TriggerEvent identifier="cd1000mkin" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" delay="0.1">
+        <Remove />
+      </StatusEffect>
+    </RangedWeapon>
+    <aitarget soundrange="800" fadeouttime="3" />
+  </Item>
+  <Item identifier="cd10000MK" name="一万面值马克币" category="Misc" description="价值不菲的流通货币，拿在手上使用可以兑换为‖color:gui.yellow‖10000‖end‖马克" maxstacksize="10" subcategory="CD" tags="smallitem" scale="0.4" cargocontaineridentifier="metalcrate">
+    <PreferredContainer primary="armcab" secondary="secarmcab" amount="1" spawnprobability="0.1" />
+    <PreferredContainer secondary="wrecksecarmcab,wreckarmcab,abandonedsecarmcab,piratesecarmcab,abandonedarmcab,piratearmcab" amount="1" spawnprobability="0.1" />
+    <!--贩卖机兑换 -->
+    <Fabricate suitablefabricators="vendingmachine" requiredtime="1" requiredmoney="10000" fabricationlimitmin="50" fabricationlimitmax="100" quality="0" />
+    <Price baseprice="10000" canbespecial="false" sold="False">
+      <Price storeidentifier="merchantoutpost" minavailable="1" />
+      <Price storeidentifier="merchantcity" minavailable="1" />
+      <Price storeidentifier="merchantresearch" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" minavailable="1" />
+      <Price storeidentifier="merchantmine" minavailable="1" />
+      <Price storeidentifier="merchantclown" minavailable="1" maxavailable="3" />
+    </Price>
+    <InventoryIcon texture="%ModDir%/content/png/十元.png" sourcerect="0,0,64,64" depth="0.55" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/十元.png" sourcerect="0,0,64,64" depth="0.55" />
+    <Body width="32" height="32" density="20" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="100,0" handle1="0,0" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="2">
+      <Sound file="%ModDir%/content/ogg/金币.ogg" type="OnUse" range="800" volume="5.0" />
+      <StatusEffect type="OnUse" target="UseTarget" delay="0">
+        <TriggerEvent identifier="cd10000mkin" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" delay="0.1">
+        <Remove />
+      </StatusEffect>
+    </RangedWeapon>
+    <aitarget soundrange="800" fadeouttime="3" />
+  </Item>
+  <Item identifier="cd100000MK" name="十万面值马克币" category="Misc" description="价值不菲的流通货币，拿在手上使用可以兑换为‖color:gui.yellow‖100000‖end‖马克" maxstacksize="10" subcategory="CD" tags="smallitem" scale="0.4" cargocontaineridentifier="metalcrate">
+    <PreferredContainer primary="armcab" secondary="secarmcab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="abandonedsecarmcab,piratesecarmcab,abandonedarmcab,piratearmcab" amount="1" spawnprobability="0.01" />
+    <!--贩卖机兑换 -->
+    <Fabricate suitablefabricators="vendingmachine" requiredtime="1" requiredmoney="100000" fabricationlimitmin="50" fabricationlimitmax="100" quality="0" />
+    <Price baseprice="100000" canbespecial="false" sold="False">
+      <Price storeidentifier="merchantoutpost" minavailable="1" />
+      <Price storeidentifier="merchantcity" minavailable="1" />
+      <Price storeidentifier="merchantresearch" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" minavailable="1" />
+      <Price storeidentifier="merchantmine" minavailable="1" />
+      <Price storeidentifier="merchantclown" minavailable="1" maxavailable="3" />
+    </Price>
+    <InventoryIcon texture="%ModDir%/content/png/百元呼噜币.png" sourcerect="0,0,64,64" depth="0.55" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/百元呼噜币.png" sourcerect="0,0,64,64" depth="0.55" />
+    <Body width="32" height="32" density="20" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="100,0" handle1="0,0" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="2">
+      <Sound file="%ModDir%/content/ogg/金币.ogg" type="OnUse" range="800" volume="5.0" />
+      <StatusEffect type="OnUse" target="UseTarget" delay="0">
+        <TriggerEvent identifier="cd100000mkin" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" delay="0.1">
+        <Remove />
+      </StatusEffect>
+    </RangedWeapon>
+    <aitarget soundrange="800" fadeouttime="3" />
+  </Item>
+  <Item identifier="cdteleportweapen" name="混沌法杖" description="撕裂空间，将你传送到指定位置，但会对身体有所损害" category="Misc" subcategory="CD" Tags="smallitem,explosive,demolitionsexpert" maxstacksize="1" Scale="0.15" cargocontaineridentifier="explosivecrate" isshootable="true" impactsoundtag="impact_soft">
+    <Price baseprice="5500" sold="false" canbespecial="false" />
+    <Deconstruct time="10" chooserandom="true" amount="1">
+      <Item identifier="dementonite" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="120">
+      <RequiredItem identifier="cdsplinter" amount="1" />
+      <!--唯一性碎片-->
+      <RequiredItem identifier="dementonite" amount="6" />
+      <!--摄魂-->
+      <RequiredItem identifier="fulgurium" amount="6" />
+      <!--雷素块-->
+      <RequiredItem identifier="psychosisartifact" amount="1" />
+      <!--疯子遗物-->
+    </Fabricate>
+    <Upgrade gameversion="0.9.3.0" scale="0.5" />
+    <InventoryIcon texture="%ModDir%/content/png/混沌法杖物品栏贴图.png" sourcerect="0,0,513,513" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/混沌法杖.png" sourcerect="0,0,711,215" depth="0.55" origin="0.5,0.5" />
+    <Body width="75" height="25" density="20" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand+LeftHand" aimpos="50,40" aimangle="50" aimable="false" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.3">
+      <StatusEffect type="OnUse" target="Character" disabledeltatime="true">
+        <sound file="%ModDir%/content/ogg/teleportrod.ogg" range="500" dontmuffle="true" />
+        <LuaHook name="cdteleporttocursor.OnUse" />
+        <Affliction identifier="chaosdamage" strength="10" probability="1" MultiplyByMaxVitality="false" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Character">
+        <ParticleEmitter particle="skyholderfx2" colormultiplier="255,111,151,255" anglemax="360" distancemin="100" distancemax="300" velocitymin="-700" velocitymax="-1200" particlespersecond="10000" />
+      </StatusEffect>
+    </RangedWeapon>
+    <!--
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand+LeftHand" aimpos="-50,50" aimangle="45" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="always" target="This" Condition="100">
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Character"  disabledeltatime="true"  Condition="0" setvalue="true">
+        <Conditional Condition="gte 100" />
+        <ParticleEmitter particle="skyholderfx2" colormultiplier="255,111,151,255"  anglemax="360" distancemin="100" distancemax="300" velocitymin="-700" velocitymax="-1200" particlespersecond="100" />
+        <ParticleEmitter particle="skyholderfx" colormultiplier="255,111,151,255" anglemax="360" particlespersecond="2" />
+        <sound file="%ModDir%/content/ogg/teleportrod.ogg" range="500" dontmuffle="true" />
+        <LuaHook name="cdteleporttocursor.OnUse" />
+        <Affliction identifier="chaosdamage" strength="20" probability="1" MultiplyByMaxVitality="false"/>
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" Condition="0" setvalue="true">
+        <Conditional Condition="gte 100" />
+      </StatusEffect>
+    </Holdable>
+    -->
+  </Item>
+  <Item identifier="curseflamestone" name="一罐灵魂" description="" category="Misc" subcategory="CD" Tags="smallitem,explosive,demolitionsexpert,cdflamerammo,cdspacialmaterial" maxstacksize="1" Scale="0.5" cargocontaineridentifier="explosivecrate" impactsoundtag="impact_soft">
+    <PreferredContainer primary="supplycab" secondary="divingcab" amount="1" spawnprobability="0.04" />
+    <PreferredContainer secondary="wreckdivingcab,wrecksupplycab,abandoneddivingcab,piratedivingcab,abandonedsupplycab,piratesupplycab" amount="1" spawnprobability="0.04" />
+    <Upgrade gameversion="0.9.3.0" scale="0.5" />
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="896,0,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Tools/tools.png" sourcerect="410,71,24,66" depth="0.55" origin="0.5,0.5" />
+    <Body width="22" height="64" density="9.7" />
+    <Holdable canbecombined="true" slots="Any,RightHand,LeftHand" holdpos="30,-15" handle1="0,5" handle2="0,-5" msg="ItemMsgPickUpSelect"></Holdable>
+  </Item>
+  <Item identifier="icestone" name="一罐冷气" description="" category="Misc" subcategory="CD" Tags="smallitem,explosive,demolitionsexpert,cdflamerammo,cdspacialmaterial" maxstacksize="1" Scale="0.5" cargocontaineridentifier="explosivecrate" impactsoundtag="impact_soft">
+    <PreferredContainer primary="supplycab" secondary="divingcab" amount="1" spawnprobability="0.04" />
+    <PreferredContainer secondary="wreckdivingcab,wrecksupplycab,abandoneddivingcab,piratedivingcab,abandonedsupplycab,piratesupplycab" amount="1" spawnprobability="0.04" />
+    <Upgrade gameversion="0.9.3.0" scale="0.5" />
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="896,0,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Tools/tools.png" sourcerect="410,71,24,66" depth="0.55" origin="0.5,0.5" />
+    <Body width="22" height="64" density="9.7" />
+    <Holdable canbecombined="true" slots="Any,RightHand,LeftHand" holdpos="30,-15" handle1="0,5" handle2="0,-5" msg="ItemMsgPickUpSelect"></Holdable>
+  </Item>
+  <Item identifier="firestone" name="一罐火焰" description="" category="Misc" subcategory="CD" Tags="smallitem,explosive,demolitionsexpert,cdflamerammo" maxstacksize="1" Scale="0.5" cargocontaineridentifier="explosivecrate" impactsoundtag="impact_soft">
+    <PreferredContainer primary="supplycab" secondary="divingcab" amount="1" spawnprobability="0.04" />
+    <PreferredContainer secondary="wreckdivingcab,wrecksupplycab,abandoneddivingcab,piratedivingcab,abandonedsupplycab,piratesupplycab" amount="1" spawnprobability="0.04" />
+    <Upgrade gameversion="0.9.3.0" scale="0.5" />
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="896,0,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Tools/tools.png" sourcerect="410,71,24,66" depth="0.55" origin="0.5,0.5" />
+    <Body width="22" height="64" density="9.7" />
+    <Holdable canbecombined="true" slots="Any,RightHand,LeftHand" holdpos="30,-15" handle1="0,5" handle2="0,-5" msg="ItemMsgPickUpSelect"></Holdable>
+  </Item>
+  <Item identifier="curseflamefire" name="咒火" description="" category="Misc" subcategory="CD" Tags="smallitem,explosive,demolitionsexpert" maxstacksize="1" Scale="0.5" cargocontaineridentifier="explosivecrate" impactsoundtag="impact_soft">
+    <Upgrade gameversion="0.9.3.0" scale="0.5" />
+    <InventoryIcon texture="%ModDir%/content/png/空.png" sourcerect="0,0,32,32" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/空.png" sourcerect="0,0,32,32" depth="0.55" origin="0.5,0.5" />
+    <Body width="30" height="30" density="20" />
+    <ItemComponent>
+      <StatusEffect type="Always" target="NearbyCharacters" interval="0.5" range="120">
+        <Affliction identifier="cdcurseflame" amount="1000.0" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" Condition="-1.0">
+        <sound file="Content/Sounds/FireSmall.ogg" range="200.0" volume="0.5" />
+        <ParticleEmitter particle="flameburningcharacter" scalemultiplier="1,1" DistanceMin="0" DistanceMax="30" ParticlesPerSecond="50" AngleMin="60" AngleMax="120" VelocityMax="20" colormultiplier="0,255,0,255" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="gnawedleaf" name="狸猫树叶" description="不可选中" category="Misc" subcategory="CD" Tags="smallitem,explosive,demolitionsexpert" maxstacksize="1" Scale="0.5" cargocontaineridentifier="explosivecrate" impactsoundtag="impact_soft">
+    <PreferredContainer primary="armcab" secondary="secarmcab" amount="1" spawnprobability="0.005" />
+    <PreferredContainer secondary="abandonedsecarmcab,piratesecarmcab,abandonedarmcab,piratearmcab" amount="1" spawnprobability="0.005" />
+    <!--
+    <Price baseprice="5000" minavailable="10">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" minavailable="1" />
+      <Price storeidentifier="merchantresearch" multiplier="0.75" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.75" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantengineering" minavailable="1" multiplier="0.9" />
+    </Price>
+    -->
+    <Deconstruct time="10">
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <Upgrade gameversion="0.9.3.0" scale="0.5" />
+    <InventoryIcon texture="%ModDir%/content/png/狸猫树叶.png" sourcerect="0,0,32,32" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/狸猫树叶.png" sourcerect="0,0,32,32" depth="0.55" origin="0.5,0.5" />
+    <Body width="30" height="30" density="20" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand+LeftHand" holdpos="55,8" aimpos="55,8" holdangle="0" aimangle="0" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnActive" target="Character">
+        <Affliction identifier="cdgnawedleafstone" strength="1050" MultiplyByMaxVitality="True" />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item identifier="twistoffate" name="生死逆转" description="反转宿命" category="Misc" subcategory="CD" Tags="smallitem,explosive,demolitionsexpert" maxstacksize="1" Scale="1.5" cargocontaineridentifier="explosivecrate" isshootable="true" impactsoundtag="impact_soft">
+    <PreferredContainer primary="armcab" secondary="secarmcab" amount="1" spawnprobability="0.005" />
+    <PreferredContainer secondary="abandonedsecarmcab,piratesecarmcab,abandonedarmcab,piratearmcab" amount="1" spawnprobability="0.005" />
+    <Price baseprice="5500" sold="false" canbespecial="false" />
+    <Deconstruct time="10" chooserandom="true" amount="1">
+      <Item identifier="curseflamestone" commonness="0.8" />
+      <Item identifier="icestone" commonness="0.8" />
+      <Item identifier="firestone" commonness="0.8" />
+    </Deconstruct>
+    <Upgrade gameversion="0.9.3.0" scale="2.0" />
+    <InventoryIcon texture="%ModDir%/content/png/生死逆转.png" sourcerect="5,5,22,22" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/content/png/生死逆转.png" sourcerect="0,0,32,32" depth="0.55" origin="0.5,0.5" />
+    <Body width="25" height="25" density="20" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand+LeftHand" aimpos="8,55" aimangle="45" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="always" target="This" Condition="1"></StatusEffect>
+      <StatusEffect type="OnActive" target="this">
+        <Conditional Condition="gte 100" />
+        <ParticleEmitter particle="nasonovsparkles" anglemax="360" distancemax="10" velocitymin="10" velocitymax="60" emitinterval="0.55" particleamount="5" particlespersecond="5" colormultiplier="231,0,0,255" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="NearbyCharacters" range="550" isdead="false">
+        <Conditional cdtwistoffateaff="gte 1" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" Condition="0" setvalue="true">
+        <Conditional Condition="gte 100" />
+        <ParticleEmitter particle="nasonovfx" scalemultiplier="2,2" anglemax="360" particleamount="3" colormultiplier="231,0,0,255" />
+        <sound file="Content/Items/Alien/Alien_ArtifactHolderLoop.ogg" range="1000.0" loop="false" volume="3" />
+        <Explosion range="500" camerashake="0" isdead="false" underwaterbubble="false" ballastfloradamage="0" itemdamage="0" force="0.0" sparks="false" shockwave="false" flames="false" smoke="false" flash="false">
+          <Affliction identifier="cdtwistoffateaff" strength="10000" MultiplyByMaxVitality="true" />
+        </Explosion>
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="唯一性碎片" identifier="cdsplinter" description="非凡特性凝聚而成的碎片" category="Material" Tags="smallitem" maxstacksize="4" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <Price baseprice="8000" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" multiplier="2" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantengineering" multiplier="1.5" />
+    </Price>
+    <Deconstruct time="120"></Deconstruct>
+    <Sprite texture="%ModDir%/content/png/唯一性碎片.PNG" depth="0.55" sourcerect="0,0,80,130" origin="0.5,0.5" />
+    <Body width="80" height="130" density="12" />
+    <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="micro设计数据" identifier="microdata" description="通过micro电磁炮分解而获得的设计蓝图" category="Material" Tags="smallitem" maxstacksize="4" cargocontaineridentifier="metalcrate" scale="0.02" impactsoundtag="impact_metal_light">
+    <Price baseprice="8000" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" multiplier="2" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantengineering" multiplier="1.5" />
+    </Price>
+    <Deconstruct time="120" />
+    <Sprite texture="%ModDir%/content/png/micro_data.png" depth="0.55" sourcerect="111,116,890,889" origin="0.5,0.5" />
+    <Body width="80" height="130" density="12" />
+    <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="入侵警报" identifier="intruderalarm" category="Electrical" Tags="smallitem,sound" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true" GrabWhenSelected="true">
+    <Sprite texture="%ModDir%/content/png/alarmbell.png" depth="0.8" sourcerect="0,0,44,64" origin="0.5,0.5" />
+    <Body radius="20" density="20" />
+    <Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand,LeftHand" msg="ItemMsgDetachWrench" MsgWhenDropped="ItemMsgPickupSelect" PickingTime="5.0" aimpos="65,-10" handle1="0,0" attachable="true" aimable="true">
+      <RequiredItem items="wrench,deattachtool" excludeditems="multitool" type="Equipped" />
+    </Holdable>
+    <LightComponent canbeselected="false" lightcolor="255,0,0,100" alphablend="true" castshadows="false" blinkfrequency="2.6" range="20">
+      <sound file="%ModDir%/content/ogg/入侵警报.ogg" type="OnActive" range="5000.0" loop="true" volume="1" />
+      <StatusEffect type="OnContained" target="This" IsActive="false">
+        <Conditional targetitemcomponent="Holdable" IsActive="eq false" />
+      </StatusEffect>
+    </LightComponent>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="toggle" displayname="connection.togglestate" />
+      <input name="set_state" displayname="connection.setstate" />
+    </ConnectionPanel>
+  </Item>
+  <Item name="阿尔法核弹警报" identifier="alphastart" variantof="intruderalarm" category="Electrical" Tags="smallitem,sound" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true" GrabWhenSelected="true">
+    <Sprite texture="%ModDir%/content/png/alarmbell.png" depth="0.8" sourcerect="0,0,44,64" origin="0.5,0.5" />
+    <LightComponent canbeselected="false" lightcolor="255,0,0,100" alphablend="true" castshadows="false" blinkfrequency="2.6" range="20">
+      <sound file="%ModDir%/content/ogg/阿尔法核弹启动.ogg" type="OnActive" range="5000.0" loop="true" volume="1" />
+      <StatusEffect type="OnContained" target="This" IsActive="false">
+        <Conditional targetitemcomponent="Holdable" IsActive="eq false" />
+      </StatusEffect>
+    </LightComponent>
+  </Item>
+  <Item name="阿尔法核弹暂停警报" identifier="alphastop" variantof="intruderalarm" category="Electrical" Tags="smallitem,sound" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true" GrabWhenSelected="true">
+    <Sprite texture="%ModDir%/content/png/alarmbell.png" depth="0.8" sourcerect="0,0,44,64" origin="0.5,0.5" />
+    <LightComponent canbeselected="false" lightcolor="255,0,0,100" alphablend="true" castshadows="false" blinkfrequency="2.6" range="20">
+      <sound file="%ModDir%/content/ogg/阿尔法核弹暂停.ogg" type="OnActive" range="5000.0" loop="true" volume="1" />
+      <StatusEffect type="OnContained" target="This" IsActive="false">
+        <Conditional targetitemcomponent="Holdable" IsActive="eq false" />
+      </StatusEffect>
+    </LightComponent>
+  </Item>
+  <Item name="阿尔法核弹重启警报" identifier="alpharestart" variantof="intruderalarm" category="Electrical" Tags="smallitem,sound" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true" GrabWhenSelected="true">
+    <Sprite texture="%ModDir%/content/png/alarmbell.png" depth="0.8" sourcerect="0,0,44,64" origin="0.5,0.5" />
+    <LightComponent canbeselected="false" lightcolor="255,0,0,100" alphablend="true" castshadows="false" blinkfrequency="2.6" range="20">
+      <sound file="%ModDir%/content/ogg/阿尔法核弹重启.ogg" type="OnActive" range="5000.0" loop="true" volume="1.5" />
+      <StatusEffect type="OnContained" target="This" IsActive="false">
+        <Conditional targetitemcomponent="Holdable" IsActive="eq false" />
+      </StatusEffect>
+    </LightComponent>
+  </Item>
+  <Item name="site19核弹警报" identifier="site19start" variantof="intruderalarm" category="Electrical" Tags="smallitem,sound" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true" GrabWhenSelected="true">
+    <Sprite texture="%ModDir%/content/png/alarmbell.png" depth="0.8" sourcerect="0,0,44,64" origin="0.5,0.5" />
+    <LightComponent canbeselected="false" lightcolor="255,0,0,100" alphablend="true" castshadows="false" blinkfrequency="2.6" range="20">
+      <sound file="%ModDir%/content/ogg/site19核弹警报.ogg" type="OnActive" range="200000.0" loop="true" volume="1.5" stream="true" />
+      <StatusEffect type="OnContained" target="This" IsActive="false">
+        <Conditional targetitemcomponent="Holdable" IsActive="eq false" />
+      </StatusEffect>
+    </LightComponent>
+  </Item>
+  <Item name="轻收容净化_15分钟" identifier="light15min" variantof="intruderalarm" category="Electrical" Tags="smallitem,sound" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true" GrabWhenSelected="true">
+    <Sprite texture="%ModDir%/content/png/alarmbell.png" depth="0.8" sourcerect="0,0,44,64" origin="0.5,0.5" />
+    <LightComponent canbeselected="false" lightcolor="255,0,0,100" alphablend="true" castshadows="false" blinkfrequency="2.6" range="20">
+      <sound file="%ModDir%/content/ogg/轻收容净化_15分钟.ogg" type="OnActive" range="200000.0" loop="true" volume="1.5" stream="true" />
+      <StatusEffect type="OnContained" target="This" IsActive="false">
+        <Conditional targetitemcomponent="Holdable" IsActive="eq false" />
+      </StatusEffect>
+    </LightComponent>
+  </Item>
+  <Item name="轻收容净化_10分钟" identifier="light10min" variantof="intruderalarm" category="Electrical" Tags="smallitem,sound" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true" GrabWhenSelected="true">
+    <Sprite texture="%ModDir%/content/png/alarmbell.png" depth="0.8" sourcerect="0,0,44,64" origin="0.5,0.5" />
+    <LightComponent canbeselected="false" lightcolor="255,0,0,100" alphablend="true" castshadows="false" blinkfrequency="2.6" range="20">
+      <sound file="%ModDir%/content/ogg/轻收容净化_10分钟.ogg" type="OnActive" range="200000.0" loop="true" volume="1.5" stream="true" />
+      <StatusEffect type="OnContained" target="This" IsActive="false">
+        <Conditional targetitemcomponent="Holdable" IsActive="eq false" />
+      </StatusEffect>
+    </LightComponent>
+  </Item>
+  <Item name="轻收容净化_5分钟" identifier="light5min" variantof="intruderalarm" category="Electrical" Tags="smallitem,sound" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true" GrabWhenSelected="true">
+    <Sprite texture="%ModDir%/content/png/alarmbell.png" depth="0.8" sourcerect="0,0,44,64" origin="0.5,0.5" />
+    <LightComponent canbeselected="false" lightcolor="255,0,0,100" alphablend="true" castshadows="false" blinkfrequency="2.6" range="20">
+      <sound file="%ModDir%/content/ogg/轻收容净化_5分钟.ogg" type="OnActive" range="200000.0" loop="true" volume="1.5" stream="true" />
+      <StatusEffect type="OnContained" target="This" IsActive="false">
+        <Conditional targetitemcomponent="Holdable" IsActive="eq false" />
+      </StatusEffect>
+    </LightComponent>
+  </Item>
+  <Item name="轻收容净化_1分钟" identifier="light1min" variantof="intruderalarm" category="Electrical" Tags="smallitem,sound" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true" GrabWhenSelected="true">
+    <Sprite texture="%ModDir%/content/png/alarmbell.png" depth="0.8" sourcerect="0,0,44,64" origin="0.5,0.5" />
+    <LightComponent canbeselected="false" lightcolor="255,0,0,100" alphablend="true" castshadows="false" blinkfrequency="2.6" range="20">
+      <sound file="%ModDir%/content/ogg/轻收容净化_1分钟.ogg" type="OnActive" range="200000.0" loop="true" volume="1.5" stream="true" />
+      <StatusEffect type="OnContained" target="This" IsActive="false">
+        <Conditional targetitemcomponent="Holdable" IsActive="eq false" />
+      </StatusEffect>
+    </LightComponent>
+  </Item>
+  <Item name="轻收容净化_启动" identifier="lightstrat" variantof="intruderalarm" category="Electrical" Tags="smallitem,sound" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true" GrabWhenSelected="true">
+    <Sprite texture="%ModDir%/content/png/alarmbell.png" depth="0.8" sourcerect="0,0,44,64" origin="0.5,0.5" />
+    <LightComponent canbeselected="false" lightcolor="255,0,0,100" alphablend="true" castshadows="false" blinkfrequency="2.6" range="20">
+      <sound file="%ModDir%/content/ogg/轻收容净化_启动.ogg" type="OnActive" range="200000.0" loop="true" volume="1.5" stream="true" />
+      <StatusEffect type="OnContained" target="This" IsActive="false">
+        <Conditional targetitemcomponent="Holdable" IsActive="eq false" />
+      </StatusEffect>
+    </LightComponent>
+  </Item>
+  <Item name="site19入场广播" identifier="site19crewstrat" variantof="intruderalarm" category="Electrical" Tags="smallitem,sound" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true" GrabWhenSelected="true">
+    <Sprite texture="%ModDir%/content/png/alarmbell.png" depth="0.8" sourcerect="0,0,44,64" origin="0.5,0.5" />
+    <LightComponent canbeselected="false" lightcolor="255,0,0,100" alphablend="true" castshadows="false" blinkfrequency="2.6" range="20">
+      <sound file="%ModDir%/content/ogg/九尾狐支援.ogg" type="OnActive" range="200000.0" loop="true" volume="1.5" stream="true" />
+      <StatusEffect type="OnContained" target="This" IsActive="false">
+        <Conditional targetitemcomponent="Holdable" IsActive="eq false" />
+      </StatusEffect>
+    </LightComponent>
+  </Item>
+  <Item name="毒气释放器(6米)" identifier="scptoxinsvent6" aliases="alienvent" category="Alien" tags="alien,toxinsvent" subcategory="devices" scale="0.5" allowedlinks="alientoxinsgenerator" linkable="true" >
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <Sprite texture="Content/Items/Alien/Legacy/AlienRuin_Legacy.png" depth="0.91" sourcerect="203,512,53,52" />
+    <LightComponent range="200" castshadows="False" ison="True" blinkfrequency="0" lightcolor="143,236,166,100" pulsefrequency="0.3" pulseamount="0.2" isactive="True" minvoltage="0" powerconsumption="0" vulnerabletoemp="False" pickingtime="0" canbepicked="False" allowingameediting="False" msg="">
+      <Sprite texture="Content/Items/Alien/Legacy/AlienRuin_Legacy.png" depth="0.91" sourcerect="203,512,53,52" />
+      <sound file="Content/Items/Alien/AlienPump.ogg" type="OnActive" range="400.0" loop="true" />
+      <StatusEffect type="OnActive" target="This" Duration="12" interval="16" >
+        <ParticleEmitter particle="toxins" particlespersecond="5" scalemin="0.2" scalemax="0.5" distancemax="50" anglemax="360" />
+        <ParticleEmitter particle="toxinmist" anglemin="0" anglemax="360" velocitymin="10" velocitymax="20" scalemin="0.2" scalemax="0.5" particlespersecond="20"/>
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="NearbyCharacters" range="600" Duration="12" interval="16" >
+        <Affliction identifier="psychosis" strength="20" />
+        <Affliction identifier="nausea" strength="20" />
+        <Affliction identifier="acidburn" strength="20" />
+      </StatusEffect> 
+    </LightComponent>
+    <Vent/>
+    <ConnectionPanel canbeselected="true" hudpriority="10" locked="True" allowingameediting="False">
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <input name="toggle" displayname="connection.togglestate"/>
+      <input name="set_state" displayname="connection.setstate"/>
+      <input name="shutdown" displayname="connection.shutdown">
+        <StatusEffect type="OnUse" target="This" condition="-100" setvalue="true" />
+      </input>
+      <StatusEffect type="OnBroken" target="This">
+        <ParticleEmitter particle="damagebubbles" drawontop="true" particleamount="5" scalemin="0.2" scalemax="0.5" anglemin="90" anglemax="90" velocitymin="50" velocitymax="100"/>
+      </StatusEffect>
+    </ConnectionPanel>
+  </Item>
+  <Item name="毒气释放器(3米)" identifier="scptoxinsvent3" aliases="alienvent" category="Alien" tags="alien,toxinsvent" subcategory="devices" scale="0.5" allowedlinks="alientoxinsgenerator" linkable="true" >
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <Sprite texture="Content/Items/Alien/Legacy/AlienRuin_Legacy.png" depth="0.91" sourcerect="203,512,53,52" />
+    <LightComponent range="200" castshadows="False" ison="True" blinkfrequency="0" lightcolor="143,236,166,100" pulsefrequency="0.3" pulseamount="0.2" isactive="True" minvoltage="0" powerconsumption="0" vulnerabletoemp="False" pickingtime="0" canbepicked="False" allowingameediting="False" msg="">
+      <Sprite texture="Content/Items/Alien/Legacy/AlienRuin_Legacy.png" depth="0.91" sourcerect="203,512,53,52" />
+      <sound file="Content/Items/Alien/AlienPump.ogg" type="OnActive" range="400.0" loop="true" />
+      <StatusEffect type="OnActive" target="This" Duration="12" interval="16" >
+        <ParticleEmitter particle="toxins" particlespersecond="5" scalemin="0.2" scalemax="0.5" distancemax="50" anglemax="360" />
+        <ParticleEmitter particle="toxinmist" anglemin="0" anglemax="360" velocitymin="10" velocitymax="20" scalemin="0.2" scalemax="0.5" particlespersecond="20"/>
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="NearbyCharacters" range="300" Duration="12" interval="16" >
+        <Affliction identifier="psychosis" strength="20" />
+        <Affliction identifier="nausea" strength="20" />
+        <Affliction identifier="acidburn" strength="20" />
+      </StatusEffect> 
+    </LightComponent>
+    <Vent/>
+    <ConnectionPanel canbeselected="true" hudpriority="10" locked="True" allowingameediting="False">
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <input name="toggle" displayname="connection.togglestate"/>
+      <input name="set_state" displayname="connection.setstate"/>
+      <input name="shutdown" displayname="connection.shutdown">
+        <StatusEffect type="OnUse" target="This" condition="-100" setvalue="true" />
+      </input>
+      <StatusEffect type="OnBroken" target="This">
+        <ParticleEmitter particle="damagebubbles" drawontop="true" particleamount="5" scalemin="0.2" scalemax="0.5" anglemin="90" anglemax="90" velocitymin="50" velocitymax="100"/>
+      </StatusEffect>
+    </ConnectionPanel>
+  </Item>
+  <Item name="SCP_logo" identifier="SCPlogo" category="Decorative" Tags="smallitem,decorative,label" maxstacksize="8" cargocontaineridentifier="metalcrate" scale="0.35" impactsoundtag="impact_metal_light">
+    <Sprite texture="%ModDir%/content/png/SCP_logo.png" sourcerect="0,0,931,926" depth="0.85" origin="0.5,0.5" />
+  </Item>
+  <Item name="SCP_logo_2" identifier="SCPlogo2" category="Decorative" Tags="smallitem,decorative,label" maxstacksize="8" cargocontaineridentifier="metalcrate" scale="0.35" impactsoundtag="impact_metal_light">
+    <Sprite texture="%ModDir%/content/png/SCP_logo2.png" sourcerect="57,71,416,210" depth="0.85" origin="0.5,0.5" />
+  </Item>
+</Items>

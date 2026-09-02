@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Afflictions>
+  <!--极光cd-->
+  <Affliction name="武器冷却" identifier="cdcdshipsnipertalentCD" description="" limbspecific="false" type="buff" maxstrength="1" showiconthreshold="10" showinhealthscannerthreshold="10"  iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="1" strengthchange="-0.5">
+    </Effect>
+    <icon texture="Content/UI/CommandUIAtlas.png" sourcerect="896,768,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="武器重启" identifier="cdcdshipsnipertalentreset" description="" limbspecific="false" type="buff" maxstrength="1" showiconthreshold="10" showinhealthscannerthreshold="10"  iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="1" strengthchange="-0.5">
+    </Effect>
+    <icon texture="Content/UI/CommandUIAtlas.png" sourcerect="896,768,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="最大化利用" identifier="cdcdshipsnipertalentnotdie" description="" limbspecific="false" type="buff" maxstrength="1"  duration="0.01"  showiconthreshold="10" showinhealthscannerthreshold="10"  iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="1" strengthchange="-1">
+      <AbilityFlag flagtype="CanNotDieToAfflictions" />
+    </Effect>
+    <icon texture="Content/UI/CommandUIAtlas.png" sourcerect="896,768,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="火力汲取" identifier="cdcdshipsnipertalentattackhead" description="" limbspecific="false" type="buff" maxstrength="1" showiconthreshold="10" showinhealthscannerthreshold="10"  iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="1" strengthchange="0">
+      <StatusEffect type="Always" target="NearbyCharacters" range="20000" disabledeltatime="true">
+        <Affliction identifier="cdcdshipsnipertalentammoaff" amount="1.0" MultiplyByMaxVitality="true" />
+        <ReduceAffliction identifier="cdcdshipsnipertalentattackhead" amount="1" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/CommandUIAtlas.png" sourcerect="896,768,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="" identifier="cdcdshipsnipertalentammoaff" description="" limbspecific="false" type="buff" maxstrength="10" showiconthreshold="0" showinhealthscannerthreshold="0"  iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="10" strengthchange="-1">
+    </Effect>
+    <icon texture="Content/UI/CommandUIAtlas.png" sourcerect="896,768,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!--蹲下隐身aff-->
+  <!--管控aff负责调度其他aff-->
+  <Affliction name="" identifier="cdchameliolincoatingflag" description="" limbspecific="false" type="buff" maxstrength="1" showiconthreshold="10" showinhealthscannerthreshold="10" >
+    <Effect minstrength="0" maxstrength="1" strengthchange="0">
+      <!--计算cd-->
+      <StatusEffect target="Character" checkconditionalalways="true" disabledeltatime="false">
+        <Conditional cdchameliolincoating="lte 0" />
+        <Affliction identifier="cdchameliolincoatingcd" amount="1"  MultiplyByMaxVitality="true" />
+      </StatusEffect>
+      <!--不处于隐身状态就显性-->
+      <StatusEffect TargetType="AllLimbs" Alpha="1" SetValue="True" indetectable="false">
+        <Conditional cdchameliolincoating="lte 0" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/CommandUIAtlas.png" sourcerect="896,768,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="迷彩斗篷" identifier="cdchameliolincoatingcd" description="" limbspecific="false" type="buff" maxstrength="15" showiconthreshold="0" showinhealthscannerthreshold="100"  iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="15" strengthchange="0">
+    </Effect>
+    <icon texture="Content/UI/CommandUIAtlas.png" sourcerect="896,768,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!--隐身并增伤-->
+  <Affliction name="隐形" identifier="cdchameliolincoating" description="如同鬼魅一般" limbspecific="false" isbuff="true" type="buff" maxstrength="30"  showiconthreshold="0" showinhealthscannerthreshold="100" >
+    <Effect minstrength="0" maxstrength="30" strengthchange="-1">
+      <StatValue stattype="AttackMultiplier" value="1" />
+      <AbilityFlag flagtype="IgnoredByEnemyAI" />
+      <StatusEffect TargetType="AllLimbs" Alpha="0.1" SetValue="True" indetectable="true" />
+      <StatusEffect target="Character" type="OnDamaged" disabledeltatime="true">
+        <requiredaffliction type="damage" minstrength="5" />
+        <ReduceAffliction identifier="cdchameliolincoating" strength="30" MultiplyByMaxVitality="true" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged" disabledeltatime="true">
+        <requiredaffliction type="burn" minstrength="5" />
+        <ReduceAffliction identifier="cdchameliolincoating" strength="30" MultiplyByMaxVitality="true" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/CommandUIAtlas.png" sourcerect="896,768,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!--机械飞升aff-->
+  <Affliction name="" identifier="cdstoneskinaff1"  description=""  isbuff="true"  type="buff" limbspecific="false" indicatorlimb="Head" maxstrength="1" showiconthreshold="10" showinhealthscannerthreshold="10" affectmachines="false">
+    <Effect minstrength="0" maxstrength="1" strengthchange="0" resistancefor="burn,bleeding,infection" minresistance="0.2" maxresistance="0.2">
+    </Effect>
+  </Affliction>
+  <Affliction name="" identifier="cdstoneskinaff2"  description=""  isbuff="true"  type="buff" limbspecific="false" indicatorlimb="Head" maxstrength="1" showiconthreshold="10" showinhealthscannerthreshold="10" affectmachines="false">
+    <Effect minstrength="0" maxstrength="1" strengthchange="0" resistancefor="burn,bleeding,infection" minresistance="0.2" maxresistance="0.2">
+    </Effect>
+  </Affliction>
+  <Affliction name="" identifier="cdstoneskinaff3"  description=""  isbuff="true"  type="buff" limbspecific="false" indicatorlimb="Head" maxstrength="1" showiconthreshold="10" showinhealthscannerthreshold="10" affectmachines="false">
+    <Effect minstrength="0" maxstrength="1" strengthchange="0" resistancefor="burn,bleeding,infection" minresistance="0.2" maxresistance="0.2">
+    </Effect>
+  </Affliction>
+  <!--舰娘标识-->
+  <Affliction
+    identifier="cdifshipmotheraff"
+    name=""
+    description=""
+    type="talentbuff"
+    isbuff="true"
+    hideiconafterdelay="true"
+    limbspecific="false"
+    showiconthreshold="1000"
+    maxstrength="1"
+    treatmentthreshold="1000"
+    iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="1"
+      strengthchange="0"/>
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="1,0" sheetelementsize="128,128" color="10,193,114,255" origin="0,0"/>
+  </Affliction>
+  <!--布娃娃标志-->
+  <Affliction name="" identifier="cdragdolledaff"  description=""  isbuff="true"  type="buff" limbspecific="false" indicatorlimb="Head" maxstrength="1" showiconthreshold="10" showinhealthscannerthreshold="10" affectmachines="false"  iconcolors="237,17,17,255;237,17,17,255;237,17,17,255">
+    <Effect minstrength="0" maxstrength="1" strengthchange="0">
+    </Effect>
+    <icon texture="%ModDir%/content/png/MainIconsAtlas2.png" sheetindex="1,5" sheetelementsize="128,128" color="210,110,0,255" origin="0,0" />
+  </Affliction>
+  <!--幻化抗拒-->
+  <Affliction name="覆面" identifier="cdresistshipmotherbuff"  description="带上这玩意儿啥也看不见！"  isbuff="false"  type="debuff" limbspecific="false" indicatorlimb="Head" maxstrength="1" showiconthreshold="0" showinhealthscannerthreshold="0" affectmachines="false"  iconcolors="237,17,17,255;237,17,17,255;237,17,17,255">
+    <Effect minstrength="0" maxstrength="1" strengthchange="-10" multiplybymaxvitality="true" graincolor="0,0,0,255" mingrainstrength="200" maxgrainstrength="200" MinAfflictionOverlayAlphaMultiplier="0.3" MaxAfflictionOverlayAlphaMultiplier="0.3">
+    </Effect>
+    <AfflictionOverlay texture="%ModDir%/Content/png/黑暗.png" />
+    <icon texture="%ModDir%/content/png/MainIconsAtlas2.png" sheetindex="1,5" sheetelementsize="128,128" color="210,110,0,255" origin="0,0" />
+  </Affliction>
+  <!-- 钢铁意志的不死 -->
+  <Affliction identifier="cddeathonlyondamageaff" type="talentbuff" isbuff="true" hideiconafterdelay="true" limbspecific="false" maxstrength="1" showiconthreshold="0" treatmentthreshold="1000" duration="1" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="1">
+      <AbilityFlag flagtype="CanNotDieToAfflictions" />
+      <StatusEffect target="Character" checkconditionalalways="true" disabledeltatime="true">
+        <Conditional gunshotwound="gt 50" />
+        <Conditional internaldamage="gt 50" />
+        <Conditional blunttrauma="gt 50" />
+        <Conditional lacerations="gt 50" />
+        <Conditional bitewounds="gt 50" />
+        <Conditional organdamage="gt 50" />
+        <Conditional explosiondamage="gt 50" />
+        <Conditional burn="gt 50" />
+        <Conditional bloodloss="gt 50" />
+        <Conditional infection="gt 50" />
+        <ReduceAffliction identifier="cddeathonlyondamageaff" amount="10" />
+      </StatusEffect>
+    </Effect>
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="6,4" sheetelementsize="128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!--加强站点人员晕抗aff-->
+  <Affliction identifier="cdchangeallaff" name="" type="talentbuff" isbuff="true" hideiconafterdelay="true" limbspecific="false" maxstrength="1" showiconthreshold="1" treatmentthreshold="1000" duration="5">
+    <Effect minstrength="0" maxstrength="600">
+      <StatusEffect target="Character" disabledeltatime="true" interval="2">
+        <TriggerEvent identifier="cd_cqb_unstun" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <!--清空银行aff-->
+  <Affliction identifier="cdclearbankaff" name="" type="talentbuff" isbuff="true" hideiconafterdelay="true" limbspecific="false" maxstrength="1" showiconthreshold="1" treatmentthreshold="1000" duration="5">
+    <Effect minstrength="0" maxstrength="600">
+      <StatusEffect target="Character" disabledeltatime="true" interval="2">
+        <TriggerEvent identifier="cdclearbank" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <!--玉玺buff-->
+  <Affliction identifier="cdsealtalentaff" name="受命于天" type="talentbuff" isbuff="true" hideiconafterdelay="true" limbspecific="false" maxstrength="1" showiconthreshold="1" treatmentthreshold="1000" duration="5" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="600">
+    </Effect>
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="0,2" sheetelementsize="128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!--任命buff-->
+  <Affliction identifier="cdsealtalentothersaff" name="命卿" type="talentbuff" isbuff="true" hideiconafterdelay="true" limbspecific="false" maxstrength="1" showiconthreshold="1" showinhealthscannerthreshold="1" treatmentthreshold="1000" duration="5" iconcolors="210,110,0;210,110,0;210,110,0;210,110,0">
+    <Effect minstrength="0" maxstrength="600">
+      <StatValue stattype="RepairToolStructureRepairMultiplier" value="1" />
+      <StatValue stattype="RepairSpeed" value="1" />
+      <StatValue stattype="ElectricalSkillBonus" value="10" />
+      <StatValue stattype="HelmSkillBonus" value="10" />
+      <StatValue stattype="MechanicalSkillBonus" value="10" />
+      <StatValue stattype="MedicalSkillBonus" value="10" />
+      <StatValue stattype="WeaponsSkillBonus" value="10" />
+      <StatValue stattype="SkillGainSpeed" value="0.5" />
+    </Effect>
+    <Icon texture="%ModDir%/content/png/TalentsIcons_reveng.png" sheetindex="0,2" sheetelementsize="128,128" color="210,110,0,255" origin="0,0" />
+  </Affliction>
+  <!--无限破釜沉舟cd-->
+  <Affliction
+    identifier="cdpfczguarded"
+    name="严阵以待"
+    description="该角色已为下一次针对他们的攻击做好准备。"
+    type="talentbuff"
+    isbuff="true"
+    hideiconafterdelay="true"
+    limbspecific="false"
+    showiconthreshold="100"
+    maxstrength="10"
+    treatmentthreshold="1000"
+    iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="10"
+      strengthchange="0"/>
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="1,0" sheetelementsize="128,128" color="10,193,114,255" origin="0,0"/>
+  </Affliction>
+  <!--影子无限破釜沉舟cd-->
+  <Affliction
+    identifier="cdshadowguarded"
+    name="严阵以待"
+    description="该角色已为下一次针对他们的攻击做好准备。"
+    type="talentbuff"
+    isbuff="true"
+    hideiconafterdelay="true"
+    limbspecific="false"
+    showiconthreshold="100"
+    maxstrength="60"
+    treatmentthreshold="1000"
+    iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="60"
+      strengthchange="0"/>
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="1,0" sheetelementsize="128,128" color="10,193,114,255" origin="0,0"/>
+  </Affliction>
+  <!--保护-->
+  <Affliction
+    identifier="cdguarded"
+    name="严阵以待"
+    description="该角色已为下一次针对他们的攻击做好准备。"
+    type="talentbuff"
+    isbuff="true"
+    hideiconafterdelay="true"
+    limbspecific="false"
+    showiconthreshold="1"
+    maxstrength="1"
+    treatmentthreshold="1000"
+    iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="1"
+      strengthchange="0"/>
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="1,0" sheetelementsize="128,128" color="10,193,114,255" origin="0,0"/>
+  </Affliction>
+  <!--熟练工（改为全职业增幅）-->
+  <Affliction identifier="cdjourneyman" name="熟练工" description="学徒证明了他们的水平之后，就能开始有效地帮助专业人士干活。更快地升级你的技能。" type="talentbuff" isbuff="true" limbspecific="false" hideiconafterdelay="true" maxstrength="1" treatmentthreshold="1000" duration="1" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <!-- Super hacky -->
+    <Effect minstrength="0" maxstrength="1">
+      <StatValue stattype="ElectricalSkillBonus" value="20" />
+      <StatValue stattype="HelmSkillBonus" value="20" />
+      <StatValue stattype="MechanicalSkillBonus" value="20" />
+      <StatValue stattype="MedicalSkillBonus" value="20" />
+      <StatValue stattype="WeaponsSkillBonus" value="20" />
+      <StatValue stattype="SkillGainSpeed" value="0.5" />
+    </Effect>
+    <Icon texture="Content/UI/TalentsIcons4.png" sheetindex="1,0" sheetelementsize="128,128" color="10,193,114,255" origin="0,0"/>
+  </Affliction>
+  <!-- 破釜沉舟 -->
+  <Affliction identifier="cdimplacable" name="破釜沉舟" description="目标无法陷入昏迷。"  type="talentbuff" isbuff="true" hideiconafterdelay="true" limbspecific="false" maxstrength="15" treatmentthreshold="1000" duration="15" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="15">
+      <StatValue stattype="AttackMultiplier" value="0.25" />
+      <AbilityFlag flagtype="AlwaysStayConscious" />
+      <AbilityFlag flagtype="CanNotDieToAfflictions" />
+    </Effect>
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="0,0" sheetelementsize="128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!-- 无限破釜沉舟 -->
+  <Affliction identifier="cdmanyimplacable" name="破釜沉舟" description="目标无法陷入昏迷。"  type="talentbuff" isbuff="true" hideiconafterdelay="true" limbspecific="false" maxstrength="10" treatmentthreshold="1000" duration="10" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="10" resistancefor="stun" minresistance="0.00" maxresistance="1.00" strengthchange="-1">
+      <StatValue stattype="AttackMultiplier" value="0.25" />
+      <AbilityFlag flagtype="AlwaysStayConscious" />
+      <AbilityFlag flagtype="CanNotDieToAfflictions" />
+    </Effect>
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="0,0" sheetelementsize="128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!--无限破釜沉舟回血-->
+  <Affliction identifier="cdmanystillkicking" type="talentbuff" isbuff="true" limbspecific="false" maxstrength="1" treatmentthreshold="1000" duration="1" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="1" strengthchange="-1">
+      <StatusEffect target="Character" disabledeltatime="false" >
+        <ReduceAffliction type="damage" strength="100" />
+        <ReduceAffliction type="burn" strength="100" />
+        <ReduceAffliction identifier="cdicedebuff" strength="100" />
+        <ReduceAffliction identifier="bloodloss" strength="100" />
+        <ReduceAffliction identifier="bleeding" strength="100" />
+        <ReduceAffliction identifier="oxygenlow" strength="100" />
+        <ReduceAffliction identifier="infection" strength="10000" />
+        <ReduceAffliction identifier="stun" strength="20" />
+<!--         <LuaHook name="cdallheal.OnUse" />
+        <ReduceAffliction identifier="cdmanystillkicking" strength="10" /> -->
+      </StatusEffect>
+    </Effect>
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="0,6" sheetelementsize="128,128" color="10,193,114,255" origin="0,0"/>
+  </Affliction>
+  <!-- 坚如磐石 -->
+  <Affliction identifier="cdstonewall" name="坚如磐石" description="该角色变得更强壮，对眩晕有一定的抵抗力。" type="talentbuff" isbuff="true" hideiconafterdelay="true" showiconthreshold="2" limbspecific="false" maxstrength="5" treatmentthreshold="1000" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="1" strengthchange="0" resistancefor="damage,stun" minresistance="0.15" maxresistance="0.2" />
+    <Effect minstrength="1" maxstrength="5" strengthchange="-1" resistancefor="damage,stun" minresistance="0.3" maxresistance="0.4" />
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="1,0" sheetelementsize="128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!-- 无机体质-->
+  <Affliction identifier="cdnoinfectionbuff" description="你的身体正在排斥外来寄生。" type="talentbuff" isbuff="true" hideiconafterdelay="true" limbspecific="false" maxstrength="1" showiconthreshold="1" treatmentthreshold="1000" duration="1" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="1" 
+    resistancefor="huskinfection,oxygenlow,incrementalstun,cdungalinfections,cdiscs
+    ,necroinfection
+    ,huskmutation,symbiotichusk,huskheadhijacking1,blacktoxin
+    ,tsm_stress,eyiinfection,tsm_virusstage,tsm_ondeath" 
+    minresistance="0" maxresistance="1">
+    </Effect>
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="4,6" sheetelementsize="128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!--
+  <Affliction identifier="cd_ai_mod_necroinfection" type="ai_buff" isbuff="true" limbspecific="false" showiconthreshold="100" showinhealthscannerthreshold="100" maxstrength="1">
+    <Effect minstrength="0" maxstrength="1"  resistancefor="necroinfection" minresistance="1" maxresistance="1"></Effect>
+  </Affliction>
+  <Affliction identifier="cd_mod_resistancefor" type="ai_buff" isbuff="true" limbspecific="false" showiconthreshold="100" showinhealthscannerthreshold="100" maxstrength="1">
+    <Effect minstrength="0" maxstrength="1" resistancefor="huskmutation,symbiotichusk,huskheadhijacking1,blacktoxin,tsm_stress,eyiinfection,tsm_virusstage" minresistance="1" maxresistance="1"></Effect>
+  </Affliction>
+  -->
+  <!-- 主力领队-->
+  <Affliction identifier="cdshipmother19buff" type="talentbuff" isbuff="true" limbspecific="false" hideiconafterdelay="true" showiconthreshold="1" maxstrength="10" treatmentthreshold="1000" showbarinhealthmenu="false" iconcolors="227,247,249">
+    <Effect minstrength="0" maxstrength="10" strengthchange="-1">
+      <StatValue stattype="MeleeAttackMultiplier" value="0.25" />
+      <StatValue stattype="MeleeAttackSpeed" value="0.25" />
+      <StatValue stattype="MovementSpeed" value="0.25" />
+      <StatValue stattype="RangedAttackSpeed" value="0.25" />
+    </Effect>
+    <Icon texture="%ModDir%/content/png/lirenzhendi.png" sheetindex="0,0" sheetelementsize="100,100" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!-- 旗舰编队 -->
+  <Affliction identifier="cdshipmother20buff" type="talentbuff" isbuff="true" limbspecific="false" hideiconafterdelay="true" showiconthreshold="1" maxstrength="10" treatmentthreshold="1000" showbarinhealthmenu="false" iconcolors="227,247,249">
+    <Effect minstrength="0" maxstrength="10" strengthchange="-1">
+      <StatValue stattype="MeleeAttackMultiplier" value="0.5" />
+      <StatValue stattype="MeleeAttackSpeed" value="0.5" />
+      <StatValue stattype="MovementSpeed" value="0.5" />
+      <StatValue stattype="RangedAttackSpeed" value="0.5" />
+    </Effect>
+    <Icon texture="%ModDir%/content/png/qiyuanzhendi.png" sheetindex="0,0" sheetelementsize="100,100" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!--吐息之焰-->
+  <Affliction identifier="cdShipmothebuff24" description="" isbuff="true" type="talentbuff" limbspecific="false" showiconthreshold="1000" showicontoothersthreshold="40" showinhealthscannerthreshold="20" karmachangeonapplied="0" maxstrength="1" affectmachines="true">
+    <Effect minstrength="0" maxstrength="2" strengthchange="-1">
+      <StatusEffect target="Character">
+        <ReduceAffliction type="damage" strength="50" />
+        <ReduceAffliction type="burn" strength="50" />
+        <ReduceAffliction identifier="bloodloss" strength="50" />
+        <ReduceAffliction identifier="bleeding" strength="50" />
+        <ReduceAffliction identifier="stun" strength="5" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <!--舰船之灵-->
+  <Affliction identifier="cdShipmothebuff28" type="talentbuff" isbuff="true" limbspecific="false" indicatorlimb="Head" hideiconafterdelay="true" showiconthreshold="1" maxstrength="10" treatmentthreshold="1000" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="1" maxstrength="10" strengthchange="-1">
+      <StatValue stattype="SwimmingSpeed" minvalue="0.1" maxvalue="1" />
+    </Effect>
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="5,2" sheetelementsize="128,128" />
+  </Affliction>
+  <!-- 暴力军阀 -->
+  <Affliction identifier="cdwarlord1" type="talentbuff" isbuff="true" duration="3" limbspecific="false" maxstrength="5" treatmentthreshold="1000" iconcolors="53,55,58;146,191,204;146,191,204;247,227,229">
+    <Effect minstrength="0" maxstrength="5">
+      <StatValue stattype="AttackMultiplier" minvalue="0.1" maxvalue="0.5" />
+      <StatValue stattype="turretattackspeed" minvalue="0.1" maxvalue="0.5" />
+    </Effect>
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="2,0" sheetelementsize="128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!-- 孤狼 -->
+  <Affliction identifier="cdlonewolf1" type="talentbuff" isbuff="true" limbspecific="false" hideiconafterdelay="true" showiconthreshold="2" maxstrength="2" duration="1" treatmentthreshold="1000" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="1" resistancefor="damage,stun" minresistance="0.2" maxresistance="0.2">
+      <StatValue stattype="MeleeAttackMultiplier" value="0.2" />
+    </Effect>
+    <Effect minstrength="1" maxstrength="2" resistancefor="damage,stun" minresistance="0.4" maxresistance="0.4">
+      <StatValue stattype="MeleeAttackMultiplier" value="0.4" />
+    </Effect>
+    <Icon texture="Content/UI/TalentsIcons4.png" sheetindex="2,1" sheetelementsize="128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!-- 破釜沉舟（末梢） -->
+  <Affliction name="破釜沉舟" identifier="cdimplacable1" description="你的意志不会屈服。" type="talentbuff" isbuff="true" hideiconafterdelay="true" limbspecific="false" maxstrength="100" treatmentthreshold="1000" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="100">
+      <AbilityFlag flagtype="AlwaysStayConscious" />
+      <Effect minstrength="0" maxstrength="100" resistancefor="stun" minresistance="0.1" maxresistance="0.75" />
+      <Effect minstrength="0" maxstrength="100" resistancefor="nausea" minresistance="0.1" maxresistance="0.75" />
+    </Effect>
+    <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="0,0" sheetelementsize="128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!-- 规避机动 -->
+  <Affliction identifier="cdevasivemaneuversold1" type="talentbuff" isbuff="true" limbspecific="false" maxstrength="1" duration="5" treatmentthreshold="1000" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="1">
+      <StatValue stattype="HelmSkillBonus" value="75" />
+    </Effect>
+    <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="5,7" sheetelementsize="128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!-- 与舰休戚 -->
+  <Affliction identifier="cddownwiththeshipold1" type="talentbuff" isbuff="true" limbspecific="false" hideiconafterdelay="true" showiconthreshold="1" maxstrength="1" duration="60" treatmentthreshold="1000" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="1">
+      <StatValue stattype="RepairToolStructureRepairMultiplier" value="0.5" />
+      <!-- +50% -->
+      <StatValue stattype="ElectricalSkillBonus" value="25" />
+      <StatValue stattype="MechanicalSkillBonus" value="25" />
+      <StatValue stattype="SwimmingSpeed" value="0.5" />
+    </Effect>
+    <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="6,7" sheetelementsize="128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!-- 魔方强化 -->
+  <Affliction identifier="cdEnhancementbuff" type="strengthbuff" isbuff="true" limbspecific="false" hideiconafterdelay="true" showiconthreshold="1" maxstrength="1" treatmentthreshold="1000" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <!-- 抵抗水压 伤害抗性99% -->
+    <Effect minstrength="0" maxstrength="100" resistancefor="damage,blunttrauma,lacerations,gunshotwound,bitewounds,burn,bleeding,bloodloss,psychosis,radiationsickness,huskinfection,stun,paralysis,explosiondamage,hallucinating,internaldamage,organdamage,oxygenlow,nausea" minresistance="0.99" maxresistance="0.99">
+      <StatusEffect target="Character" PressureProtection="20000.0">
+        <!-- 负面效果回复 -->
+        <ReduceAffliction type="damage" amount="50" />
+        <ReduceAffliction type="stun" amount="100" />
+        <ReduceAffliction type="nausea" amount="100" />
+        <ReduceAffliction identifier="damage" amount="50" />
+        <ReduceAffliction identifier="internaldamage" amount="50" />
+        <ReduceAffliction identifier="blunttrauma" amount="50" />
+        <ReduceAffliction identifier="lacerations" amount="50" />
+        <ReduceAffliction identifier="bitewounds" amount="50" />
+        <ReduceAffliction identifier="gunshotwound" amount="50" />
+        <ReduceAffliction identifier="organdamage" amount="50" />
+        <ReduceAffliction identifier="explosiondamage" amount="50" />
+        <ReduceAffliction identifier="burn" amount="50" />
+        <ReduceAffliction identifier="acidburn" amount="50" />
+        <ReduceAffliction identifier="bleeding" amount="50" />
+        <ReduceAffliction identifier="bloodloss" amount="50" />
+        <ReduceAffliction identifier="stun" amount="50" />
+        <ReduceAffliction identifier="incrementalstun" amount="50" />
+        <ReduceAffliction identifier="progressivestun" amount="50" />
+        <ReduceAffliction identifier="concussion" amount="50" />
+        <ReduceAffliction identifier="hallucinating" amount="50" />
+        <ReduceAffliction identifier="watchersgaze" amount="50" />
+        <ReduceAffliction identifier="oxygenlow" amount="50" />
+        <ReduceAffliction identifier="huskinfection" amount="50" />
+        <ReduceAffliction identifier="paralysis" amount="50" />
+        <ReduceAffliction identifier="morbusinepoisoning" amount="50" />
+        <ReduceAffliction identifier="sufforinpoisoning" amount="50" />
+        <ReduceAffliction identifier="deliriuminepoisoning" amount="50" />
+        <ReduceAffliction identifier="cyanidepoisoning" amount="50" />
+        <ReduceAffliction identifier="radiationsickness" amount="50" />
+        <ReduceAffliction identifier="opiateaddiction" amount="50" />
+        <ReduceAffliction identifier="opiatewithdrawal" amount="50" />
+        <ReduceAffliction identifier="opiateoverdose" amount="50" />
+        <ReduceAffliction identifier="chemaddiction" amount="50" />
+        <ReduceAffliction identifier="chemwithdrawal" amount="50" />
+        <ReduceAffliction identifier="psychosis" amount="50" />
+        <ReduceAffliction identifier="drunk" amount="50" />
+        <ReduceAffliction identifier="nausea" amount="50" />
+        <ReduceAffliction identifier="spaceherpes" amount="50" />
+        <ReduceAffliction identifier="pressure" amount="50" />
+        <ReduceAffliction identifier="reaperstax" amount="1" />
+      </StatusEffect>
+    </Effect>
+    <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="2,4" sheetelementsize="128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!-- Big J -->
+  <Affliction identifier="cdEnhancementbuff1" type="strengthbuff" isbuff="true" limbspecific="false" hideiconafterdelay="true" showiconthreshold="1" maxstrength="1" treatmentthreshold="1000" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="1">
+      <StatValue stattype="SwimmingSpeed" value="1" />
+      <StatValue stattype="WalkingSpeed" value="0.5" />
+      <StatValue stattype="MeleeAttackMultiplier" value="1" />
+      <StatValue stattype="AttackMultiplier" value="1" />
+      <StatValue stattype="MeleeAttackSpeed" value="5" />
+      <StatValue stattype="RangedAttackSpeed" value="1" />
+      <StatValue stattype="TurretAttackSpeed" value="1" />
+      <StatValue stattype="MechanicalSkillBonus" value="20" />
+      <StatValue stattype="WeaponsSkillBonus" value="20" />
+      <StatValue stattype="ElectricalSkillBonus" value="20" />
+      <StatValue stattype="MedicalSkillBonus" value="20" />
+      <StatValue stattype="HelmSkillBonus" value="20" />
+      <StatValue stattype="SkillGainSpeed" value="20" />
+      <StatValue stattype="RangedSpreadReduction" value="1" />
+      <StatValue stattype="RepairSpeed" value="1" />
+      <StatValue stattype="ExperienceGainMultiplier" value="1" />
+      <StatValue stattype="MaximumHealthMultiplier" value="5" />
+      <StatValue stattype="FlowResistance" value="1" />
+      <StatValue stattype="RepairToolStructureRepairMultiplier" value="1" />
+      <StatValue stattype="RepairToolStructureDamageMultiplier" value="1" />
+      <StatValue stattype="RepairToolDeattachTimeMultiplier" value="1" />
+    </Effect>
+    <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="2,4" sheetelementsize="128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!-- 医学奇迹 -->
+  <Affliction identifier="cdmiracleworker011" type="talentbuff" isbuff="true" hideiconafterdelay="true" limbspecific="false" maxstrength="1" showiconthreshold="1" treatmentthreshold="1000" duration="1" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
+    <Effect minstrength="0" maxstrength="600">
+      <AbilityFlag flagtype="CanNotDieToAfflictions" />
+    </Effect>
+    <Icon texture="Content/UI/TalentsIcons4.png" sheetindex="6,0" sheetelementsize="128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+</Afflictions>

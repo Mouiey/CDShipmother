@@ -1,0 +1,705 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<override>
+  <Randomevents>
+    <EventPrefabs>
+      <!-- site19物品自删除 -->
+      <ScriptedEvent identifier="cdsite19_itemRemove_event" commonness="100">
+        <TagAction Criteria="itemtag:scp_site19_removeItem" Tag="scp_needRemoveItem" />
+        <CheckMissionAction Type="Current" MissionTag="site_19_mission" >
+          <!-- 未处于任务则移除物品 -->
+          <Failure>
+            <RemoveItemAction targettag="scp_needRemoveItem" amount="10" />
+          </Failure>
+        </CheckMissionAction>
+      </ScriptedEvent>
+    </EventPrefabs>
+    <!--反叛掠食者-->
+    <EventPrefabs>
+      <!--反叛掠食者buff-->
+      <ScriptedEvent identifier="givebufftopredatorsenemyfkj">
+        <TagAction criteria="humanprefabidentifier:predatorsfkj_tjbq_enemy" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:predatorsfkj_tjbq_enemy_patrol" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:predatorsfkj_m4_enemy" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:predatorsfkj_m4_enemy_patrol" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:predatorsfkj_hc_enemy" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:predatorsfkj_hc_enemy_patrol" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:predatorsfkj_eglm_enemy" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:predatorsfkj_eglm_enemy_patrol" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:predatorsfkj_hs50_enemy" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:predatorsfkj_hs50_enemy_blueprint" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <StatusEffectAction targettag="teshuzhan1dui">
+          <StatusEffect target="This" enabledespawn="true" disabledeltatime="true">
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdarmorbreaktalent" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cddownss" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdshipmother5" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdlightningwizard1" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdspecops" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdsniper" />
+            <Affliction identifier="cdbleedres" strength="10000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdrobotafffkjpredatorenemy" strength="1000" MultiplyByMaxVitality="True" />
+          </StatusEffect>
+        </StatusEffectAction>
+      </ScriptedEvent>
+    </EventPrefabs>
+    <EventPrefabs>
+      <!-- site19物品给予和删除 -->
+      <ScriptedEvent identifier="cdsite19_item_event" commonness="100">
+        <!-- 生成九尾作战服 -->
+        <SpawnAction itemidentifier="scpNinetailedfox" targettag="temporary_cabinet" spawnlocation="MainSub" teamid="Team1" amount="5" />
+        <!-- 门禁卡定位 -->
+        <TagAction Criteria="itemtag:scpcard" Tag="scpidcard" />
+        <OnRoundEndAction>
+          <!-- 巡回结束移除九尾作战服 -->
+          <RemoveItemAction targettag="temporary_cabinet" amount="5" />
+          <!-- 巡回结束移除门禁卡 -->
+          <RemoveItemAction targettag="scpidcard" amount="5" />
+        </OnRoundEndAction>
+      </ScriptedEvent>
+    </EventPrefabs>
+    <EventPrefabs>
+      <!--捡到钱了-->
+      <ScriptedEvent identifier="findmoney" commonness="100">
+        <SpawnAction itemidentifier="cd10000MK" spawnlocation="outpost" targettag="foundedmoney" targetmoduletags="crewmodule" ignorebyai="true" />
+        <!--
+        <SpawnAction itemidentifier="bikehorn" targetinventory="clowntoolbelt" />
+        <SpawnAction itemidentifier="bikehorn" targetinventory="clowntoolbelt" />
+        <SpawnAction itemidentifier="clownmask" targetinventory="clowntoolbelt" />
+        <SpawnAction itemidentifier="clowncostume" targetinventory="clowntoolbelt" />
+        -->
+        <Label name="beginning" />
+        <TagAction criteria="player" tag="player" />
+        <TriggerAction target1tag="foundedmoney" target2tag="player" applytotarget2="triggerer_player" radius="150" waitforinteraction="true" />
+        <ConversationAction targettag="triggerer_player" text="EventText.findmoney.c1">
+          <Option text="EventText.findmoney.o1">
+            <ConversationAction targettag="triggerer_player" text="EventText.findmoney.o1.c1">
+              <Option text="EventText.findmoney.o1.o1">
+                <ConversationAction targettag="triggerer_player" text="EventText.findmoney.o1.o1.c1" />
+                <!--
+                <AfflictionAction targettag="triggerer_player" affliction="cdiscs"  strength="1000" MultiplyByMaxVitality="True" />
+                -->
+                <StatusEffectAction targettag="triggerer_player">
+                  <StatusEffect target="This" enabledespawn="true" disabledeltatime="true">
+                    <Affliction identifier="cdiscs" strength="1000" MultiplyByMaxVitality="True" />
+                  </StatusEffect>
+                </StatusEffectAction>
+              </Option>
+              <Option text="EventText.findmoney.o1.o2">
+                <!-- END -->
+                <GoTo name="beginning" />
+              </Option>
+            </ConversationAction>
+          </Option>
+          <Option text="EventText.findmoney.o2" endconversation="true">
+            <!-- END -->
+            <GoTo name="beginning" />
+          </Option>
+        </ConversationAction>
+        <NPCFollowAction npctag="clown1" targettag="clowntoolbelt" follow="false" />
+        <NPCFollowAction npctag="clown2" targettag="triggerer_player" follow="false" />
+      </ScriptedEvent>
+    </EventPrefabs>
+    <!-- 潜艇战敌人buff -->
+    <EventPrefabs>
+      <!--海盗敌人buff-->
+      <ScriptedEvent identifier="givebuffpirateenemy">
+        <TagAction criteria="humanprefabidentifier:Mions_pirate_captain" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:Mions_pirate_S" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:Mions_pirate_A" tag="teshuzhan1dui2" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:Mions_pirate_B" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:Mions_pirate_C" tag="teshuzhan1dui1" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:Mions_pirate_D" tag="teshuzhan1dui1" continueifnotargetsfound="true" />
+        <StatusEffectAction targettag="teshuzhan1dui">
+          <StatusEffect target="This" enabledespawn="true">
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdextrapowder" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdstonewall" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="revengesquad" />
+            <Affliction identifier="cdradiationsicknessres" strength="10000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdrobotaffpirateenemy" strength="1000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdthermalstealth" strength="10" MultiplyByMaxVitality="True" />
+          </StatusEffect>
+        </StatusEffectAction>
+        <StatusEffectAction targettag="teshuzhan1dui1">
+          <StatusEffect target="This" enabledespawn="true">
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdspecops" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdstonewall" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="revengesquad" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdlightningwizard2" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdappear" />
+            <Affliction identifier="cdradiationsicknessres" strength="10000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdrobotaffpirateenemy" strength="1000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdthermalstealth" strength="10" MultiplyByMaxVitality="True" />
+          </StatusEffect>
+        </StatusEffectAction>
+        <StatusEffectAction targettag="teshuzhan1dui2">
+          <StatusEffect target="This" enabledespawn="true">
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdextrapowder" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdstonewall" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="revengesquad" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="powerarmor" />
+            <Affliction identifier="cdradiationsicknessres" strength="10000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdrobotaffpirateenemy" strength="1000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdthermalstealth" strength="10" MultiplyByMaxVitality="True" />
+          </StatusEffect>
+        </StatusEffectAction>
+      </ScriptedEvent>
+      <!-- 联盟敌人buff -->
+      <ScriptedEvent identifier="givebuffcoalitionenemy">
+        <TagAction criteria="humanprefabidentifier:EAN_coalition_captain" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:EAN_coalition_medicaldoctor" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:EAN_coalition_mechanic" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <StatusEffectAction targettag="teshuzhan1dui">
+          <StatusEffect target="This" enabledespawn="true">
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdextrapowder" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdstonewall" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="revengesquad" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="powerarmor" />
+            <Affliction identifier="cdradiationsicknessres" strength="10000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdrobotaffpirateenemy" strength="1000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdthermalstealth" strength="10" MultiplyByMaxVitality="True" />
+          </StatusEffect>
+        </StatusEffectAction>
+      </ScriptedEvent>
+    </EventPrefabs>
+    <EventPrefabs>
+      <!--化防增援-->
+      <ScriptedEvent identifier="cdchemicalreinforcements">
+        <WaitAction time="60" />
+        <!---->
+        <RNGAction chance="1">
+          <Success>
+            <ConversationAction text="我们收到了奇怪的无线电信号，有人警告我们不要插足这里，看来得抓紧时间了..." dialogtype="Small" />
+            <Label name="delay" />
+            <RNGAction chance="0.5">
+              <Success>
+                <WaitAction time="0.8" />
+              </Success>
+              <Failure>
+                <RNGAction chance="0.5">
+                  <Success>
+                    <WaitAction time="0.4" />
+                  </Success>
+                  <Failure>
+                    <WaitAction time="1.2" />
+                  </Failure>
+                </RNGAction>
+              </Failure>
+            </RNGAction>
+            <GoTo name="delay" maxtimes="300" />
+            <ConversationAction text="这里是极地化学防卫部，开始进行站点清扫作业，无关人员立即撤离" dialogtype="Small" />
+            <SpawnAction npcsetidentifier="chemicalprotectors" npcidentifier="chemicalprotectors_fireer" lootingisstealing="false" targettag="CD" spawnlocation="outpost" TeamID="None" allowinplayerview="false" />
+            <StatusEffectAction targettag="CD" enabledespawn="true">
+              <StatusEffect target="This">
+                <!--
+                <Sound file="%ModDir%/content/ogg/1.ogg" range="10000" />
+                -->
+              </StatusEffect>
+            </StatusEffectAction>
+            <SpawnAction npcsetidentifier="chemicalprotectors" npcidentifier="chemicalprotectors_soldier" lootingisstealing="false" targettag="CD" spawnlocation="outpost" TeamID="None" allowinplayerview="false" />
+            <WaitAction time="0.1" />
+            <SpawnAction npcsetidentifier="chemicalprotectors" npcidentifier="chemicalprotectors_soldier" lootingisstealing="false" targettag="CD" spawnlocation="outpost" TeamID="None" allowinplayerview="false" />
+            <WaitAction time="0.1" />
+            <SpawnAction npcsetidentifier="chemicalprotectors" npcidentifier="chemicalprotectors_doctor" lootingisstealing="false" targettag="CD" spawnlocation="outpost" TeamID="None" allowinplayerview="false" />
+            <WaitAction time="0.1" />
+            <SpawnAction npcsetidentifier="chemicalprotectors" npcidentifier="chemicalprotectors_soldier" lootingisstealing="false" targettag="CD" spawnlocation="outpost" TeamID="None" allowinplayerview="false" />
+            <WaitAction time="0.1" />
+            <SpawnAction npcsetidentifier="chemicalprotectors" npcidentifier="chemicalprotectors_soldier" lootingisstealing="false" targettag="CD" spawnlocation="outpost" TeamID="None" allowinplayerview="false" />
+            <WaitAction time="0.1" />
+            <SpawnAction npcsetidentifier="chemicalprotectors" npcidentifier="chemicalprotectors_soldier" lootingisstealing="false" targettag="CD" spawnlocation="outpost" TeamID="None" allowinplayerview="false" />
+            <WaitAction time="0.1" />
+            <SpawnAction npcsetidentifier="chemicalprotectors" npcidentifier="chemicalprotectors_doctor" lootingisstealing="false" targettag="CD" spawnlocation="outpost" TeamID="None" allowinplayerview="false" />
+            <WaitAction time="0.1" />
+            <SpawnAction npcsetidentifier="chemicalprotectors" npcidentifier="chemicalprotectors_soldier" lootingisstealing="false" targettag="CD" spawnlocation="outpost" TeamID="None" allowinplayerview="false" />
+            <WaitAction time="0.1" />
+            <SpawnAction npcsetidentifier="chemicalprotectors" npcidentifier="chemicalprotectors_soldier" lootingisstealing="false" targettag="CD" spawnlocation="outpost" TeamID="None" allowinplayerview="false" />
+            <WaitAction time="0.1" />
+            <SpawnAction npcsetidentifier="chemicalprotectors" npcidentifier="chemicalprotectors_soldier" lootingisstealing="false" targettag="CD" spawnlocation="outpost" TeamID="None" allowinplayerview="false" />
+            <WaitAction time="0.1" />
+            <SpawnAction npcsetidentifier="chemicalprotectors" npcidentifier="chemicalprotectors_doctor" lootingisstealing="false" targettag="CD" spawnlocation="outpost" TeamID="None" allowinplayerview="false" />
+            <WaitAction time="0.1" />
+            <SpawnAction npcsetidentifier="chemicalprotectors" npcidentifier="chemicalprotectors_soldier" lootingisstealing="false" targettag="CD" spawnlocation="outpost" TeamID="None" allowinplayerview="false" />
+            <WaitAction time="0.1" />
+            <SpawnAction npcsetidentifier="chemicalprotectors" npcidentifier="chemicalprotectors_soldier" lootingisstealing="false" targettag="CD" spawnlocation="outpost" TeamID="None" allowinplayerview="false" />
+            <WaitAction time="0.1" />
+            <SpawnAction npcsetidentifier="chemicalprotectors" npcidentifier="chemicalprotectors_doctor" lootingisstealing="false" targettag="CD" spawnlocation="outpost" TeamID="None" allowinplayerview="false" />
+            <WaitAction time="0.1" />
+            <SpawnAction npcsetidentifier="chemicalprotectors" npcidentifier="chemicalprotectors_fireer_blueprint" lootingisstealing="false" targettag="CD" spawnlocation="outpost" TeamID="None" allowinplayerview="false" />
+            <WaitAction time="0.1" />
+            <TriggerEventAction identifier="givebufftochemicalprotectorsenemy" />
+            <TagAction criteria="humanprefabidentifier:chemicalprotectors_fireer" tag="enemy_outpost_combat1" continueifnotargetsfound="true" />
+            <TagAction criteria="humanprefabidentifier:chemicalprotectors_fireer_blueprint" tag="teshuzhan1dui1" continueifnotargetsfound="true" />
+            <TagAction criteria="humanprefabidentifier:chemicalprotectors_doctor" tag="enemy_outpost_combat" continueifnotargetsfound="true" />
+            <TagAction criteria="humanprefabidentifier:chemicalprotectors_soldier" tag="enemy_outpost_combat" continueifnotargetsfound="true" />
+            <StatusEffectAction targettag="enemy_outpost_combat">
+              <StatusEffect target="This" enabledespawn="true">
+                <GiveTalentInfo giverandom="false" talentidentifiers="cdshipmother16" />
+                <GiveTalentInfo giverandom="false" talentidentifiers="cdchemicaltalent" />
+                <GiveTalentInfo giverandom="false" talentidentifiers="cdpyromaniac" />
+                <GiveTalentInfo giverandom="false" talentidentifiers="cdlightningwizard" />
+                <Affliction identifier="cdcdhallucinatingres" strength="10000" MultiplyByMaxVitality="True" />
+                <Affliction identifier="cdenergystoragedamageres" strength="10000" MultiplyByMaxVitality="True" />
+                <Affliction identifier="cdrobotaffchemicalprotectorenemy" strength="1000" MultiplyByMaxVitality="True" />
+              </StatusEffect>
+              <StatusEffect target="This" UseHealthWindow="false" />
+            </StatusEffectAction>
+            <StatusEffectAction targettag="enemy_outpost_combat1">
+              <StatusEffect target="This" enabledespawn="true">
+                <GiveTalentInfo giverandom="false" talentidentifiers="cdshipmother16" />
+                <GiveTalentInfo giverandom="false" talentidentifiers="cdchemicaltalent" />
+                <GiveTalentInfo giverandom="false" talentidentifiers="cdpyromaniac" />
+                <GiveTalentInfo giverandom="false" talentidentifiers="cdlightningwizard" />
+                <Affliction identifier="cdcdhallucinatingres" strength="10000" MultiplyByMaxVitality="True" />
+                <Affliction identifier="cdenergystoragedamageres" strength="10000" MultiplyByMaxVitality="True" />
+                <Affliction identifier="cdrobotaffchemicalprotectorfireer" strength="1000" MultiplyByMaxVitality="True" />
+              </StatusEffect>
+              <StatusEffect target="This" UseHealthWindow="false" />
+            </StatusEffectAction>
+            <WaitAction time="5" />
+            <TriggerEventAction identifier="cd_cqb_combat_in_ship" />
+          </Success>
+          <Failure></Failure>
+        </RNGAction>
+      </ScriptedEvent>
+      <!--化防敌人buff-->
+      <ScriptedEvent identifier="givebufftochemicalprotectorsenemy">
+        <TagAction criteria="humanprefabidentifier:chemicalprotectors_soldier" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:chemicalprotectors_fireer" tag="teshuzhan1dui1" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:chemicalprotectors_fireer_blueprint" tag="teshuzhan1dui1" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:chemicalprotectors_doctor" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <StatusEffectAction targettag="teshuzhan1dui">
+          <StatusEffect target="This" enabledespawn="true">
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdshipmother16" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdchemicaltalent" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdpyromaniac" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdlightningwizard" />
+            <Affliction identifier="cdcdhallucinatingres" strength="10000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdcdgivefireres" strength="10000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdenergystoragedamageres" strength="10000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdrobotaffchemicalprotectorenemy" strength="1000" MultiplyByMaxVitality="True" />
+          </StatusEffect>
+        </StatusEffectAction>
+        <StatusEffectAction targettag="teshuzhan1dui1">
+          <StatusEffect target="This" enabledespawn="true">
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdshipmother16" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdchemicaltalent" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdpyromaniac" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdlightningwizard" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdfirenearby" />
+            <Affliction identifier="cdcdhallucinatingres" strength="10000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdcdgivefireres" strength="10000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdenergystoragedamageres" strength="10000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdrobotaffchemicalprotectorfireer" strength="1000" MultiplyByMaxVitality="True" />
+          </StatusEffect>
+        </StatusEffectAction>
+      </ScriptedEvent>
+    </EventPrefabs>
+    <EventPrefabs>
+      <!--掠食者护卫队-->
+      <ScriptedEvent identifier="predatorshelp">
+        <TagAction criteria="player" tag="player" />
+        <SpawnAction npcsetidentifier="predators" npcidentifier="predators_xd" targettag="coalition" lootingisstealing="false" spawnlocation="MainSub" TeamID="Team1" allowinplayerview="false" CanInventoryBeAccessed="false" />
+        <StatusEffectAction targettag="coalition" enabledespawn="true">
+          <StatusEffect target="This">
+            <Sound file="%ModDir%/content/ogg/掠食者入场.ogg" range="10000" volume="0.75" />
+          </StatusEffect>
+        </StatusEffectAction>
+        <SpawnAction npcsetidentifier="predators" npcidentifier="predators_man" targettag="coalition" lootingisstealing="false" spawnlocation="MainSub" spawnpointtype="human" TeamID="Team1" allowinplayerview="false" CanInventoryBeAccessed="false" />
+        <SpawnAction npcsetidentifier="predators" npcidentifier="predators_man" targettag="coalition" lootingisstealing="false" spawnlocation="MainSub" spawnpointtype="human" TeamID="Team1" allowinplayerview="false" CanInventoryBeAccessed="false" />
+        <SpawnAction npcsetidentifier="predators" npcidentifier="predators_jq" targettag="coalition" lootingisstealing="false" spawnlocation="MainSub" spawnpointtype="human" TeamID="Team1" allowinplayerview="false" CanInventoryBeAccessed="false" />
+        <SpawnAction npcsetidentifier="predators" npcidentifier="predators_jq" targettag="coalition" lootingisstealing="false" spawnlocation="MainSub" spawnpointtype="human" TeamID="Team1" allowinplayerview="false" CanInventoryBeAccessed="false" />
+        <TriggerEventAction identifier="givebufftopredators" />
+      </ScriptedEvent>
+      <!--掠食者护卫buff-->
+      <ScriptedEvent identifier="givebufftopredators">
+        <TagAction criteria="humanprefabidentifier:predators_man" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:predators_jq" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:predators_xd" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <StatusEffectAction targettag="teshuzhan1dui">
+          <StatusEffect target="This" enabledespawn="true">
+            <GiveTalentInfo giverandom="false" talentidentifiers="cddownss" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdarmorbreaktalent" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdstonewall" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdshipmother15" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdshipmother3" />
+            <Affliction identifier="cdbleedres" strength="10000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdrobotaffpredator" strength="1000" MultiplyByMaxVitality="True" />
+          </StatusEffect>
+        </StatusEffectAction>
+      </ScriptedEvent>
+      <!--掠食者敌人buff-->
+      <ScriptedEvent identifier="givebufftopredatorsenemy">
+        <TagAction criteria="humanprefabidentifier:predators_man_enemy" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:predators_jq_enemy" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:predators_xd_enemy" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:predators_xd_blueprint" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <StatusEffectAction targettag="teshuzhan1dui">
+          <StatusEffect target="This" enabledespawn="true">
+            <GiveTalentInfo giverandom="false" talentidentifiers="cddownss" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdarmorbreaktalent" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdstonewall" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdshipmother15" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdshipmother3" />
+            <Affliction identifier="cdbleedres" strength="10000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdrobotaffpredatorenemy" strength="1000" MultiplyByMaxVitality="True" />
+          </StatusEffect>
+        </StatusEffectAction>
+        <StatusEffectAction targettag="predators_man_enemy">
+          <StatusEffect target="This" UseHealthWindow="false" />
+        </StatusEffectAction>
+      </ScriptedEvent>
+    </EventPrefabs>
+    <!--暮色小队-->
+    <EventPrefabs>
+      <!--暮色敌人buff-->
+      <ScriptedEvent identifier="givebufftonightsightenemy">
+        <TagAction criteria="humanprefabidentifier:cdnightsight_jf" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:cdnightsight_jf_patrol" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:cdnightsight_wgg" tag="teshuzhan1dui2" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:cdnightsight_xjj" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:cdnightsight_ck" tag="teshuzhan1dui1" continueifnotargetsfound="true" />
+        <StatusEffectAction targettag="teshuzhan1dui">
+          <StatusEffect target="This" enabledespawn="true">
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdextrapowder" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdstonewall" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="revengesquad" />
+            <Affliction identifier="cdradiationsicknessres" strength="10000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdrobotaffnightsight" strength="1000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdthermalstealth" strength="10" MultiplyByMaxVitality="True" />
+          </StatusEffect>
+        </StatusEffectAction>
+        <StatusEffectAction targettag="teshuzhan1dui1">
+          <StatusEffect target="This" enabledespawn="true">
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdspecops" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdstonewall" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="revengesquad" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdlightningwizard2" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdappear" />
+            <Affliction identifier="cdradiationsicknessres" strength="10000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdrobotaffnightsightck" strength="1000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdthermalstealth" strength="10" MultiplyByMaxVitality="True" />
+          </StatusEffect>
+        </StatusEffectAction>
+        <StatusEffectAction targettag="teshuzhan1dui2">
+          <StatusEffect target="This" enabledespawn="true">
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdextrapowder" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdstonewall" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="revengesquad" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="powerarmor" />
+            <Affliction identifier="cdradiationsicknessres" strength="10000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdrobotaffnightsight" strength="1000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdthermalstealth" strength="10" MultiplyByMaxVitality="True" />
+          </StatusEffect>
+        </StatusEffectAction>
+      </ScriptedEvent>
+    </EventPrefabs>
+    <!--菌毯-->
+    <EventPrefabs>
+      <!--菌毯敌人buff-->
+      <ScriptedEvent identifier="givebufftocreepsenemy">
+        <TagAction criteria="humanprefabidentifier:creeps_cfq_enemy" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:creeps_cfq_enemy_patrol" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:creeps_cjbq_enemy" tag="teshuzhan1dui" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:creeps_cjbq_enemy_patrol" tag="teshuzhan1dui1" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:creeps_mrl_enemy" tag="teshuzhan1dui2" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:creeps_mrl_enemy_patrol" tag="teshuzhan1dui2" continueifnotargetsfound="true" />
+        <TagAction criteria="humanprefabidentifier:creeps_mrl_blueprint" tag="teshuzhan1dui2" continueifnotargetsfound="true" />
+        <StatusEffectAction targettag="teshuzhan1dui">
+          <StatusEffect target="This" enabledespawn="true" disabledeltatime="true">
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdmanyimplacable" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdlightningwizard1" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cddeathonlyondamage" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdnoinfection" />
+            <Affliction identifier="cdrobotaffcreepsenemy" strength="1000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdungalinfectionsplusD2" strength="1" MultiplyByMaxVitality="True" />
+          </StatusEffect>
+        </StatusEffectAction>
+        <StatusEffectAction targettag="teshuzhan1dui1">
+          <StatusEffect target="This" enabledespawn="true" disabledeltatime="true">
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdmanyimplacable" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdlightningwizard1" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cddeathonlyondamage" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdnoinfection" />
+            <Affliction identifier="cdrobotaffcreepsenemy" strength="1000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdungalinfectionsplusD2" strength="1" MultiplyByMaxVitality="True" />
+          </StatusEffect>
+        </StatusEffectAction>
+        <StatusEffectAction targettag="teshuzhan1dui2">
+          <StatusEffect target="This" enabledespawn="true" disabledeltatime="true">
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdmanyimplacable" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdlightningwizard1" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cddeathonlyondamage" />
+            <GiveTalentInfo giverandom="false" talentidentifiers="cdnoinfection" />
+            <Affliction identifier="cdrobotaffcreepsenemy" strength="1000" MultiplyByMaxVitality="True" />
+            <Affliction identifier="cdungalinfectionsplusD2" strength="1" MultiplyByMaxVitality="True" />
+          </StatusEffect>
+        </StatusEffectAction>
+      </ScriptedEvent>
+    </EventPrefabs>
+    <!-- 减钱 -->
+    <EventPrefabs>
+      <ScriptedEvent identifier="cdmkinlose">
+        <!-- 检查出所有玩家 -->
+        <TagAction Criteria="players" Tag="triggerer_player" IgnoreIncapacitatedCharacters="false" />
+          <!-- 检查是否具有贪婪aff -->
+          <CheckConditionalAction TargetTag="triggerer_player" ApplyTagToTarget="lose_mk_player" FailIfTargetNotFound="true">
+            <Conditional cdmkloseaff="gt 9" />
+            <Success>
+              <!-- 减钱 -->
+              <MoneyAction Amount="-1000" TargetTag="lose_mk_player" />
+            </Success>
+          </CheckConditionalAction>
+      </ScriptedEvent>
+    </EventPrefabs>
+    <!--加钱-->
+    <EventPrefabs>
+      <ScriptedEvent identifier="cd50mkin">
+        <MoneyAction amount="50" TargetTag="statuseffectuser" />
+      </ScriptedEvent>
+    </EventPrefabs>
+    <EventPrefabs>
+      <ScriptedEvent identifier="cd100mkin">
+        <MoneyAction amount="100" TargetTag="statuseffectuser" />
+      </ScriptedEvent>
+    </EventPrefabs>
+    <EventPrefabs>
+      <ScriptedEvent identifier="cd1000mkin">
+        <MoneyAction amount="1000" TargetTag="statuseffectuser" />
+      </ScriptedEvent>
+    </EventPrefabs>
+    <EventPrefabs>
+      <ScriptedEvent identifier="cd10000mkin">
+        <MoneyAction amount="10000" TargetTag="statuseffectuser" />
+      </ScriptedEvent>
+    </EventPrefabs>
+    <EventPrefabs>
+      <ScriptedEvent identifier="cd100000mkin">
+        <MoneyAction amount="100000" TargetTag="statuseffectuser" />
+      </ScriptedEvent>
+    </EventPrefabs>
+    <!--清空银行-->
+    <EventPrefabs>
+      <ScriptedEvent identifier="cdclearbank">
+        <MoneyAction amount="-200000" />
+      </ScriptedEvent>
+    </EventPrefabs>
+    <!--废站清理-->
+    <EventPrefabs>
+      <!--站点无敌-->
+      <ScriptedEvent identifier="cd_indestructible_wall">
+        <!-- StructurePrefabs.xml -->
+        <TagAction criteria="structureidentifier:ff_x_wall" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <TagAction criteria="structureidentifier:ff_y_wall" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <TagAction criteria="structureidentifier:sshella25" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <TagAction criteria="structureidentifier:sshella26" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <TagAction criteria="structureidentifier:sshellaglassd" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <TagAction criteria="structureidentifier:sshellaglasse" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <TagAction criteria="structureidentifier:sshellaglassf" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <TagAction criteria="structureidentifier:topwindow" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <TagAction criteria="structureidentifier:verticalwindow" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <TagAction criteria="structureidentifier:inwalll90cables" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <TagAction criteria="structureidentifier:ff_x_wall_cables" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <!-- OutpostStructurePrefabs.xml -->
+        <TagAction criteria="structureidentifier:icewall" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <TagAction criteria="structureidentifier:icewall90" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <!-- StructurePrefabsWrecked.xml -->
+        <TagAction criteria="structureidentifier:ff_x_wall_wrecked" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <TagAction criteria="structureidentifier:sshella07wrecked" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <TagAction criteria="structureidentifier:sshella21wrecked" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <TagAction criteria="structureidentifier:sshella23wrecked" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <TagAction criteria="structureidentifier:shella26degwrecked" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <TagAction criteria="structureidentifier:sshellaglassdwrecked" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <TagAction criteria="structureidentifier:sshellaglassewrecked" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <TagAction criteria="structureidentifier:sshellaglassfwrecked" tag="targetwall" submarinetype="outpost" continueifnotargetsfound="true" />
+        <StatusEffectAction targettag="targetwall">
+          <StatusEffect target="This" indestructible="true" />
+        </StatusEffectAction>
+      </ScriptedEvent>
+      <ScriptedEvent identifier="cd_forsaken">
+        <TagAction Criteria="speciesname:Human" Tag="enemy" Team="None" IgnoreIncapacitatedCharacters="false" />
+        <TagAction Criteria="hull" Tag="anyhull" SubmarineType="Player" />
+        <Label Name="waitforintruder" />
+        <ClearTagAction Tag="defender" />
+        <ClearTagAction Tag="intruder" />
+        <ClearTagAction Tag="targetidcard" />
+        <TagAction Criteria="eventtag:enemy" Tag="defender" SubmarineType="Outpost" IgnoreIncapacitatedCharacters="false" />
+        <TriggerAction Target1Tag="defender" Target2Tag="anyhull" ApplyToTarget1="intruder" DisableInCombat="false" DisableIfTargetIncapacitated="false" />
+        <StatusEffectAction TargetTag="intruder">
+          <StatusEffect target="This">
+            <LuaHook name="intruder.SetOrder" />
+          </StatusEffect>
+        </StatusEffectAction>
+        <CheckItemAction TargetTag="intruder" ItemIdentifiers="idcard" ApplyTagToItem="targetidcard" />
+        <StatusEffectAction targettag="targetidcard">
+          <StatusEffect target="This" SubmarineSpecificID="0" setvalue="true" />
+        </StatusEffectAction>
+        <GoTo Name="waitforintruder" />
+      </ScriptedEvent>
+      <!--站点清除画皮-->
+      <ScriptedEvent identifier="cd_remove_husk">
+        <TagAction criteria="itemtag:reactor" tag="reactor" submarinetype="Outpost" chooserandom="true" />
+        <StatusEffectAction targettag="reactor">
+          <StatusEffect target="NearbyCharacters" range="1000000" conditionalcomparison="and">
+            <Conditional isonplayerteam="false" />
+            <Conditional isoriginallyonplayerteam="false" />
+            <Conditional IsHusk="true" />
+            <RemoveCharacter />
+          </StatusEffect>
+        </StatusEffectAction>
+      </ScriptedEvent>
+      <ScriptedEvent identifier="humanshadow_event">
+        <CheckConditionalAction TargetTag="impostor" LogicalOperator="And">
+          <Conditional InPressure="true" />
+          <Conditional IsInPlayerSub="false" />
+          <Success>
+            <CheckDifficultyAction MaxDifficulty="15">
+              <Success>
+                <StatusEffectAction TargetTag="impostor">
+                  <StatusEffect target="This" spawnItemRandomly="true">
+                    <SpawnItem identifiers="divingsuit" Equip="true" spawnposition="ThisInventory" />
+                  </StatusEffect>
+                </StatusEffectAction>
+                <GoTo Name="spawnoxygentank" />
+              </Success>
+            </CheckDifficultyAction>
+            <CheckDifficultyAction MaxDifficulty="35">
+              <Success>
+                <StatusEffectAction TargetTag="impostor">
+                  <StatusEffect target="This" spawnItemRandomly="true">
+                    <SpawnItem identifiers="divingsuit" Equip="true" spawnposition="ThisInventory" />
+                    <SpawnItem identifiers="divingsuit" Equip="true" spawnposition="ThisInventory" />
+                    <SpawnItem identifiers="divingsuit" Equip="true" spawnposition="ThisInventory" />
+                    <SpawnItem identifiers="combatdivingsuit" Equip="true" spawnposition="ThisInventory" />
+                  </StatusEffect>
+                </StatusEffectAction>
+                <GoTo Name="spawnoxygentank" />
+              </Success>
+            </CheckDifficultyAction>
+            <CheckDifficultyAction MaxDifficulty="50">
+              <Success>
+                <StatusEffectAction TargetTag="impostor">
+                  <StatusEffect target="This" spawnItemRandomly="true">
+                    <SpawnItem identifiers="divingsuit" Equip="true" spawnposition="ThisInventory" />
+                    <SpawnItem identifiers="combatdivingsuit" Equip="true" spawnposition="ThisInventory" />
+                  </StatusEffect>
+                </StatusEffectAction>
+                <GoTo Name="spawnoxygentank" />
+              </Success>
+            </CheckDifficultyAction>
+            <StatusEffectAction TargetTag="impostor">
+              <StatusEffect target="This" spawnItemRandomly="true">
+                <SpawnItem identifiers="combatdivingsuit" Equip="true" spawnposition="ThisInventory" />
+                <SpawnItem identifiers="combatdivingsuit" Equip="true" spawnposition="ThisInventory" />
+                <SpawnItem identifiers="combatdivingsuit" Equip="true" spawnposition="ThisInventory" />
+                <SpawnItem identifiers="combatdivingsuit" Equip="true" spawnposition="ThisInventory" />
+                <SpawnItem identifiers="combatdivingsuit" Equip="true" spawnposition="ThisInventory" />
+                <SpawnItem identifiers="combatdivingsuit" Equip="true" spawnposition="ThisInventory" />
+                <SpawnItem identifiers="combatdivingsuit" Equip="true" spawnposition="ThisInventory" />
+                <SpawnItem identifiers="combatdivingsuit" Equip="true" spawnposition="ThisInventory" />
+                <SpawnItem identifiers="slipsuit" Equip="true" spawnposition="ThisInventory" />
+                <SpawnItem identifiers="pucs" Equip="true" spawnposition="ThisInventory" />
+              </StatusEffect>
+            </StatusEffectAction>
+            <Label Name="spawnoxygentank" />
+            <WaitAction Time="0.1" />
+            <CheckItemAction TargetTag="impostor" ItemTags="deepdiving" ApplyTagToItem="divingsuit" RequireWorn="true">
+              <Success>
+                <SpawnAction ItemIdentifier="oxygentank" TargetInventory="divingsuit" />
+              </Success>
+            </CheckItemAction>
+          </Success>
+        </CheckConditionalAction>
+        <StatusEffectAction TargetTag="impostor">
+          <StatusEffect target="This" TeamID="FriendlyNPC" setvalue="true">
+            <Conditional TeamID="None" />
+          </StatusEffect>
+          <StatusEffect target="This">
+            <LuaHook name="humanshadow.OnSpawn" />
+          </StatusEffect>
+        </StatusEffectAction>
+      </ScriptedEvent>
+      <!--进船ai下达入侵者-->
+      <ScriptedEvent identifier="cd_cqb_combat_in_ship">
+        <TagAction Criteria="speciesname:Human" Tag="enemy" Team="None" IgnoreIncapacitatedCharacters="false" />
+        <TagAction Criteria="hull" Tag="anyhull" SubmarineType="Player" />
+        <Label Name="waitforintruder" />
+        <ClearTagAction Tag="defender" />
+        <ClearTagAction Tag="intruder" />
+        <ClearTagAction Tag="targetidcard" />
+        <TagAction Criteria="eventtag:enemy" Tag="defender" SubmarineType="Outpost" IgnoreIncapacitatedCharacters="false" />
+        <TriggerAction Target1Tag="defender" Target2Tag="anyhull" ApplyToTarget1="intruder" DisableInCombat="false" DisableIfTargetIncapacitated="false" />
+        <StatusEffectAction TargetTag="intruder">
+          <StatusEffect target="This">
+            <LuaHook name="cd_cqb_combatinship" />
+          </StatusEffect>
+        </StatusEffectAction>
+        <CheckItemAction TargetTag="intruder" ItemIdentifiers="idcard" ApplyTagToItem="targetidcard" />
+        <StatusEffectAction targettag="targetidcard">
+          <StatusEffect target="This" SubmarineSpecificID="0" setvalue="true" />
+        </StatusEffectAction>
+        <GoTo Name="waitforintruder" />
+      </ScriptedEvent>
+      <!--敌人免疫眩晕-->
+      <ScriptedEvent identifier="cd_cqb_unstun">
+        <TagAction Criteria="speciesname:Human" Tag="enemy" Team="None" continueifnotargetsfound="true" />
+        <TagAction Criteria="speciesname:Human" Tag="enemy" Team="FriendlyNPC" continueifnotargetsfound="true" />
+        <!--检查是否开启免疫眩晕-->
+        <CheckDataAction identifier="cd_data_unstun_on" condition="eq true">
+          <Success>
+            <StatusEffectAction targettag="enemy">
+              <StatusEffect target="This" enabledespawn="true" disabledeltatime="true">
+                <Affliction identifier="cdstunres" strength="1000" MultiplyByMaxVitality="True" />
+                <Affliction identifier="cdpositionres" strength="1000" MultiplyByMaxVitality="True" />
+              </StatusEffect>
+            </StatusEffectAction>
+          </Success>
+          <Failure></Failure>
+        </CheckDataAction>
+        <!--检查是否开启降低眩晕-->
+        <CheckDataAction identifier="cd_data_reducestun_on" condition="eq true">
+          <Success>
+            <StatusEffectAction targettag="enemy">
+              <StatusEffect target="This" enabledespawn="true" disabledeltatime="true">
+                <Affliction identifier="cdstunreduce" strength="1000" MultiplyByMaxVitality="True" />
+                <Affliction identifier="cdpositionres" strength="1000" MultiplyByMaxVitality="True" />
+              </StatusEffect>
+            </StatusEffectAction>
+          </Success>
+          <Failure></Failure>
+        </CheckDataAction>
+        <!--检查是否开启清空银行-->
+        <CheckDataAction identifier="cd_data_clearbank_on" condition="eq true">
+          <Success>
+            <MoneyAction amount="-200000" />
+          </Success>
+          <Failure></Failure>
+        </CheckDataAction>
+      </ScriptedEvent>
+      <!--设置敌人免疫眩晕开启-->
+      <ScriptedEvent identifier="cd_cqb_unstun_on">
+        <SetDataAction identifier="cd_data_unstun_on" value="true" />
+      </ScriptedEvent>
+      <!--设置敌人免疫眩晕关闭-->
+      <ScriptedEvent identifier="cd_cqb_unstun_off">
+        <SetDataAction identifier="cd_data_unstun_on" value="false" />
+      </ScriptedEvent>
+      <!--设置敌人降低眩晕开启-->
+      <ScriptedEvent identifier="cd_cqb_reducestun_on">
+        <SetDataAction identifier="cd_data_reducestun_on" value="true" />
+      </ScriptedEvent>
+      <!--设置敌人降低眩晕关闭-->
+      <ScriptedEvent identifier="cd_cqb_reducestun_off">
+        <SetDataAction identifier="cd_data_reducestun_on" value="false" />
+      </ScriptedEvent>
+      <!--设置清空银行开启-->
+      <ScriptedEvent identifier="cd_clearbank_on">
+        <SetDataAction identifier="cd_data_clearbank_on" value="true" />
+      </ScriptedEvent>
+      <!--设置清空银行关闭-->
+      <ScriptedEvent identifier="cd_clearbank_off">
+        <SetDataAction identifier="cd_data_clearbank_on" value="false" />
+      </ScriptedEvent>
+    </EventPrefabs>
+    <EventPrefabs>
+      <ScriptedEvent identifier="cdnoevent"></ScriptedEvent>
+    </EventPrefabs>
+  </Randomevents>
+</override>

@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TalentTrees>
+  <TalentTree jobidentifier="cdnormalShipmother">
+    <SubTree identifier="cdShipmother_primary" nameidentifier="talenttree.primary" type="primary">
+      <TalentOptions requiredtalents="1" maxchosentalents="5">
+        <!--书呆子-->
+        <TalentOption identifier="cdegghead" />
+        <TalentOption identifier="cdshipmother3" />
+        <!--特种部队-->
+        <TalentOption identifier="cdspecops" />
+        <TalentOption identifier="cdshipmother5" />
+        <!--野战医生-->
+        <TalentOption identifier="cdshipmother8" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="5">
+        <!--三光政策-->
+        <TalentOption identifier="cdscavenger2" />
+        <!--狙击手-->
+        <TalentOption identifier="cdsniper" />
+        <!--消防搬运-->
+        <TalentOption identifier="cdfiremanscarry" />
+        <!--获得护盾-->
+        <TalentOption identifier="cdgethudun" />
+        <!--注意安全-->
+        <TalentOption identifier="cdnonthreatdown" />
+      </TalentOptions>
+    </SubTree>
+    <SubTree identifier="cdShipmother_Shipborne" type="specialization" requires="cdShipmother_primary">
+      <TalentOptions requiredtalents="1" maxchosentalents="3">
+        <TalentOption identifier="cdunoxygen" />
+        <!--鱼跃-->
+        <TalentOption identifier="cdunpressure" />
+        <!--不惧威胁-->
+        <TalentOption identifier="cdchameliolincoating" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="3">
+        <!--体育特长-->
+        <TalentOption identifier="cdshipmother14" />
+        <!--舰船之灵-->
+        <TalentOption identifier="cdshipmother28" />
+        <!--坚如磐石-->
+        <TalentOption identifier="cdstonewall" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="3">
+        <TalentOption identifier="cdshipmother15" />
+        <TalentOption identifier="cdshipmother16" />
+        <!--降低散布-->
+        <TalentOption identifier="cddownss" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="3">
+        <!--破釜沉舟-->
+        <TalentOption identifier="cdimplacable" />
+        <!--闪电巫师-->
+        <TalentOption identifier="cdlightningwizard1" />
+        <!--毕业典礼-->
+        <TalentOption identifier="cdshipmother20" />
+      </TalentOptions>
+    </SubTree>
+    <SubTree identifier="cdShipmother_fleet" type="specialization" requires="cdShipmother_primary">
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <!--鼓舞-->
+        <TalentOption identifier="cdshipmother31" />
+        <TalentOption identifier="cdshipmother33" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <TalentOption identifier="cdoiledmachinery" />
+        <TalentOption identifier="cdshipmother21" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <TalentOption identifier="cdshipmother22" />
+        <TalentOption identifier="cdshipmother23" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <!--全配方解锁-->
+        <TalentOption identifier="cdrecipeall" />
+        <!--奇迹创造者-->
+        <TalentOption identifier="cdtalmiracleworker" />
+      </TalentOptions>
+    </SubTree>
+    <SubTree identifier="cdShipmother_flagship" type="specialization" requires="cdShipmother_primary">
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <!--基因收割-->
+        <TalentOption identifier="cdgeneharvester" />
+        <!--赏金猎人-->
+        <TalentOption identifier="cdshipmother27" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <!--超级基因融合（待做）-->
+        <TalentOption identifier="cdGeneDatabase" />
+        <TalentOption identifier="cdstoneskin1" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <!--基因天才-->
+        <TalentOption identifier="cdgeneticgenious" />
+        <TalentOption identifier="cdstoneskin2" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <!--无机体质-->
+        <TalentOption identifier="cdnoinfection" />
+        <TalentOption identifier="cdstoneskin3" />
+      </TalentOptions>
+    </SubTree>
+  </TalentTree>
+  <TalentTree jobidentifier="cdShipmother">
+    <SubTree identifier="cdShipmother_primary" nameidentifier="talenttree.primary" type="primary">
+      <TalentOptions requiredtalents="1" maxchosentalents="5">
+        <!--末梢破斧-->
+        <TalentOption identifier="cdshipmother13" />
+        <TalentOption identifier="cdshipmother3" />
+        <!--特种部队-->
+        <TalentOption identifier="cdspecops" />
+        <TalentOption identifier="cdshipmother5" />
+        <!--野战医生-->
+        <TalentOption identifier="cdshipmother8" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="5">
+        <!--三光政策-->
+        <TalentOption identifier="cdscavenger2" />
+        <TalentOption identifier="cdolympian" />
+        <!--消防搬运-->
+        <TalentOption identifier="firemanscarry" />
+        <TalentOption identifier="cdshipmother9" />
+        <!--注意安全-->
+        <TalentOption identifier="cdnonthreatdown" />
+      </TalentOptions>
+    </SubTree>
+    <SubTree identifier="cdShipmother_Shipborne" type="specialization" requires="cdShipmother_primary">
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <TalentOption identifier="cdshipmother11" />
+        <TalentOption identifier="cdunpressure" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <TalentOption identifier="cdshipmother27" />
+        <TalentOption identifier="cdshipmother14" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <TalentOption identifier="cdshipmother15" />
+        <TalentOption identifier="cdshipmother16" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <!--无机体质-->
+        <TalentOption identifier="cdnoinfection" />
+        <TalentOption identifier="cdshipmother18" />
+      </TalentOptions>
+    </SubTree>
+    <SubTree identifier="cdShipmother_fleet" type="specialization" requires="cdShipmother_primary">
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <!--鼓舞-->
+        <TalentOption identifier="cdshipmother31" />
+        <TalentOption identifier="cdshipmother33" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <TalentOption identifier="oiledmachinery" />
+        <TalentOption identifier="cdshipmother21" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <TalentOption identifier="cdshipmother22" />
+        <TalentOption identifier="cdshipmother23" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <!--全配方解锁-->
+        <TalentOption identifier="cdrecipeall" />
+        <TalentOption identifier="cdshipmother20" />
+      </TalentOptions>
+    </SubTree>
+    <SubTree identifier="cdShipmother_flagship" type="specialization" requires="cdShipmother_primary">
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <!--类人生命-->
+        <TalentOption identifier="cdnonthreatening" />
+        <!--降低散布-->
+        <TalentOption identifier="cddownss" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <!--基因收割-->
+        <TalentOption identifier="cdgeneharvester" />
+        <TalentOption identifier="cdshipmother28" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <!--基因超频-->
+        <TalentOption identifier="cdGeneDatabase" />
+        <!--闪电巫师-->
+        <TalentOption identifier="cdlightningwizard1" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="2">
+        <!--与船休憩-->
+        <TalentOption identifier="cdshipmother30" />
+        <!--基因天才-->
+        <TalentOption identifier="cdgeneticgenious" />
+      </TalentOptions>
+    </SubTree>
+  </TalentTree>
+  <TalentTree jobidentifier="cdfriendlyshadow">
+    <SubTree identifier="cdfriendlyshadow_primary" nameidentifier="talenttree.primary" type="primary">
+      <TalentOptions requiredtalents="0" maxchosentalents="5">
+        <TalentOption identifier="cdshadowtalent0-1" />
+        <TalentOption identifier="cdshadowtalent0-2" />
+        <TalentOption identifier="cdshadowtalent0-3" />
+        <TalentOption identifier="cdshadowtalent0-4" />
+        <TalentOption identifier="cdshadowtalent0-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent1-1" />
+        <TalentOption identifier="cdshadowtalent1-2" />
+        <TalentOption identifier="cdshadowtalent1-3" />
+        <TalentOption identifier="cdshadowtalent1-4" />
+        <TalentOption identifier="cdshadowtalent1-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent2-1" />
+        <TalentOption identifier="cdshadowtalent2-2" />
+        <TalentOption identifier="cdshadowtalent2-3" />
+        <TalentOption identifier="cdshadowtalent2-4" />
+        <TalentOption identifier="cdshadowtalent2-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent3-1" />
+        <TalentOption identifier="cdshadowtalent3-2" />
+        <TalentOption identifier="cdshadowtalent3-3" />
+        <TalentOption identifier="cdshadowtalent3-4" />
+        <TalentOption identifier="cdshadowtalent3-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent4-1" />
+        <TalentOption identifier="cdshadowtalent4-2" />
+        <TalentOption identifier="cdshadowtalent4-3" />
+        <TalentOption identifier="cdshadowtalent4-4" />
+        <TalentOption identifier="cdshadowtalent4-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent5-1" />
+        <TalentOption identifier="cdshadowtalent5-2" />
+        <TalentOption identifier="cdshadowtalent5-3" />
+        <TalentOption identifier="cdshadowtalent5-4" />
+        <TalentOption identifier="cdshadowtalent5-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent6-1" />
+        <TalentOption identifier="cdshadowtalent6-2" />
+        <TalentOption identifier="cdshadowtalent6-3" />
+        <TalentOption identifier="cdshadowtalent6-4" />
+        <TalentOption identifier="cdshadowtalent6-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent7-1" />
+        <TalentOption identifier="cdshadowtalent7-2" />
+        <TalentOption identifier="cdshadowtalent7-3" />
+        <TalentOption identifier="cdshadowtalent7-4" />
+        <TalentOption identifier="cdshadowtalent7-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent8-1" />
+        <TalentOption identifier="cdshadowtalent8-2" />
+        <TalentOption identifier="cdshadowtalent8-3" />
+        <TalentOption identifier="cdshadowtalent8-4" />
+        <TalentOption identifier="cdshadowtalent8-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent9-1" />
+        <TalentOption identifier="cdshadowtalent9-2" />
+        <TalentOption identifier="cdshadowtalent9-3" />
+        <TalentOption identifier="cdshadowtalent9-4" />
+        <TalentOption identifier="cdshadowtalent9-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent10-1" />
+        <TalentOption identifier="cdshadowtalent10-2" />
+        <TalentOption identifier="cdshadowtalent10-3" />
+        <TalentOption identifier="cdshadowtalent10-4" />
+        <TalentOption identifier="cdshadowtalent10-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent11-1" />
+        <TalentOption identifier="cdshadowtalent11-2" />
+        <TalentOption identifier="cdshadowtalent11-3" />
+        <TalentOption identifier="cdshadowtalent11-4" />
+        <TalentOption identifier="cdshadowtalent11-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent12-1" />
+        <TalentOption identifier="cdshadowtalent12-2" />
+        <TalentOption identifier="cdshadowtalent12-3" />
+        <TalentOption identifier="cdshadowtalent12-4" />
+        <TalentOption identifier="cdshadowtalent12-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent13-1" />
+        <TalentOption identifier="cdshadowtalent13-2" />
+        <TalentOption identifier="cdshadowtalent13-3" />
+        <TalentOption identifier="cdshadowtalent13-4" />
+        <TalentOption identifier="cdshadowtalent13-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent14-1" />
+        <TalentOption identifier="cdshadowtalent14-2" />
+        <TalentOption identifier="cdshadowtalent14-3" />
+        <TalentOption identifier="cdshadowtalent14-4" />
+        <TalentOption identifier="cdshadowtalent14-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent15-1" />
+        <TalentOption identifier="cdshadowtalent15-2" />
+        <TalentOption identifier="cdshadowtalent15-3" />
+        <TalentOption identifier="cdshadowtalent15-4" />
+        <TalentOption identifier="cdshadowtalent15-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent16-1" />
+        <TalentOption identifier="cdshadowtalent16-2" />
+        <TalentOption identifier="cdshadowtalent16-3" />
+        <TalentOption identifier="cdshadowtalent16-4" />
+        <TalentOption identifier="cdshadowtalent16-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent17-1" />
+        <TalentOption identifier="cdshadowtalent17-2" />
+        <TalentOption identifier="cdshadowtalent17-3" />
+        <TalentOption identifier="cdshadowtalent17-4" />
+        <TalentOption identifier="cdshadowtalent17-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent18-1" />
+        <TalentOption identifier="cdshadowtalent18-2" />
+        <TalentOption identifier="cdshadowtalent18-3" />
+        <TalentOption identifier="cdshadowtalent18-4" />
+        <TalentOption identifier="cdshadowtalent18-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent19-1" />
+        <TalentOption identifier="cdshadowtalent19-2" />
+        <TalentOption identifier="cdshadowtalent19-3" />
+        <TalentOption identifier="cdshadowtalent19-4" />
+        <TalentOption identifier="cdshadowtalent19-5" />
+      </TalentOptions>
+      <TalentOptions requiredtalents="1" maxchosentalents="1">
+        <TalentOption identifier="cdshadowtalent20-1" />
+        <TalentOption identifier="cdshadowtalent20-2" />
+        <TalentOption identifier="cdshadowtalent20-3" />
+        <TalentOption identifier="cdshadowtalent20-4" />
+        <TalentOption identifier="cdshadowtalent20-5" />
+      </TalentOptions>
+    </SubTree>
+  </TalentTree>
+</TalentTrees>

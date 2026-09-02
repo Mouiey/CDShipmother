@@ -1,0 +1,538 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Missions>
+  <!--消灭掠食者叛军-->
+  <OutpostDestroyMission name="" identifier="cdabandoneoutpostpredatorsfkj" tags="abandonedoutpost" type="OutpostDestroy" reward="75000" description="" difficulty="6" commonness="60" allowretry="true" minleveldifficulty="35" maxleveldifficulty="80" successmessage="" unhideentitysubcategories="abandonedhuman">
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="0,768,256,256" color="255,56,15" />
+    <LocationType identifier="Abandoned" />
+    <LocationTypeChange from="Abandoned" to="Outpost" requireddurationrange="2,3" cooldownafterchange="5" />
+    <Reputation identifier="coalition" amount="+15" />
+    <Reputation identifier="separatists" amount="-10" />
+    <Characters>
+      <Character requirekill="true" identifier="predatorsfkj_hs50_enemy" from="predatorsfkj" moduleflags="crewmodule" />
+      <Character requirekill="true" identifier="predatorsfkj_m4_enemy" from="predatorsfkj" moduleflags="crewmodule" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predatorsfkj_eglm_enemy" from="predatorsfkj" moduleflags="crewmodule" asfaraspossible="true" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predatorsfkj_m4_enemy" from="predatorsfkj" moduleflags="researchmodule" />
+      <Character requirekill="true" identifier="predatorsfkj_tjbq_enemy" from="predatorsfkj" moduleflags="researchmodule" />
+      <Character requirekill="true" identifier="predatorsfkj_hc_enemy" from="predatorsfkj" moduleflags="researchmodule" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predatorsfkj_tjbq_enemy" from="predatorsfkj" moduleflags="engineeringmodule" />
+      <Character requirekill="true" identifier="predatorsfkj_hc_enemy" from="predatorsfkj" moduleflags="engineeringmodule" />
+      <Character requirekill="true" identifier="predatorsfkj_tjbq_enemy" from="predatorsfkj" moduleflags="engineeringmodule" multiplayeronly="true" asfaraspossible="true" />
+      <Character requirekill="true" identifier="predatorsfkj_hs50_enemy_blueprint" from="predatorsfkj" moduleflags="securitymodule" asfaraspossible="true" />
+      <Character requirekill="true" identifier="predatorsfkj_m4_enemy" from="predatorsfkj" moduleflags="securitymodule" />
+      <Character requirekill="true" identifier="predatorsfkj_eglm_enemy" from="predatorsfkj" moduleflags="securitymodule" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predatorsfkj_m4_enemy" from="predatorsfkj" moduleflags="securitymodule" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predatorsfkj_tjbq_enemy" from="predatorsfkj" moduleflags="securitymodule" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predatorsfkj_m4_enemy" from="predatorsfkj" spawnpointtags="banditleader" asfaraspossible="true" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predatorsfkj_hc_enemy" from="predatorsfkj" spawnpointtags="banditleader" />
+      <Character requirekill="true" identifier="predatorsfkj_hc_enemy_patrol" from="predatorsfkj" moduleflags="crewmodule" />
+      <Character requirekill="true" identifier="predatorsfkj_eglm_enemy_patrol" from="predatorsfkj" moduleflags="researchmodule" />
+      <Character requirekill="true" identifier="predatorsfkj_eglm_enemy_patrol" from="predatorsfkj" moduleflags="engineeringmodule" />
+      <Character requirekill="true" identifier="predatorsfkj_hc_enemy_patrol" from="predatorsfkj" moduleflags="securitymodule" />
+      <Character requirekill="true" identifier="predatorsfkj_m4_enemy_patrol" from="predatorsfkj" spawnpointtags="banditleader" />
+      <Character requirekill="true" identifier="predatorsfkj_m4_enemy_patrol" from="predatorsfkj" moduleflags="researchmodule" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predatorsfkj_hc_enemy_patrol" from="predatorsfkj" moduleflags="engineeringmodule" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predatorsfkj_tjbq_enemy_patrol" from="predatorsfkj" moduleflags="securitymodule" multiplayeronly="true" />
+    </Characters>
+    <TriggerEvent state="0" delay="5" eventidentifier="cd_indestructible_wall" campaignonly="true" />
+    <TriggerEvent state="0" delay="5" eventidentifier="cd_remove_husk" campaignonly="true" />
+    <TriggerEvent state="0" delay="5" eventidentifier="cd_forsaken" campaignonly="true" />
+    <TriggerEvent state="0" delay="5" eventidentifier="givebufftopredatorsenemyfkj" campaignonly="true" />
+    <TriggerEvent state="0" delay="5" eventidentifier="cd_cqb_combat_in_ship" campaignonly="true" />
+    <message header="" text="" />
+  </OutpostDestroyMission>
+  <!--菌毯-->
+  <OutpostDestroyMission name="审判庭" identifier="cdabandoneoutpostcreeps" tags="abandonedoutpost" type="OutpostDestroy" reward="150000" description="" difficulty="6" commonness="60" allowretry="true" minleveldifficulty="35" maxleveldifficulty="80" successmessage="" unhideentitysubcategories="abandonedhuman">
+    <Reputation identifier="separatists" amount="+15" />
+    <Reputation identifier="coalition" amount="-5" />
+    <Icon texture="%ModDir%/content/png/MissionIcons.png" sourcerect="512,256,256,256" color="118,202,180,255" />
+    <LocationType identifier="Abandoned" />
+    <LocationTypeChange from="Abandoned" to="Outpost" requireddurationrange="2,3" cooldownafterchange="5" />
+    <Characters>
+      <Character identifier="creeps_cjbq_enemy_patrol" from="creeps" moduleflags="crewmodule" multiplayeronly="true" requirekill="true" />
+      <Character identifier="creeps_cfq_enemy_patrol" from="creeps" moduleflags="crewmodule" requirekill="true" />
+      <Character identifier="creeps_cfq_enemy" from="creeps" moduleflags="crewmodule" requirekill="true" />
+      <Character identifier="creeps_cfq_enemy_patrol" from="creeps" moduleflags="crewmodule" asfaraspossible="true" multiplayeronly="true" requirekill="true" />
+      <Character identifier="creeps_cjbq_enemy" from="creeps" moduleflags="crewmodule" requirekill="true" />
+      <Character identifier="creeps_cfq_enemy_patrol" from="creeps" moduleflags="crewmodule" asfaraspossible="true" multiplayeronly="true" requirekill="true" />
+      <Character identifier="creeps_cfq_enemy" from="creeps" moduleflags="crewmodule" requirekill="true" />
+      <Character identifier="creeps_cjbq_enemy_patrol" from="creeps" moduleflags="researchmodule" multiplayeronly="true" requirekill="true" />
+      <Character identifier="creeps_cjbq_enemy" from="creeps" moduleflags="researchmodule" multiplayeronly="true" requirekill="true" />
+      <Character identifier="creeps_cfq_enemy_patrol" from="creeps" moduleflags="researchmodule" requirekill="true" />
+      <Character identifier="creeps_cfq_enemy" from="creeps" moduleflags="researchmodule" multiplayeronly="true" requirekill="true" />
+      <Character identifier="creeps_cjbq_enemy" from="creeps" moduleflags="engineeringmodule" multiplayeronly="true" requirekill="true" />
+      <Character identifier="creeps_cfq_enemy_patrol" from="creeps" moduleflags="engineeringmodule" multiplayeronly="true" requirekill="true" />
+      <Character identifier="creeps_cfq_enemy_patrol" from="creeps" moduleflags="engineeringmodule" multiplayeronly="true" requirekill="true" />
+      <Character identifier="creeps_cjbq_enemy_patrol" from="creeps" moduleflags="researchmodule" multiplayeronly="true" requirekill="true" />
+      <Character identifier="creeps_cfq_enemy_patrol" from="creeps" moduleflags="securitymodule" asfaraspossible="true" multiplayeronly="true" requirekill="true" />
+      <Character identifier="creeps_mrl_blueprint" from="creeps" moduleflags="securitymodule" requirekill="true" />
+      <Character identifier="creeps_cjbq_enemy_patrol" from="creeps" moduleflags="securitymodule" requirekill="true" multiplayeronly="true" />
+      <Character identifier="creeps_mrl_enemy_patrol" from="creeps" moduleflags="securitymodule" requirekill="true" />
+      <Character identifier="creeps_cfq_enemy" from="creeps" moduleflags="securitymodule" requirekill="true" />
+      <Character identifier="creeps_cjbq_enemy" from="creeps" moduleflags="securitymodule" requirekill="true" />
+      <Character identifier="creeps_cjbq_enemy_patrol" from="creeps" spawnpointtags="banditleader" requirekill="true" />
+      <Character identifier="creeps_mrl_enemy" from="creeps" spawnpointtags="banditleader" requirekill="true" multiplayeronly="true" />
+      <Character identifier="creeps_mrl_enemy_patrol" from="creeps" spawnpointtags="banditleader" multiplayeronly="true" requirekill="true" />
+      <Character identifier="creeps_cfq_enemy" from="creeps" spawnpointtags="banditleader" requirekill="true" multiplayeronly="true" />
+      <Character identifier="creeps_cjbq_enemy" from="creeps" moduleflags="banditleader" requirekill="true" />
+    </Characters>
+    <TriggerEvent state="0" delay="5" eventidentifier="cd_indestructible_wall" campaignonly="true" />
+    <TriggerEvent state="0" delay="5" eventidentifier="cd_remove_husk" campaignonly="true" />
+    <TriggerEvent state="0" delay="5" eventidentifier="cd_forsaken" campaignonly="true" />
+    <TriggerEvent state="0" delay="5" eventidentifier="givebufftocreepsenemy" campaignonly="true" />
+    <TriggerEvent state="0" delay="5" eventidentifier="cd_cqb_combat_in_ship" campaignonly="true" />
+    <message header="" text="" />
+  </OutpostDestroyMission>
+  <OutpostDestroyMission name="暮色之城" identifier="cdabandoneoutpostnightsight" tags="abandonedoutpost" type="OutpostDestroy" reward="35000" description="" difficulty="5" commonness="60" allowretry="true" minleveldifficulty="30" maxleveldifficulty="65" successmessage="" unhideentitysubcategories="abandonedhuman">
+    <Reputation identifier="coalition" amount="-5" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="512,0,256,256" color="256,256,256" />
+    <LocationType identifier="Abandoned" />
+    <LocationTypeChange from="Abandoned" to="Outpost" requireddurationrange="2,3" cooldownafterchange="5" />
+    <Characters>
+      <Character identifier="cdnightsight_jf" from="cdnightsight" moduleflags="crewmodule" requirekill="true" multiplayeronly="true" />
+      <Character identifier="cdnightsight_ck" from="cdnightsight" moduleflags="crewmodule" asfaraspossible="true" requirekill="true" multiplayeronly="true" />
+      <Character identifier="cdnightsight_ck" from="cdnightsight" moduleflags="crewmodule" asfaraspossible="true" requirekill="true" />
+      <Character identifier="cdnightsight_wgg" from="cdnightsight" moduleflags="crewmodule" requirekill="true" asfaraspossible="true" multiplayeronly="true" />
+      <Character identifier="cdnightsight_jf_patrol" from="cdnightsight" moduleflags="crewmodule" requirekill="true" />
+      <Character identifier="cdnightsight_jf_patrol" from="cdnightsight" moduleflags="researchmodule" requirekill="true" />
+      <Character identifier="cdnightsight_xjj" from="cdnightsight" moduleflags="researchmodule" requirekill="true" multiplayeronly="true" />
+      <Character identifier="cdnightsight_wgg" from="cdnightsight" moduleflags="researchmodule" requirekill="true" />
+      <Character identifier="cdnightsight_jf" from="cdnightsight" moduleflags="researchmodule" requirekill="true" />
+      <Character identifier="cdnightsight_ck" from="cdnightsight" moduleflags="researchmodule" asfaraspossible="true" requirekill="true" />
+      <Character identifier="cdnightsight_xjj" from="cdnightsight" moduleflags="researchmodule" asfaraspossible="true" requirekill="true" />
+      <Character identifier="cdnightsight_ck" from="cdnightsight" moduleflags="researchmodule" asfaraspossible="true" requirekill="true" multiplayeronly="true" />
+      <Character identifier="cdnightsight_jf_patrol" from="cdnightsight" moduleflags="engineeringmodule" requirekill="true" />
+      <Character identifier="cdnightsight_ck" from="cdnightsight" moduleflags="engineeringmodule" asfaraspossible="true" requirekill="true" multiplayeronly="true" />
+      <Character identifier="cdnightsight_ck" from="cdnightsight" moduleflags="engineeringmodule" asfaraspossible="true" requirekill="true" />
+      <Character identifier="cdnightsight_wgg" from="cdnightsight" moduleflags="engineeringmodule" requirekill="true" multiplayeronly="true" />
+      <Character identifier="cdnightsight_xjj" from="cdnightsight" moduleflags="engineeringmodule" requirekill="true" />
+      <Character identifier="cdnightsight_jf" from="cdnightsight" moduleflags="engineeringmodule" requirekill="true" asfaraspossible="true" />
+      <Character identifier="cdnightsight_wgg" from="cdnightsight" moduleflags="securitymodule" requirekill="true" />
+      <Character identifier="cdnightsight_ck" from="cdnightsight" moduleflags="securitymodule" requirekill="true" multiplayeronly="true" />
+      <Character identifier="cdnightsight_jf_patrol" from="cdnightsight" moduleflags="securitymodule" requirekill="true" />
+      <Character identifier="cdnightsight_jf" from="cdnightsight" moduleflags="securitymodule" requirekill="true" />
+      <Character identifier="cdnightsight_ck" from="cdnightsight" moduleflags="securitymodule" requirekill="true" />
+      <Character identifier="cdnightsight_xjj" from="cdnightsight" moduleflags="securitymodule" requirekill="true" />
+      <Character identifier="cdnightsight_xjj" from="cdnightsight" moduleflags="securitymodule" requirekill="true" />
+      <Character identifier="cdnightsight_wgg" from="cdnightsight" moduleflags="securitymodule" asfaraspossible="true" requirekill="true" />
+      <Character identifier="cdnightsight_jf" from="cdnightsight" spawnpointtags="banditleader" requirekill="true" />
+      <Character identifier="cdnightsight_wgg" from="cdnightsight" spawnpointtags="banditleader" requirekill="true" />
+      <Character identifier="cdnightsight_jf" from="cdnightsight" spawnpointtags="banditleader" asfaraspossible="true" requirekill="true" multiplayeronly="true" />
+      <Character identifier="cdnightsight_ck" from="cdnightsight" spawnpointtags="banditleader" requirekill="true" multiplayeronly="true" />
+    </Characters>
+    <TriggerEvent state="0" delay="5" eventidentifier="cd_indestructible_wall" campaignonly="true" />
+    <TriggerEvent state="0" delay="5" eventidentifier="cd_remove_husk" campaignonly="true" />
+    <TriggerEvent state="0" delay="5" eventidentifier="cd_forsaken" campaignonly="true" />
+    <TriggerEvent state="0" delay="5" eventidentifier="givebufftonightsightenemy" campaignonly="true" />
+    <TriggerEvent state="0" delay="5" eventidentifier="cd_cqb_combat_in_ship" campaignonly="true" />
+    <message header="" text="" />
+  </OutpostDestroyMission>
+  <!--消灭掠食者-->
+  <AbandonedOutpostMission identifier="cdabandoneoutpostpredators" tags="abandonedoutpost" achievementidentifier="cdabandoneoutpostpredators" successmessage="" type="OutpostDestroy" description="" reward="50000" difficulty="5" commonness="64" allowretry="true" targetitem="reactor" minleveldifficulty="30" maxleveldifficulty="100" unhideentitysubcategories="abandonedhuman">
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="0,768,256,256" color="243,146,55" />
+    <LocationType identifier="Abandoned" />
+    <LocationTypeChange from="Abandoned" to="Outpost" requireddurationrange="2,3" cooldownafterchange="5" />
+    <Reputation identifier="separatists" amount="+10" />
+    <Reputation identifier="coalition" amount="-10" />
+    <Characters>
+      <Character requirekill="true" identifier="predators_man_enemy" from="predators" moduleflags="crewmodule" />
+      <Character requirekill="true" identifier="predators_jq_enemy" from="predators" moduleflags="crewmodule" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predators_man_enemy" from="predators" moduleflags="crewmodule" asfaraspossible="true" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predators_jq_enemy" from="predators" moduleflags="researchmodule" />
+      <Character requirekill="true" identifier="predators_man_enemy" from="predators" moduleflags="researchmodule" />
+      <Character requirekill="true" identifier="predators_xd_enemy" from="predators" moduleflags="researchmodule" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predators_man_enemy" from="predators" moduleflags="engineeringmodule" />
+      <Character requirekill="true" identifier="predators_xd_enemy" from="predators" moduleflags="engineeringmodule" />
+      <Character requirekill="true" identifier="predators_man_enemy" from="predators" moduleflags="engineeringmodule" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predators_xd_blueprint" from="predators" moduleflags="securitymodule" />
+      <Character requirekill="true" identifier="predators_jq_enemy" from="predators" moduleflags="securitymodule" />
+      <Character requirekill="true" identifier="predators_man_enemy" from="predators" moduleflags="securitymodule" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predators_jq_enemy" from="predators" moduleflags="securitymodule" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predators_man_enemy" from="predators" moduleflags="securitymodule" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predators_xd_enemy" from="predators" spawnpointtags="banditleader" asfaraspossible="true" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predators_man_enemy" from="predators" spawnpointtags="banditleader" />
+      <!--
+      <Character requirekill="true" identifier="predators_man_enemy" from="predators" moduleflags="crewmodule" />
+      <Character requirekill="true" identifier="predators_man_enemy" from="predators" moduleflags="researchmodule" />
+      <Character requirekill="true" identifier="predators_man_enemy" from="predators" moduleflags="engineeringmodule" />
+      <Character requirekill="true" identifier="predators_man_enemy" from="predators" moduleflags="securitymodule" />
+      <Character requirekill="true" identifier="predators_man_enemy" from="predators" spawnpointtags="banditleader" />
+      <Character requirekill="true" identifier="predators_man_enemy" from="predators" moduleflags="researchmodule" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predators_man_enemy" from="predators" moduleflags="engineeringmodule" multiplayeronly="true" />
+      <Character requirekill="true" identifier="predators_man_enemy" from="predators" moduleflags="securitymodule" multiplayeronly="true" />
+      -->
+    </Characters>
+    <TriggerEvent state="0" delay="5" eventidentifier="cd_indestructible_wall" campaignonly="true" />
+    <TriggerEvent state="0" delay="5" eventidentifier="cd_remove_husk" campaignonly="true" />
+    <TriggerEvent state="0" delay="5" eventidentifier="cd_forsaken" campaignonly="true" />
+    <TriggerEvent state="0" delay="5" eventidentifier="givebufftopredatorsenemy" campaignonly="true" />
+    <TriggerEvent state="0" delay="5" eventidentifier="cd_cqb_combat_in_ship" campaignonly="true" />
+    <message header="" text="" />
+  </AbandonedOutpostMission>
+  <!--低声望
+  <MonsterMission identifier="cdattack" showstartmessage="false" type="Monster" tags="cdattack" commonness="100" difficulty="5">
+    <monster character="Ship" min="1" max="1" />
+    <monster character="Ship1" min="1" max="1" />
+    <monster character="Ship2" min="1" max="1" />
+    <monster character="Ship3" min="1" max="1" />
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="0,768,256,256" color="243,146,55"/>
+    <message header="" text="" />
+  </MonsterMission>
+  -->
+  <!-- 巡回内任务 -->
+  <!--熔岩蛇-->
+  <MonsterMission name="跃动熔岩" identifier="cdmission1" tags="cd_mission_gt20_A,cd_mission_gt20_B,cd_mission_gt40A,cd_mission_gt40_B" type="Monster" description="EAN-188沉没,最后的讯息显示其遭遇未知生物,找到它并将其消灭" commonness="20" reward="30000" sonarlabel="高热反应" maxsonarmarkerdistance="10000" successmessage="行动结束,复仇已完成" spawntype="Abyss" difficulty="6">
+    <monster character="cdApophis" min="1" max="1" />
+    <Reputation identifier="location" amount="3" />
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <message header="击坠神明" text="烈焰终将熄灭" />
+  </MonsterMission>
+  <!-- 小摩洛克大迁徙 -->
+  <!-- 真小摩洛克 -->
+  <MonsterMission name="小摩洛克大迁徙" identifier="cdmission2" tags="cd_mission_gt0_A,cd_mission_gt20_A,cd_mission_gt40A" type="Monster" description="我们在航道内发现了一群小摩洛克,它们没有成年个体保护,抓住机会将其消灭" commonness="20" reward="6000" sonarlabel="小摩洛克" maxsonarmarkerdistance="10000" successmessage="异类而已" failuremessage="令人震惊!" difficulty="3">
+    <monster character="Molochbaby" min="12" max="16" />
+    <Reputation identifier="location" amount="3" />
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <message header="屠杀" text="相比于挥刀向幼年同类,异类更容易一些" />
+  </MonsterMission>
+  <!-- 假小摩洛克 -->
+  <MonsterMission name="小摩洛克大迁徙" identifier="cdmission3" tags="cd_mission_gt0_B,cd_mission_gt20_B,cd_mission_gt40_B" type="Monster" description="我们在航道内发现了一群小摩洛克,它们没有成年个体保护,抓住机会将其消灭" commonness="20" reward="6000" sonarlabel="小摩洛克" maxsonarmarkerdistance="10000" successmessage="有些波折,不过完成了" failuremessage="该死的情报员" difficulty="3">
+    <monster character="Molochbaby" min="8" max="10" />
+    <monster character="Molochblack" min="6" max="8" />
+    <Reputation identifier="location" amount="3" />
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <message header="情报有误" text="麻烦转告情报员:眼睛不需要可以捐给需要的人" />
+  </MonsterMission>
+  <!-- 蜘蛛洞穴 -->
+  <NestMission name="洞穴怪声" identifier="cdmission4" tags="cd_mission_gt0_A,cd_mission_gt20_A,cd_mission_gt40A" type="Nest" description="有人在洞穴里听到一种呻吟声,请查明原因" spawntype="cave" reward="15000" itemspawnradius="800" approachitemsradius="5000" monsterspawnradius="4000" nestobjectradius="1500" nestobjectamount="3" difficulty="6" commonness="20" successmessage="蜘蛛狂潮">
+    <Items>
+      <Item identifier="cdgoodspideregg" />
+      <Item identifier="cdgoodspideregg" />
+      <Item identifier="cdgoodspideregg" />
+    </Items>
+    <monster character="cdDeathspider" min="4" max="5" />
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <Reputation identifier="location" amount="3" />
+    <message header="原因已查明" text="我们活下来了" />
+  </NestMission>
+  <!-- 堕落洞穴 -->
+  <NestMission name="洞穴怪声" identifier="cdmission5" tags="cd_mission_gt0_B,cd_mission_gt20_B,cd_mission_gt40_B" type="Nest" description="有人在洞穴里听到一种呻吟声,请查明原因" spawntype="cave" reward="15000" itemspawnradius="800" approachitemsradius="800" monsterspawnradius="4000" nestobjectradius="1500" nestobjectamount="3" difficulty="6" commonness="20" successmessage="无缘非凡">
+    <Items>
+      <Item identifier="cdgoodspideregg" />
+      <Item identifier="cdgoodspideregg" />
+      <Item identifier="cdgoodspideregg" />
+    </Items>
+    <monster character="Reprobate" min="3" max="4" />
+    <monster character="Reprobate" min="2" max="3" multiplayeronly="true" />
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <Reputation identifier="location" amount="3" />
+    <message header="原因已查明" text="一群无资质的可怜人而已" />
+  </NestMission>
+  <!-- 航道内阿根廷A4天鹰 -->
+  <MonsterMission name="喷气轰鸣" identifier="cdmission6" tags="cd_mission_gt20_A,cd_mission_gt40_A,cd_mission_gt20_B,cd_mission_gt40_B" type="Monster" description="我们在航道中发现了一种很奇怪的机械,它们在疯狂攻击来往舰船,请将它们清除" commonness="20" reward="15000" sonarlabel="喷气飞机" maxsonarmarkerdistance="10000" successmessage="阿根廷,别为我哭泣" difficulty="6">
+    <monster character="cdA4Skyhawk" min="9" max="9" />
+    <Reputation identifier="location" amount="3" />
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <message header="马尔维纳斯" text="尘封的历史,最后的俯冲轰炸" />
+  </MonsterMission>
+  <!-- 运货任务_蘑菇针 -->
+  <CargoMission name="运送实验霉菌" identifier="cdmission7" tags="cd_mission_gt20_A,cd_mission_gt40_A,cd_mission_gt20_B,cd_mission_gt40_B" description="实验室要的药剂,别好奇自己乱用了" successmessage="保质保量" failuremessage="希望你不会付出代价" type="Cargo" commonness="20">
+    <Items>
+      <Item identifier="metalcrate" reward="1000" maxcount="5">
+        <Item identifier="cdungalpotion" amount="1" />
+      </Item>
+    </Items>
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <Reputation identifier="location" amount="2" />
+  </CargoMission>
+  <!-- 运货任务_非凡特性 -->
+  <CargoMission name="运输-非凡特性" identifier="cdmission8" tags="cd_mission_gt0_A,cd_mission_gt0_B,cd_mission_gt20_A,cd_mission_gt40_A,cd_mission_gt20_B,cd_mission_gt40_B" description="一群自称非凡信徒的家伙,要求将这批药剂运送到下一站" successmessage="完成委托即可" failuremessage="你赌赢了吗?" type="Cargo" commonness="20">
+    <Items>
+      <Item identifier="metalcrate" reward="500" maxcount="10">
+        <Item identifier="cdmenpotion" amount="1" />
+        <Item identifier="cdmenpotion" amount="1" />
+        <Item identifier="cdmenpotion" amount="1" />
+        <Item identifier="cdmenpotion" amount="1" />
+      </Item>
+    </Items>
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <Reputation identifier="location" amount="2" />
+  </CargoMission>
+  <!-- 运货任务-十分钟蜘蛛蛋 -->
+  <CargoMission name="运输-不稳定的活化特性卵" identifier="cdmission11" tags="cd_mission_gt20_A,cd_mission_gt40_A,cd_mission_gt20_B,cd_mission_gt40_B" description="这批卵进入了不稳定状态,非凡信徒需要紧急将这批卵运送到下一站,注意:只有十分钟时间" successmessage="急速抵达" failuremessage="很遗憾,它们没能撑住" type="Cargo" commonness="20">
+    <Items>
+      <Item identifier="metalcrate" reward="1000" maxcount="10">
+        <Item identifier="cdspideregg_cargo" amount="1" />
+        <Item identifier="cdspideregg_cargo" amount="1" />
+      </Item>
+    </Items>
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <Reputation identifier="location" amount="2" />
+  </CargoMission>
+  <!-- site13站点沉船任务 -->
+  <SalvageMission identifier="cdmission10" tags="cd_mission_gt20_A,cd_mission_gt40_A,cd_mission_gt20_B,cd_mission_gt40_B" name="site-13发生了什么?" type="Salvage" difficulty="3" commonness="20" reward="5000" achievementidentifier="salvagewreckmission" spawntype="wreck" showmessagewhenpickedup="true" wreckTags="site13" itemidentifier="handheldterminal" containertag="locker" sonarlabel="不明建筑" successmessage="数据已收到" failuremessage="site-13发生了什么?" description="联盟在航道内发现了一栋不明建筑,需要你们前去探索,并获得里面相关信息" requirewreck="true">
+    <Reputation identifier="location" amount="4" />
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <message header="回收完成" text="相关数据已带回船上" />
+  </SalvageMission>
+  <!-- 运送掠食者 -->
+  <!-- <EscortMission name="运送掠食者突击队" identifier="cdmission9" 
+  description="一支掠食者小队需要到下一站,请保证一人不落安全到站" successmessage="安全到站" failuremessage="出乎意料" 
+  tags="cd_mission_gt20_A,cd_mission_gt20_B" type="Escort" commonness="20" reward="1500">
+  <Characters>
+    <Item from="predators" identifier="predators_man" />
+    <Item from="predators" identifier="predators_jq" />
+    <Item from="predators" identifier="predators_xd" />
+    <Item from="predators" identifier="predators_jq" />
+  </Characters>
+  <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+  <TriggerEvent state="0" delay="5" eventidentifier="givebufftopredators" />
+  <Reputation identifier="coalition" amount="3" />
+  </EscortMission> -->
+  <!--  菌毯部队运送-背叛 -->
+  <!-- <EscortMission
+    name="运送菌毯部队"
+    description="联盟需要这批菌毯部队到达下一站"
+    identifier="cdmission13"
+    tags="cd_mission_gt40_A"
+    type="Escort"
+    successmessage="干得很好,你们压制了一场叛乱"
+    failuremessage="逆反"
+    commonness="20"
+    reward="7500"
+    terroristchance="1"
+    terroristannouncedialogtag="cdcreeps_text">     -->
+  <!-- 护送角色配置 -->
+  <!-- <Characters>
+      <Character identifier="creeps_cfq_enemy_patrol" from="creeps" />
+      <Character identifier="creeps_cfq_enemy_patrol" from="creeps" />
+      <Character identifier="creeps_mrl_enemy_patrol" from="creeps" />
+      <Character identifier="creeps_cjbq_enemy_patrol" from="creeps" />
+      <Character identifier="creeps_cjbq_enemy_patrol" from="creeps" />
+    </Characters>
+    <TerroristItems>
+      <ChooseRandom>
+      </ChooseRandom>
+    </TerroristItems>
+    <TriggerEvent state="0" delay="5" eventidentifier="givebufftocreepsenemy" campaignonly="true" /> -->
+  <!-- 声望奖励：联盟+10 -->
+  <!-- <Reputation identifier="coalition" amount="10"  /> -->
+  <!-- 任务图标 -->
+  <!-- <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" /> -->
+  <!-- 任务位置类型：从任何前哨站到任何前哨站 -->
+  <!-- <LocationType from="AnyOutpost" to="AnyOutpost" /> -->
+  <!-- 任务消息：显示任务标题和描述 -->
+  <!-- <message header="KIA" text="白名单人员身亡"/> -->
+  <!-- <message header="突发事件" text="为什么?"/> -->
+  <!-- </EscortMission> -->
+  <!-- 菌毯运输逝世于此 -->
+  <PirateMission name="堡垒坠落" description="Minos被我们发现于附近海域.通过侦察发现,这条船失去了动力,这是击溃这群海盗的绝佳机会" type="Pirate" faction="separatists" identifier="cdmission12" tags="cd_mission_gt20_P" difficulty="6" commonness="20" reward="25000" successmessage="堡垒已然陨落" failuremessage="所有作战单位丢失,行动失败" addedmissiondifficultyperplayer="10">
+    <Reputation identifier="coalition" amount="10" />
+    <Reputation identifier="separatists" amount="10" />
+    <SubmarineTypes>
+      <Submarine path="%ModDir%/content/sub/Minos_missing.sub" faction="separatists" />
+      <!--  <Submarine path="LocalMods/pirates_tsm_1/pirates_tsm_1.sub" faction="separatists" preferreddifficulty="10" alternatereward="3200"/>  -->
+    </SubmarineTypes>
+    <Characters>
+      <!--  船长  -->
+      <Character typeidentifier="Mions_pirate_captain" minamount="1" maxamount="1" />
+      <!--  安全官首领  -->
+      <Character typeidentifier="Mions_pirate_S" minamount="2" maxamount="2" />
+      <!--  安全官-粒子加速器  -->
+      <Character typeidentifier="Mions_pirate_A" minamount="5" maxamount="5" />
+      <!--  医生  -->
+      <Character typeidentifier="Mions_pirate_B" minamount="4" maxamount="4" />
+      <!--  安全官-步枪  -->
+      <Character typeidentifier="Mions_pirate_C" minamount="5" maxamount="5" />
+      <!--  机修工-霰弹  -->
+      <Character typeidentifier="Mions_pirate_D" minamount="3" maxamount="3" />
+    </Characters>
+    <CharacterTypes>
+      <CharacterType typeidentifier="Mions_pirate_captain">
+        <Character identifier="Mions_pirate_captain" from="cd_sub_npc" preferreddifficulty="20" />
+      </CharacterType>
+      <CharacterType typeidentifier="Mions_pirate_S">
+        <Character identifier="Mions_pirate_S" from="cd_sub_npc" preferreddifficulty="20" />
+      </CharacterType>
+      <CharacterType typeidentifier="Mions_pirate_A">
+        <Character identifier="Mions_pirate_A" from="cd_sub_npc" preferreddifficulty="20" />
+      </CharacterType>
+      <CharacterType typeidentifier="Mions_pirate_B">
+        <Character identifier="Mions_pirate_B" from="cd_sub_npc" preferreddifficulty="20" />
+      </CharacterType>
+      <CharacterType typeidentifier="Mions_pirate_C">
+        <Character identifier="Mions_pirate_C" from="cd_sub_npc" preferreddifficulty="20" />
+      </CharacterType>
+      <CharacterType typeidentifier="Mions_pirate_D">
+        <Character identifier="Mions_pirate_D" from="cd_sub_npc" preferreddifficulty="20" />
+      </CharacterType>
+    </CharacterTypes>
+    <TriggerEvent state="0" delay="5" eventidentifier="givebuffpirateenemy" campaignonly="true" />
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <message header="发现目标" text="各单位注意,行动开始" />
+    <message header="行动结束,任务完成" text="在任何时代,巷战永远是噩梦" />
+    <LocationType from="AnyOutpost" to="Any" />
+  </PirateMission>
+  <PirateMission name="猎杀EAN-141" description="EAN-141&quot;帕西法厄&quot;当前在附近海域巡航,她的巨炮已经粉碎了无数分离主义潜艇,分离主义希望你们将其击沉" type="Pirate" identifier="cdmission15" tags="cd_mission_gt20_P,cd_mission_gt40_P" difficulty="6" commonness="20" reward="15000" successmessage="EAN-141已被击沉" failuremessage="行动失败">
+    <Reputation identifier="coalition" amount="-5" />
+    <Reputation identifier="separatists" amount="10" />
+    <SubmarineTypes>
+      <Submarine path="%ModDir%/content/sub/EAN-141.sub" />
+      <!-- <Submarine path="LocalMods/pirates_tsm_1/pirates_tsm_1.sub" faction="separatists" preferreddifficulty="10" alternatereward="3200"/> -->
+    </SubmarineTypes>
+    <Characters>
+      <!-- 船长 -->
+      <Character typeidentifier="EAN_coalition_captain" minamount="1" maxamount="1" />
+      <!-- 医生 -->
+      <Character typeidentifier="EAN_coalition_medicaldoctor" minamount="3" maxamount="3" />
+      <!-- 机修工-->
+      <Character typeidentifier="EAN_coalition_mechanic" minamount="5" maxamount="5" />
+      <!-- 安全官-机枪 -->
+      <Character typeidentifier="predators_jq" minamount="1" maxamount="1" />
+      <!-- 安全官-步枪 -->
+      <Character typeidentifier="predators_man" minamount="2" maxamount="2" />
+      <!-- 机修工-霰弹 -->
+      <Character typeidentifier="predators_xd" minamount="1" maxamount="1" />
+    </Characters>
+    <CharacterTypes>
+      <CharacterType typeidentifier="EAN_coalition_captain">
+        <Character identifier="EAN_coalition_captain" from="cd_sub_npc" preferreddifficulty="0" iscommander="true" />
+      </CharacterType>
+      <CharacterType typeidentifier="EAN_coalition_medicaldoctor">
+        <Character identifier="EAN_coalition_medicaldoctor" from="cd_sub_npc" preferreddifficulty="0" />
+      </CharacterType>
+      <CharacterType typeidentifier="EAN_coalition_mechanic">
+        <Character identifier="EAN_coalition_mechanic" from="cd_sub_npc" preferreddifficulty="0" />
+      </CharacterType>
+      <CharacterType typeidentifier="predators_jq">
+        <Character identifier="predators_jq" from="predators" preferreddifficulty="0" />
+      </CharacterType>
+      <CharacterType typeidentifier="predators_man">
+        <Character identifier="predators_man" from="predators" preferreddifficulty="0" />
+      </CharacterType>
+      <CharacterType typeidentifier="predators_xd">
+        <Character identifier="predators_xd" from="predators" preferreddifficulty="0" />
+      </CharacterType>
+    </CharacterTypes>
+    <TriggerEvent state="0" delay="5" eventidentifier="givebuffcoalitionenemy" campaignonly="true" />
+    <TriggerEvent state="0" delay="5" eventidentifier="givebufftopredators" />
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <message header="发现目标" text="全舰注意,炮战准备" />
+    <message header="大舰巨炮" text="钢铁巨兽的厮杀" />
+    <LocationType from="AnyOutpost" to="Any" />
+  </PirateMission>
+  <MonsterMission name="溶金蚀石" identifier="cdmission16" tags="cd_mission_gt20_A,cd_mission_gt20_B,cd_mission_gt40A,cd_mission_gt40_B" type="Monster" description="我们发现,附近的航道的深渊内出现了一只未知生物,并多次入侵航道袭击来往船只,幸运返航的舰船表面有明显的酸蚀现象。尽管它的体型算不上巨大,但已经对我们构成了严重威胁,找到并消灭它" commonness="20" reward="30000" sonarlabel="酸蚀树灵" maxsonarmarkerdistance="10000" successmessage="已确认目标失去生命迹象" spawntype="Abyss" difficulty="6">
+    <monster character="Cdulceratedtree" min="1" max="1" />
+    <Reputation identifier="location" amount="5" />
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <message header="歼灭" text="&quot;如果我们把它捕获,是不是就有用不完的硫酸了?&quot;&#xA;&quot;省省吧,除非你想让船上没有一块能用的装甲板&quot;" />
+  </MonsterMission>
+  <MonsterMission name="大眼小聚会" identifier="cdmission17" tags="cd_mission_gt0_A,cd_mission_gt20_A,cd_mission_gt0_B,cd_mission_gt20_B" type="Monster" description="在航道内有几只窥视者聚集在一起,无论它们出于什么原因,最好还是去死一死" commonness="20" reward="6000" sonarlabel="观察者" maxsonarmarkerdistance="10000" successmessage="非法集聚" failuremessage="团结的力量" difficulty="3">
+    <monster character="Watcher" min="5" max="6" />
+    <Reputation identifier="location" amount="3" />
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <message header="肃清" text="总之,航道内安静了" />
+  </MonsterMission>
+  <MonsterMission name="赶尽杀绝" identifier="cdmission18" tags="cd_mission_gt0_A,cd_mission_gt20_A,cd_mission_gt40A,cd_mission_gt0_B,cd_mission_gt20_B,cd_mission_gt40B" type="Monster" description="航道内发现了一群罕见的长尾鲨。不过在木卫二,没有生态保护概念,杀光它们" commonness="20" reward="6000" sonarlabel="长尾鲨" maxsonarmarkerdistance="10000" successmessage="也许是最后一群" failuremessage="让它们再活一阵" difficulty="4">
+    <monster character="cdLegacytigerthresher" min="12" max="14" />
+    <Reputation identifier="location" amount="3" />
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <message header="灭绝" text="也许就此灭绝了,但谁在乎呢" />
+  </MonsterMission>
+  <MonsterMission name="煞卷风" identifier="cdmission19" tags="cd_mission_gt0_A,cd_mission_gt20_A,cd_mission_gt40A" type="Monster" description="航道内发现一支大规模锤头煞家族,为了航道安全,需要拆散它们,以杀戮的方式" commonness="20" reward="6000" sonarlabel="锤头煞" maxsonarmarkerdistance="10000" successmessage="株连九族" failuremessage="黑恶的家族势力......" difficulty="4">
+    <monster character="Hammerheadmatriarch" min="1" max="1" />
+    <monster character="Hammerhead_m" min="2" max="2" />
+    <monster character="Hammerheadgold_m" min="2" max="2" />
+    <monster character="Hammerheadgoldsubspecies" min="2" max="2" />
+    <monster character="Hammerheadaa" min="2" max="2" />
+    <monster character="Hammerhead" min="2" max="2" />
+    <monster character="Hammerheadgold" min="2" max="2" />
+    <Reputation identifier="location" amount="3" />
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <message header="杀尽" text="这支家族已经不复存在了" />
+  </MonsterMission>
+  <MonsterMission name="煞卷风" identifier="cdmission20" tags="cd_mission_gt0_B,cd_mission_gt20_B,cd_mission_gt40A" type="Monster" description="航道内发现一支大规模锤头煞家族,为了航道安全,需要拆散它们,以杀戮的方式" commonness="20" reward="6000" sonarlabel="锤头煞" maxsonarmarkerdistance="10000" successmessage="株连九族" failuremessage="黑恶的家族势力......" difficulty="4">
+    <monster character="Hammerheadmatriarch" min="2" max="2" />
+    <monster character="Hammerhead_m" min="2" max="2" />
+    <monster character="Hammerheadgold_m" min="2" max="2" />
+    <monster character="Hammerheadgoldsubspecies" min="2" max="2" />
+    <monster character="Hammerheadaa" min="2" max="2" />
+    <monster character="Hammerhead" min="2" max="2" />
+    <monster character="Hammerheadgold" min="2" max="2" />
+    <Reputation identifier="location" amount="3" />
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <message header="杀尽" text="这支家族已经不复存在了" />
+  </MonsterMission>
+  <CargoMission name="运输-潜水鸭玩具" identifier="cdmission21" tags="cd_mission_gt0_A,cd_mission_gt0_B,cd_mission_gt20_A,cd_mission_gt20_B" description="一群小丑希望能将这批货物运送到下一站,他们形容这批货是:&quot;颠覆木卫二&quot;" successmessage="哔哔哔-送达!" failuremessage="这都偷" type="Cargo" commonness="20">
+    <Items>
+      <Item identifier="metalcrate" reward="100" maxcount="10">
+        <Item identifier="deepdiverduck" amount="1" />
+        <Item identifier="deepdiverduck" amount="1" />
+        <Item identifier="deepdiverduck" amount="1" />
+        <Item identifier="deepdiverduck" amount="1" />
+      </Item>
+    </Items>
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <Reputation identifier="clowns" amount="5" />
+  </CargoMission>
+  <CargoMission name="运输-马克币" identifier="cdmission22" tags="cd_mission_gt0_A,cd_mission_gt0_B,cd_mission_gt20_A,cd_mission_gt20_B" description="沉底银行希望你们把这批马克币运送到下一站" successmessage="木卫二的金融体系是怎么回事" failuremessage="我们需要彻查船上的叛徒了" type="Cargo" commonness="20">
+    <Items>
+      <Item identifier="metalcrate" reward="200" maxcount="10">
+        <Item identifier="cd100MK" amount="1" />
+        <Item identifier="cd100MK" amount="1" />
+        <Item identifier="cd100MK" amount="1" />
+        <Item identifier="cd100MK" amount="1" />
+      </Item>
+    </Items>
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <Reputation identifier="location" amount="0" />
+  </CargoMission>
+  <CargoMission name="运送菌毯部队" identifier="cdmission23" tags="cd_mission_gt0_A,cd_mission_gt0_B,cd_mission_gt20_A,cd_mission_gt20_B" description="&quot;他们是这么形容任务名的,我也不知道为什么&quot;,任务派发员说道" successmessage="总之送到了,但总觉得怪怪的" failuremessage="逆反!" type="Cargo" commonness="20">
+    <Items>
+      <Item identifier="metalcrate" reward="300" maxcount="10">
+        <Item identifier="yeastshroom" amount="1" />
+        <Item identifier="yeastshroom" amount="1" />
+        <Item identifier="yeastshroom" amount="1" />
+        <Item identifier="yeastshroom" amount="1" />
+      </Item>
+    </Items>
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <Reputation identifier="clowns" amount="3" />
+  </CargoMission>
+  <CargoMission name="运输-星界军激光枪" identifier="cdmission24" tags="cd_mission_gt40_A,cd_mission_gt40_B,cd_mission_gt20_A,cd_mission_gt20_B" description="沉底银行要求将这批武器运送到下一站" successmessage="送达" failuremessage="一不小心弄丢了" type="Cargo" commonness="20">
+    <Items>
+      <Item identifier="metalcrate" reward="400" maxcount="10">
+        <Item identifier="cdlasrifle_wh" amount="1" />
+        <Item identifier="cdlasrifle_wh" amount="1" />
+        <Item identifier="cdlasrifle_wh" amount="1" />
+        <Item identifier="cdlasrifle_wh" amount="1" />
+      </Item>
+    </Items>
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <Reputation identifier="location" amount="3" />
+  </CargoMission>
+  <MonsterMission name="与龙共舞" identifier="cdmission25" tags="cd_mission_gt20_A,cd_mission_gt20_B,cd_mission_gt40A,cd_mission_gt40_B" type="Monster" description="一条海龙出现在了航道并击沉了银行的运钞船,经侦察发现它竟将船上的蘑菇币据为己有,纳入它的巢穴收藏,真是贪婪的龙&#xA;银行绝对不能容忍此事,击沉它!追回属于我们的财产" commonness="20" reward="30000" sonarlabel="龙在此" maxsonarmarkerdistance="10000" successmessage="资产已追回" spawntype="Abyss" difficulty="6">
+    <monster character="Seadragonleviathan" min="1" max="1" />
+    <Reputation identifier="location" amount="5" />
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <message header="清除" text="&quot;吃舰炮吃饱了,也是一种饱龙&quot;" />
+  </MonsterMission>
+  <MonsterMission name="瘟疫机械" identifier="cdmission26" tags="cd_mission_gt0_A,cd_mission_gt20_A,cd_mission_gt40A,cd_mission_gt0_B,cd_mission_gt20_B,cd_mission_gt40B" type="Monster" description="我们在航道内发现了一群在散播瘟疫的机械,严重威胁过往船只,需要将其消杀" commonness="20" reward="8000" sonarlabel="机械群" maxsonarmarkerdistance="10000" successmessage="注意疫情防护" failuremessage="还是远离吧" difficulty="4">
+    <monster character="cdfractalguardian" min="12" max="14" />
+    <Reputation identifier="location" amount="5" />
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <message header="消杀" text="ISCS疾控消杀中心提醒您,瘟疫防治刻不容缓" />
+  </MonsterMission>
+  <SalvageMission identifier="cdmission27" tags="cd_mission_gt20_A,cd_mission_gt40_A,cd_mission_gt20_B,cd_mission_gt40_B,site_19_mission" name="控制,收容,保护" type="Salvage" difficulty="3" commonness="20" reward="75000" achievementidentifier="salvagewreckmission" spawntype="wreck" showmessagewhenpickedup="true" wreckTags="site19" itemidentifier="handheldterminal" containertag="site19locker" sonarlabel="目标日志" successmessage="日志回收完成" description="这是一份很特别的委托,一个自称为基金会的组织,委托我们找一条船前往附近的一座站点以回收日志&#xA;按他们的描述,站点已经失控并被占领,C.A.S.S.I.E系统失联,日志贮藏室自动锁死;你们需要重启C.A.S.S.I.E系统并回收日志,系统重启完成后他们会发送核弹引爆指令,清空整个航道.......真是疯狂,所以日志回收完成后尽快撤离回站点&#xA;你们出发后,相应的支援物资也会送到船上" requirewreck="true">
+    <Reputation identifier="cdbank" amount="5" />
+    <TriggerEvent state="0" delay="5" eventidentifier="cdsite19_item_event" campaignonly="true" />
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <message header="回收完成" text="尽快撤离吧" />
+  </SalvageMission>
+  <!--影子摩洛克-->
+  <MonsterMission name="回响" identifier="cdmission28" tags="cd_mission_gt20_A,cd_mission_gt20_B,cd_mission_gt40A,cd_mission_gt40_B" type="Monster" description="某个实验体突破收容了，这会出乱子的，请将其消灭。" commonness="20" reward="50000" sonarlabel="黑色摩螺克" maxsonarmarkerdistance="10000" successmessage="埋葬我" spawntype="Abyss" difficulty="6">
+    <monster character="cdMolochDark" min="1" max="1" />
+    <Reputation identifier="location" amount="5" />
+    <Icon texture="%ModDir%/content/png/missionicon.png" sourcerect="0,5,424,418" color="255,255,255" />
+    <message header="猎杀结束" text="过往的船只会感谢你的" />
+  </MonsterMission>
+</Missions>

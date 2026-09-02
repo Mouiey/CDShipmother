@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Character tags="highpriority" specifiertags="true" SpeciesName="HumanShadow2"  UseHumanAI="True"  SpeciesTranslationOverride="" DisplayName="" Group="EShuman" Humanoid="True" HasInfo="True" CanInteract="True" CanClimb="True" Husk="True" NonHuskedSpecies="human" UseHuskAppendage="True" NeedsAir="False" NeedsWater="False" CanSpeak="false" UseBossHealthBar="False" Noise="150" Visibility="150" BloodDecal="blood" BleedParticleAir="blooddrop" BleedParticleWater="waterblood" BleedParticleMultiplier="1" CanEat="True" EatingSpeed="10" UsePathFinding="True" PathFinderPriority="1" HideInSonar="False" HideInThermalGoggles="False" SonarDisruption="0" DistantSonarRange="0" DisableDistance="25000" SoundInterval="10">
+    <names path="Content/Characters/Human/names.xml" />
+    <ragdolls folder="default" />
+    <animations folder="default" />
+    <!--
+    <damageemitter drawontop="True" Particle="gib" AngleMin="0" AngleMax="360" ScaleMin="0.25" ScaleMax="0.5" VelocityMin="50" VelocityMax="300" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="10" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+    <bloodemitter Particle="blood" AngleMin="0" AngleMax="0" ScaleMin="1" ScaleMax="1" VelocityMin="0" VelocityMax="0" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="10" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+    <bloodemitter Particle="waterblood" AngleMin="0" AngleMax="0" ScaleMin="1" ScaleMax="1" VelocityMin="0" VelocityMax="0" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="1" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+    <gibemitter Particle="gib" AngleMin="0" AngleMax="360" ScaleMin="1" ScaleMax="1" VelocityMin="200" VelocityMax="700" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="20" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+    <gibemitter Particle="heavygib" AngleMin="0" AngleMax="360" ScaleMin="1" ScaleMax="1" VelocityMin="50" VelocityMax="500" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="10" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+    -->
+    <!--
+    <sound File="Content/Characters/Human/female_damage1.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="Content/Characters/Human/female_damage2.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="Content/Characters/Human/female_damage3.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="Content/Characters/Human/female_damage4.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="Content/Characters/Human/female_damage5.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="Content/Characters/Human/female_damage6.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="Content/Characters/Human/female_damage7.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="Content/Characters/Human/female_damage8.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="Content/Characters/Human/female_damage9.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="Content/Characters/Human/female_damage10.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="Content/Characters/Human/male_damage1.ogg" State="Damage" Range="500" Volume="1" Tags="Male" />
+    <sound File="Content/Characters/Human/male_damage2.ogg" State="Damage" Range="500" Volume="1" Tags="Male" />
+    <sound File="Content/Characters/Human/male_damage3.ogg" State="Damage" Range="500" Volume="1" Tags="Male" />
+    <sound File="Content/Characters/Human/male_damage4.ogg" State="Damage" Range="500" Volume="1" Tags="Male" />
+    <sound File="Content/Characters/Human/male_damage5.ogg" State="Damage" Range="500" Volume="1" Tags="Male" />
+    <sound File="Content/Characters/Human/male_damage6.ogg" State="Damage" Range="500" Volume="1" Tags="Male" />
+    <sound File="Content/Characters/Human/male_damage7.ogg" State="Damage" Range="500" Volume="1" Tags="Male" />
+    <sound File="Content/Characters/Human/male_damage8.ogg" State="Damage" Range="500" Volume="1" Tags="Male" />
+    <sound File="Content/Characters/Human/male_damage9.ogg" State="Damage" Range="500" Volume="1" Tags="Male" />
+    <sound File="Content/Characters/Human/male_damage10.ogg" State="Damage" Range="500" Volume="1" Tags="Male" />
+    <sound File="Content/Characters/Human/male_damage11.ogg" State="Damage" Range="500" Volume="1" Tags="Male" />
+    -->
+    <health Vitality="100" DoesBleed="True" CrushDepth="6000" UseHealthWindow="True" BleedingReduction="0" BurnReduction="0.075" ConstantHealthRegeneration="0" HealthRegenerationWhenEating="0" StunImmunity="False" PoisonImmunity="False" ApplyAfflictionColors="True">
+      <MedUISilhouette texture="Content/UI/Health/MedUI_Silhouette.png" columns="8" rows="2" sourcerect="0,0,1008,748" />
+      <MedUIExtra texture="Content/UI/Health/MedUIExtra.png" columns="4" rows="4" sourcerect="0,0,1024,1024" />
+      <Limb name="Head">
+        <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="1,0,126,374" highlightarea="41,0,45,54" />
+        <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="1,515,126,374" />
+        <VitalityMultiplier type="damage" multiplier="2.0" />
+      </Limb>
+      <Limb name="Torso">
+        <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="631,0,126,374" highlightarea="29,56,70,134" />
+        <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="631,515,126,374" />
+        <VitalityMultiplier type="bleeding" multiplier="2.0" />
+      </Limb>
+      <Limb name="LeftArm">
+        <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="379,0,126,374" highlightarea="1,69,27,140" />
+        <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="379,515,126,374" />
+        <VitalityMultiplier type="damage" multiplier="0.5" />
+      </Limb>
+      <Limb name="RightArm">
+        <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="127,0,126,374" highlightarea="100,69,27,140" />
+        <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="127,515,126,374" />
+        <VitalityMultiplier type="damage" multiplier="0.5" />
+      </Limb>
+      <Limb name="LeftLeg">
+        <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="505,0,126,374" highlightarea="3,180,57,194" />
+        <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="505,515,126,374" />
+        <VitalityMultiplier type="damage" multiplier="0.5" />
+      </Limb>
+      <Limb name="RightLeg">
+        <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="253,0,126,374" highlightarea="68,180,57,194" />
+        <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="253,515,126,374" />
+        <VitalityMultiplier type="damage" multiplier="0.5" />
+      </Limb>
+    </health>
+    <Vars>
+      <Var var="GENDER" tags="female,male" />
+    </Vars>
+    <ai CombatStrength="100" Sight="10" Hearing="10" AttackWhenProvoked="False" AggressiveBoarding="True" TargetOuterWalls="False" RandomAttack="True" CanOpenDoors="True" UsePathFindingToGetInside="True" AvoidAbyss="False" PatrolFlooded="True" PatrolDry="True">
+      <target Tag="human" State="Attack" Priority="100" IgnoreContained="True" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="True" />
+    </ai>
+    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="10">
+      <Item identifier="ew_idcard" slot="Card" />
+      <Item identifier="headset" slot="Headset" />
+      <Item identifier="captainscap1" slot="Head" />
+      <Item identifier="captainsuniform1" slot="InnerClothes" />
+      <Item identifier="captainspipe" />
+      <Item identifier="pipetobacco" />
+      <Item identifier="revolver" />
+      <Item identifier="revolverround" amount="6" />
+    </inventory>
+    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="10">
+      <Item identifier="ew_idcard" slot="Card" />
+      <Item identifier="headset" slot="Headset" />
+      <Item identifier="captainscap2" slot="Head" />
+      <Item identifier="captainsuniform2" slot="InnerClothes" />
+      <Item identifier="captainspipe" />
+      <Item identifier="pipetobacco" />
+      <Item identifier="revolver" />
+      <Item identifier="revolverround" amount="6" />
+    </inventory>
+    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="10">
+      <Item identifier="ew_idcard" slot="Card" />
+      <Item identifier="headset" slot="Headset" />
+      <Item identifier="captainscap3" slot="Head" />
+      <Item identifier="captainsuniform3" slot="InnerClothes" />
+      <Item identifier="captainspipe" />
+      <Item identifier="pipetobacco" />
+      <Item identifier="revolver" />
+      <Item identifier="revolverround" amount="6" />
+    </inventory>
+    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="10">
+      <Item identifier="ew_idcard" slot="Card" />
+      <Item identifier="headset" slot="Headset" />
+      <Item identifier="securityuniform1" slot="InnerClothes" />
+      <Item identifier="divingknife" />
+      <Item identifier="handcuffs" />
+      <Item identifier="stunbaton" />
+      <Item identifier="batterycell" />
+    </inventory>
+    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="10">
+      <Item identifier="ew_idcard" slot="Card" />
+      <Item identifier="headset" slot="Headset" />
+      <Item identifier="securityuniform2" slot="InnerClothes" />
+      <Item identifier="divingknife" />
+      <Item identifier="handcuffs" />
+      <Item identifier="stunbaton" />
+      <Item identifier="batterycell" />
+    </inventory>
+    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="10">
+      <Item identifier="ew_idcard" slot="Card" />
+      <Item identifier="headset" slot="Headset" />
+      <Item identifier="securityuniform3" slot="InnerClothes" />
+      <Item identifier="divingknife" />
+      <Item identifier="handcuffs" />
+      <Item identifier="stunbaton" />
+      <Item identifier="batterycell" />
+    </inventory>
+    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="15">
+      <Item identifier="ew_idcard" slot="Card" />
+      <Item identifier="headset" slot="Headset" />
+      <Item identifier="doctorsuniform1" slot="InnerClothes" />
+      <Item identifier="syringegun" />
+      <Item identifier="antibleeding1" />
+      <Item identifier="antidama1" />
+    </inventory>
+    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="15">
+      <Item identifier="ew_idcard" slot="Card" />
+      <Item identifier="headset" slot="Headset" />
+      <Item identifier="doctorsuniform2" slot="InnerClothes" />
+      <Item identifier="syringegun" />
+      <Item identifier="antibleeding1" />
+      <Item identifier="antidama1" />
+    </inventory>
+    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="15">
+      <Item identifier="ew_idcard" slot="Card" />
+      <Item identifier="headset" slot="Headset" />
+      <Item identifier="baseballcap" slot="Head" />
+      <Item identifier="bluejumpsuit1" slot="InnerClothes" />
+      <Item identifier="toolbelt" slot="Bag" />
+      <Item identifier="wrench" />
+      <Item identifier="screwdriver" />
+      <Item identifier="weldingtool" />
+      <Item identifier="weldingfueltank" />
+      <Item identifier="plasmacutter" />
+      <Item identifier="oxygentank" />
+    </inventory>
+    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="15">
+      <Item identifier="ew_idcard" slot="Card" />
+      <Item identifier="headset" slot="Headset" />
+      <Item identifier="baseballcap" slot="Head" />
+      <Item identifier="bluejumpsuit2" slot="InnerClothes" />
+      <Item identifier="toolbelt" slot="Bag" />
+      <Item identifier="wrench" />
+      <Item identifier="screwdriver" />
+      <Item identifier="weldingtool" />
+      <Item identifier="weldingfueltank" />
+      <Item identifier="plasmacutter" />
+      <Item identifier="oxygentank" />
+    </inventory>
+    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="15">
+      <Item identifier="ew_idcard" slot="Card" />
+      <Item identifier="headset" slot="Headset" />
+      <Item identifier="orangejumpsuit1" slot="InnerClothes" />
+      <Item identifier="toolbelt" slot="Bag" />
+      <Item identifier="wrench" />
+      <Item identifier="screwdriver" />
+      <Item identifier="fuelrod" />
+    </inventory>
+    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="15">
+      <Item identifier="ew_idcard" slot="Card" />
+      <Item identifier="headset" slot="Headset" />
+      <Item identifier="orangejumpsuit2" slot="InnerClothes" />
+      <Item identifier="toolbelt" slot="Bag" />
+      <Item identifier="wrench" />
+      <Item identifier="screwdriver" />
+      <Item identifier="fuelrod" />
+    </inventory>
+    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="30">
+      <Item identifier="ew_idcard" slot="Card" />
+      <Item identifier="headset" slot="Headset" />
+      <Item identifier="assistantclothes" slot="InnerClothes" />
+      <Item identifier="wrench" />
+      <Item identifier="screwdriver" />
+    </inventory>
+    <StatusEffect type="OnSpawn" target="This">
+      <LuaHook name="humanshadow.OnSpawn" />
+    </StatusEffect>
+    <StatusEffect type="OnSpawn" target="This">
+      <SpawnItem identifiers="cdshadowclose" spawnposition="ThisInventory" />
+    </StatusEffect>
+    <StatusEffect type="OnSpawn" target="This" delay="1">
+      <GiveTalentInfo talentidentifiers="cdshadowtalent" />
+    </StatusEffect>
+    <!--存在时持续巩固核心-->
+    <StatusEffect type="OnActive" target="NearbyCharacters" range="200000" disabledeltatime="true"  interval="5">
+      <Affliction identifier="cdshadowdeheartbuff" strength="1" MultiplyByMaxVitality="true"/>
+    </StatusEffect>
+    <StatusEffect type="OnDeath" target="This">
+      <LuaHook name="humanshadow.OnDeath" />
+    </StatusEffect>
+    <!--死亡削弱核心-->
+    <StatusEffect type="OnDeath" target="NearbyCharacters" range="200000"  disabledeltatime="true">
+      <Affliction identifier="cdshadowdeheartbuff" strength="-5" MultiplyByMaxVitality="true"/>
+    </StatusEffect>
+    <StatusEffect type="OnDeath" target="This" delay="1.5">
+      <DropContainedItems />
+      <RemoveCharacter />
+    </StatusEffect>
+  </Character>
+</Override>

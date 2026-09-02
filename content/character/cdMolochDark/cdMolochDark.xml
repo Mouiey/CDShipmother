@@ -1,0 +1,61 @@
+﻿<Character speciesname="cdMolochDark" humanoid="False" group="moloch" husk="False" needsair="False" UseBossHealthBar="True" canspeak="False" noise="100" blooddecal="blackblood" bleedparticlewater="blackwaterblood" hideinsonar="True" sonardisruption="2" displayname="" hasinfo="false" usehuskappendage="False" needswater="False" visibility="100" bleedparticleair="" eatingspeed="10" pathfinderpriority="1" disabledistance="30000" caneat="False">
+  <ragdolls folder="default" scalemultiplier="1.5"/>
+  <animations folder="default" />
+  <damageemitter particle="blackgib" drawontop="True" particleamount="10" velocitymin="200" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.3" scalemax="0.5" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <bloodemitter particle="blackwaterblood" particleamount="5" velocitymin="0" velocitymax="100" anglemin="0" anglemax="360" scalemin="5" scalemax="10" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <gibemitter particle="blackwaterblood" particleamount="40" velocitymin="0" velocitymax="100" anglemin="0" anglemax="360" scalemin="5" scalemax="10" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <gibemitter particle="blackwaterblood" drawontop="True" particleamount="1" velocitymin="0" velocitymax="100" anglemin="0" anglemax="360" scalemin="3" scalemax="5" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <gibemitter particle="blackgib" drawontop="True" particleamount="20" velocitymin="200" velocitymax="700" anglemin="0" anglemax="360" scalemin="0.5" scalemax="1.5" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <health vitality="1700" doesbleed="True" crushdepth="Infinity" usehealthwindow="False" bleedingreduction="0.2" burnreduction="0" constanthealthregeneration="0.1" healthregenerationwheneating="0" stunimmunity="true" poisonvulnerability="0.3">
+    <Limb name="Head"/>
+    <Limb name="Torso"/>
+    <Limb name="LeftArm"/>
+    <Limb name="RightArm"/>
+    <Limb name="LeftLeg"/>
+    <Limb name="RightLeg"/>
+  </health>
+  <sound file="Content/Characters/Moloch/MOLOCH_attack1.ogg" state="Attack" range="20000" volume="1" dontmuffle="true"/>
+  <sound file="Content/Characters/Moloch/MOLOCH_attack2.ogg" state="Attack" range="20000" volume="1" dontmuffle="true"/>
+  <sound file="Content/Characters/Moloch/MOLOCH_attack3.ogg" state="Attack" range="20000" volume="1" dontmuffle="true"/>
+  <sound file="Content/Characters/Moloch/MOLOCH_attack4.ogg" state="Attack" range="20000" volume="1" dontmuffle="true"/>
+  <sound file="Content/Characters/Moloch/MOLOCH_attack5.ogg" state="Attack" range="20000" volume="1" dontmuffle="true"/>
+  <sound file="Content/Characters/Moloch/MOLOCH_attack6.ogg" state="Attack" range="20000" volume="1" dontmuffle="true"/>
+  <sound file="Content/Characters/Moloch/MOLOCH_damage1.ogg" state="Damage" range="10000" volume="1" />
+  <sound file="Content/Characters/Moloch/MOLOCH_damage2.ogg" state="Damage" range="10000" volume="1" />
+  <sound file="Content/Characters/Moloch/MOLOCH_damage3.ogg" state="Damage" range="10000" volume="1" />
+  <sound file="Content/Characters/Moloch/MOLOCH_idle1.ogg" state="Idle" range="10000" volume="3" />
+  <sound file="Content/Characters/Moloch/MOLOCH_idle2.ogg" state="Idle" range="10000" volume="3" />
+  <sound file="Content/Characters/Moloch/MOLOCH_idle3.ogg" state="Idle" range="10000" volume="3" />
+  <sound file="Content/Characters/Moloch/MOLOCH_idle4.ogg" state="Idle" range="10000" volume="3" />
+  <sound file="Content/Characters/Moloch/MOLOCH_idle5.ogg" state="Idle" range="10000" volume="3" />
+  <sound file="Content/Characters/Moloch/MOLOCH_death1.ogg" state="Die" range="20000" volume="3" />
+  <sound file="Content/Characters/Moloch/MOLOCH_death2.ogg" state="Die" range="20000" volume="3" />
+  <Inventory slots="Any, Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="2">
+    <Item identifier="cdshadowspawner" />
+  </Inventory>
+  <ai combatstrength="2000" sight="0.075" hearing="1" aggressionhurt="5" aggressiongreed="1" fleehealththreshold="0" attackwhenprovoked="True" aggressiveboarding="False" avoidgunfire="False" enforceaggressivebehaviorformissions="True" targetouterwalls="True" randomattack="False">
+    <target tag="weapon" state="Avoid" priority="500" reactdistance="3000" attackdistance="0" timer="0" ignoreifnotinsamesub="True"/>
+    <target tag="decoy" state="Observe" priority="100" attackdistance="1000" timer="20" reactdistance="0" ignoreifnotinsamesub="True"/>
+    <target tag="provocative" state="Observe" priority="100" attackdistance="1000" timer="20" reactdistance="0" ignoreifnotinsamesub="True"/>
+    <target tag="light" state="Observe" priority="100" attackdistance="1000" timer="20" reactdistance="0" />
+    <target tag="human" state="Observe" priority="20" attackdistance="1000" timer="20" reactdistance="0" />
+    <target tag="weaker" state="Observe" priority="20" attackdistance="1000" timer="20" reactdistance="0" />
+    <target tag="stronger" state="Observe" priority="20" reactdistance="1000" attackdistance="0" timer="0" />
+    <target tag="wall" state="Observe" priority="1" attackdistance="1500" timer="10" reactdistance="0" />
+  </ai>
+  <StatusEffect type="OnActive" target="this">
+    <Sound file="Content/Characters/Moloch/MOLOCH_moving.ogg" loop="true" range="5000" />
+  </StatusEffect>
+  <!--产生影子-->
+  <StatusEffect type="OnActive" target="NearbyCharacters" range="200000" disabledeltatime="true" interval="60">
+    <Affliction identifier="cdshadowdebufflong" strength="100" MultiplyByMaxVitality="true"/>
+  </StatusEffect>
+  <!--产生影子-->
+  <StatusEffect type="OnActive" target="NearbyCharacters" range="20000" >
+    <Affliction identifier="cdshadowdebuff" strength="10" MultiplyByMaxVitality="false"/>
+  </StatusEffect>
+  <!--初始化aff-->
+  <StatusEffect type="OnSpawn" target="This" delay="0.1" disabledeltatime="true">
+    <Affliction identifier="cdshadowdeheartbuff" strength="100" MultiplyByMaxVitality="true"/>
+  </StatusEffect>
+</Character>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Factions>
+  <!--
+  <Faction identifier="cd" initialreputation="0" minreputation="-100" maxreputation="100" menuorder="0" startoutpost="false" opposingfaction="反对派别">
+    <Icon name="cdIcon" texture="Content/UI/CampaignUIAtlas2.png" sourcerect="143,523,94,113" color="62,177,182,255"/>
+    <IconSmall name="cdIconSmall" texture="%ModDir%/content/png/image.png"  sourcerect="0,0,328,328" origin="0.5,0.5"/>
+    <Portrait name="cdPortrait" texture="%ModDir%/content/png/image.png"  sourcerect="0,0,328,328" origin="0.5,0.5" />
+    <Hireable npcsetidentifier="outpostnpcs1" npcidentifier="hireablecoalitionsecurityofficer" minreputation="20" />
+    <Hireable npcsetidentifier="outpostnpcs1" npcidentifier="hireablecoalitionengineer" minreputation="20" />
+    <Hireable npcsetidentifier="outpostnpcs1" npcidentifier="hireablecoalitionmechanic" minreputation="20" />
+    <Hireable npcsetidentifier="outpostnpcs1" npcidentifier="hireablecoalitionmedic" minreputation="20" />
+    <Hireable npcsetidentifier="outpostnpcs1" npcidentifier="hireablecoalitionsecurityofficerveteran" minreputation="50" />
+    <Hireable npcsetidentifier="outpostnpcs1" npcidentifier="hireablecoalitionengineerveteran" minreputation="50" />
+    <Hireable npcsetidentifier="outpostnpcs1" npcidentifier="hireablecoalitionmechanicveteran" minreputation="50" />
+    <Hireable npcsetidentifier="outpostnpcs1" npcidentifier="hireablecoalitionmedicveteran" minreputation="50" />
+    <AutomaticMission leveltype="LocationConnection" missiontag="cdattack" minreputation="-100" maxreputation="-50" MaxDistanceFromFactionOutpost="3" DisallowBetweenOtherFactionOutposts="true" minprobability="0.2" maxprobability="0.01"/>
+  </Faction>
+  -->
+  <Faction identifier="cdbank" initialreputation="0" minreputation="-100" maxreputation="100" menuorder="0" startoutpost="false" opposingfaction="反对派别">
+    <Icon name="cdbankIcon" texture="%ModDir%/content/png/银行图标1.png"  sourcerect="0,0,163,163" color="255,255,255,255"/>
+    <IconSmall name="cdbankIconSmall" texture="%ModDir%/content/png/银行图标1.png"  sourcerect="0,0,163,163" origin="0.5,0.5"/>
+    <Portrait name="cdbankPortrait" texture="Content/UI/Server/PlaystyleSomethingDifferent.png" sourcerect="0,0,1920,768" origin="0.5,0.5"  color="255,255,255,255"/>
+    <Hireable npcsetidentifier="outpostnpcs1" npcidentifier="hireablecoalitionsecurityofficer" minreputation="20" />
+    <Hireable npcsetidentifier="outpostnpcs1" npcidentifier="hireablecoalitionengineer" minreputation="20" />
+    <Hireable npcsetidentifier="outpostnpcs1" npcidentifier="hireablecoalitionmechanic" minreputation="20" />
+    <Hireable npcsetidentifier="outpostnpcs1" npcidentifier="hireablecoalitionmedic" minreputation="20" />
+    <Hireable npcsetidentifier="outpostnpcs1" npcidentifier="hireablecoalitionsecurityofficerveteran" minreputation="50" />
+    <Hireable npcsetidentifier="outpostnpcs1" npcidentifier="hireablecoalitionengineerveteran" minreputation="50" />
+    <Hireable npcsetidentifier="outpostnpcs1" npcidentifier="hireablecoalitionmechanicveteran" minreputation="50" />
+    <Hireable npcsetidentifier="outpostnpcs1" npcidentifier="hireablecoalitionmedicveteran" minreputation="50" />
+    <AutomaticMission leveltype="LocationConnection" missiontag="cdattack" minreputation="-100" maxreputation="-50" MaxDistanceFromFactionOutpost="3" DisallowBetweenOtherFactionOutposts="true" minprobability="0.2" maxprobability="0.01"/>
+  </Faction>
+</Factions>

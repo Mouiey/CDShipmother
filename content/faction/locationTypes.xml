@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<locationtypes>
+  <cdResearch
+    identifier="cdResearch"
+    replaceinradiation="abandoned"
+    descriptioninradiation="locationdescription.abandonedirradiated"
+    nameidentifiers="generic,city"
+    faction="cd" secondaryfaction="huskcult" 
+    BiomeGate="Allow">
+
+    <AreaSettings zone="1" commonness="0.0"/>
+    <AreaSettings zone="2" commonness="1.75"/>
+    <AreaSettings zone="3" commonness="1.0"/>
+    <AreaSettings zone="4" commonness="0.75"/>
+    <Symbol texture="Content/Map/MapAtlas.png" sourcerect="512,512,128,128" color="128,206,175,255"/>
+    <RadiationSymbol texture="Content/Map/MapAtlas.png" sourcerect="896,512,128,128" color="245,105,105"/>
+    <Portrait texture="Content/Map/LocationPortraits/WorkCampResearchFacility1.png" sourcerect="0,0,2160,1080" premultiplyalpha="false"/>
+
+    <Hireable identifier="engineer" commonness="5" AlwaysAvailableIfMissingFromCrew="true"/>
+    <Hireable identifier="mechanic" commonness="5" AlwaysAvailableIfMissingFromCrew="true"/>
+    <Hireable identifier="medicaldoctor" commonness="3" AlwaysAvailableIfMissingFromCrew="true"/>
+    <Hireable identifier="assistant" commonness="3" AlwaysAvailableIfMissingFromCrew="true"/>
+    <Hireable identifier="securityofficer" commonness="1" AlwaysAvailableIfMissingFromCrew="true"/>
+    <Hireable identifier="captain" commonness="1" AlwaysAvailableIfMissingFromCrew="true"/>
+
+    <!-- can become a city if there are no adjacent lairs 
+    <ChangeTo type="City"
+          requireddurationrange="2,4"
+          probability="0.2"
+          requiredlocations="City" requiredproximity="3"
+          disallowedadjacentlocations="Lair,City"
+          disallowedproximity="2"
+          messagetag="locationchange.research.changeto.city"/>
+
+    <ChangeTo type="Abandoned" requireddurationrange="1,1" messagetag="locationchange.outpost.changeto.abandoned">
+      <Requirement requirehuntinggrounds="true" probability="0.5" requiredproximity="0" />  
+    </ChangeTo>
+    -->
+    <Store
+      maxreputationmodifier="0.1"
+      minreputationmodifier="1.0"
+      sellpricemodifier="0.3"
+      dailyspecialpricemodifier="0.5"
+      requestgoodpricemodifier="2"
+      initialbalance="5000"
+      pricemodifierrange="5" />
+  </cdResearch>
+</locationtypes>

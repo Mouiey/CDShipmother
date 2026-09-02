@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Override>
+    <!-- \\\\\ PRIZE ITEMS ///// -->
+    <!-- Compatibility-only empty prize. The rebuilt machine always returns physical markka. -->
+    <Item name="Literally Nothing" identifier="cd_slotmachine_prize_none" description="" Category="Hidden" Tags="smallitem,cd_slotmachine_prize,cd_slotmachine_lose" maxstacksize="1" maxstacksizecharacterinventory="1" cargocontaineridentifier="metalcrate" scale="0.1" spritecolor="255,255,255,0" noninteractable="true" hideinmenus="true">
+      <Sprite texture="%ModDir%/content/png/Gambling.png" depth="0.55" sourcerect="0,0,1,1" />
+      <Body radius="2" density="10" />
+      <Holdable handle1="0,0" slots="RightHand,LeftHand,Any" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnContained" target="Parent" StatusEffectTags="cd_slotmachine_lose" duration="2" />
+        <StatusEffect type="Always" target="This" oneshot="true" stackable="false">
+          <Sound file="Content/Sounds/UI/DeadMsg.ogg" frequencymultiplier="1.5" loop="false" range="200" volume="1" />
+        </StatusEffect>
+        <StatusEffect type="Always" target="This" delay="0.1">
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+    </Item>
+    <!-- Physical-markka slot machine: 58 entries per reel, RTP 113.33%. -->
+    <!-- \\\\\ SLOT MACHINE ///// -->
+    <Item name="沉底老虎机" identifier="cd_slotmachine" tags="cd_slotmachine" category="Misc" subcategory="Gambling" scale="0.5" nonplayerteaminteractable="False">
+      <Sprite texture="%ModDir%/content/png/Gambling.png" sourcerect="0,0,141,235" origin="0.5,0.5" depth="0.600" />
+      <!-- front panel -->
+      <DecorativeSprite texture="%ModDir%/content/png/Gambling.png" sourcerect="0,236,141,235" origin="0.5,0.5" depth="0.597" />
+      <!-- bottom shadow -->
+      <DecorativeSprite texture="%ModDir%/content/png/Gambling.png" sourcerect="142,160,141,18" origin="0.5,-6.3" depth="0.600" />
+      <!-- display - jackpot -->
+      <DecorativeSprite texture="%ModDir%/content/png/Gambling.png" sourcerect="142,179,82,32" origin="0.5,2.77" depth="0.598">
+        <Conditional HasStatusTag="cd_slotmachine_jackpot" />
+      </DecorativeSprite>
+      <!-- display - win -->
+      <DecorativeSprite texture="%ModDir%/content/png/Gambling.png" sourcerect="142,212,82,32" origin="0.5,2.77" depth="0.598">
+        <Conditional HasStatusTag="cd_slotmachine_win" />
+      </DecorativeSprite>
+      <!-- display - lose -->
+      <DecorativeSprite texture="%ModDir%/content/png/Gambling.png" sourcerect="142,245,82,32" origin="0.5,2.77" depth="0.598">
+        <Conditional HasStatusTag="cd_slotmachine_lose" />
+      </DecorativeSprite>
+      <!-- single decorative sprite to simulate rotating slots -->
+      <DecorativeSprite texture="%ModDir%/content/png/Gambling.png" sourcerect="303,0,86,75" depth="0.599" origin="0.5,0.2" offset="0,110" offsetanim="Noise" offsetanimspeed="20.0">
+        <AnimationConditional HasStatusTag="cd_slotmachine_rolling" />
+        <IsActiveConditional HasStatusTag="cd_slotmachine_rolling" />
+      </DecorativeSprite>
+      <Controller canbeselected="true" selectkey="Select" hidehud="false" issecondaryitem="false" drawuserbehind="false" AllowSelectingWhenSelectedByOther="false" />
+      <!-- Keep the play button mounted in a stable frame above the inventory. -->
+      <CustomInterface canbeselected="true" selectkey="Select" drawhud="false">
+        <!-- The wager Containable applies the cd_slotmachine_hasbet tag to the machine while slot 0 contains cd1000MK.
+             ItemComponent conditionals hide this interface (and therefore Play) until a wager exists. -->
+        <Conditional HasStatusTag="cd_slotmachine_hasbet" />
+        <GuiFrame style="ItemUI" absoluteoffset="0,-230" anchor="BottomCenter" relativesize="0.16,0.08" />
+        <Button text="Play">
+          <!-- Lock the machine while all three reels are rolling. -->
+          <StatusEffect type="OnUse" target="This" StatusEffectTags="cd_slotmachine_rolling" duration="4.1" nonplayerteaminteractable="True" setvalue="true" disabledeltatime="true">
+            <RequiredItem items="cd1000MK" type="Contained" />
+            <Conditional HasStatusTag="!equals cd_slotmachine_payoutpending" />
+            <Conditional HasStatusTag="!equals cd_slotmachine_rolling" />
+          </StatusEffect>
+          <!-- Restore normal player interaction exactly when the spin lock expires. -->
+          <StatusEffect type="OnUse" target="This" delay="4.1" duration="0.1" nonplayerteaminteractable="False" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnUse" target="This" duration="3">
+            <RequiredItem items="cd1000MK" type="Contained" />
+            <Conditional HasStatusTag="!equals cd_slotmachine_payoutpending" />
+            <Sound file="Content/Sounds/UI/UIswitch2.ogg" frequencymultiplier="2.0" loop="true" range="200" volume="1" />
+          </StatusEffect>
+          <!-- The reel inventory is a separate hidden component. Filter by the symbol tag instead of
+               a slot index so the wager in the visible inventory can never be removed here. -->
+          <StatusEffect type="OnUse" target="Contained" targettags="cd_slotmachine_symbol" disabledeltatime="true">
+            <RequiredItem items="cd1000MK" type="Contained" />
+            <Conditional HasStatusTag="!equals cd_slotmachine_payoutpending" />
+            <Remove />
+          </StatusEffect>
+        <StatusEffect type="OnUse" target="This" delay="1" stackable="false" disabledeltatime="true" setvalue="true" spawnitemrandomly="true">
+            <RequiredItem items="cd1000MK" type="Contained" />
+            <Conditional HasStatusTag="!equals cd_slotmachine_payoutpending" />
+          <Sound file="Content/Sounds/UI/UI_labelCart.ogg" frequencymultiplier="1.2" loop="false" range="200" volume="1" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" delay="2" stackable="false" disabledeltatime="true" setvalue="true" spawnitemrandomly="true">
+            <RequiredItem items="cd1000MK" type="Contained" />
+            <Conditional HasStatusTag="!equals cd_slotmachine_payoutpending" />
+          <Sound file="Content/Sounds/UI/UI_labelCart.ogg" frequencymultiplier="1.2" loop="false" range="200" volume="1" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" delay="3" stackable="false" disabledeltatime="true" setvalue="true" spawnitemrandomly="true">
+            <RequiredItem items="cd1000MK" type="Contained" />
+            <Conditional HasStatusTag="!equals cd_slotmachine_payoutpending" />
+          <Sound file="Content/Sounds/UI/UI_labelCart.ogg" frequencymultiplier="1.2" loop="false" range="200" volume="1" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_seven" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_king" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_queen" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_spade" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_heart" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_diamond" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+          <SpawnItem identifier="cd_slotmachine_symbol_club" spawnposition="ThisInventory" spawnifcantbecontained="false" spawnifinventoryfull="false" />
+        </StatusEffect>
+          <!-- Select the payout table from the single 1000-mark note in bet slot 0. -->
+          <StatusEffect type="OnUse" target="This" delay="3.1" stackable="false" eventtargettag="cd_slotmachine_target">
+            <RequiredItem items="cd1000MK" type="Contained" />
+            <Conditional HasStatusTag="!equals cd_slotmachine_payoutpending" />
+            <TriggerEvent identifier="cd_slotmachine_winnings_1000" />
+          </StatusEffect>
+          <!-- Consume exactly the one note accepted by the non-stacking bet slot. -->
+          <StatusEffect type="OnUse" target="Contained" targetidentifiers="cd1000MK" delay="4.0" disabledeltatime="true">
+            <RequiredItem items="cd1000MK" type="Contained" />
+            <Conditional HasStatusTag="!equals cd_slotmachine_payoutpending" />
+            <Remove />
+          </StatusEffect>
+        </Button>
+      </CustomInterface>
+      <!-- jackpot sign light (has to be individual lights due to IsActiveConditonal not supporting comparisons and always forcing "AND" -->
+      <LightComponent canbeselected="false" allowingameediting="false" IsOn="true" powerconsumption="0" lightcolor="255,255,255,100" range="1" flicker="0.0" flickerspeed="0.0" blinkfrequency="0.0">
+        <IsActiveConditional HasStatusTag="cd_slotmachine_jackpot" />
+        <Sprite texture="%ModDir%/content/png/Gambling.png" sourcerect="225,245,82,32" depth="0.601" origin="0.5,2.75" />
+      </LightComponent>
+      <!-- win sign light (has to be individual lights due to IsActiveConditonal not supporting comparisons and always forcing "AND" -->
+      <LightComponent canbeselected="false" allowingameediting="false" IsOn="true" powerconsumption="0" lightcolor="255,255,255,100" range="1" flicker="0.0" flickerspeed="0.0" blinkfrequency="0.0">
+        <IsActiveConditional HasStatusTag="cd_slotmachine_win" />
+        <Sprite texture="%ModDir%/content/png/Gambling.png" sourcerect="225,245,82,32" depth="0.601" origin="0.5,2.75" />
+      </LightComponent>
+      <!-- lose sign light (has to be individual lights due to IsActiveConditonal not supporting comparisons and always forcing "AND" -->
+      <LightComponent canbeselected="false" allowingameediting="false" IsOn="true" powerconsumption="0" lightcolor="255,255,255,100" range="1" flicker="0.0" flickerspeed="0.0" blinkfrequency="0.0">
+        <IsActiveConditional HasStatusTag="cd_slotmachine_lose" />
+        <Sprite texture="%ModDir%/content/png/Gambling.png" sourcerect="225,245,82,32" depth="0.601" origin="0.5,2.75" />
+      </LightComponent>
+      <!-- big vertical lights -->
+      <LightComponent canbeselected="false" allowingameediting="false" IsOn="true" powerconsumption="0" lightcolor="80,0,255,255" range="1" flicker="0.1" flickerspeed="0.2" blinkfrequency="0.0">
+        <Sprite texture="%ModDir%/content/png/Gambling.png" sourcerect="142,278,141,124" depth="0.596" origin="0.5,0.43" />
+      </LightComponent>
+      <!-- red light stripes -->
+      <LightComponent canbeselected="false" allowingameediting="false" IsOn="true" powerconsumption="0" lightcolor="255,0,0,255" range="1" flicker="0.1" flickerspeed="0.2" pulseamount="0.7" pulsefrequency="1" blinkfrequency="0.0">
+        <Sprite texture="%ModDir%/content/png/Gambling.png" sourcerect="142,403,141,124" depth="0.596" origin="0.5,0.43" />
+      </LightComponent>
+      <!-- button light -->
+      <LightComponent canbeselected="false" allowingameediting="false" IsOn="true" powerconsumption="0" lightcolor="0,75,255,255" range="1" flicker="0.0" flickerspeed="0.0" blinkfrequency="1.0">
+        <Sprite texture="%ModDir%/content/png/Gambling.png" sourcerect="225,179,19,14" depth="0.596" origin="-1.15,1.6" />
+      </LightComponent>
+      <!-- signs lights -->
+      <LightComponent canbeselected="false" allowingameediting="false" IsOn="true" powerconsumption="0" lightcolor="255,255,255,120" range="1" LightOffset="0,-30">
+        <Sprite texture="%ModDir%/content/png/Gambling.png" sourcerect="0,500,141,64" depth="0.596" origin="0.5,0.5" />
+      </LightComponent>
+      <!-- winning light - activates with voltage -->
+      <LightComponent canbeselected="false" allowingameediting="false" IsOn="true" powerconsumption="10" lightcolor="255,255,100,255" range="150" pulseamount="0.5" pulsefrequency="5"></LightComponent>
+      <!-- Internal reel storage. The inventory UI is hidden, but hideitems stays false so the
+           three result symbols are still rendered on the machine itself. -->
+      <ItemContainer canbeselected="false" allowaccess="false" drawinventory="false" capacity="3" hideitems="false" maxstacksize="1" itempos="38,-145" iteminterval="32,1" itemrotation="0" itemsperrow="3" containedspritedepths="0.598,0.598,0.598">
+        <Containable items="cd_slotmachine_symbol" />
+      </ItemContainer>
+
+      <!-- Player-facing inventory: wager slot 0 followed by payout slots 1-5. -->
+      <ItemContainer canbeselected="true" selectkey="Select" allowaccess="true" allowaccesswhendropped="true" allowdraganddrop="true" QuickUseMovesItemsInside="True" drawinventory="true" capacity="1" hideitems="true" maxstacksize="1" slotsperrow="6" containedspritedepths="0.598,0.598,0.598,0.598,0.598,0.598">
+        <GuiFrame style="ItemUI" relativeoffset="0,-100" anchor="BottomCenter" relativesize="0.32,0.16" />
+        <SlotIcon slotindex="3" texture="%ModDir%/content/png/Gambling.png" sourcerect="287,134,91,53" />
+        <Containable items="cd1000MK" hideitems="true" itempos="70,-203">
+          <StatusEffect type="OnContaining" target="This" StatusEffectTags="cd_slotmachine_hasbet" duration="0.2">
+            <RequiredItem items="cd1000MK" type="Contained" />
+          </StatusEffect>
+        </Containable>
+        <!-- Public payout tray, up to five stacks of ten notes. -->
+        <SubContainer capacity="5" hideitems="true" maxstacksize="10">
+          <Containable items="cd100MK,cd1000MK,cd10000MK,cd100000MK" itempos="6,-218">
+            <StatusEffect type="OnInserted" target="This">
+              <Sound file="Content/Sounds/UI/UI_labelMarkka.ogg" frequencymultiplier="1.0" loop="false" range="200" volume="1" />
+            </StatusEffect>
+            <StatusEffect type="OnContaining" target="This" StatusEffectTags="cd_slotmachine_payoutpending" duration="0.2" />
+          </Containable>
+        </SubContainer>
+      </ItemContainer>
+    </Item>
+    <!-- \\\\\ LOCKED-IN SYMBOL ITEMS ///// -->
+    <Item name="" identifier="cd_slotmachine_symbol_seven" tags="cd_slotmachine_symbol,cd_slotmachine_symbol_sevens" scale="0.5" noninteractable="true" health="1" hideinmenus="true">
+      <Sprite texture="%ModDir%/content/png/Gambling.png" sourcerect="142,0,22,36" origin="0.5,0.5" depth="0.6" />
+      <DecorativeSprite texture="%ModDir%/content/png/Gambling.png" sourcerect="142,0,22,36" origin="0.5,0.5" depth="0.598" />
+      <ItemComponent characterusable="false">
+        <StatusEffect type="OnNotContained" target="This" disabledeltatime="true">
+          <Remove />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <Item name="" identifier="cd_slotmachine_symbol_king" tags="cd_slotmachine_symbol,cd_slotmachine_symbol_kings,cd_slotmachine_symbol_yellows" scale="0.5" noninteractable="true" health="1" hideinmenus="true">
+      <Sprite texture="%ModDir%/content/png/Gambling.png" sourcerect="165,0,22,36" origin="0.5,0.5" depth="0.6" />
+      <DecorativeSprite texture="%ModDir%/content/png/Gambling.png" sourcerect="165,0,22,36" origin="0.5,0.5" depth="0.598" />
+      <ItemComponent characterusable="false">
+        <StatusEffect type="OnNotContained" target="This" disabledeltatime="true">
+          <Remove />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <Item name="" identifier="cd_slotmachine_symbol_queen" tags="cd_slotmachine_symbol,cd_slotmachine_symbol_queens,cd_slotmachine_symbol_yellows" scale="0.5" noninteractable="true" health="1" hideinmenus="true">
+      <Sprite texture="%ModDir%/content/png/Gambling.png" sourcerect="188,0,22,36" origin="0.5,0.5" depth="0.6" />
+      <DecorativeSprite texture="%ModDir%/content/png/Gambling.png" sourcerect="188,0,22,36" origin="0.5,0.5" depth="0.598" />
+      <ItemComponent characterusable="false">
+        <StatusEffect type="OnNotContained" target="This" disabledeltatime="true">
+          <Remove />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <Item name="" identifier="cd_slotmachine_symbol_spade" tags="cd_slotmachine_symbol,cd_slotmachine_symbol_spades,cd_slotmachine_symbol_regulars,cd_slotmachine_symbol_blacks" scale="0.5" noninteractable="true" health="1" hideinmenus="true">
+      <Sprite texture="%ModDir%/content/png/Gambling.png" sourcerect="211,0,22,36" origin="0.5,0.5" depth="0.6" />
+      <DecorativeSprite texture="%ModDir%/content/png/Gambling.png" sourcerect="211,0,22,36" origin="0.5,0.5" depth="0.598" />
+      <ItemComponent characterusable="false">
+        <StatusEffect type="OnNotContained" target="This" disabledeltatime="true">
+          <Remove />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <Item name="" identifier="cd_slotmachine_symbol_heart" tags="cd_slotmachine_symbol,cd_slotmachine_symbol_hearts,cd_slotmachine_symbol_regulars,cd_slotmachine_symbol_reds" scale="0.5" noninteractable="true" health="1" hideinmenus="true">
+      <Sprite texture="%ModDir%/content/png/Gambling.png" sourcerect="234,0,22,36" origin="0.5,0.5" depth="0.6" />
+      <DecorativeSprite texture="%ModDir%/content/png/Gambling.png" sourcerect="234,0,22,36" origin="0.5,0.5" depth="0.598" />
+      <ItemComponent characterusable="false">
+        <StatusEffect type="OnNotContained" target="This" disabledeltatime="true">
+          <Remove />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <Item name="" identifier="cd_slotmachine_symbol_diamond" tags="cd_slotmachine_symbol,cd_slotmachine_symbol_diamonds,cd_slotmachine_symbol_regulars,cd_slotmachine_symbol_reds" scale="0.5" noninteractable="true" health="1" hideinmenus="true">
+      <Sprite texture="%ModDir%/content/png/Gambling.png" sourcerect="257,0,22,36" origin="0.5,0.5" depth="0.6" />
+      <DecorativeSprite texture="%ModDir%/content/png/Gambling.png" sourcerect="257,0,22,36" origin="0.5,0.5" depth="0.598" />
+      <ItemComponent characterusable="false">
+        <StatusEffect type="OnNotContained" target="This" disabledeltatime="true">
+          <Remove />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <Item name="" identifier="cd_slotmachine_symbol_club" tags="cd_slotmachine_symbol,cd_slotmachine_symbol_clubs,cd_slotmachine_symbol_regulars,cd_slotmachine_symbol_blacks" scale="0.5" noninteractable="true" health="1" hideinmenus="true">
+      <Sprite texture="%ModDir%/content/png/Gambling.png" sourcerect="280,0,22,36" origin="0.5,0.5" depth="0.6" />
+      <DecorativeSprite texture="%ModDir%/content/png/Gambling.png" sourcerect="280,0,22,36" origin="0.5,0.5" depth="0.598" />
+      <ItemComponent characterusable="false">
+        <StatusEffect type="OnNotContained" target="This" disabledeltatime="true">
+          <Remove />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <!-- An invisible holder that deletes itself after taking an item from it -->
+    <!-- Pre-placed in cave modules and unlocked and randomized by an event. Spawns a random mineral when mined. -->
+    <!-- Pre-placed in pools of water or flooded cave modules and unlocked and randomized by an event, need to be researched -->
+    <!-- Pressure Stabilizer for Outpost Security | Non-Player-Team-Interactable -->
+    <!-- A railgun shell that allows shooting clowns inside it (people wearing clowngear), much like a boarding pod -->
+    <!-- Overriding vanilla beers to remove them from the mod - they're unfinished and worse than Hungry Europan drinks -->
+    <!-- TEST item that instantly heals and gives more health -->
+    <!-- Hazmat Suit - Spawned on reactoroperator NPC for Enhanced Reactors compatibility - Does nothing and removes itself if Enhanced Reactors is not installed and loaded above DE -->
+    <!-- 
+  RUBBER DUCKS
+  RUBBER DUCKS
+  RUBBER DUCKS -->
+    <!--Mudraptor race tickets-->
+    <!-- only used in raptor race -->
+    <!-- /////// PROXY ITEMS, ONLY EXIST TO BE SOLD AT BASICS MERCHANT ////////  -->
+    <!-- /////// PROXY ITEMS, ONLY EXIST TO BE SOLD AT BASICS MERCHANT ////////  -->
+    <!-- /////// PROXY ITEMS, ONLY EXIST TO BE SOLD AT BASICS MERCHANT ////////  -->
+    <!-- /////// PROXY ITEMS, ONLY EXIST TO BE SOLD AT BASICS MERCHANT ////////  -->
+    <!-- /////// PROXY ITEMS, ONLY EXIST TO BE SOLD AT BASICS MERCHANT ////////  -->
+    <!-- /////// PROXY ITEMS, ONLY EXIST TO BE SOLD AT BASICS MERCHANT ////////  -->
+    <!-- /////// PROXY ITEMS, ONLY EXIST TO BE SOLD AT BASICS MERCHANT ////////  -->
+    <!-- /////// PROXY ITEMS, ONLY EXIST TO BE SOLD AT BASICS MERCHANT ////////  -->
+    <!-- /////// PROXY ITEMS, ONLY EXIST TO BE SOLD AT BASICS MERCHANT ////////  -->
+  </Override>
+</Items>

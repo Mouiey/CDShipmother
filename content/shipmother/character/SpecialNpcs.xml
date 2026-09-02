@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<npcsets>
+  <npcset identifier="cdShip">
+    <npc identifier="cdnormallg" moduleflags="none" healthmultiplier="1" behavior="StayInHull">
+      <Character speciesname="human" tags="female,head13" experiencepoints="0" personality="professional" additionaltalentpoints="0" hairindex="9" beardindex="23" moustacheindex="4" faceattachmentindex="0" skincolor="252,225,198,255" haircolor="222,215,204,255" facialhaircolor="222,215,204,255" startitemsgiven="false" ragdoll="" missionscompletedsincedeath="0">
+        <job identifier="cdnormalShipmother">
+          <skill identifier="weapons" level="50" />
+          <skill identifier="mechanical" level="50" />
+          <skill identifier="electrical" level="50" />
+          <skill identifier="medical" level="50" />
+          <skill identifier="helm" level="50" />
+        </job>
+        <talents>
+          <talent identifier="cdnonthreatening1" />
+          <talent identifier="cdmagbusiness" />
+          <talent identifier="cdisshipmother" />
+        </talents>
+      </Character>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdlghead" equip="true" />
+        <Item identifier="cdlguniforms2" equip="true" />
+        <Item identifier="cdPrayerMio_hat" equip="true" />
+        <!--ar15-->
+        <Item identifier="cdwhitegun" equip="true">
+          <Item identifier="cdwhitegunmag" amount="1" />
+        </Item>
+        <Item identifier="cdwhitegunmag" amount="8" />
+        <!--包包-->
+        <Item identifier="cdjkbag" equip="false"/>
+        <!--万用工具-->
+        <Item identifier="repairpack" equip="false"/>
+        <!--焊接工具-->
+        <Item identifier="weldingtool" equip="false">
+          <Item identifier="weldingfueltank" />
+        </Item>
+      </ItemSet>
+      <AutonomousObjectives>
+        <Order identifier="fightintruders" prioritymodifier="1" />
+        <Order identifier="rescue" prioritymodifier="1" />
+        <Order identifier="extinguishfires" prioritymodifier="0.75" />
+        <Order identifier="repairsystems" prioritymodifier="0.5" />
+        <Order identifier="fixleaks" prioritymodifier="0.5" />
+      </AutonomousObjectives>
+      <AppropriateOrders>
+        <Order identifier="operateweapons" />
+        <Order identifier="fightintruders" />
+      </AppropriateOrders>
+    </npc>
+    <npc identifier="cdnormalTAT" moduleflags="none" healthmultiplier="1" behavior="StayInHull">
+      <Character speciesname="human" tags="female,head3" experiencepoints="0" personality="professional" additionaltalentpoints="0" hairindex="10" beardindex="30" moustacheindex="6" faceattachmentindex="7" skincolor="252,225,198,255" haircolor="143,15,15,255" facialhaircolor="148,43,43,255" startitemsgiven="false" ragdoll="" missionscompletedsincedeath="0">
+        <job identifier="cdnormalShipmother">
+          <skill identifier="weapons" level="50" />
+          <skill identifier="mechanical" level="50" />
+          <skill identifier="electrical" level="50" />
+          <skill identifier="medical" level="50" />
+          <skill identifier="helm" level="50" />
+        </job>
+        <talents>
+          <talent identifier="cdnonthreatening1" />
+          <talent identifier="cdmagbusiness" />
+          <talent identifier="cdisshipmother" />
+        </talents>
+      </Character>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdmomohead" equip="true" />
+        <Item identifier="cdTATuniforms3" equip="true" />
+        <Item identifier="cdTAThat" equip="true" />
+        <!--ar15-->
+        <Item identifier="cdwhitegun" equip="true">
+          <Item identifier="cdwhitegunmag" amount="1" />
+        </Item>
+        <Item identifier="cdwhitegunmag" amount="8" />
+        <!--包包-->
+        <Item identifier="cdjkbag" equip="false"/>
+        <!--万用工具-->
+        <Item identifier="repairpack" equip="false"/>
+        <!--焊接工具-->
+        <Item identifier="weldingtool" equip="false">
+          <Item identifier="weldingfueltank" />
+        </Item>
+      </ItemSet>
+      <AutonomousObjectives>
+        <Order identifier="fightintruders" prioritymodifier="1" />
+        <Order identifier="rescue" prioritymodifier="1" />
+        <Order identifier="extinguishfires" prioritymodifier="0.75" />
+        <Order identifier="repairsystems" prioritymodifier="0.5" />
+        <Order identifier="fixleaks" prioritymodifier="0.5" />
+      </AutonomousObjectives>
+      <AppropriateOrders>
+        <Order identifier="operateweapons" />
+        <Order identifier="fightintruders" />
+      </AppropriateOrders>
+    </npc>
+    <npc identifier="cdlg" moduleflags="none" healthmultiplier="2" behavior="StayInHull">
+      <Character speciesname="human" tags="female,head13" experiencepoints="0" personality="professional" additionaltalentpoints="0" hairindex="9" beardindex="23" moustacheindex="4" faceattachmentindex="0" skincolor="252,225,198,255" haircolor="222,215,204,255" facialhaircolor="222,215,204,255" startitemsgiven="false" ragdoll="" missionscompletedsincedeath="0">
+        <job identifier="cdShipmother">
+          <skill identifier="weapons" level="20" />
+          <skill identifier="mechanical" level="20" />
+          <skill identifier="electrical" level="20" />
+          <skill identifier="medical" level="20" />
+          <skill identifier="helm" level="20" />
+        </job>
+        <talents>
+          <talent identifier="cdneverdie" />
+          <talent identifier="cdisshipmother" />
+        </talents>
+      </Character>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdlghead" equip="true" />
+        <Item identifier="cdlguniforms2" equip="true" />
+        <Item identifier="cdPrayerMio_hat" equip="true" />
+        <Item identifier="cdtruenebula" equip="false"/>
+        <Item identifier="cdcubepotion" equip="true"/>
+        <Item identifier="cdbenevolence" equip="true"/>
+        <Item identifier="cdqbu10" equip="true"/>
+        <Item identifier="Godrevolver" equip="false"/>
+      </ItemSet>
+      <AutonomousObjectives>
+        <Order identifier="fightintruders" prioritymodifier="1" />
+        <Order identifier="rescue" prioritymodifier="1" />
+        <Order identifier="extinguishfires" prioritymodifier="0.75" />
+        <Order identifier="repairsystems" prioritymodifier="0.5" />
+        <Order identifier="fixleaks" prioritymodifier="0.5" />
+      </AutonomousObjectives>
+      <AppropriateOrders>
+        <Order identifier="operateweapons" />
+        <Order identifier="fightintruders" />
+      </AppropriateOrders>
+    </npc>
+    <npc identifier="cdTAT" moduleflags="none" healthmultiplier="2" behavior="StayInHull">
+      <Character speciesname="human" tags="female,head3" experiencepoints="0" personality="professional" additionaltalentpoints="0" hairindex="10" beardindex="30" moustacheindex="6" faceattachmentindex="7" skincolor="252,225,198,255" haircolor="143,15,15,255" facialhaircolor="148,43,43,255" startitemsgiven="false" ragdoll="" missionscompletedsincedeath="0">
+        <job identifier="cdShipmother">
+          <skill identifier="weapons" level="20" />
+          <skill identifier="mechanical" level="20" />
+          <skill identifier="electrical" level="20" />
+          <skill identifier="medical" level="20" />
+          <skill identifier="helm" level="20" />
+        </job>
+        <talents>
+          <talent identifier="cdneverdie" />
+          <talent identifier="cdisshipmother" />
+        </talents>
+      </Character>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="cdmomohead" equip="true" />
+        <Item identifier="cdTATuniforms3" equip="true" />
+        <Item identifier="cdTAThat" equip="true" />
+        <Item identifier="cdtruenebula" equip="false"/>
+        <Item identifier="cdcubepotion" equip="true"/>
+        <Item identifier="cdbenevolence" equip="true"/>
+        <Item identifier="cdqbu10" equip="false"/>
+        <Item identifier="Godrevolver" equip="false"/>
+      </ItemSet>
+      <AutonomousObjectives>
+        <Order identifier="fightintruders" prioritymodifier="1" />
+        <Order identifier="rescue" prioritymodifier="1" />
+        <Order identifier="extinguishfires" prioritymodifier="0.75" />
+        <Order identifier="repairsystems" prioritymodifier="0.5" />
+        <Order identifier="fixleaks" prioritymodifier="0.5" />
+      </AutonomousObjectives>
+      <AppropriateOrders>
+        <Order identifier="operateweapons" />
+        <Order identifier="fightintruders" />
+      </AppropriateOrders>
+    </npc>
+    <npc identifier="cdJersey" moduleflags="none" healthmultiplier="2" behavior="StayInHull">
+      <Character speciesname="human" tags="female,head13" experiencepoints="0" personality="professional" additionaltalentpoints="0" hairindex="0" beardindex="12" moustacheindex="2" faceattachmentindex="0" skincolor="243,198,150,255" haircolor="116,117,155,255" facialhaircolor="116,117,155,255" startitemsgiven="false" ragdoll="" missionscompletedsincedeath="0">
+        <job identifier="assistant">
+          <skill identifier="weapons" level="20" />
+          <skill identifier="mechanical" level="20" />
+          <skill identifier="electrical" level="20" />
+          <skill identifier="medical" level="20" />
+          <skill identifier="helm" level="20" />
+        </job>
+        <talents>
+          <talent identifier="cdnoinfection" />
+          <talent identifier="cdneverdie" />
+          <talent identifier="cdnonthreatening1" />
+          <talent identifier="cdunpressure" />
+          <talent identifier="cdchangealltalent" />
+        </talents>
+      </Character>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="headset" equip="true" />
+        <Item identifier="doctorsuniform1" equip="true" />
+        <Item identifier="boardingaxe" equip="true" />
+        <Item identifier="cdseal" equip="true" />
+        <Item identifier="weldingtool" equip="false">
+          <Item identifier="weldingfueltank" />
+        </Item>
+      </ItemSet>
+      <AutonomousObjectives>
+        <Order identifier="fightintruders" prioritymodifier="1" />
+        <Order identifier="rescue" prioritymodifier="1" />
+        <Order identifier="extinguishfires" prioritymodifier="0.75" />
+        <Order identifier="repairsystems" prioritymodifier="0.5" />
+        <Order identifier="fixleaks" prioritymodifier="0.5" />
+      </AutonomousObjectives>
+      <AppropriateOrders>
+        <Order identifier="operateweapons" />
+        <Order identifier="fightintruders" />
+      </AppropriateOrders>
+    </npc>
+  </npcset>
+  <npcset identifier="cdshadownpc">
+    <npc identifier="cdshadownpc1" moduleflags="none" healthmultiplier="1" behavior="StayInHull" job="cdfriendlyshadow" >
+      <!--
+      <Character name="影子" originalname="影子" speciesname="human">
+        <job identifier="cdfriendlyshadow">
+          <skill identifier="weapons" level="30" />
+          <skill identifier="mechanical" level="30" />
+          <skill identifier="electrical" level="30" />
+          <skill identifier="medical" level="30" />
+          <skill identifier="helm" level="30" />
+        </job>
+        <talents>
+        </talents>
+      </Character>
+      -->
+      <ItemSet commonness="1">
+        <Item identifier="cdshadowclose" equip="true" />
+        <Item identifier="headset" equip="true" />
+      </ItemSet>
+      <AutonomousObjectives>
+        <Order identifier="fightintruders" prioritymodifier="1" />
+        <Order identifier="rescue" prioritymodifier="1" />
+        <Order identifier="extinguishfires" prioritymodifier="0.75" />
+        <Order identifier="repairsystems" prioritymodifier="0.5" />
+        <Order identifier="fixleaks" prioritymodifier="0.5" />
+      </AutonomousObjectives>
+      <AppropriateOrders>
+        <Order identifier="operateweapons" />
+        <Order identifier="fightintruders" />
+      </AppropriateOrders>
+    </npc>
+  </npcset>
+</npcsets>
