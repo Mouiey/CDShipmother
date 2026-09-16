@@ -208,7 +208,7 @@
     </npc>
   </npcset>
   <npcset identifier="cdshadownpc">
-    <npc identifier="cdshadownpc1" moduleflags="none" healthmultiplier="1" behavior="StayInHull" job="cdfriendlyshadow" >
+    <npc identifier="cdshadownpc1" moduleflags="none" healthmultiplier="2" behavior="StayInHull" job="cdfriendlyshadow" >
       <!--
       <Character name="影子" originalname="影子" speciesname="human">
         <job identifier="cdfriendlyshadow">

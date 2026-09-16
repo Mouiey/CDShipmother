@@ -2,10 +2,13 @@
 <Afflictions>
   <!--影子干扰-->
   <Affliction name="黑色核心" identifier="cdshadowdeheartbuff" isbuff="true" targets="cdMolochDark" type="buff" limbspecific="false" maxstrength="100" showiconthreshold="0" showinhealthscannerthreshold="0" affectmachines="false">
-    <Effect minstrength="0" maxstrength="100" strengthchange="0" resistancefor="damage,burn,poison,bleeding,bloodloss" minresistance="0" maxresistance="1">
+    <Effect minstrength="0" maxstrength="50" strengthchange="0" resistancefor="damage,burn,poison,bleeding,bloodloss,triton_9C,triton_burn,triton_7L,tsm_bl,zlyz,zlqy" minresistance="0" maxresistance="0.8">
       <AbilityFlag flagtype="IgnoredByEnemyAI" />
-      <StatValue stattype="MaximumHealthMultiplier" minvalue="3" maxvalue="20" />
-      <StatusEffect target="Character" disabledeltatime="true"></StatusEffect>
+      <StatValue stattype="MaximumHealthMultiplier" minvalue="3" maxvalue="10" />
+    </Effect>
+    <Effect minstrength="50" maxstrength="100" strengthchange="0" resistancefor="damage,burn,poison,bleeding,bloodloss,triton_9C,triton_burn,triton_7L,tsm_bl,zlyz,zlqy" minresistance="0.8" maxresistance="1">
+      <AbilityFlag flagtype="IgnoredByEnemyAI" />
+      <StatValue stattype="MaximumHealthMultiplier" minvalue="10" maxvalue="20" />
     </Effect>
   </Affliction>
   <!--影子干扰-->
@@ -16,8 +19,6 @@
         <ReduceAffliction identifier="cdshadowdebuff" amount="1" />
       </StatusEffect>
       <StatValue stattype="MeleeAttackMultiplier" minvalue="-0.9" maxvalue="-0.5" />
-      <StatValue stattype="RangedAttackSpeed" minvalue="-0.5" maxvalue="-0.7" />
-      <StatValue stattype="MaximumHealthMultiplier" minvalue="-0.5" maxvalue="-0.4" />
       <StatValue stattype="SwimmingSpeed" minvalue="-0.3" maxvalue="-0.5" />
     </Effect>
     <Effect minstrength="40" maxstrength="70" strengthchange="0">
@@ -26,8 +27,6 @@
         <ReduceAffliction identifier="cdshadowdebuff" amount="1" />
       </StatusEffect>
       <StatValue stattype="MeleeAttackMultiplier" minvalue="-0.5" maxvalue="-0.5" />
-      <StatValue stattype="RangedAttackSpeed" minvalue="-0.7" maxvalue="0" />
-      <StatValue stattype="MaximumHealthMultiplier" minvalue="-0.4" maxvalue="-0.6" />
       <StatValue stattype="SwimmingSpeed" minvalue="-0.5" maxvalue="-0.6" />
     </Effect>
     <Effect minstrength="70" maxstrength="99" strengthchange="0">
@@ -36,8 +35,6 @@
         <ReduceAffliction identifier="cdshadowdebuff" amount="1" />
       </StatusEffect>
       <StatValue stattype="MeleeAttackMultiplier" minvalue="-0.5" maxvalue="-0.9" />
-      <StatValue stattype="RangedAttackSpeed" minvalue="0" maxvalue="-0.5" />
-      <StatValue stattype="MaximumHealthMultiplier" minvalue="-0.6" maxvalue="-0.5" />
       <StatValue stattype="SwimmingSpeed" minvalue="-0.6" maxvalue="-0.3" />
     </Effect>
     <Effect minstrength="99" maxstrength="100" strengthchange="0">
@@ -57,7 +54,7 @@
     <Icon texture="%ModDir%/content/png/MainIconsAtlas.png" sheetindex="4,0" sheetelementsize="128,128" color="255,255,255,255" origin="0,0" />
   </Affliction>
   <!--测试用群体成影-->
-  <Affliction name="影子生成群体" identifier="cdiseveryoneshadowspawnaff" isbuff="true" type="buff" limbspecific="false" maxstrength="1" showiconthreshold="300" showinhealthscannerthreshold="300" affectmachines="false">
+  <Affliction name="暴乱" identifier="cdiseveryoneshadowspawnaff" isbuff="true" type="buff" limbspecific="false" maxstrength="1" showiconthreshold="300" showinhealthscannerthreshold="300" affectmachines="false">
     <Effect minstrength="0" maxstrength="1" strengthchange="0">
       <StatusEffect target="NearbyCharacters" range="200000" disabledeltatime="true">
         <Affliction identifier="cdisshadowspawnaff" amount="1.0" MultiplyByMaxVitality="true" />
@@ -91,6 +88,24 @@
         <Conditional IsLocalPlayer="True" />
         <sound file="%ModDir%/content/ogg/产生影子.ogg" range="150" volume="1.35" loop="false" />
       </StatusEffect>
+    </Effect>
+  </Affliction>
+  <!--影子计时器-->
+  <Affliction name="消散" identifier="cdshadowremovetimer" isbuff="true" type="buff" limbspecific="false" maxstrength="100" showiconthreshold="300" showinhealthscannerthreshold="300" affectmachines="false">
+    <Effect minstrength="0" maxstrength="99" strengthchange="0">
+    </Effect>
+    <Effect minstrength="99" maxstrength="100" strengthchange="0" minspeedmultiplier="0.01" maxspeedmultiplier="-1">
+      <StatValue stattype="AttackMultiplier" minvalue="-0.99" maxvalue="-0.99" />
+      <StatValue stattype="MeleeAttackSpeed" minvalue="-0.99" maxvalue="-0.99" />
+      <StatValue stattype="RangedAttackSpeed" minvalue="-0.99" maxvalue="-0.99" />
+      <AbilityFlag flagtype="CanNotDieToAfflictions" />
+      <StatusEffect target="Character">
+        <ParticleEmitter particle="steamspray" copyentityangle="true" particlespersecond="80" scalemin="1" scalemax="1.5"  colormultiplier="0,0,0,255" anglemin="0" anglemax="360" distancemin="-80" distancemax="80"  velocitymin="0" velocitymax="5" highqualitycollisiondetection="true" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction name="回收" identifier="cdshadowisremove" isbuff="true" type="buff" limbspecific="false" maxstrength="1" showiconthreshold="300" showinhealthscannerthreshold="300" affectmachines="false">
+    <Effect minstrength="0" maxstrength="1" strengthchange="0">
     </Effect>
   </Affliction>
   <!--影子-->

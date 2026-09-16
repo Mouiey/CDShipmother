@@ -180,19 +180,19 @@
         </Success>
         <Failure>
           <TagAction criteria="player" tag="player" />
-          <SpawnAction npcsetidentifier="cdshadownpc" npcidentifier="cdshadownpc1" targettag="coalition" lootingisstealing="false" spawnlocation="MainSub" TeamID="Team1" allowinplayerview="false" CanInventoryBeAccessed="false" />
-          <StatusEffectAction targettag="coalition" enabledespawn="true">
+          <SpawnAction npcsetidentifier="cdshadownpc" npcidentifier="cdshadownpc1" targettag="cdshadowtag" lootingisstealing="false" spawnlocation="MainSub" TeamID="Team1" allowinplayerview="false" CanInventoryBeAccessed="false" />
+          <StatusEffectAction targettag="cdshadowtag" enabledespawn="true">
             <StatusEffect target="This">
               <Sound file="%ModDir%/content/ogg/产生影子.ogg" range="10000" volume="1" />
             </StatusEffect>
           </StatusEffectAction>
-          <StatusEffectAction targettag="coalition">
+          <StatusEffectAction targettag="cdshadowtag">
             <StatusEffect target="This" enabledespawn="true">
               <Affliction identifier="cdisshadow" strength="10000" MultiplyByMaxVitality="True" />
               <Affliction identifier="cdrobotafffriendlyshadow" strength="1000" MultiplyByMaxVitality="True" />
             </StatusEffect>
           </StatusEffectAction>
-          <NPCChangeTeamAction npctag="coalition" teamid="Team1" addtocrew="true" />
+          <NPCChangeTeamAction npctag="cdshadowtag" teamid="Team1" addtocrew="true" />
           <SetDataAction identifier="cdshadowalive" value="true" />
         </Failure>
       </CheckDataAction>

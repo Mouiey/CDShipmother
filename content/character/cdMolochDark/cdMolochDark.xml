@@ -52,7 +52,7 @@
   </StatusEffect>
   <!--产生影子-->
   <StatusEffect type="OnActive" target="NearbyCharacters" range="20000" >
-    <Affliction identifier="cdshadowdebuff" strength="10" MultiplyByMaxVitality="false"/>
+    <Affliction identifier="cdshadowdebuff" strength="6" MultiplyByMaxVitality="false"/>
   </StatusEffect>
   <!--初始化aff-->
   <StatusEffect type="OnSpawn" target="This" delay="0.1" disabledeltatime="true">

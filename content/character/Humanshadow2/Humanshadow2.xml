@@ -74,129 +74,7 @@
     <ai CombatStrength="100" Sight="10" Hearing="10" AttackWhenProvoked="False" AggressiveBoarding="True" TargetOuterWalls="False" RandomAttack="True" CanOpenDoors="True" UsePathFindingToGetInside="True" AvoidAbyss="False" PatrolFlooded="True" PatrolDry="True">
       <target Tag="human" State="Attack" Priority="100" IgnoreContained="True" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="True" />
     </ai>
-    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="10">
-      <Item identifier="ew_idcard" slot="Card" />
-      <Item identifier="headset" slot="Headset" />
-      <Item identifier="captainscap1" slot="Head" />
-      <Item identifier="captainsuniform1" slot="InnerClothes" />
-      <Item identifier="captainspipe" />
-      <Item identifier="pipetobacco" />
-      <Item identifier="revolver" />
-      <Item identifier="revolverround" amount="6" />
-    </inventory>
-    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="10">
-      <Item identifier="ew_idcard" slot="Card" />
-      <Item identifier="headset" slot="Headset" />
-      <Item identifier="captainscap2" slot="Head" />
-      <Item identifier="captainsuniform2" slot="InnerClothes" />
-      <Item identifier="captainspipe" />
-      <Item identifier="pipetobacco" />
-      <Item identifier="revolver" />
-      <Item identifier="revolverround" amount="6" />
-    </inventory>
-    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="10">
-      <Item identifier="ew_idcard" slot="Card" />
-      <Item identifier="headset" slot="Headset" />
-      <Item identifier="captainscap3" slot="Head" />
-      <Item identifier="captainsuniform3" slot="InnerClothes" />
-      <Item identifier="captainspipe" />
-      <Item identifier="pipetobacco" />
-      <Item identifier="revolver" />
-      <Item identifier="revolverround" amount="6" />
-    </inventory>
-    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="10">
-      <Item identifier="ew_idcard" slot="Card" />
-      <Item identifier="headset" slot="Headset" />
-      <Item identifier="securityuniform1" slot="InnerClothes" />
-      <Item identifier="divingknife" />
-      <Item identifier="handcuffs" />
-      <Item identifier="stunbaton" />
-      <Item identifier="batterycell" />
-    </inventory>
-    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="10">
-      <Item identifier="ew_idcard" slot="Card" />
-      <Item identifier="headset" slot="Headset" />
-      <Item identifier="securityuniform2" slot="InnerClothes" />
-      <Item identifier="divingknife" />
-      <Item identifier="handcuffs" />
-      <Item identifier="stunbaton" />
-      <Item identifier="batterycell" />
-    </inventory>
-    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="10">
-      <Item identifier="ew_idcard" slot="Card" />
-      <Item identifier="headset" slot="Headset" />
-      <Item identifier="securityuniform3" slot="InnerClothes" />
-      <Item identifier="divingknife" />
-      <Item identifier="handcuffs" />
-      <Item identifier="stunbaton" />
-      <Item identifier="batterycell" />
-    </inventory>
-    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="15">
-      <Item identifier="ew_idcard" slot="Card" />
-      <Item identifier="headset" slot="Headset" />
-      <Item identifier="doctorsuniform1" slot="InnerClothes" />
-      <Item identifier="syringegun" />
-      <Item identifier="antibleeding1" />
-      <Item identifier="antidama1" />
-    </inventory>
-    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="15">
-      <Item identifier="ew_idcard" slot="Card" />
-      <Item identifier="headset" slot="Headset" />
-      <Item identifier="doctorsuniform2" slot="InnerClothes" />
-      <Item identifier="syringegun" />
-      <Item identifier="antibleeding1" />
-      <Item identifier="antidama1" />
-    </inventory>
-    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="15">
-      <Item identifier="ew_idcard" slot="Card" />
-      <Item identifier="headset" slot="Headset" />
-      <Item identifier="baseballcap" slot="Head" />
-      <Item identifier="bluejumpsuit1" slot="InnerClothes" />
-      <Item identifier="toolbelt" slot="Bag" />
-      <Item identifier="wrench" />
-      <Item identifier="screwdriver" />
-      <Item identifier="weldingtool" />
-      <Item identifier="weldingfueltank" />
-      <Item identifier="plasmacutter" />
-      <Item identifier="oxygentank" />
-    </inventory>
-    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="15">
-      <Item identifier="ew_idcard" slot="Card" />
-      <Item identifier="headset" slot="Headset" />
-      <Item identifier="baseballcap" slot="Head" />
-      <Item identifier="bluejumpsuit2" slot="InnerClothes" />
-      <Item identifier="toolbelt" slot="Bag" />
-      <Item identifier="wrench" />
-      <Item identifier="screwdriver" />
-      <Item identifier="weldingtool" />
-      <Item identifier="weldingfueltank" />
-      <Item identifier="plasmacutter" />
-      <Item identifier="oxygentank" />
-    </inventory>
-    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="15">
-      <Item identifier="ew_idcard" slot="Card" />
-      <Item identifier="headset" slot="Headset" />
-      <Item identifier="orangejumpsuit1" slot="InnerClothes" />
-      <Item identifier="toolbelt" slot="Bag" />
-      <Item identifier="wrench" />
-      <Item identifier="screwdriver" />
-      <Item identifier="fuelrod" />
-    </inventory>
-    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="15">
-      <Item identifier="ew_idcard" slot="Card" />
-      <Item identifier="headset" slot="Headset" />
-      <Item identifier="orangejumpsuit2" slot="InnerClothes" />
-      <Item identifier="toolbelt" slot="Bag" />
-      <Item identifier="wrench" />
-      <Item identifier="screwdriver" />
-      <Item identifier="fuelrod" />
-    </inventory>
-    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="30">
-      <Item identifier="ew_idcard" slot="Card" />
-      <Item identifier="headset" slot="Headset" />
-      <Item identifier="assistantclothes" slot="InnerClothes" />
-      <Item identifier="wrench" />
-      <Item identifier="screwdriver" />
+    <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" Accessiblewhenalive="True" Commonness="100">
     </inventory>
     <StatusEffect type="OnSpawn" target="This">
       <LuaHook name="humanshadow.OnSpawn" />
@@ -206,6 +84,21 @@
     </StatusEffect>
     <StatusEffect type="OnSpawn" target="This" delay="1">
       <GiveTalentInfo talentidentifiers="cdshadowtalent" />
+    </StatusEffect>
+    <!--存在倒计时-->
+    <StatusEffect type="OnActive" target="This">
+      <Affliction identifier="cdshadowremovetimer" strength="1" MultiplyByMaxVitality="true"/>
+    </StatusEffect>
+    <StatusEffect type="OnActive" target="This" disabledeltatime="true" comparison="and">
+      <Conditional cdshadowremovetimer="gte 100" />
+      <Conditional cdshadowisremove="lte 0" />
+      <LuaHook name="humanshadow.OnDeath" />
+      <Affliction identifier="cdshadowisremove" strength="1" MultiplyByMaxVitality="true"/>
+    </StatusEffect>
+    <StatusEffect type="OnActive" target="This" disabledeltatime="true" delay="0.5" stackable="false">
+      <Conditional cdshadowisremove="gt 0" />
+      <DropContainedItems />
+      <RemoveCharacter />
     </StatusEffect>
     <!--存在时持续巩固核心-->
     <StatusEffect type="OnActive" target="NearbyCharacters" range="200000" disabledeltatime="true"  interval="5">
@@ -221,6 +114,10 @@
     <StatusEffect type="OnDeath" target="This" delay="1.5">
       <DropContainedItems />
       <RemoveCharacter />
+    </StatusEffect>
+    <StatusEffect type="Always"  target="This"  >
+      <Conditional isdead="true" />
+      <ParticleEmitter particle="steamspray" copyentityangle="true" particlespersecond="80" scalemin="1" scalemax="1.5"  colormultiplier="0,0,0,255" anglemin="0" anglemax="360" distancemin="-80" distancemax="80"  velocitymin="0" velocitymax="5" highqualitycollisiondetection="true" />
     </StatusEffect>
   </Character>
 </Override>

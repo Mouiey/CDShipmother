@@ -8,6 +8,11 @@
         <ParticleEmitter particle="nasonovfx" scalemultiplier="2,2" anglemax="360" particleamount="3" colormultiplier="0,0,0,255" />
         <TriggerEvent identifier="cdspawnfriendlyshadow" />
       </StatusEffect>
+      <StatusEffect type="OnUse" target="This,Character">
+        <Conditional HasTag="eq overuse" />
+        <Affliction identifier="cdiseveryoneshadowspawnaff" strength="1" />
+        <RemoveItem />
+      </StatusEffect>
     </Holdable>
     <InventoryIcon texture="%ModDir%/content/png/影子召唤器.png" sourcerect="0,0,239,248" />
     <Sprite texture="%ModDir%/content/png/影子召唤器.png" sourcerect="0,0,239,248" depth="0.55" origin="0.5,0.5" />
@@ -15,6 +20,13 @@
     <ItemContainer capacity="0" maxstacksize="0" hideitems="true">
       <StatusEffect type="OnSpawn" target="This" disabledeltatime="true" delay="1" condition="100" />
     </ItemContainer>
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+      <GuiFrame relativesize="0.083,0.04" anchor="CenterRight" relativeoffset="0.0,-0.17" style="MainMenuGUIButton" hidedragicons="true" draggable="true" />
+      <TickBox text="过载">
+        <StatusEffect type="OnUse" target="This" Tags="overuse" setvalue="true" />
+        <StatusEffect type="OnSecondaryUse" target="This" Tags="" setvalue="true" />
+      </TickBox>
+    </CustomInterface>
   </Item>
   <!--加固器-->
   <Item name="加固器" identifier="cdundamager" tags="mediumitem" category="Misc" description="" inheritscale="false" isshootable="true" scale="0.6"  hideinmenus="true">

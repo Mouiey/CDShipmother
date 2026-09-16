@@ -211,6 +211,31 @@
         </CharacterAbilityApplyStatusEffects>
       </Abilities>
     </AbilityGroupEffect>
+    <!--附伤-->
+    <AbilityGroupEffect abilityeffecttype="OnAttack">
+      <Conditions>
+        <AbilityConditionAttackData weapontype="Ranged" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData>
+          <Afflictions>
+            <Affliction identifier="lacerations" strength="5.0" />
+          </Afflictions>
+        </CharacterAbilityModifyAttackData>
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnAttack">
+      <Conditions>
+        <AbilityConditionAttackData weapontype="Melee" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData>
+          <Afflictions>
+            <Affliction identifier="lacerations" strength="50.0" />
+          </Afflictions>
+        </CharacterAbilityModifyAttackData>
+      </Abilities>
+    </AbilityGroupEffect>
   </Talent>
   <!--获得护盾-->
   <Talent identifier="cdgethudun">
