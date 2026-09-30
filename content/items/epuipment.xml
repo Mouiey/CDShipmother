@@ -1474,10 +1474,10 @@
     <Deconstruct time="5">
       <Item identifier="plastic" />
     </Deconstruct>
-    <Sprite name="cdCeremonial hat" texture="%ModDir%/content/png/圣装12.png" depth="0.6" sourcerect="432,183,65,28" origin="0.5,0.5" />
+    <Sprite name="cdCeremonial hat" texture="%ModDir%/content/png/圣装17.png" depth="0.6" sourcerect="432,183,65,28" origin="0.5,0.5" />
     <Body width="65" height="28" density="30" />
     <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
-      <sprite name="cdCeremonial hat Wearable" texture="%ModDir%/content/png/圣装12.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="1" hidelimb="false" sourcerect="432,109,64,66" origin="0.7,0.75" />
+      <sprite name="cdCeremonial hat Wearable" texture="%ModDir%/content/png/圣装17.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="1" hidelimb="false" sourcerect="432,109,64,66" origin="0.7,0.75" />
       <ItemContainer capacity="1" maxstacksize="1" hideitems="true">
         <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
           <!-- 每隔1秒执行一次，停用配件效果，延迟生效 -->
@@ -2153,8 +2153,8 @@
     <Deconstruct time="5">
       <Item identifier="plastic" />
     </Deconstruct>
-    <InventoryIcon name="advanced uniform Icon" texture="%ModDir%/content/png/圣装12.png" sourcerect="444,31,50,46" origin="0.5,0.5" />
-    <Sprite name="advanced uniform" texture="%ModDir%/content/png/圣装12.png" sourcerect="444,31,50,46" depth="0.55" origin="0.5,0.5" />
+    <InventoryIcon name="advanced uniform Icon" texture="%ModDir%/content/png/圣装17.png" sourcerect="444,31,50,46" origin="0.5,0.5" />
+    <Sprite name="advanced uniform" texture="%ModDir%/content/png/圣装17.png" sourcerect="444,31,50,46" depth="0.55" origin="0.5,0.5" />
     <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
     <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
       <sprite name="advanced Torso"                     texture="%ModDir%/content/png/圣装17.png" limb="Torso" hidelimb="true" alphaclipotherwearables="false"  depthlimb="Jaw" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false"  origin="0.53,0.435" sourcerect="165,0,102,211"  />

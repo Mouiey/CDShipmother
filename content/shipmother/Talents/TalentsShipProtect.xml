@@ -54,6 +54,9 @@
           <Conditional maxhealth="gte 50" />
         </AbilityConditionCharacter>
       </Conditions>
+      <Conditions>
+        <AbilityConditionHasAffliction afflictionidentifier="cdequipshipprotect"/>
+      </Conditions>
       <Abilities>
         <!-- 增加计数器 -->
         <CharacterAbilityGivePermanentStat statidentifier="cdshipprotectcount" value="1" removeondeath="false" />
